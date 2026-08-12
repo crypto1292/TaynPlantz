@@ -11,908 +11,757 @@
 
 <style>
 :root{
-  --forest:#0d3324;
-  --forest2:#19583b;
-  --leaf:#49a96d;
-  --mint:#e7f5eb;
-  --cream:#f6f8f3;
-  --white:#fff;
-  --ink:#122019;
-  --muted:#748078;
-  --line:#e1e9e2;
-  --gold:#dcae52;
-  --red:#b94a4a;
-  --shadow:0 18px 45px rgba(13,51,36,.10);
+--forest:#0d3324;
+--forest2:#1c6743;
+--leaf:#48a66a;
+--mint:#e6f4e9;
+--cream:#f5f8f3;
+--white:#fff;
+--ink:#122019;
+--muted:#748078;
+--line:#dfe8e1;
+--gold:#d8a84f;
+--red:#b94b4b;
+--shadow:0 18px 45px rgba(13,51,36,.10)
 }
 
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 html,body{
-  margin:0;
-  min-height:100%;
-  background:#dce7df;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-  "SF Pro Text",system-ui,sans-serif;
-  color:var(--ink);
+margin:0;
+min-height:100%;
+background:#dce7df;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+"SF Pro Text",system-ui,sans-serif;
+color:var(--ink)
 }
 
-button,input{
-  font:inherit;
-}
-
-button{
-  -webkit-appearance:none;
-}
-
-body{
-  overflow-x:hidden;
-}
+button,input{font:inherit}
+button{-webkit-appearance:none;cursor:pointer}
 
 .app{
-  width:100%;
-  max-width:560px;
-  min-height:100vh;
-  margin:auto;
-  background:var(--cream);
-  position:relative;
-  overflow:hidden;
-  padding-bottom:105px;
+width:100%;
+max-width:560px;
+min-height:100vh;
+margin:auto;
+background:var(--cream);
+padding-bottom:105px;
+overflow:hidden
 }
-
-/* TOP BAR */
 
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:30;
-  height:78px;
-  padding:
-    max(12px,env(safe-area-inset-top))
-    20px
-    10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:rgba(246,248,243,.88);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  border-bottom:1px solid rgba(255,255,255,.75);
+position:sticky;
+top:0;
+z-index:50;
+height:78px;
+padding:max(12px,env(safe-area-inset-top)) 20px 10px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:rgba(246,248,243,.90);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+border-bottom:1px solid rgba(255,255,255,.8)
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:11px;
-}
+.brand{display:flex;align-items:center;gap:11px}
 
 .logo{
-  width:44px;
-  height:44px;
-  border-radius:15px;
-  background:linear-gradient(145deg,#0d3324,#2d8255);
-  display:grid;
-  place-items:center;
-  font-size:22px;
-  box-shadow:0 8px 22px rgba(13,51,36,.2);
+width:44px;height:44px;border-radius:15px;
+background:linear-gradient(145deg,#0d3324,#318657);
+display:grid;place-items:center;
+font-size:22px;
+box-shadow:0 8px 22px rgba(13,51,36,.20)
 }
 
-.brand-title{
-  font-size:18px;
-  font-weight:850;
-  letter-spacing:-.5px;
-}
-
-.brand-sub{
-  display:block;
-  margin-top:2px;
-  font-size:10px;
-  color:var(--muted);
-}
+.brand-title{font-size:18px;font-weight:850;letter-spacing:-.5px}
+.brand-sub{display:block;margin-top:2px;font-size:10px;color:var(--muted)}
 
 .settings-button{
-  width:42px;
-  height:42px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  background:white;
-  display:grid;
-  place-items:center;
-  font-size:18px;
-  box-shadow:0 6px 18px rgba(0,0,0,.05);
+width:42px;height:42px;border:1px solid var(--line);
+border-radius:50%;background:white;display:grid;place-items:center
 }
 
-/* SCREENS */
+main{padding:18px}
 
-main{
-  padding:18px;
-}
-
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
-  animation:appear .28s ease;
-}
+.screen{display:none}
+.screen.active{display:block;animation:appear .25s ease}
 
 @keyframes appear{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
+from{opacity:0;transform:translateY(7px)}
+to{opacity:1;transform:none}
 }
 
-/* HOME */
+/* RESOURCE GUIDE */
 
-.welcome{
-  margin:4px 3px 17px;
+.guide-intro{
+margin:4px 3px 15px
 }
 
-.welcome-small{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:700;
+.guide-kicker{
+font-size:9px;
+font-weight:900;
+letter-spacing:1.7px;
+color:var(--leaf)
 }
 
-.welcome h1{
-  margin:4px 0 0;
-  font-size:31px;
-  letter-spacing:-1.5px;
-  line-height:1.05;
+.guide-intro h1{
+margin:5px 0 5px;
+font-size:31px;
+line-height:1.04;
+letter-spacing:-1.5px
 }
 
-.welcome h1 span{
-  color:var(--forest2);
+.guide-intro p{
+margin:0;
+font-size:11px;
+line-height:1.5;
+color:var(--muted)
 }
 
-/* HERO */
-
-.hero{
-  height:300px;
-  border-radius:32px;
-  overflow:hidden;
-  position:relative;
-  color:white;
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(7,31,21,.05) 15%,
-      rgba(7,31,21,.82) 100%
-    ),
-    url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=88")
-    center/cover;
-  box-shadow:var(--shadow);
+.guide-search{
+height:49px;
+display:flex;
+align-items:center;
+gap:9px;
+padding:0 14px;
+background:white;
+border:1px solid var(--line);
+border-radius:17px;
+box-shadow:0 9px 25px rgba(13,51,36,.05);
+margin-bottom:14px
 }
 
-.hero-badge{
-  position:absolute;
-  top:18px;
-  left:18px;
-  padding:8px 11px;
-  border-radius:20px;
-  background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.25);
-  backdrop-filter:blur(12px);
-  font-size:9px;
-  font-weight:850;
-  letter-spacing:1px;
+.guide-search span{font-size:17px}
+
+.guide-search input{
+width:100%;
+border:0;
+outline:0;
+background:transparent;
+font-size:12px
 }
 
-.hero h2{
-  margin:0;
-  font-size:35px;
-  line-height:1;
-  letter-spacing:-1.7px;
+.guide-feature{
+height:220px;
+border-radius:28px;
+overflow:hidden;
+position:relative;
+color:white;
+background:
+linear-gradient(180deg,rgba(8,35,23,.05),rgba(8,35,23,.88)),
+url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=88")
+center/cover;
+box-shadow:var(--shadow);
+margin-bottom:14px
 }
 
-.hero h2 span{
-  color:#c8f0d2;
+.guide-feature-content{
+position:absolute;
+left:20px;
+right:20px;
+bottom:19px
 }
 
-.hero p{
-  margin:11px 0 0;
-  font-size:12px;
-  line-height:1.5;
-  color:#eaf5ed;
-  max-width:360px;
+.guide-badge{
+display:inline-block;
+padding:7px 10px;
+border-radius:20px;
+background:rgba(255,255,255,.17);
+backdrop-filter:blur(10px);
+font-size:8px;
+font-weight:900;
+letter-spacing:1px
 }
 
-/* SCAN CARD */
+.guide-feature h2{
+margin:8px 0 4px;
+font-size:27px;
+letter-spacing:-1px
+}
+
+.guide-feature p{
+margin:0;
+font-size:10px;
+color:#e7f4ea
+}
+
+.guide-section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:20px 3px 10px
+}
+
+.guide-section-title b{
+font-size:15px
+}
+
+.guide-section-title small{
+color:var(--leaf);
+font-size:9px;font-weight:850
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
+
+.category{
+height:145px;
+border:1px solid var(--line);
+border-radius:22px;
+overflow:hidden;
+position:relative;
+background:white;
+padding:0;
+text-align:left
+}
+
+.category-image{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center
+}
+
+.category-image:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(180deg,transparent 25%,rgba(5,30,19,.83))
+}
+
+.category-content{
+position:absolute;
+z-index:2;
+left:13px;
+right:10px;
+bottom:12px;
+color:white
+}
+
+.category-icon{font-size:18px}
+.category-name{display:block;font-size:12px;font-weight:850;margin-top:4px}
+.category-count{display:block;font-size:8px;color:#dcecdf;margin-top:2px}
+
+.featured-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
+
+.plant-card{
+background:white;
+border:1px solid var(--line);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(13,51,36,.05);
+text-align:left;
+padding:0
+}
+
+.plant-card img{
+width:100%;
+height:130px;
+object-fit:cover;
+display:block
+}
+
+.plant-card-info{
+padding:11px
+}
+
+.plant-card-name{
+font-size:12px;
+font-weight:850
+}
+
+.plant-card-scientific{
+font-size:9px;
+color:var(--muted);
+margin-top:4px;
+font-style:italic
+}
+
+.plant-card-tags{
+display:flex;
+gap:4px;
+margin-top:8px;
+flex-wrap:wrap
+}
+
+.tag{
+padding:4px 6px;
+border-radius:8px;
+background:var(--mint);
+color:var(--forest);
+font-size:7px;
+font-weight:800
+}
+
+/* SCANNER */
+
+.scan-heading{
+margin:24px 3px 10px;
+font-size:15px;
+font-weight:850
+}
 
 .scan-card{
-  margin-top:14px;
-  padding:14px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  box-shadow:var(--shadow);
+padding:14px;
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+box-shadow:var(--shadow)
 }
 
 .scan-preview{
-  height:210px;
-  border-radius:21px;
-  overflow:hidden;
-  position:relative;
-  background:
-    linear-gradient(rgba(13,51,36,.35),rgba(13,51,36,.65)),
-    url("https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=1000&q=85")
-    center/cover;
-  display:grid;
-  place-items:center;
+height:210px;
+border-radius:21px;
+overflow:hidden;
+position:relative;
+background:
+linear-gradient(rgba(13,51,36,.30),rgba(13,51,36,.65)),
+url("https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=1000&q=85")
+center/cover;
+display:grid;
+place-items:center
 }
 
 .scan-preview img{
-  display:none;
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+display:none;
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover
 }
 
-.scan-preview.has-image img{
-  display:block;
-}
+.scan-preview.has-image img{display:block}
 
 .scan-prompt{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  color:white;
-  text-shadow:0 2px 8px rgba(0,0,0,.45);
+position:relative;
+z-index:2;
+text-align:center;
+color:white;
+text-shadow:0 2px 8px rgba(0,0,0,.45)
 }
 
-.scan-preview.has-image .scan-prompt{
-  display:none;
-}
+.scan-preview.has-image .scan-prompt{display:none}
 
 .camera-icon{
-  width:64px;
-  height:64px;
-  margin:0 auto 10px;
-  border-radius:21px;
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.93);
-  color:var(--forest);
-  font-size:27px;
+width:64px;height:64px;margin:0 auto 10px;
+border-radius:21px;
+display:grid;place-items:center;
+background:rgba(255,255,255,.94);
+color:var(--forest);
+font-size:27px
 }
 
-.scan-prompt b{
-  font-size:14px;
-}
-
-.scan-prompt small{
-  display:block;
-  margin-top:5px;
-  font-size:10px;
-}
+.scan-prompt b{font-size:14px}
+.scan-prompt small{display:block;margin-top:5px;font-size:10px}
 
 .scan-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:11px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:11px
 }
 
 .action-button{
-  min-height:50px;
-  border:0;
-  border-radius:15px;
-  font-weight:800;
+min-height:50px;
+border:0;
+border-radius:15px;
+font-weight:800
 }
 
-.action-primary{
-  background:var(--forest);
-  color:white;
-}
-
-.action-secondary{
-  background:var(--mint);
-  color:var(--forest);
-}
-
-.action-button:disabled{
-  opacity:.42;
-}
+.action-primary{background:var(--forest);color:white}
+.action-secondary{background:var(--mint);color:var(--forest)}
+.action-button:disabled{opacity:.42}
 
 .scan-tip{
-  margin:10px 4px 1px;
-  text-align:center;
-  color:#8a958e;
-  font-size:9px;
+margin:10px 4px 1px;
+text-align:center;
+color:#8a958e;
+font-size:9px
 }
 
-/* QUICK GRID */
-
-.section-title{
-  margin:22px 3px 10px;
-  font-size:15px;
-  font-weight:850;
-  letter-spacing:-.2px;
-}
-
-.quick-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.quick-card{
-  min-height:116px;
-  padding:15px;
-  border:1px solid var(--line);
-  border-radius:21px;
-  background:white;
-  text-align:left;
-  box-shadow:0 10px 30px rgba(13,51,36,.055);
-}
-
-.quick-card-icon{
-  width:36px;
-  height:36px;
-  border-radius:12px;
-  background:var(--mint);
-  display:grid;
-  place-items:center;
-  font-size:18px;
-}
-
-.quick-card b{
-  display:block;
-  margin-top:10px;
-  font-size:12px;
-}
-
-.quick-card small{
-  display:block;
-  margin-top:4px;
-  color:var(--muted);
-  font-size:9px;
-  line-height:1.35;
-}
-
-/* PAGE HEADER */
+/* PAGES */
 
 .page-header{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  margin:5px 0 17px;
+display:flex;
+align-items:center;
+gap:11px;
+margin:5px 0 17px
 }
 
 .back-button{
-  width:42px;
-  height:42px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:14px;
-  font-size:25px;
+width:42px;height:42px;
+border:1px solid var(--line);
+background:white;
+border-radius:14px;
+font-size:25px
 }
 
 .page-kicker{
-  margin:0 0 3px;
-  color:var(--leaf);
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1.7px;
+margin:0 0 3px;
+color:var(--leaf);
+font-size:8px;
+font-weight:900;
+letter-spacing:1.7px
 }
 
 .page-header h1{
-  margin:0;
-  font-size:29px;
-  line-height:1;
-  letter-spacing:-1.2px;
+margin:0;
+font-size:29px;
+line-height:1;
+letter-spacing:-1.2px
 }
 
 /* RESULTS */
 
 .result-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  padding:14px;
-  box-shadow:var(--shadow);
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+padding:14px;
+box-shadow:var(--shadow)
 }
 
 .result-photo{
-  width:100%;
-  height:275px;
-  object-fit:cover;
-  border-radius:21px;
+width:100%;
+height:275px;
+object-fit:cover;
+border-radius:21px
 }
 
 .result-label{
-  margin:16px 2px 4px;
-  color:var(--leaf);
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1.6px;
+margin:16px 2px 4px;
+color:var(--leaf);
+font-size:8px;
+font-weight:900;
+letter-spacing:1.6px
 }
 
 .result-name{
-  margin:0;
-  font-size:27px;
-  line-height:1.08;
-  letter-spacing:-1px;
+margin:0;
+font-size:27px;
+line-height:1.08;
+letter-spacing:-1px
 }
 
 .result-common{
-  margin:5px 0 13px;
-  color:var(--muted);
-  font-size:13px;
+margin:5px 0 13px;
+color:var(--muted);
+font-size:13px
 }
 
 .confidence{
-  padding:13px;
-  background:var(--mint);
-  border-radius:15px;
+padding:13px;
+background:var(--mint);
+border-radius:15px
 }
 
 .confidence-top{
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-  font-weight:800;
-  color:var(--forest);
+display:flex;
+justify-content:space-between;
+font-size:11px;
+font-weight:800;
+color:var(--forest)
 }
 
 .confidence-track{
-  height:7px;
-  margin-top:9px;
-  background:#cfe2d3;
-  border-radius:20px;
-  overflow:hidden;
+height:7px;
+margin-top:9px;
+background:#cfe2d3;
+border-radius:20px;
+overflow:hidden
 }
 
 .confidence-fill{
-  height:100%;
-  background:var(--leaf);
-  border-radius:20px;
+height:100%;
+background:var(--leaf);
+border-radius:20px
 }
 
 .info-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:9px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-top:9px
 }
 
 .info-box{
-  padding:12px;
-  border-radius:15px;
-  background:#f5f7f4;
+padding:12px;
+border-radius:15px;
+background:#f5f7f4
 }
 
 .info-box small{
-  display:block;
-  color:var(--muted);
-  font-size:8px;
-  text-transform:uppercase;
-  letter-spacing:.7px;
+display:block;color:var(--muted);
+font-size:8px;text-transform:uppercase
 }
 
 .info-box b{
-  display:block;
-  margin-top:5px;
-  font-size:11px;
+display:block;margin-top:5px;font-size:11px
 }
 
-.care-section{
-  margin-top:19px;
-}
-
-.care-section h3{
-  margin:0 0 7px;
-  font-size:16px;
-}
+.care-section{margin-top:19px}
+.care-section h3{margin:0 0 7px;font-size:16px}
 
 .care-row{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-  font-size:12px;
-  line-height:1.4;
+display:flex;
+gap:10px;
+align-items:flex-start;
+padding:12px 0;
+border-bottom:1px solid var(--line);
+font-size:12px;
+line-height:1.4
 }
 
-.care-row:last-child{
-  border-bottom:0;
-}
+.care-row:last-child{border-bottom:0}
 
 .care-icon{
-  width:30px;
-  height:30px;
-  border-radius:10px;
-  background:var(--mint);
-  display:grid;
-  place-items:center;
-  flex:none;
+width:30px;height:30px;
+border-radius:10px;
+background:var(--mint);
+display:grid;place-items:center;
+flex:none
 }
 
 /* HEALTH */
 
 .health-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  padding:14px;
-  box-shadow:var(--shadow);
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+padding:14px;
+box-shadow:var(--shadow)
 }
 
 .health-hero{
-  padding:25px 18px;
-  border-radius:22px;
-  text-align:center;
-  color:white;
-  background:
-    linear-gradient(135deg,rgba(13,51,36,.95),rgba(39,119,76,.72)),
-    url("https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1000&q=85")
-    center/cover;
+padding:25px 18px;
+border-radius:22px;
+text-align:center;
+color:white;
+background:
+linear-gradient(135deg,rgba(13,51,36,.95),rgba(39,119,76,.72)),
+url("https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1000&q=85")
+center/cover
 }
 
 .health-icon{
-  width:65px;
-  height:65px;
-  margin:auto;
-  border-radius:22px;
-  background:rgba(255,255,255,.14);
-  display:grid;
-  place-items:center;
-  font-size:30px;
+width:65px;height:65px;margin:auto;
+border-radius:22px;
+background:rgba(255,255,255,.14);
+display:grid;place-items:center;
+font-size:30px
 }
 
-.health-hero h3{
-  margin:13px 0 6px;
-  font-size:18px;
-}
+.health-hero h3{margin:13px 0 6px;font-size:18px}
 
 .health-hero p{
-  margin:0;
-  font-size:10px;
-  line-height:1.5;
-  color:#e7f3e9;
+margin:0;font-size:10px;line-height:1.5;color:#e7f3e9
 }
 
 .health-button{
-  width:100%;
-  margin-top:14px;
-  min-height:48px;
-  border:0;
-  border-radius:14px;
-  background:white;
-  color:var(--forest);
-  font-weight:850;
+width:100%;margin-top:14px;min-height:48px;
+border:0;border-radius:14px;
+background:white;color:var(--forest);
+font-weight:850
 }
 
 .disease{
-  margin-top:10px;
-  padding:14px;
-  border-radius:16px;
-  background:#f5f8f4;
+margin-top:10px;padding:14px;
+border-radius:16px;background:#f5f8f4
 }
 
-.disease-title{
-  font-weight:850;
-  font-size:12px;
-}
-
-.disease-meta{
-  color:var(--muted);
-  font-size:10px;
-  margin-top:5px;
-}
+.disease-title{font-weight:850;font-size:12px}
+.disease-meta{color:var(--muted);font-size:10px;margin-top:5px}
 
 .disease-bar{
-  height:6px;
-  margin-top:9px;
-  background:#dce7dd;
-  border-radius:20px;
-  overflow:hidden;
+height:6px;margin-top:9px;
+background:#dce7dd;border-radius:20px;overflow:hidden
 }
 
 .disease-bar i{
-  display:block;
-  height:100%;
-  background:var(--leaf);
+display:block;height:100%;background:var(--leaf)
 }
 
 /* HISTORY */
 
 .history-empty{
-  padding:55px 20px;
-  text-align:center;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  color:var(--muted);
-  box-shadow:var(--shadow);
-}
-
-.history-empty-icon{
-  font-size:42px;
+padding:55px 20px;text-align:center;
+background:white;border:1px solid var(--line);
+border-radius:27px;color:var(--muted);
+box-shadow:var(--shadow)
 }
 
 .history-item{
-  padding:12px;
-  margin-bottom:10px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:0 9px 28px rgba(13,51,36,.055);
+padding:12px;margin-bottom:10px;
+background:white;border:1px solid var(--line);
+border-radius:20px
 }
 
 .history-content{
-  display:flex;
-  gap:12px;
-  align-items:center;
+display:flex;gap:12px;align-items:center
 }
 
 .history-image{
-  width:65px;
-  height:65px;
-  border-radius:16px;
-  object-fit:cover;
-  background:var(--mint);
-  flex:none;
+width:65px;height:65px;
+border-radius:16px;
+object-fit:cover;
+background:var(--mint);
+flex:none
 }
 
-.history-name{
-  font-size:12px;
-  font-weight:850;
-}
-
-.history-common{
-  margin-top:4px;
-  color:var(--muted);
-  font-size:10px;
-}
-
-.history-meta{
-  margin-top:6px;
-  color:#8b958f;
-  font-size:9px;
-}
+.history-name{font-size:12px;font-weight:850}
+.history-common{margin-top:4px;color:var(--muted);font-size:10px}
+.history-meta{margin-top:6px;color:#8b958f;font-size:9px}
 
 /* SETTINGS */
 
 .settings-card{
-  padding:17px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:25px;
-  box-shadow:var(--shadow);
+padding:17px;
+background:white;border:1px solid var(--line);
+border-radius:25px;box-shadow:var(--shadow)
 }
 
 .connection{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-bottom:15px;
-  border-bottom:1px solid var(--line);
+display:flex;align-items:center;
+justify-content:space-between;
+padding-bottom:15px;
+border-bottom:1px solid var(--line)
 }
 
-.connection-name{
-  font-size:13px;
-  font-weight:800;
-}
+.connection-name{font-size:13px;font-weight:800}
 
 .status{
-  padding:6px 9px;
-  border-radius:20px;
-  background:#fceeee;
-  color:var(--red);
-  font-size:9px;
-  font-weight:850;
+padding:6px 9px;border-radius:20px;
+background:#fceeee;color:var(--red);
+font-size:9px;font-weight:850
 }
 
 .status.good{
-  background:var(--mint);
-  color:#267345;
+background:var(--mint);
+color:#267345
 }
 
 .form-label{
-  display:block;
-  margin-top:16px;
-  font-size:11px;
-  font-weight:850;
+display:block;margin-top:16px;
+font-size:11px;font-weight:850
 }
 
 .form-input{
-  width:100%;
-  height:49px;
-  margin-top:7px;
-  padding:0 13px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  outline:none;
-  background:#fafcf9;
-}
-
-.form-input:focus{
-  border-color:var(--leaf);
-  box-shadow:0 0 0 3px rgba(73,169,109,.12);
+width:100%;height:49px;
+margin-top:7px;padding:0 13px;
+border:1px solid var(--line);
+border-radius:14px;
+outline:none;background:#fafcf9
 }
 
 .checkbox-line{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:12px;
-  font-size:10px;
-  color:var(--muted);
+display:flex;align-items:center;
+gap:8px;margin-top:12px;
+font-size:10px;color:var(--muted)
 }
 
 .save-key{
-  width:100%;
-  min-height:49px;
-  margin-top:13px;
-  border:0;
-  border-radius:14px;
-  background:var(--forest);
-  color:white;
-  font-weight:850;
+width:100%;min-height:49px;margin-top:13px;
+border:0;border-radius:14px;
+background:var(--forest);color:white;
+font-weight:850
 }
 
 .remove-key{
-  width:100%;
-  min-height:45px;
-  margin-top:8px;
-  border:0;
-  border-radius:14px;
-  background:#fff0f0;
-  color:var(--red);
-  font-weight:800;
+width:100%;min-height:45px;margin-top:8px;
+border:0;border-radius:14px;
+background:#fff0f0;color:var(--red);
+font-weight:800
 }
 
 .notice{
-  margin-top:15px;
-  padding:13px;
-  border-radius:15px;
-  background:#fff8df;
-  color:#706544;
-  font-size:10px;
-  line-height:1.5;
+margin-top:15px;padding:13px;
+border-radius:15px;background:#fff8df;
+color:#706544;font-size:10px;line-height:1.5
 }
 
-/* BOTTOM NAV */
+/* NAV */
 
 .bottom-nav{
-  position:fixed;
-  z-index:100;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(560px,100%);
-  height:86px;
-  padding:
-    7px
-    8px
-    max(8px,env(safe-area-inset-bottom));
-  background:rgba(255,255,255,.93);
-  border-top:1px solid rgba(218,228,220,.9);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
+position:fixed;z-index:100;
+bottom:0;left:50%;
+transform:translateX(-50%);
+width:min(560px,100%);
+height:86px;
+padding:7px 8px max(8px,env(safe-area-inset-bottom));
+background:rgba(255,255,255,.93);
+border-top:1px solid rgba(218,228,220,.9);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+display:grid;
+grid-template-columns:repeat(5,1fr)
 }
 
 .nav-item{
-  border:0;
-  background:none;
-  color:#8b958f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  border-radius:17px;
+border:0;background:none;color:#8b958f;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+gap:4px;border-radius:17px
 }
 
 .nav-item-icon{
-  width:36px;
-  height:30px;
-  display:grid;
-  place-items:center;
-  font-size:18px;
+width:36px;height:30px;
+display:grid;place-items:center;
+font-size:18px
 }
 
-.nav-item small{
-  font-size:8px;
-  font-weight:850;
-}
+.nav-item small{font-size:8px;font-weight:850}
 
-.nav-item.active{
-  color:var(--forest);
-}
+.nav-item.active{color:var(--forest)}
 
 .nav-item.active .nav-item-icon{
-  background:var(--mint);
-  border-radius:12px;
+background:var(--mint);
+border-radius:12px
 }
-
-/* TOAST */
 
 .toast{
-  position:fixed;
-  z-index:200;
-  left:50%;
-  bottom:100px;
-  transform:translateX(-50%);
-  max-width:90%;
-  padding:12px 16px;
-  border-radius:15px;
-  background:var(--forest);
-  color:white;
-  font-size:11px;
-  font-weight:700;
-  text-align:center;
-  display:none;
-  box-shadow:0 12px 35px rgba(0,0,0,.2);
+position:fixed;z-index:200;
+left:50%;bottom:100px;
+transform:translateX(-50%);
+max-width:90%;
+padding:12px 16px;
+border-radius:15px;
+background:var(--forest);
+color:white;font-size:11px;
+font-weight:700;text-align:center;
+display:none;
+box-shadow:0 12px 35px rgba(0,0,0,.2)
 }
 
-.toast.show{
-  display:block;
-}
-
-/* LOADING */
+.toast.show{display:block}
 
 .spinner{
-  width:16px;
-  height:16px;
-  display:inline-block;
-  vertical-align:middle;
-  margin-right:7px;
-  border:2px solid rgba(255,255,255,.3);
-  border-top-color:white;
-  border-radius:50%;
-  animation:spin .7s linear infinite;
+width:16px;height:16px;
+display:inline-block;
+vertical-align:middle;
+margin-right:7px;
+border:2px solid rgba(255,255,255,.3);
+border-top-color:white;
+border-radius:50%;
+animation:spin .7s linear infinite
 }
 
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-/* SMALL PHONES */
+@keyframes spin{to{transform:rotate(360deg)}}
 
 @media(max-width:390px){
-
-  main{
-    padding:15px;
-  }
-
-  .hero{
-    height:285px;
-  }
-
-  .hero h2{
-    font-size:32px;
-  }
-
-  .welcome h1{
-    font-size:28px;
-  }
-
-  .scan-actions{
-    grid-template-columns:1fr;
-  }
-
-  .result-photo{
-    height:240px;
-  }
+main{padding:15px}
+.guide-intro h1{font-size:28px}
+.guide-feature{height:205px}
+.scan-actions{grid-template-columns:1fr}
+.result-photo{height:240px}
 }
 </style>
 </head>
@@ -923,212 +772,365 @@ main{
 
 <header class="topbar">
 
-  <div class="brand">
+<div class="brand">
+<div class="logo">🌿</div>
+<div>
+<div class="brand-title">TaynPlantz</div>
+<span class="brand-sub">Plant intelligence</span>
+</div>
+</div>
 
-    <div class="logo">🌿</div>
-
-    <div>
-      <div class="brand-title">TaynPlantz</div>
-      <span class="brand-sub">Plant intelligence</span>
-    </div>
-
-  </div>
-
-  <button
-    class="settings-button"
-    onclick="show('settings')"
-    aria-label="Settings">
-
-    ⚙️
-
-  </button>
+<button class="settings-button" onclick="show('settings')">⚙️</button>
 
 </header>
 
-
 <main>
 
-<!-- HOME -->
+<!-- HOME / RESOURCE GUIDE -->
 
 <section id="home" class="screen active">
 
-  <div class="welcome">
+<div class="guide-intro">
 
-    <div class="welcome-small">
-      YOUR PERSONAL PLANT GUIDE
-    </div>
+<div class="guide-kicker">
+PLANT RESOURCE GUIDE
+</div>
 
-    <h1>
-      Discover what<br>
-      <span>you're growing.</span>
-    </h1>
+<h1>
+Explore. Identify.<br>
+Grow smarter.
+</h1>
 
-  </div>
+<p>
+Your visual guide to plants, care, health and identification.
+</p>
 
-
-  <div class="hero">
-
-    <div class="hero-badge">
-      🌱 PLANT INTELLIGENCE
-    </div>
-
-    <h2>
-      Know your plant.<br>
-      <span>Grow with confidence.</span>
-    </h2>
-
-    <p>
-      Identify plants, explore care information and
-      screen your plant for possible health problems.
-    </p>
-
-  </div>
+</div>
 
 
-  <div class="scan-card">
+<div class="guide-search">
 
-    <div
-      id="photo"
-      class="scan-preview">
+<span>🔍</span>
 
-      <img
-        id="preview"
-        alt="Selected plant">
+<input
+id="plantSearch"
+type="search"
+placeholder="Search plants or categories..."
+autocomplete="off">
 
-      <div class="scan-prompt">
-
-        <div class="camera-icon">
-          📷
-        </div>
-
-        <b>Scan a plant</b>
-
-        <small>
-          Take a photo or choose from your library
-        </small>
-
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="scan-actions">
+<div class="guide-feature">
 
-      <label
-        class="action-button action-primary"
-        style="display:grid;place-items:center">
+<div class="guide-feature-content">
 
-        📷 &nbsp; Take / Choose
+<div class="guide-badge">
+🌿 TAYNPLANTZ GUIDE
+</div>
 
-        <input
-          id="file"
-          hidden
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          capture="environment">
+<h2>
+Your plant encyclopedia
+</h2>
 
-      </label>
+<p>
+Explore plant types, illustrated guides and essential care information.
+</p>
 
+</div>
 
-      <button
-        id="identify"
-        class="action-button action-secondary"
-        disabled>
-
-        Identify plant
-
-      </button>
-
-    </div>
+</div>
 
 
-    <div class="scan-tip">
-      Clear photos of leaves, flowers or the whole plant
-      usually produce the best results.
-    </div>
+<div class="guide-section-title">
 
-  </div>
+<b>Browse plant types</b>
 
+<small>EXPLORE ALL</small>
 
-  <div class="section-title">
-    Explore TaynPlantz
-  </div>
+</div>
 
 
-  <div class="quick-grid">
-
-    <button
-      class="quick-card"
-      onclick="show('health')">
-
-      <div class="quick-card-icon">
-        🩺
-      </div>
-
-      <b>Plant Health</b>
-
-      <small>
-        Screen your selected plant photo
-        for possible problems.
-      </small>
-
-    </button>
+<div id="categoryGrid" class="category-grid">
 
 
-    <button
-      class="quick-card"
-      onclick="show('history')">
+<button class="category" data-search="houseplants">
 
-      <div class="quick-card-icon">
-        🌱
-      </div>
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=700&q=80')">
+</div>
 
-      <b>My Plants</b>
+<div class="category-content">
+<div class="category-icon">🪴</div>
+<span class="category-name">Houseplants</span>
+<span class="category-count">Indoor favorites</span>
+</div>
 
-      <small>
-        View your previous plant
-        identification scans.
-      </small>
-
-    </button>
+</button>
 
 
-    <button
-      class="quick-card"
-      onclick="show('results')">
+<button class="category" data-search="flowering flowers">
 
-      <div class="quick-card-icon">
-        ✦
-      </div>
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80')">
+</div>
 
-      <b>Latest Result</b>
+<div class="category-content">
+<div class="category-icon">🌸</div>
+<span class="category-name">Flowering Plants</span>
+<span class="category-count">Blooms & color</span>
+</div>
 
-      <small>
-        Return to the most recent
-        identification.
-      </small>
-
-    </button>
+</button>
 
 
-    <button
-      class="quick-card"
-      onclick="show('settings')">
+<button class="category" data-search="succulents cactus">
 
-      <div class="quick-card-icon">
-        🔐
-      </div>
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=700&q=80')">
+</div>
 
-      <b>API Connection</b>
+<div class="category-content">
+<div class="category-icon">🌵</div>
+<span class="category-name">Succulents & Cacti</span>
+<span class="category-count">Low-water plants</span>
+</div>
 
-      <small>
-        Manage your Pl@ntNet
-        connection.
-      </small>
+</button>
 
-    </button>
 
-  </div>
+<button class="category" data-search="herbs vegetables">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=700&q=80')">
+</div>
+
+<div class="category-content">
+<div class="category-icon">🌿</div>
+<span class="category-name">Herbs & Vegetables</span>
+<span class="category-count">Grow your own</span>
+</div>
+
+</button>
+
+
+<button class="category" data-search="trees">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80')">
+</div>
+
+<div class="category-content">
+<div class="category-icon">🌳</div>
+<span class="category-name">Trees</span>
+<span class="category-count">Forest & garden</span>
+</div>
+
+</button>
+
+
+<button class="category" data-search="tropical">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=700&q=80')">
+</div>
+
+<div class="category-content">
+<div class="category-icon">🌴</div>
+<span class="category-name">Tropical Plants</span>
+<span class="category-count">Warm-climate plants</span>
+</div>
+
+</button>
+
+</div>
+
+
+<div class="guide-section-title">
+
+<b>Featured plants</b>
+
+<small>VIEW GUIDE</small>
+
+</div>
+
+
+<div id="featuredPlants" class="featured-grid">
+
+
+<button class="plant-card">
+
+<img
+src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=700&q=85"
+alt="Monstera">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Monstera
+</div>
+
+<div class="plant-card-scientific">
+Monstera deliciosa
+</div>
+
+<div class="plant-card-tags">
+<span class="tag">Tropical</span>
+<span class="tag">Bright light</span>
+</div>
+
+</div>
+
+</button>
+
+
+<button class="plant-card">
+
+<img
+src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=85"
+alt="Snake Plant">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Snake Plant
+</div>
+
+<div class="plant-card-scientific">
+Dracaena trifasciata
+</div>
+
+<div class="plant-card-tags">
+<span class="tag">Easy</span>
+<span class="tag">Low light</span>
+</div>
+
+</div>
+
+</button>
+
+
+<button class="plant-card">
+
+<img
+src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=85"
+alt="Flower">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Rose
+</div>
+
+<div class="plant-card-scientific">
+Rosa
+</div>
+
+<div class="plant-card-tags">
+<span class="tag">Flowering</span>
+<span class="tag">Outdoor</span>
+</div>
+
+</div>
+
+</button>
+
+
+<button class="plant-card">
+
+<img
+src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=85"
+alt="Succulent">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Succulents
+</div>
+
+<div class="plant-card-scientific">
+Various genera
+</div>
+
+<div class="plant-card-tags">
+<span class="tag">Dry soil</span>
+<span class="tag">Sun</span>
+</div>
+
+</div>
+
+</button>
+
+</div>
+
+
+<div class="scan-heading">
+Identify a plant
+</div>
+
+
+<div class="scan-card">
+
+<div id="photo" class="scan-preview">
+
+<img id="preview" alt="Selected plant">
+
+<div class="scan-prompt">
+
+<div class="camera-icon">📷</div>
+
+<b>Scan a plant</b>
+
+<small>
+Take a photo or choose from your library
+</small>
+
+</div>
+
+</div>
+
+
+<div class="scan-actions">
+
+<label
+class="action-button action-primary"
+style="display:grid;place-items:center">
+
+📷 &nbsp; Take / Choose
+
+<input
+id="file"
+hidden
+type="file"
+accept="image/jpeg,image/png,image/webp"
+capture="environment">
+
+</label>
+
+
+<button
+id="identify"
+class="action-button action-secondary"
+disabled>
+
+Identify plant
+
+</button>
+
+</div>
+
+
+<div class="scan-tip">
+Clear leaves, flowers or whole-plant photos usually work best.
+</div>
+
+</div>
 
 </section>
 
@@ -1137,53 +1139,34 @@ main{
 
 <section id="results" class="screen">
 
-  <div class="page-header">
+<div class="page-header">
 
-    <button
-      class="back-button"
-      onclick="show('home')">
+<button class="back-button" onclick="show('home')">‹</button>
 
-      ‹
+<div>
+<p class="page-kicker">IDENTIFICATION</p>
+<h1>Your plant</h1>
+</div>
 
-    </button>
+</div>
 
-    <div>
+<div id="result" class="result-card">
 
-      <p class="page-kicker">
-        IDENTIFICATION
-      </p>
+<div class="history-empty">
 
-      <h1>
-        Your plant
-      </h1>
+<div style="font-size:42px">🌿</div>
 
-    </div>
+<b style="color:var(--ink)">
+No plant identified yet
+</b>
 
-  </div>
+<p style="font-size:10px">
+Scan a plant to see your identification.
+</p>
 
+</div>
 
-  <div
-    id="result"
-    class="result-card">
-
-    <div class="history-empty">
-
-      <div class="history-empty-icon">
-        🌿
-      </div>
-
-      <b>
-        No plant identified yet
-      </b>
-
-      <p style="font-size:11px">
-        Scan a plant from the Home screen
-        to see your results here.
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
@@ -1192,62 +1175,40 @@ main{
 
 <section id="health" class="screen">
 
-  <div class="page-header">
+<div class="page-header">
 
-    <button
-      class="back-button"
-      onclick="show('home')">
+<button class="back-button" onclick="show('home')">‹</button>
 
-      ‹
+<div>
+<p class="page-kicker">PLANT HEALTH</p>
+<h1>Health scan</h1>
+</div>
 
-    </button>
-
-    <div>
-
-      <p class="page-kicker">
-        PLANT HEALTH
-      </p>
-
-      <h1>
-        Health scan
-      </h1>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="health-card">
+<div class="health-card">
 
-    <div class="health-hero">
+<div class="health-hero">
 
-      <div class="health-icon">
-        🩺
-      </div>
+<div class="health-icon">🩺</div>
 
-      <h3>
-        How is your plant doing?
-      </h3>
+<h3>How is your plant doing?</h3>
 
-      <p>
-        Use your selected plant photo to screen
-        for probable plant health problems.
-        Results are informational and not a guaranteed diagnosis.
-      </p>
+<p>
+Screen your selected photo for probable plant health problems.
+Results are a screening aid and not a guaranteed diagnosis.
+</p>
 
-      <button
-        id="healthBtn"
-        class="health-button">
+<button id="healthBtn" class="health-button">
+Run health scan
+</button>
 
-        Run health scan
+</div>
 
-      </button>
+<div id="healthResults"></div>
 
-    </div>
-
-    <div id="healthResults"></div>
-
-  </div>
+</div>
 
 </section>
 
@@ -1256,38 +1217,30 @@ main{
 
 <section id="history" class="screen">
 
-  <div class="page-header">
+<div class="page-header">
 
-    <div>
+<div>
+<p class="page-kicker">YOUR COLLECTION</p>
+<h1>My plants</h1>
+</div>
 
-      <p class="page-kicker">
-        YOUR COLLECTION
-      </p>
+<button
+onclick="clearHistory()"
+style="
+margin-left:auto;
+border:0;
+background:none;
+color:var(--red);
+font-size:10px;
+font-weight:850">
 
-      <h1>
-        My plants
-      </h1>
+Clear
 
-    </div>
+</button>
 
-    <button
-      onclick="clearHistory()"
-      style="
-        margin-left:auto;
-        border:0;
-        background:none;
-        color:var(--red);
-        font-size:10px;
-        font-weight:850">
+</div>
 
-      Clear
-
-    </button>
-
-  </div>
-
-
-  <div id="historyList"></div>
+<div id="historyList"></div>
 
 </section>
 
@@ -1296,215 +1249,133 @@ main{
 
 <section id="settings" class="screen">
 
-  <div class="page-header">
+<div class="page-header">
 
-    <button
-      class="back-button"
-      onclick="show('home')">
+<button class="back-button" onclick="show('home')">‹</button>
 
-      ‹
+<div>
+<p class="page-kicker">CONNECTION</p>
+<h1>Settings</h1>
+</div>
 
-    </button>
-
-    <div>
-
-      <p class="page-kicker">
-        CONNECTION
-      </p>
-
-      <h1>
-        Settings
-      </h1>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="settings-card">
+<div class="settings-card">
 
-    <div class="connection">
+<div class="connection">
 
-      <div class="connection-name">
-        Pl@ntNet connection
-      </div>
+<div class="connection-name">
+Pl@ntNet connection
+</div>
 
-      <div
-        id="status"
-        class="status">
+<div id="status" class="status">
+Not configured
+</div>
 
-        Not configured
-
-      </div>
-
-    </div>
+</div>
 
 
-    <label class="form-label">
+<label class="form-label">
 
-      API key
+API key
 
-      <input
-        id="key"
-        class="form-input"
-        type="password"
-        placeholder="Paste your Pl@ntNet API key"
-        autocomplete="off">
+<input
+id="key"
+class="form-input"
+type="password"
+placeholder="Paste your Pl@ntNet API key"
+autocomplete="off">
 
-    </label>
-
-
-    <label class="checkbox-line">
-
-      <input
-        id="remember"
-        type="checkbox">
-
-      Keep the key on this device
-
-    </label>
+</label>
 
 
-    <button
-      id="save"
-      class="save-key">
+<label class="checkbox-line">
 
-      Save API key
+<input id="remember" type="checkbox">
 
-    </button>
+Keep the key on this device
 
-
-    <button
-      id="remove"
-      class="remove-key">
-
-      Remove saved key
-
-    </button>
+</label>
 
 
-    <div class="notice">
-
-      <b>Privacy & security</b><br><br>
-
-      Your API key is not included in this HTML file.
-      If you choose to remember it, the browser stores
-      it locally on this device.
-
-      <br><br>
-
-      For a public version of TaynPlantz, a secure
-      backend/proxy is recommended so API credentials
-      don't have to be exposed to browser requests.
-
-    </div>
+<button id="save" class="save-key">
+Save API key
+</button>
 
 
-    <p style="font-size:10px">
+<button id="remove" class="remove-key">
+Remove saved key
+</button>
 
-      <a
-        href="https://my.plantnet.org/doc/getting-started/introduction"
-        target="_blank"
-        rel="noopener">
 
-        View Pl@ntNet API documentation ↗
+<div class="notice">
 
-      </a>
+<b>Privacy & security</b><br><br>
 
-    </p>
+Your API key is not included in this HTML.
+If you choose to remember it, the browser stores
+it locally on this device.
 
-  </div>
+<br><br>
+
+For a public TaynPlantz release, a secure backend
+is recommended so API credentials do not need to
+be exposed to browser requests.
+
+</div>
+
+<p style="font-size:10px">
+
+<a
+href="https://my.plantnet.org/doc/getting-started/introduction"
+target="_blank"
+rel="noopener">
+
+View Pl@ntNet API documentation ↗
+
+</a>
+
+</p>
+
+</div>
 
 </section>
 
 </main>
 
 
-<!-- NAVIGATION -->
-
 <nav class="bottom-nav">
 
-  <button
-    class="nav-item active"
-    data-page="home">
+<button class="nav-item active" data-page="home">
+<div class="nav-item-icon">⌂</div>
+<small>Guide</small>
+</button>
 
-    <div class="nav-item-icon">
-      ⌂
-    </div>
+<button class="nav-item" data-page="results">
+<div class="nav-item-icon">✦</div>
+<small>Results</small>
+</button>
 
-    <small>
-      Home
-    </small>
+<button class="nav-item" data-page="health">
+<div class="nav-item-icon">♡</div>
+<small>Health</small>
+</button>
 
-  </button>
+<button class="nav-item" data-page="history">
+<div class="nav-item-icon">🌿</div>
+<small>My Plants</small>
+</button>
 
-
-  <button
-    class="nav-item"
-    data-page="results">
-
-    <div class="nav-item-icon">
-      ✦
-    </div>
-
-    <small>
-      Results
-    </small>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-page="health">
-
-    <div class="nav-item-icon">
-      ♡
-    </div>
-
-    <small>
-      Health
-    </small>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-page="history">
-
-    <div class="nav-item-icon">
-      🌿
-    </div>
-
-    <small>
-      My Plants
-    </small>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-page="settings">
-
-    <div class="nav-item-icon">
-      ⚙
-    </div>
-
-    <small>
-      Settings
-    </small>
-
-  </button>
+<button class="nav-item" data-page="settings">
+<div class="nav-item-icon">⚙</div>
+<small>Settings</small>
+</button>
 
 </nav>
 
 
-<div
-  id="toast"
-  class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
 </div>
 
@@ -1516,86 +1387,136 @@ const API="https://my-api.plantnet.org/v2";
 let photo=null;
 let latestImageURL=null;
 
+const $=s=>document.querySelector(s);
 
-/* BASIC HELPERS */
+const esc=x=>
+String(x??"").replace(
+/[&<>"']/g,
+m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m])
+);
 
-const $=selector=>
-  document.querySelector(selector);
-
-const esc=value=>
-  String(value??"").replace(
-    /[&<>"']/g,
-    char=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-    }[char])
-  );
-
-const pct=value=>
-  Math.round((value||0)*100);
+const pct=x=>Math.round((x||0)*100);
 
 
 /* NAVIGATION */
 
 function show(id){
 
-  document
-    .querySelectorAll(".screen")
-    .forEach(screen=>{
-      screen.classList.toggle(
-        "active",
-        screen.id===id
-      );
-    });
+document.querySelectorAll(".screen")
+.forEach(x=>
+x.classList.toggle(
+"active",
+x.id===id
+));
 
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(button=>{
-      button.classList.toggle(
-        "active",
-        button.dataset.page===id
-      );
-    });
+document.querySelectorAll(".nav-item")
+.forEach(x=>
+x.classList.toggle(
+"active",
+x.dataset.page===id
+));
 
-  if(id==="history"){
-    renderHistory();
-  }
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+if(id==="history"){
+renderHistory();
 }
 
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-document
-  .querySelectorAll(".nav-item")
-  .forEach(button=>{
-    button.addEventListener(
-      "click",
-      ()=>show(button.dataset.page)
-    );
-  });
+}
+
+document.querySelectorAll(".nav-item")
+.forEach(x=>
+x.onclick=()=>show(x.dataset.page)
+);
+
+
+/* SEARCH GUIDE */
+
+$("#plantSearch").addEventListener(
+"input",
+e=>{
+
+const query=
+e.target.value
+.toLowerCase()
+.trim();
+
+document.querySelectorAll(
+".category,.plant-card"
+).forEach(card=>{
+
+const text=
+(
+card.dataset.search||
+card.innerText||
+""
+).toLowerCase();
+
+card.style.display=
+!query||text.includes(query)
+?""
+:"none";
+
+});
+
+}
+);
+
+
+/* CATEGORY SEARCH */
+
+document.querySelectorAll(".category")
+.forEach(card=>{
+
+card.addEventListener(
+"click",
+()=>{
+
+$("#plantSearch").value=
+card.dataset.search.split(" ")[0];
+
+$("#plantSearch").dispatchEvent(
+new Event("input")
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+);
+
+});
 
 
 /* TOAST */
 
 function toast(message){
 
-  const element=$("#toast");
+const t=$("#toast");
 
-  element.textContent=message;
+t.textContent=message;
 
-  element.classList.add("show");
+t.classList.add("show");
 
-  clearTimeout(window.__toast);
+clearTimeout(window.__toast);
 
-  window.__toast=setTimeout(()=>{
-    element.classList.remove("show");
-  },2800);
+window.__toast=
+setTimeout(
+()=>t.classList.remove("show"),
+2800
+);
+
 }
 
 
@@ -1603,851 +1524,651 @@ function toast(message){
 
 function getApiKey(){
 
-  return localStorage.getItem("tayn-key")
-    ||sessionStorage.getItem("tayn-key")
-    ||"";
+return localStorage.getItem("tayn-key")
+||sessionStorage.getItem("tayn-key")
+||"";
+
 }
 
 
 /* API */
 
-async function api(path,options={}){
+async function api(path,opt={}){
 
-  const apiKey=getApiKey();
+const key=getApiKey();
 
-  if(!apiKey){
+if(!key)
+throw Error(
+"Add your Pl@ntNet API key in Settings first."
+);
 
-    throw new Error(
-      "Add your Pl@ntNet API key in Settings first."
-    );
+const r=
+await fetch(
+API+
+path+
+(path.includes("?")?"&":"?")+
+"api-key="+
+encodeURIComponent(key),
+opt
+);
 
-  }
+let d={};
 
-  const separator=
-    path.includes("?")?"&":"?";
+try{
+d=await r.json();
+}catch{}
 
-  const url=
-    API+
-    path+
-    separator+
-    "api-key="+
-    encodeURIComponent(apiKey);
+if(!r.ok){
 
-  const response=
-    await fetch(url,options);
+if(r.status===401||r.status===403)
+throw Error(
+"Pl@ntNet rejected the API key or domain."
+);
 
-  let data={};
+if(r.status===429)
+throw Error(
+"Pl@ntNet request limit reached."
+);
 
-  try{
-    data=await response.json();
-  }catch{}
+throw Error(
+d.message||
+"Pl@ntNet request failed."
+);
 
-  if(!response.ok){
+}
 
-    if(
-      response.status===401 ||
-      response.status===403
-    ){
+return d;
 
-      throw new Error(
-        "Pl@ntNet rejected the API key or domain."
-      );
-
-    }
-
-    if(response.status===429){
-
-      throw new Error(
-        "Pl@ntNet request limit reached."
-      );
-
-    }
-
-    throw new Error(
-      data.message||
-      "Pl@ntNet request failed."
-    );
-  }
-
-  return data;
 }
 
 
-/* FILE PICKER */
+/* PHOTO */
 
-$("#file").addEventListener(
-  "change",
-  event=>{
+$("#file").onchange=e=>{
 
-    const selected=
-      event.target.files[0];
+const f=e.target.files[0];
 
-    if(!selected)return;
+if(!f)return;
 
-    if(
-      !/^image\/(jpeg|png|webp)$/.test(
-        selected.type
-      )
-    ){
+if(!/^image\/(jpeg|png|webp)$/.test(f.type)){
 
-      toast(
-        "Choose a JPG, PNG or WebP image."
-      );
-
-      return;
-    }
-
-    photo=selected;
-
-    latestImageURL=
-      URL.createObjectURL(selected);
-
-    $("#preview").src=
-      latestImageURL;
-
-    $("#photo")
-      .classList
-      .add("has-image");
-
-    $("#identify").disabled=false;
-
-    $("#healthBtn").disabled=false;
-
-    toast("Plant photo ready.");
-
-  }
+toast(
+"Choose a JPG, PNG or WebP image."
 );
+
+return;
+
+}
+
+photo=f;
+
+latestImageURL=
+URL.createObjectURL(f);
+
+$("#preview").src=
+latestImageURL;
+
+$("#photo")
+.classList
+.add("has-image");
+
+$("#identify").disabled=false;
+
+toast("Plant photo ready.");
+
+};
 
 
 /* IDENTIFY */
 
-$("#identify").addEventListener(
-  "click",
-  async()=>{
+$("#identify").onclick=
+async()=>{
 
-    if(!photo){
+if(!photo){
 
-      toast(
-        "Choose a plant photo first."
-      );
-
-      return;
-    }
-
-    const button=$("#identify");
-
-    button.disabled=true;
-
-    button.innerHTML=
-      '<span class="spinner"></span>Identifying…';
-
-    try{
-
-      const form=
-        new FormData();
-
-      form.append(
-        "images",
-        photo,
-        photo.name||"plant.jpg"
-      );
-
-      form.append(
-        "organs",
-        "auto"
-      );
-
-      const data=
-        await api(
-          "/identify/all?lang=en&nb-results=8",
-          {
-            method:"POST",
-            body:form
-          }
-        );
-
-      const best=
-        data.results?.[0];
-
-      const species=
-        best?.species;
-
-      if(!best||!species){
-
-        toast(
-          "No confident plant match found."
-        );
-
-        return;
-      }
-
-      const common=
-        (species.commonNames||[])[0]||
-        "Common name unavailable";
-
-      const confidence=
-        pct(best.score);
-
-      let alternatives="";
-
-      if(data.results?.length>1){
-
-        alternatives=
-          data.results
-            .slice(1,6)
-            .map(
-              (item,index)=>`
-
-                <div class="care-row">
-
-                  <div class="care-icon">
-                    🌿
-                  </div>
-
-                  <div style="flex:1">
-
-                    <b>
-                      ${esc(
-                        item.species
-                          ?.scientificName||
-                        "Unknown"
-                      )}
-                    </b>
-
-                    <div
-                      style="
-                        color:var(--muted);
-                        font-size:10px;
-                        margin-top:3px">
-
-                      Possible match
-
-                    </div>
-
-                  </div>
-
-                  <b>
-                    ${pct(item.score)}%
-                  </b>
-
-                </div>
-
-              `
-            )
-            .join("");
-      }
-
-
-      $("#result").innerHTML=`
-
-        <img
-          class="result-photo"
-          src="${latestImageURL}"
-          alt="Identified plant">
-
-
-        <div class="result-label">
-          BEST MATCH
-        </div>
-
-        <h2 class="result-name">
-          ${esc(species.scientificName)}
-        </h2>
-
-        <p class="result-common">
-          ${esc(common)}
-        </p>
-
-
-        <div class="confidence">
-
-          <div class="confidence-top">
-
-            <span>
-              Identification confidence
-            </span>
-
-            <span>
-              ${confidence}%
-            </span>
-
-          </div>
-
-          <div class="confidence-track">
-
-            <div
-              class="confidence-fill"
-              style="width:${confidence}%">
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="info-grid">
-
-          <div class="info-box">
-
-            <small>
-              Genus
-            </small>
-
-            <b>
-              ${esc(
-                species.genus
-                  ?.scientificNameWithoutAuthor||
-                "—"
-              )}
-            </b>
-
-          </div>
-
-
-          <div class="info-box">
-
-            <small>
-              Family
-            </small>
-
-            <b>
-              ${esc(
-                species.family
-                  ?.scientificNameWithoutAuthor||
-                "—"
-              )}
-            </b>
-
-          </div>
-
-
-          <div class="info-box">
-
-            <small>
-              Engine
-            </small>
-
-            <b>
-              ${esc(
-                data.version||
-                "Pl@ntNet"
-              )}
-            </b>
-
-          </div>
-
-
-          <div class="info-box">
-
-            <small>
-              Requests left
-            </small>
-
-            <b>
-              ${data.remainingIdentificationRequests??"—"}
-            </b>
-
-          </div>
-
-        </div>
-
-
-        <div class="care-section">
-
-          <h3>
-            Care snapshot
-          </h3>
-
-
-          <div class="care-row">
-
-            <div class="care-icon">
-              ☀️
-            </div>
-
-            <div>
-              <b>
-                Light
-              </b>
-
-              <div>
-                Start with bright,
-                indirect light.
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="care-row">
-
-            <div class="care-icon">
-              💧
-            </div>
-
-            <div>
-              <b>
-                Water
-              </b>
-
-              <div>
-                Check the upper soil
-                before watering.
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="care-row">
-
-            <div class="care-icon">
-              💨
-            </div>
-
-            <div>
-              <b>
-                Humidity
-              </b>
-
-              <div>
-                Moderate humidity is
-                a useful starting point.
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="care-row">
-
-            <div class="care-icon">
-              🪴
-            </div>
-
-            <div>
-              <b>
-                Soil
-              </b>
-
-              <div>
-                Choose a well-draining
-                growing mix.
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        ${
-          alternatives
-          ?`
-
-            <div class="care-section">
-
-              <h3>
-                Other possible matches
-              </h3>
-
-              ${alternatives}
-
-            </div>
-
-          `
-          :""
-        }
-
-
-        <button
-          class="action-button action-secondary"
-          style="
-            width:100%;
-            margin-top:15px"
-          onclick="show('health')">
-
-          🩺 Check plant health
-
-        </button>
-
-      `;
-
-
-      saveHistory(
-        data,
-        latestImageURL
-      );
-
-      show("results");
-
-      toast(
-        "Plant identified successfully."
-      );
-
-    }catch(error){
-
-      toast(error.message);
-
-    }finally{
-
-      button.disabled=!photo;
-
-      button.textContent=
-        "Identify plant";
-
-    }
-
-  }
+toast(
+"Choose a plant photo first."
 );
 
+return;
 
-/* HEALTH SCAN */
+}
 
-$("#healthBtn").addEventListener(
-  "click",
-  async()=>{
+const button=$("#identify");
 
-    if(!photo){
+button.disabled=true;
 
-      toast(
-        "Choose a plant photo first."
-      );
+button.innerHTML=
+'<span class="spinner"></span>Identifying…';
 
-      show("home");
+try{
 
-      return;
-    }
+const fd=new FormData();
 
-    const button=$("#healthBtn");
-
-    button.disabled=true;
-
-    button.innerHTML=
-      '<span class="spinner"></span>Scanning…';
-
-    try{
-
-      const form=
-        new FormData();
-
-      form.append(
-        "images",
-        photo,
-        photo.name||"plant.jpg"
-      );
-
-      form.append(
-        "organs",
-        "auto"
-      );
-
-      const data=
-        await api(
-          "/diseases/identify?lang=en&nb-results=8",
-          {
-            method:"POST",
-            body:form
-          }
-        );
-
-
-      if(!data.results?.length){
-
-        $("#healthResults").innerHTML=`
-
-          <div class="disease">
-
-            <div class="disease-title">
-              No supported condition detected
-            </div>
-
-            <div class="disease-meta">
-              This does not prove the plant
-              is completely healthy.
-            </div>
-
-          </div>
-
-        `;
-
-        toast(
-          "Health scan complete."
-        );
-
-        return;
-      }
-
-
-      $("#healthResults").innerHTML=
-        data.results
-          .map(item=>{
-
-            const score=
-              pct(item.score);
-
-            return`
-
-              <div class="disease">
-
-                <div class="disease-title">
-
-                  ${esc(
-                    item.description||
-                    item.name||
-                    "Probable condition"
-                  )}
-
-                </div>
-
-                <div class="disease-meta">
-
-                  ${esc(
-                    item.name||
-                    "Unknown condition"
-                  )}
-
-                  •
-
-                  ${score}%
-                  confidence
-
-                </div>
-
-                <div class="disease-bar">
-
-                  <i
-                    style="width:${score}%">
-                  </i>
-
-                </div>
-
-              </div>
-
-            `;
-
-          })
-          .join("");
-
-      toast(
-        "Health scan complete."
-      );
-
-    }catch(error){
-
-      toast(error.message);
-
-    }finally{
-
-      button.disabled=false;
-
-      button.textContent=
-        "Run health scan";
-
-    }
-
-  }
+fd.append(
+"images",
+photo,
+photo.name||"plant.jpg"
 );
+
+fd.append("organs","auto");
+
+const d=
+await api(
+"/identify/all?lang=en&nb-results=8",
+{
+method:"POST",
+body:fd
+}
+);
+
+const r=d.results?.[0];
+const s=r?.species;
+
+if(!r){
+
+toast(
+"No confident plant match found."
+);
+
+return;
+
+}
+
+const common=
+(s.commonNames||[])[0]||
+"Common name unavailable";
+
+const confidence=pct(r.score);
+
+const alternatives=
+(d.results||[])
+.slice(1,6)
+.map(
+(x,i)=>`
+
+<div class="care-row">
+
+<div class="care-icon">🌿</div>
+
+<div style="flex:1">
+
+<b>
+${esc(
+x.species?.scientificName||
+"Unknown"
+)}
+</b>
+
+<div style="
+color:var(--muted);
+font-size:10px;
+margin-top:3px">
+
+Possible match
+
+</div>
+
+</div>
+
+<b>${pct(x.score)}%</b>
+
+</div>
+
+`
+)
+.join("");
+
+
+$("#result").innerHTML=`
+
+<img
+class="result-photo"
+src="${latestImageURL}"
+alt="Identified plant">
+
+<div class="result-label">
+BEST MATCH
+</div>
+
+<h2 class="result-name">
+${esc(s.scientificName)}
+</h2>
+
+<p class="result-common">
+${esc(common)}
+</p>
+
+<div class="confidence">
+
+<div class="confidence-top">
+<span>Identification confidence</span>
+<span>${confidence}%</span>
+</div>
+
+<div class="confidence-track">
+<div
+class="confidence-fill"
+style="width:${confidence}%">
+</div>
+</div>
+
+</div>
+
+<div class="info-grid">
+
+<div class="info-box">
+<small>Genus</small>
+<b>
+${esc(
+s.genus?.scientificNameWithoutAuthor||
+"—"
+)}
+</b>
+</div>
+
+<div class="info-box">
+<small>Family</small>
+<b>
+${esc(
+s.family?.scientificNameWithoutAuthor||
+"—"
+)}
+</b>
+</div>
+
+<div class="info-box">
+<small>Engine</small>
+<b>
+${esc(d.version||"Pl@ntNet")}
+</b>
+</div>
+
+<div class="info-box">
+<small>Requests left</small>
+<b>
+${d.remainingIdentificationRequests??"—"}
+</b>
+</div>
+
+</div>
+
+<div class="care-section">
+
+<h3>Care snapshot</h3>
+
+<div class="care-row">
+<div class="care-icon">☀️</div>
+<div>
+<b>Light</b>
+<div>Start with bright, indirect light.</div>
+</div>
+</div>
+
+<div class="care-row">
+<div class="care-icon">💧</div>
+<div>
+<b>Water</b>
+<div>Check the upper soil before watering.</div>
+</div>
+</div>
+
+<div class="care-row">
+<div class="care-icon">💨</div>
+<div>
+<b>Humidity</b>
+<div>Moderate humidity is a useful starting point.</div>
+</div>
+</div>
+
+<div class="care-row">
+<div class="care-icon">🪴</div>
+<div>
+<b>Soil</b>
+<div>Choose a well-draining growing mix.</div>
+</div>
+</div>
+
+</div>
+
+${
+alternatives
+?`
+
+<div class="care-section">
+
+<h3>
+Other possible matches
+</h3>
+
+${alternatives}
+
+</div>
+
+`
+:""
+}
+
+<button
+class="action-button action-secondary"
+style="
+width:100%;
+margin-top:15px"
+onclick="show('health')">
+
+🩺 Check plant health
+
+</button>
+
+`;
+
+
+saveHistory(
+d,
+latestImageURL
+);
+
+show("results");
+
+toast(
+"Plant identified successfully."
+);
+
+}catch(e){
+
+toast(e.message);
+
+}finally{
+
+button.disabled=!photo;
+
+button.textContent=
+"Identify plant";
+
+}
+
+};
+
+
+/* HEALTH */
+
+$("#healthBtn").onclick=
+async()=>{
+
+if(!photo){
+
+toast(
+"Choose a plant photo first."
+);
+
+show("home");
+
+return;
+
+}
+
+const button=$("#healthBtn");
+
+button.disabled=true;
+
+button.innerHTML=
+'<span class="spinner"></span>Scanning…';
+
+try{
+
+const fd=new FormData();
+
+fd.append(
+"images",
+photo,
+photo.name||"plant.jpg"
+);
+
+fd.append("organs","auto");
+
+const d=
+await api(
+"/diseases/identify?lang=en&nb-results=8",
+{
+method:"POST",
+body:fd
+}
+);
+
+if(!d.results?.length){
+
+$("#healthResults").innerHTML=`
+
+<div class="disease">
+
+<div class="disease-title">
+No supported condition detected
+</div>
+
+<div class="disease-meta">
+This does not prove the plant is completely healthy.
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+$("#healthResults").innerHTML=
+d.results.map(x=>{
+
+const score=pct(x.score);
+
+return`
+
+<div class="disease">
+
+<div class="disease-title">
+${esc(
+x.description||
+x.name||
+"Probable condition"
+)}
+</div>
+
+<div class="disease-meta">
+${esc(x.name||"Unknown")}
+•
+${score}% confidence
+</div>
+
+<div class="disease-bar">
+<i style="width:${score}%"></i>
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+toast("Health scan complete.");
+
+}catch(e){
+
+toast(e.message);
+
+}finally{
+
+button.disabled=false;
+
+button.textContent=
+"Run health scan";
+
+}
+
+};
 
 
 /* HISTORY */
 
-function saveHistory(
-  data,
-  image
-){
+function saveHistory(d,image){
 
-  const best=
-    data.results?.[0];
+const r=d.results?.[0];
+const s=r?.species;
 
-  const species=
-    best?.species;
+if(!s)return;
 
-  if(!species)return;
+let h=
+JSON.parse(
+localStorage.getItem("tayn-history")||
+"[]"
+);
 
-  let history=
-    JSON.parse(
-      localStorage.getItem(
-        "tayn-history"
-      )||"[]"
-    );
+h.unshift({
 
+name:s.scientificName,
 
-  history.unshift({
+common:
+(s.commonNames||[])[0]||"",
 
-    name:
-      species.scientificName||
-      "Unknown plant",
+score:r.score,
 
-    common:
-      (species.commonNames||[])[0]||
-      "",
+image:image||"",
 
-    score:
-      best.score||0,
+date:
+new Date().toLocaleString()
 
-    image:
-      image||"",
+});
 
-    date:
-      new Date().toLocaleString()
-
-  });
-
-
-  localStorage.setItem(
-    "tayn-history",
-    JSON.stringify(
-      history.slice(0,50)
-    )
-  );
+localStorage.setItem(
+"tayn-history",
+JSON.stringify(
+h.slice(0,50)
+)
+);
 
 }
 
 
 function renderHistory(){
 
-  const history=
-    JSON.parse(
-      localStorage.getItem(
-        "tayn-history"
-      )||"[]"
-    );
+const h=
+JSON.parse(
+localStorage.getItem("tayn-history")||
+"[]"
+);
 
-  const container=
-    $("#historyList");
+const container=
+$("#historyList");
 
+if(!h.length){
 
-  if(!history.length){
+container.innerHTML=`
 
-    container.innerHTML=`
+<div class="history-empty">
 
-      <div class="history-empty">
+<div style="font-size:42px">
+🌱
+</div>
 
-        <div class="history-empty-icon">
-          🌱
-        </div>
+<div
+style="
+margin-top:10px;
+color:var(--ink);
+font-weight:850">
 
-        <div
-          style="
-            margin-top:10px;
-            color:var(--ink);
-            font-weight:850">
+Your plant collection is empty
 
-          Your plant collection is empty
+</div>
 
-        </div>
+<p style="font-size:10px">
+Scan a plant and your identification
+will appear here.
+</p>
 
-        <p
-          style="
-            font-size:10px;
-            line-height:1.5">
+</div>
 
-          Scan a plant and your
-          identification will appear here.
+`;
 
-        </p>
+return;
 
-      </div>
+}
 
-    `;
+container.innerHTML=
+h.map(x=>`
 
-    return;
-  }
+<div class="history-item">
 
+<div class="history-content">
 
-  container.innerHTML=
-    history
-      .map(item=>`
+${
+x.image
+?`
+<img
+class="history-image"
+src="${esc(x.image)}"
+alt="Plant">
+`
+:`
+<div
+class="history-image"
+style="
+display:grid;
+place-items:center;
+font-size:25px">
 
-        <div class="history-item">
+🌿
 
-          <div class="history-content">
+</div>
+`
+}
 
-            ${
-              item.image
-              ?`
+<div style="min-width:0;flex:1">
 
-                <img
-                  class="history-image"
-                  src="${esc(item.image)}"
-                  alt="Plant">
+<div class="history-name">
+${esc(x.name)}
+</div>
 
-              `
-              :`
+<div class="history-common">
+${esc(
+x.common||
+"Common name unavailable"
+)}
+</div>
 
-                <div class="history-image"
-                  style="
-                    display:grid;
-                    place-items:center;
-                    font-size:25px">
+<div class="history-meta">
+${pct(x.score)}% confidence
+•
+${esc(x.date)}
+</div>
 
-                  🌿
+</div>
 
-                </div>
+</div>
 
-              `
-            }
+</div>
 
-
-            <div style="min-width:0;flex:1">
-
-              <div class="history-name">
-
-                ${esc(item.name)}
-
-              </div>
-
-              <div class="history-common">
-
-                ${esc(
-                  item.common||
-                  "Common name unavailable"
-                )}
-
-              </div>
-
-              <div class="history-meta">
-
-                ${pct(item.score)}%
-                confidence
-                •
-                ${esc(item.date)}
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `)
-      .join("");
+`).join("");
 
 }
 
 
 function clearHistory(){
 
-  if(
-    !confirm(
-      "Delete all saved plant scans?"
-    )
-  ){
+if(
+!confirm(
+"Delete all saved plant scans?"
+)
+)return;
 
-    return;
-  }
+localStorage.removeItem(
+"tayn-history"
+);
 
-  localStorage.removeItem(
-    "tayn-history"
-  );
+renderHistory();
 
-  renderHistory();
-
-  toast(
-    "Plant collection cleared."
-  );
+toast(
+"Plant collection cleared."
+);
 
 }
 
@@ -2456,120 +2177,96 @@ function clearHistory(){
 
 function refreshSettings(){
 
-  const apiKey=
-    getApiKey();
+const k=getApiKey();
 
-  $("#key").value=
-    apiKey;
+$("#key").value=k;
 
-  const status=
-    $("#status");
+const status=$("#status");
 
-  if(apiKey){
+if(k){
 
-    status.textContent=
-      "Connected";
+status.textContent="Connected";
 
-    status.classList.add(
-      "good"
-    );
+status.classList.add("good");
 
-  }else{
+}else{
 
-    status.textContent=
-      "Not configured";
+status.textContent="Not configured";
 
-    status.classList.remove(
-      "good"
-    );
+status.classList.remove("good");
 
-  }
+}
 
-  $("#remember").checked=
-    !!localStorage.getItem(
-      "tayn-key"
-    );
+$("#remember").checked=
+!!localStorage.getItem("tayn-key");
 
 }
 
 
-$("#save").addEventListener(
-  "click",
-  ()=>{
+$("#save").onclick=()=>{
 
-    const value=
-      $("#key").value.trim();
+const k=
+$("#key").value.trim();
 
-    if(!value){
+if(!k){
 
-      toast(
-        "Paste your API key first."
-      );
-
-      return;
-    }
-
-
-    if($("#remember").checked){
-
-      localStorage.setItem(
-        "tayn-key",
-        value
-      );
-
-      sessionStorage.removeItem(
-        "tayn-key"
-      );
-
-    }else{
-
-      sessionStorage.setItem(
-        "tayn-key",
-        value
-      );
-
-      localStorage.removeItem(
-        "tayn-key"
-      );
-
-    }
-
-
-    refreshSettings();
-
-    toast(
-      "API key saved on this device."
-    );
-
-  }
+toast(
+"Paste your API key first."
 );
 
+return;
 
-$("#remove").addEventListener(
-  "click",
-  ()=>{
+}
 
-    localStorage.removeItem(
-      "tayn-key"
-    );
+if($("#remember").checked){
 
-    sessionStorage.removeItem(
-      "tayn-key"
-    );
-
-    $("#key").value="";
-
-    refreshSettings();
-
-    toast(
-      "API key removed."
-    );
-
-  }
+localStorage.setItem(
+"tayn-key",
+k
 );
 
+sessionStorage.removeItem(
+"tayn-key"
+);
 
-/* START */
+}else{
+
+sessionStorage.setItem(
+"tayn-key",
+k
+);
+
+localStorage.removeItem(
+"tayn-key"
+);
+
+}
+
+refreshSettings();
+
+toast(
+"API key saved."
+);
+
+};
+
+
+$("#remove").onclick=()=>{
+
+localStorage.removeItem("tayn-key");
+
+sessionStorage.removeItem("tayn-key");
+
+$("#key").value="";
+
+refreshSettings();
+
+toast(
+"API key removed."
+);
+
+};
+
 
 refreshSettings();
 
