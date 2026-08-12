@@ -7,1121 +7,1099 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="TaynPlantz">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <title>TaynPlantz</title>
 
 <style>
 :root{
-  --forest:#0d3324;
-  --forest2:#1c6743;
-  --leaf:#48a66a;
-  --mint:#e6f4e9;
-  --cream:#f5f8f3;
-  --white:#fff;
-  --ink:#122019;
-  --muted:#748078;
-  --line:#dfe8e1;
-  --gold:#d8a84f;
-  --red:#b94b4b;
-  --shadow:0 18px 45px rgba(13,51,36,.10)
+--forest:#0d3324;
+--forest2:#1c6743;
+--leaf:#48a66a;
+--mint:#e6f4e9;
+--cream:#f5f8f3;
+--white:#fff;
+--ink:#122019;
+--muted:#748078;
+--line:#dfe8e1;
+--gold:#d8a84f;
+--red:#b94b4b;
+--shadow:0 18px 45px rgba(13,51,36,.10)
 }
 
 *{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent
 }
 
 html,body{
-  margin:0;
-  min-height:100%;
-  background:#dce7df;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-  "SF Pro Text",system-ui,sans-serif;
-  color:var(--ink)
+margin:0;
+min-height:100%;
+background:#dce7df;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+"SF Pro Text",system-ui,sans-serif;
+color:var(--ink)
 }
 
-body{
-  overflow-x:hidden
-}
-
-button,input,select{
-  font:inherit
+button,input{
+font:inherit
 }
 
 button{
-  -webkit-appearance:none;
-  cursor:pointer
+-webkit-appearance:none;
+cursor:pointer
 }
 
 .app{
-  width:100%;
-  max-width:560px;
-  min-height:100vh;
-  margin:auto;
-  background:var(--cream);
-  padding-bottom:105px;
-  overflow:hidden
+width:100%;
+max-width:560px;
+min-height:100vh;
+margin:auto;
+background:var(--cream);
+padding-bottom:105px;
+overflow:hidden
 }
 
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-  height:78px;
-  padding:max(12px,env(safe-area-inset-top)) 20px 10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:rgba(246,248,243,.94);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  border-bottom:1px solid rgba(255,255,255,.8)
+position:sticky;
+top:0;
+z-index:50;
+height:78px;
+padding:max(12px,env(safe-area-inset-top)) 20px 10px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:rgba(246,248,243,.92);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+border-bottom:1px solid rgba(255,255,255,.8)
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:11px
+display:flex;
+align-items:center;
+gap:11px
 }
 
 .logo{
-  width:44px;
-  height:44px;
-  border-radius:15px;
-  background:linear-gradient(145deg,#0d3324,#318657);
-  display:grid;
-  place-items:center;
-  font-size:22px;
-  box-shadow:0 8px 22px rgba(13,51,36,.20)
+width:44px;
+height:44px;
+border-radius:15px;
+background:linear-gradient(145deg,#0d3324,#318657);
+display:grid;
+place-items:center;
+font-size:22px;
+box-shadow:0 8px 22px rgba(13,51,36,.20)
 }
 
 .brand-title{
-  font-size:18px;
-  font-weight:850;
-  letter-spacing:-.5px
+font-size:18px;
+font-weight:850;
+letter-spacing:-.5px
 }
 
 .brand-sub{
-  display:block;
-  margin-top:2px;
-  font-size:10px;
-  color:var(--muted)
+display:block;
+margin-top:2px;
+font-size:10px;
+color:var(--muted)
 }
 
 .settings-button{
-  width:42px;
-  height:42px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  background:white;
-  display:grid;
-  place-items:center
+width:42px;
+height:42px;
+border:1px solid var(--line);
+border-radius:50%;
+background:white;
+display:grid;
+place-items:center
 }
 
 main{
-  padding:18px
+padding:18px
 }
 
 .screen{
-  display:none
+display:none
 }
 
 .screen.active{
-  display:block;
-  animation:appear .25s ease
+display:block;
+animation:appear .25s ease
 }
 
 @keyframes appear{
-  from{opacity:0;transform:translateY(7px)}
-  to{opacity:1;transform:none}
+from{
+opacity:0;
+transform:translateY(7px)
+}
+to{
+opacity:1;
+transform:none
+}
 }
 
-/* GUIDE */
+/* HOME */
 
 .guide-intro{
-  margin:4px 3px 15px
+margin:4px 3px 15px
 }
 
 .guide-kicker,
 .page-kicker{
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1.7px;
-  color:var(--leaf)
+font-size:9px;
+font-weight:900;
+letter-spacing:1.7px;
+color:var(--leaf)
 }
 
 .guide-intro h1{
-  margin:5px 0 5px;
-  font-size:31px;
-  line-height:1.04;
-  letter-spacing:-1.5px
+margin:5px 0;
+font-size:31px;
+line-height:1.04;
+letter-spacing:-1.5px
 }
 
 .guide-intro p{
-  margin:0;
-  font-size:11px;
-  line-height:1.5;
-  color:var(--muted)
+margin:0;
+font-size:11px;
+line-height:1.5;
+color:var(--muted)
 }
 
 .guide-search{
-  height:49px;
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:0 14px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:17px;
-  box-shadow:0 9px 25px rgba(13,51,36,.05);
-  margin-bottom:14px
+height:49px;
+display:flex;
+align-items:center;
+gap:9px;
+padding:0 14px;
+background:white;
+border:1px solid var(--line);
+border-radius:17px;
+box-shadow:0 9px 25px rgba(13,51,36,.05);
+margin-bottom:14px
 }
 
 .guide-search span{
-  font-size:17px
+font-size:17px
 }
 
 .guide-search input{
-  width:100%;
-  border:0;
-  outline:0;
-  background:transparent;
-  font-size:12px
+width:100%;
+border:0;
+outline:0;
+background:transparent;
+font-size:12px
 }
 
 .guide-feature{
-  min-height:220px;
-  border-radius:28px;
-  overflow:hidden;
-  position:relative;
-  color:white;
-  background:
-    radial-gradient(circle at 80% 20%,rgba(96,181,119,.4),transparent 30%),
-    linear-gradient(145deg,#0a2d1f,#26734a 55%,#68aa70);
-  box-shadow:var(--shadow);
-  margin-bottom:14px
-}
-
-.guide-feature:before{
-  content:"🌿";
-  position:absolute;
-  right:25px;
-  top:20px;
-  font-size:90px;
-  opacity:.18;
-  transform:rotate(12deg)
-}
-
-.guide-feature:after{
-  content:"🪴";
-  position:absolute;
-  right:45px;
-  bottom:18px;
-  font-size:75px;
-  opacity:.22
+height:220px;
+border-radius:28px;
+overflow:hidden;
+position:relative;
+color:white;
+background:
+linear-gradient(180deg,rgba(8,35,23,.05),rgba(8,35,23,.88)),
+url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=88")
+center/cover;
+box-shadow:var(--shadow);
+margin-bottom:14px
 }
 
 .guide-feature-content{
-  position:relative;
-  z-index:2;
-  padding:24px 20px 19px;
-  margin-top:105px
+position:absolute;
+left:20px;
+right:20px;
+bottom:19px
 }
 
 .guide-badge{
-  display:inline-block;
-  padding:7px 10px;
-  border-radius:20px;
-  background:rgba(255,255,255,.17);
-  backdrop-filter:blur(10px);
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1px
+display:inline-block;
+padding:7px 10px;
+border-radius:20px;
+background:rgba(255,255,255,.17);
+backdrop-filter:blur(10px);
+font-size:8px;
+font-weight:900;
+letter-spacing:1px
 }
 
 .guide-feature h2{
-  margin:8px 0 4px;
-  font-size:27px;
-  letter-spacing:-1px
+margin:8px 0 4px;
+font-size:27px;
+letter-spacing:-1px
 }
 
 .guide-feature p{
-  margin:0;
-  font-size:10px;
-  color:#e7f4ea
+margin:0;
+font-size:10px;
+color:#e7f4ea
 }
 
 .guide-section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:20px 3px 10px
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:20px 3px 10px
 }
 
 .guide-section-title b{
-  font-size:15px
+font-size:15px
 }
 
 .guide-section-title small{
-  color:var(--leaf);
-  font-size:9px;
-  font-weight:850
+color:var(--leaf);
+font-size:9px;
+font-weight:850
 }
 
 .category-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
 }
 
 .category{
-  height:145px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  background:white;
-  padding:0;
-  text-align:left
+height:145px;
+border:1px solid var(--line);
+border-radius:22px;
+overflow:hidden;
+position:relative;
+background:white;
+padding:0;
+text-align:left
 }
 
-.category-art{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  font-size:62px;
-  background:linear-gradient(145deg,#dcefe1,#9dcea7)
+.category-image{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center
 }
 
-.category-art:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,transparent 25%,rgba(5,30,19,.83))
+.category-image:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(180deg,transparent 25%,rgba(5,30,19,.83))
 }
 
 .category-content{
-  position:absolute;
-  z-index:2;
-  left:13px;
-  right:10px;
-  bottom:12px;
-  color:white
+position:absolute;
+z-index:2;
+left:13px;
+right:10px;
+bottom:12px;
+color:white
 }
 
 .category-icon{
-  font-size:18px
+font-size:18px
 }
 
 .category-name{
-  display:block;
-  font-size:12px;
-  font-weight:850;
-  margin-top:4px
+display:block;
+font-size:12px;
+font-weight:850;
+margin-top:4px
 }
 
 .category-count{
-  display:block;
-  font-size:8px;
-  color:#dcecdf;
-  margin-top:2px
+display:block;
+font-size:8px;
+color:#dcecdf;
+margin-top:2px
 }
 
-.featured-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px
+.category:active,
+.plant-card:active,
+.ency-card:active{
+transform:scale(.98)
 }
 
-.plant-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 8px 25px rgba(13,51,36,.05);
-  text-align:left;
-  padding:0
+/* PLANT CARDS */
+
+.featured-grid,
+.ency-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
 }
 
-.plant-art{
-  height:130px;
-  display:grid;
-  place-items:center;
-  font-size:68px;
-  background:linear-gradient(145deg,#eef8ef,#c8e4ce)
+.plant-card,
+.ency-card{
+background:white;
+border:1px solid var(--line);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(13,51,36,.05);
+text-align:left;
+padding:0;
+transition:.15s
 }
 
-.plant-card-info{
-  padding:11px
+.plant-card img,
+.ency-card img{
+width:100%;
+height:130px;
+object-fit:cover;
+display:block
 }
 
-.plant-card-name{
-  font-size:12px;
-  font-weight:850
+.plant-card-info,
+.ency-info{
+padding:11px
 }
 
-.plant-card-scientific{
-  font-size:9px;
-  color:var(--muted);
-  margin-top:4px;
-  font-style:italic
+.plant-card-name,
+.ency-name{
+font-size:12px;
+font-weight:850
 }
 
-.plant-card-tags{
-  display:flex;
-  gap:4px;
-  margin-top:8px;
-  flex-wrap:wrap
+.plant-card-scientific,
+.ency-scientific{
+font-size:9px;
+color:var(--muted);
+margin-top:4px;
+font-style:italic
+}
+
+.plant-card-tags,
+.ency-tags{
+display:flex;
+gap:4px;
+margin-top:8px;
+flex-wrap:wrap
 }
 
 .tag{
-  padding:4px 6px;
-  border-radius:8px;
-  background:var(--mint);
-  color:var(--forest);
-  font-size:7px;
-  font-weight:800
-}
-
-.search-count{
-  margin:9px 3px;
-  font-size:9px;
-  color:var(--muted)
+padding:4px 6px;
+border-radius:8px;
+background:var(--mint);
+color:var(--forest);
+font-size:7px;
+font-weight:800
 }
 
 .no-results{
-  padding:30px 20px;
-  text-align:center;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:20px;
-  color:var(--muted)
-}
-
-/* ENCYCLOPEDIA DETAIL */
-
-.plant-detail{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:var(--shadow)
-}
-
-.detail-art{
-  min-height:235px;
-  display:grid;
-  place-items:center;
-  position:relative;
-  background:
-    radial-gradient(circle at 30% 25%,rgba(255,255,255,.65),transparent 25%),
-    linear-gradient(145deg,#dff0e2,#8fc59b)
-}
-
-.detail-art .big-plant{
-  font-size:120px;
-  filter:drop-shadow(0 14px 12px rgba(13,51,36,.18))
-}
-
-.detail-badge{
-  position:absolute;
-  top:15px;
-  left:15px;
-  padding:7px 10px;
-  border-radius:20px;
-  background:rgba(255,255,255,.78);
-  backdrop-filter:blur(10px);
-  color:var(--forest);
-  font-size:8px;
-  font-weight:900
-}
-
-.detail-content{
-  padding:19px
-}
-
-.detail-content h1{
-  margin:0;
-  font-size:28px;
-  letter-spacing:-1px
-}
-
-.detail-scientific{
-  margin-top:5px;
-  font-size:12px;
-  color:var(--muted);
-  font-style:italic
-}
-
-.detail-description{
-  margin:14px 0 0;
-  font-size:11px;
-  line-height:1.6;
-  color:#4f5d54
-}
-
-.detail-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:16px
-}
-
-.detail-box{
-  padding:13px;
-  border-radius:16px;
-  background:#f5f8f4
-}
-
-.detail-box .icon{
-  font-size:19px
-}
-
-.detail-box small{
-  display:block;
-  margin-top:5px;
-  color:var(--muted);
-  font-size:8px;
-  text-transform:uppercase;
-  font-weight:800
-}
-
-.detail-box b{
-  display:block;
-  margin-top:3px;
-  font-size:11px
-}
-
-.detail-section{
-  margin-top:20px
-}
-
-.detail-section h3{
-  margin:0 0 9px;
-  font-size:16px
-}
-
-.detail-list{
-  margin:0;
-  padding:0;
-  list-style:none
-}
-
-.detail-list li{
-  padding:10px 0;
-  border-bottom:1px solid var(--line);
-  font-size:11px;
-  line-height:1.45
-}
-
-.detail-list li:last-child{
-  border-bottom:0
-}
-
-.detail-list strong{
-  color:var(--forest)
-}
-
-.back-guide{
-  width:100%;
-  min-height:48px;
-  margin-bottom:13px;
-  border:0;
-  border-radius:15px;
-  background:var(--mint);
-  color:var(--forest);
-  font-weight:850
+padding:35px 15px;
+background:white;
+border:1px solid var(--line);
+border-radius:20px;
+text-align:center;
+color:var(--muted);
+font-size:11px;
+grid-column:1/-1
 }
 
 /* SCANNER */
 
 .scan-heading{
-  margin:24px 3px 10px;
-  font-size:15px;
-  font-weight:850
+margin:24px 3px 10px;
+font-size:15px;
+font-weight:850
 }
 
 .scan-card{
-  padding:14px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  box-shadow:var(--shadow)
+padding:14px;
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+box-shadow:var(--shadow)
 }
 
 .scan-preview{
-  height:210px;
-  border-radius:21px;
-  overflow:hidden;
-  position:relative;
-  background:
-    radial-gradient(circle at 30% 25%,#8ec89d,transparent 22%),
-    linear-gradient(145deg,#143f2b,#477e56);
-  display:grid;
-  place-items:center
+height:210px;
+border-radius:21px;
+overflow:hidden;
+position:relative;
+background:
+linear-gradient(rgba(13,51,36,.30),rgba(13,51,36,.65)),
+url("https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=1000&q=85")
+center/cover;
+display:grid;
+place-items:center
 }
 
 .scan-preview img{
-  display:none;
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover
+display:none;
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover
 }
 
 .scan-preview.has-image img{
-  display:block
+display:block
 }
 
 .scan-prompt{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  color:white;
-  text-shadow:0 2px 8px rgba(0,0,0,.45)
+position:relative;
+z-index:2;
+text-align:center;
+color:white;
+text-shadow:0 2px 8px rgba(0,0,0,.45)
 }
 
 .scan-preview.has-image .scan-prompt{
-  display:none
+display:none
 }
 
 .camera-icon{
-  width:64px;
-  height:64px;
-  margin:0 auto 10px;
-  border-radius:21px;
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.94);
-  color:var(--forest);
-  font-size:27px
+width:64px;
+height:64px;
+margin:0 auto 10px;
+border-radius:21px;
+display:grid;
+place-items:center;
+background:rgba(255,255,255,.94);
+color:var(--forest);
+font-size:27px
 }
 
 .scan-prompt b{
-  font-size:14px
+font-size:14px
 }
 
 .scan-prompt small{
-  display:block;
-  margin-top:5px;
-  font-size:10px
+display:block;
+margin-top:5px;
+font-size:10px
 }
 
 .scan-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:11px
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:11px
 }
 
 .action-button{
-  min-height:50px;
-  border:0;
-  border-radius:15px;
-  font-weight:800
+min-height:50px;
+border:0;
+border-radius:15px;
+font-weight:800
 }
 
 .action-primary{
-  background:var(--forest);
-  color:white
+background:var(--forest);
+color:white
 }
 
 .action-secondary{
-  background:var(--mint);
-  color:var(--forest)
+background:var(--mint);
+color:var(--forest)
 }
 
 .action-button:disabled{
-  opacity:.42
+opacity:.42
 }
 
 .scan-tip{
-  margin:10px 4px 1px;
-  text-align:center;
-  color:#8a958e;
-  font-size:9px
+margin:10px 4px 1px;
+text-align:center;
+color:#8a958e;
+font-size:9px
 }
 
 /* PAGES */
 
 .page-header{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  margin:5px 0 17px
+display:flex;
+align-items:center;
+gap:11px;
+margin:5px 0 17px
 }
 
 .back-button{
-  width:42px;
-  height:42px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:14px;
-  font-size:25px
+width:42px;
+height:42px;
+border:1px solid var(--line);
+background:white;
+border-radius:14px;
+font-size:25px
 }
 
 .page-header h1{
-  margin:0;
-  font-size:29px;
-  line-height:1;
-  letter-spacing:-1.2px
+margin:0;
+font-size:29px;
+line-height:1;
+letter-spacing:-1.2px
+}
+
+/* ENCYCLOPEDIA DETAIL */
+
+.plant-detail{
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+overflow:hidden;
+box-shadow:var(--shadow)
+}
+
+.plant-detail-hero{
+width:100%;
+height:275px;
+object-fit:cover;
+display:block
+}
+
+.plant-detail-content{
+padding:17px
+}
+
+.detail-label{
+color:var(--leaf);
+font-size:8px;
+font-weight:900;
+letter-spacing:1.6px
+}
+
+.detail-name{
+margin:5px 0 3px;
+font-size:29px;
+line-height:1.05;
+letter-spacing:-1px
+}
+
+.detail-scientific{
+color:var(--muted);
+font-size:13px;
+font-style:italic
+}
+
+.detail-tags{
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+margin:13px 0
+}
+
+.detail-description{
+font-size:12px;
+line-height:1.55;
+color:#46534b
+}
+
+.detail-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-top:15px
+}
+
+.detail-box{
+padding:12px;
+background:#f5f7f4;
+border-radius:15px
+}
+
+.detail-box small{
+display:block;
+color:var(--muted);
+font-size:8px;
+text-transform:uppercase
+}
+
+.detail-box b{
+display:block;
+margin-top:5px;
+font-size:11px
+}
+
+.detail-section{
+margin-top:19px
+}
+
+.detail-section h3{
+margin:0 0 7px;
+font-size:16px
+}
+
+.detail-row{
+display:flex;
+gap:10px;
+align-items:flex-start;
+padding:12px 0;
+border-bottom:1px solid var(--line);
+font-size:12px;
+line-height:1.4
+}
+
+.detail-row:last-child{
+border-bottom:0
+}
+
+.detail-icon{
+width:30px;
+height:30px;
+border-radius:10px;
+background:var(--mint);
+display:grid;
+place-items:center;
+flex:none
 }
 
 /* RESULTS */
 
 .result-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  padding:14px;
-  box-shadow:var(--shadow)
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+padding:14px;
+box-shadow:var(--shadow)
 }
 
 .result-photo{
-  width:100%;
-  height:275px;
-  object-fit:cover;
-  border-radius:21px
+width:100%;
+height:275px;
+object-fit:cover;
+border-radius:21px
 }
 
 .result-label{
-  margin:16px 2px 4px;
-  color:var(--leaf);
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1.6px
+margin:16px 2px 4px;
+color:var(--leaf);
+font-size:8px;
+font-weight:900;
+letter-spacing:1.6px
 }
 
 .result-name{
-  margin:0;
-  font-size:27px;
-  line-height:1.08;
-  letter-spacing:-1px
+margin:0;
+font-size:27px;
+line-height:1.08;
+letter-spacing:-1px
 }
 
 .result-common{
-  margin:5px 0 13px;
-  color:var(--muted);
-  font-size:13px
+margin:5px 0 13px;
+color:var(--muted);
+font-size:13px
 }
 
 .confidence{
-  padding:13px;
-  background:var(--mint);
-  border-radius:15px
+padding:13px;
+background:var(--mint);
+border-radius:15px
 }
 
 .confidence-top{
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-  font-weight:800;
-  color:var(--forest)
+display:flex;
+justify-content:space-between;
+font-size:11px;
+font-weight:800;
+color:var(--forest)
 }
 
 .confidence-track{
-  height:7px;
-  margin-top:9px;
-  background:#cfe2d3;
-  border-radius:20px;
-  overflow:hidden
+height:7px;
+margin-top:9px;
+background:#cfe2d3;
+border-radius:20px;
+overflow:hidden
 }
 
 .confidence-fill{
-  height:100%;
-  background:var(--leaf);
-  border-radius:20px
+height:100%;
+background:var(--leaf);
+border-radius:20px
 }
 
 .info-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:9px
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-top:9px
 }
 
 .info-box{
-  padding:12px;
-  border-radius:15px;
-  background:#f5f7f4
+padding:12px;
+border-radius:15px;
+background:#f5f7f4
 }
 
 .info-box small{
-  display:block;
-  color:var(--muted);
-  font-size:8px;
-  text-transform:uppercase
+display:block;
+color:var(--muted);
+font-size:8px;
+text-transform:uppercase
 }
 
 .info-box b{
-  display:block;
-  margin-top:5px;
-  font-size:11px
+display:block;
+margin-top:5px;
+font-size:11px
 }
 
 .care-section{
-  margin-top:19px
+margin-top:19px
 }
 
 .care-section h3{
-  margin:0 0 7px;
-  font-size:16px
+margin:0 0 7px;
+font-size:16px
 }
 
 .care-row{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-  font-size:12px;
-  line-height:1.4
+display:flex;
+gap:10px;
+align-items:flex-start;
+padding:12px 0;
+border-bottom:1px solid var(--line);
+font-size:12px;
+line-height:1.4
 }
 
 .care-row:last-child{
-  border-bottom:0
+border-bottom:0
 }
 
 .care-icon{
-  width:30px;
-  height:30px;
-  border-radius:10px;
-  background:var(--mint);
-  display:grid;
-  place-items:center;
-  flex:none
+width:30px;
+height:30px;
+border-radius:10px;
+background:var(--mint);
+display:grid;
+place-items:center;
+flex:none
 }
 
 /* HEALTH */
 
 .health-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  padding:14px;
-  box-shadow:var(--shadow)
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+padding:14px;
+box-shadow:var(--shadow)
 }
 
 .health-hero{
-  padding:25px 18px;
-  border-radius:22px;
-  text-align:center;
-  color:white;
-  background:linear-gradient(135deg,#0d3324,#397c54)
+padding:25px 18px;
+border-radius:22px;
+text-align:center;
+color:white;
+background:
+linear-gradient(135deg,rgba(13,51,36,.95),rgba(39,119,76,.72)),
+url("https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1000&q=85")
+center/cover
 }
 
 .health-icon{
-  width:65px;
-  height:65px;
-  margin:auto;
-  border-radius:22px;
-  background:rgba(255,255,255,.14);
-  display:grid;
-  place-items:center;
-  font-size:30px
+width:65px;
+height:65px;
+margin:auto;
+border-radius:22px;
+background:rgba(255,255,255,.14);
+display:grid;
+place-items:center;
+font-size:30px
 }
 
 .health-hero h3{
-  margin:13px 0 6px;
-  font-size:18px
+margin:13px 0 6px;
+font-size:18px
 }
 
 .health-hero p{
-  margin:0;
-  font-size:10px;
-  line-height:1.5;
-  color:#e7f3e9
+margin:0;
+font-size:10px;
+line-height:1.5;
+color:#e7f3e9
 }
 
 .health-button{
-  width:100%;
-  margin-top:14px;
-  min-height:48px;
-  border:0;
-  border-radius:14px;
-  background:white;
-  color:var(--forest);
-  font-weight:850
+width:100%;
+margin-top:14px;
+min-height:48px;
+border:0;
+border-radius:14px;
+background:white;
+color:var(--forest);
+font-weight:850
 }
 
 .disease{
-  margin-top:10px;
-  padding:14px;
-  border-radius:16px;
-  background:#f5f8f4
+margin-top:10px;
+padding:14px;
+border-radius:16px;
+background:#f5f8f4
 }
 
 .disease-title{
-  font-weight:850;
-  font-size:12px
+font-weight:850;
+font-size:12px
 }
 
 .disease-meta{
-  color:var(--muted);
-  font-size:10px;
-  margin-top:5px
+color:var(--muted);
+font-size:10px;
+margin-top:5px
 }
 
 .disease-bar{
-  height:6px;
-  margin-top:9px;
-  background:#dce7dd;
-  border-radius:20px;
-  overflow:hidden
+height:6px;
+margin-top:9px;
+background:#dce7dd;
+border-radius:20px;
+overflow:hidden
 }
 
 .disease-bar i{
-  display:block;
-  height:100%;
-  background:var(--leaf)
+display:block;
+height:100%;
+background:var(--leaf)
 }
 
 /* HISTORY */
 
 .history-empty{
-  padding:55px 20px;
-  text-align:center;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:27px;
-  color:var(--muted);
-  box-shadow:var(--shadow)
+padding:55px 20px;
+text-align:center;
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+color:var(--muted);
+box-shadow:var(--shadow)
 }
 
 .history-item{
-  padding:12px;
-  margin-bottom:10px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:20px
+padding:12px;
+margin-bottom:10px;
+background:white;
+border:1px solid var(--line);
+border-radius:20px
 }
 
 .history-content{
-  display:flex;
-  gap:12px;
-  align-items:center
+display:flex;
+gap:12px;
+align-items:center
 }
 
 .history-image{
-  width:65px;
-  height:65px;
-  border-radius:16px;
-  object-fit:cover;
-  background:var(--mint);
-  flex:none
+width:65px;
+height:65px;
+border-radius:16px;
+object-fit:cover;
+background:var(--mint);
+flex:none
 }
 
 .history-name{
-  font-size:12px;
-  font-weight:850
+font-size:12px;
+font-weight:850
 }
 
 .history-common{
-  margin-top:4px;
-  color:var(--muted);
-  font-size:10px
+margin-top:4px;
+color:var(--muted);
+font-size:10px
 }
 
 .history-meta{
-  margin-top:6px;
-  color:#8b958f;
-  font-size:9px
+margin-top:6px;
+color:#8b958f;
+font-size:9px
 }
 
 /* SETTINGS */
 
 .settings-card{
-  padding:17px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:25px;
-  box-shadow:var(--shadow)
+padding:17px;
+background:white;
+border:1px solid var(--line);
+border-radius:25px;
+box-shadow:var(--shadow)
 }
 
 .connection{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-bottom:15px;
-  border-bottom:1px solid var(--line)
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding-bottom:15px;
+border-bottom:1px solid var(--line)
 }
 
 .connection-name{
-  font-size:13px;
-  font-weight:800
+font-size:13px;
+font-weight:800
 }
 
 .status{
-  padding:6px 9px;
-  border-radius:20px;
-  background:#fceeee;
-  color:var(--red);
-  font-size:9px;
-  font-weight:850
+padding:6px 9px;
+border-radius:20px;
+background:#fceeee;
+color:var(--red);
+font-size:9px;
+font-weight:850
 }
 
 .status.good{
-  background:var(--mint);
-  color:#267345
+background:var(--mint);
+color:#267345
 }
 
 .form-label{
-  display:block;
-  margin-top:16px;
-  font-size:11px;
-  font-weight:850
+display:block;
+margin-top:16px;
+font-size:11px;
+font-weight:850
 }
 
 .form-input{
-  width:100%;
-  height:49px;
-  margin-top:7px;
-  padding:0 13px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  outline:none;
-  background:#fafcf9
+width:100%;
+height:49px;
+margin-top:7px;
+padding:0 13px;
+border:1px solid var(--line);
+border-radius:14px;
+outline:none;
+background:#fafcf9
 }
 
 .checkbox-line{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:12px;
-  font-size:10px;
-  color:var(--muted)
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:12px;
+font-size:10px;
+color:var(--muted)
 }
 
 .save-key{
-  width:100%;
-  min-height:49px;
-  margin-top:13px;
-  border:0;
-  border-radius:14px;
-  background:var(--forest);
-  color:white;
-  font-weight:850
+width:100%;
+min-height:49px;
+margin-top:13px;
+border:0;
+border-radius:14px;
+background:var(--forest);
+color:white;
+font-weight:850
 }
 
 .remove-key{
-  width:100%;
-  min-height:45px;
-  margin-top:8px;
-  border:0;
-  border-radius:14px;
-  background:#fff0f0;
-  color:var(--red);
-  font-weight:800
+width:100%;
+min-height:45px;
+margin-top:8px;
+border:0;
+border-radius:14px;
+background:#fff0f0;
+color:var(--red);
+font-weight:800
 }
 
 .notice{
-  margin-top:15px;
-  padding:13px;
-  border-radius:15px;
-  background:#fff8df;
-  color:#706544;
-  font-size:10px;
-  line-height:1.5
+margin-top:15px;
+padding:13px;
+border-radius:15px;
+background:#fff8df;
+color:#706544;
+font-size:10px;
+line-height:1.5
 }
 
 /* NAV */
 
 .bottom-nav{
-  position:fixed;
-  z-index:100;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(560px,100%);
-  height:86px;
-  padding:7px 8px max(8px,env(safe-area-inset-bottom));
-  background:rgba(255,255,255,.93);
-  border-top:1px solid rgba(218,228,220,.9);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  display:grid;
-  grid-template-columns:repeat(5,1fr)
+position:fixed;
+z-index:100;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:min(560px,100%);
+height:86px;
+padding:7px 8px max(8px,env(safe-area-inset-bottom));
+background:rgba(255,255,255,.93);
+border-top:1px solid rgba(218,228,220,.9);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+display:grid;
+grid-template-columns:repeat(5,1fr)
 }
 
 .nav-item{
-  border:0;
-  background:none;
-  color:#8b958f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  border-radius:17px
+border:0;
+background:none;
+color:#8b958f;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:4px;
+border-radius:17px
 }
 
 .nav-item-icon{
-  width:36px;
-  height:30px;
-  display:grid;
-  place-items:center;
-  font-size:18px
+width:36px;
+height:30px;
+display:grid;
+place-items:center;
+font-size:18px
 }
 
 .nav-item small{
-  font-size:8px;
-  font-weight:850
+font-size:8px;
+font-weight:850
 }
 
 .nav-item.active{
-  color:var(--forest)
+color:var(--forest)
 }
 
 .nav-item.active .nav-item-icon{
-  background:var(--mint);
-  border-radius:12px
+background:var(--mint);
+border-radius:12px
 }
 
 .toast{
-  position:fixed;
-  z-index:200;
-  left:50%;
-  bottom:100px;
-  transform:translateX(-50%);
-  max-width:90%;
-  padding:12px 16px;
-  border-radius:15px;
-  background:var(--forest);
-  color:white;
-  font-size:11px;
-  font-weight:700;
-  text-align:center;
-  display:none;
-  box-shadow:0 12px 35px rgba(0,0,0,.2)
+position:fixed;
+z-index:200;
+left:50%;
+bottom:100px;
+transform:translateX(-50%);
+max-width:90%;
+padding:12px 16px;
+border-radius:15px;
+background:var(--forest);
+color:white;
+font-size:11px;
+font-weight:700;
+text-align:center;
+display:none;
+box-shadow:0 12px 35px rgba(0,0,0,.2)
 }
 
 .toast.show{
-  display:block
+display:block
 }
 
 .spinner{
-  width:16px;
-  height:16px;
-  display:inline-block;
-  vertical-align:middle;
-  margin-right:7px;
-  border:2px solid rgba(255,255,255,.3);
-  border-top-color:white;
-  border-radius:50%;
-  animation:spin .7s linear infinite
+width:16px;
+height:16px;
+display:inline-block;
+vertical-align:middle;
+margin-right:7px;
+border:2px solid rgba(255,255,255,.3);
+border-top-color:white;
+border-radius:50%;
+animation:spin .7s linear infinite
 }
 
 @keyframes spin{
-  to{transform:rotate(360deg)}
+to{transform:rotate(360deg)}
 }
 
 @media(max-width:390px){
-  main{padding:15px}
-  .guide-intro h1{font-size:28px}
-  .guide-feature{min-height:205px}
-  .scan-actions{grid-template-columns:1fr}
-  .result-photo{height:240px}
+main{padding:15px}
+.guide-intro h1{font-size:28px}
+.guide-feature{height:205px}
+.scan-actions{grid-template-columns:1fr}
+.result-photo{height:240px}
+.plant-detail-hero{height:240px}
 }
 </style>
 </head>
@@ -1134,10 +1112,12 @@ main{
 
 <div class="brand">
 <div class="logo">🌿</div>
+
 <div>
 <div class="brand-title">TaynPlantz</div>
 <span class="brand-sub">Plant intelligence</span>
 </div>
+
 </div>
 
 <button class="settings-button" onclick="show('settings')">⚙️</button>
@@ -1152,7 +1132,9 @@ main{
 
 <div class="guide-intro">
 
-<div class="guide-kicker">PLANT RESOURCE GUIDE</div>
+<div class="guide-kicker">
+PLANT RESOURCE GUIDE
+</div>
 
 <h1>
 Explore. Identify.<br>
@@ -1160,7 +1142,7 @@ Grow smarter.
 </h1>
 
 <p>
-A free searchable plant encyclopedia built directly into TaynPlantz.
+Your visual guide to plants, care, health and identification.
 </p>
 
 </div>
@@ -1172,13 +1154,9 @@ A free searchable plant encyclopedia built directly into TaynPlantz.
 <input
 id="plantSearch"
 type="search"
-placeholder="Search dill, basil, rose, monstera..."
+placeholder="Search plants, herbs, flowers..."
 autocomplete="off">
 
-</div>
-
-<div id="searchCount" class="search-count">
-Browse the TaynPlantz encyclopedia
 </div>
 
 <div class="guide-feature">
@@ -1186,13 +1164,15 @@ Browse the TaynPlantz encyclopedia
 <div class="guide-feature-content">
 
 <div class="guide-badge">
-🌿 TAYNPLANTZ ENCYCLOPEDIA
+🌿 TAYNPLANTZ GUIDE
 </div>
 
-<h2>Your plant encyclopedia</h2>
+<h2>
+Your plant encyclopedia
+</h2>
 
 <p>
-Search plants by common name, scientific name, type or growing needs.
+Search hundreds of common plant names and explore their care profiles.
 </p>
 
 </div>
@@ -1200,71 +1180,113 @@ Search plants by common name, scientific name, type or growing needs.
 </div>
 
 <div class="guide-section-title">
+
 <b>Browse plant types</b>
-<small>FREE GUIDE</small>
+
+<small>EXPLORE</small>
+
 </div>
 
 <div class="category-grid">
 
-<button class="category" onclick="filterCategory('houseplant')">
-<div class="category-art">🪴</div>
+<button class="category" onclick="openCategory('Houseplants')">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=700&q=80')">
+</div>
+
 <div class="category-content">
 <div class="category-icon">🪴</div>
 <span class="category-name">Houseplants</span>
 <span class="category-count">Indoor favorites</span>
 </div>
+
 </button>
 
-<button class="category" onclick="filterCategory('flower')">
-<div class="category-art">🌸</div>
+<button class="category" onclick="openCategory('Flowering')">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80')">
+</div>
+
 <div class="category-content">
 <div class="category-icon">🌸</div>
-<span class="category-name">Flowers</span>
+<span class="category-name">Flowering Plants</span>
 <span class="category-count">Blooms & color</span>
 </div>
+
 </button>
 
-<button class="category" onclick="filterCategory('succulent')">
-<div class="category-art">🌵</div>
+<button class="category" onclick="openCategory('Succulent')">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=700&q=80')">
+</div>
+
 <div class="category-content">
 <div class="category-icon">🌵</div>
-<span class="category-name">Succulents</span>
+<span class="category-name">Succulents & Cacti</span>
 <span class="category-count">Low-water plants</span>
 </div>
+
 </button>
 
-<button class="category" onclick="filterCategory('herb')">
-<div class="category-art">🌿</div>
+<button class="category" onclick="openCategory('Herbs')">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=700&q=80')">
+</div>
+
 <div class="category-content">
 <div class="category-icon">🌿</div>
 <span class="category-name">Herbs</span>
-<span class="category-count">Kitchen favorites</span>
+<span class="category-count">Grow your own</span>
 </div>
+
 </button>
 
-<button class="category" onclick="filterCategory('vegetable')">
-<div class="category-art">🥕</div>
+<button class="category" onclick="openCategory('Vegetable')">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80')">
+</div>
+
 <div class="category-content">
 <div class="category-icon">🥕</div>
 <span class="category-name">Vegetables</span>
-<span class="category-count">Grow your own</span>
+<span class="category-count">Garden crops</span>
 </div>
+
 </button>
 
-<button class="category" onclick="filterCategory('tree')">
-<div class="category-art">🌳</div>
+<button class="category" onclick="openCategory('Tree')">
+
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80')">
+</div>
+
 <div class="category-content">
 <div class="category-icon">🌳</div>
 <span class="category-name">Trees</span>
-<span class="category-count">Garden & forest</span>
+<span class="category-count">Forest & garden</span>
 </div>
+
 </button>
 
 </div>
 
 <div class="guide-section-title">
-<b>Plant encyclopedia</b>
-<small id="plantTotal">PLANTS</small>
+
+<b>Featured plants</b>
+
+<small>CLICK TO OPEN</small>
+
 </div>
 
 <div id="featuredPlants" class="featured-grid"></div>
@@ -1330,13 +1352,40 @@ Clear leaves, flowers or whole-plant photos usually work best.
 </section>
 
 
+<!-- ENCYCLOPEDIA -->
+
+<section id="encyclopedia" class="screen">
+
+<div class="page-header">
+
+<button class="back-button" onclick="show('home')">‹</button>
+
+<div>
+<p class="page-kicker">PLANT ENCYCLOPEDIA</p>
+<h1 id="encyTitle">Plants</h1>
+</div>
+
+</div>
+
+<div id="encyGrid" class="ency-grid"></div>
+
+</section>
+
+
 <!-- PLANT DETAIL -->
 
 <section id="plantDetail" class="screen">
 
-<button class="back-guide" onclick="show('home')">
-‹ &nbsp; Back to Plant Encyclopedia
-</button>
+<div class="page-header">
+
+<button class="back-button" onclick="show('encyclopedia')">‹</button>
+
+<div>
+<p class="page-kicker">PLANT ENCYCLOPEDIA</p>
+<h1>Plant profile</h1>
+</div>
+
+</div>
 
 <div id="plantDetailContent"></div>
 
@@ -1514,16 +1563,30 @@ Remove saved key
 
 <b>Privacy & security</b><br><br>
 
-The plant encyclopedia does not require an API key.
-Your Pl@ntNet key is only used for plant identification
-and health requests.
+Your API key is not included in this HTML.
+If you choose to remember it, the browser stores
+it locally on this device.
 
 <br><br>
 
-If you choose to remember it, the browser stores it
-locally on this device.
+For a public TaynPlantz release, a secure backend
+is recommended so API credentials do not need to
+be exposed to browser requests.
 
 </div>
+
+<p style="font-size:10px">
+
+<a
+href="https://my.plantnet.org/doc/getting-started/introduction"
+target="_blank"
+rel="noopener">
+
+View Pl@ntNet API documentation ↗
+
+</a>
+
+</p>
 
 </div>
 
@@ -1532,31 +1595,48 @@ locally on this device.
 </main>
 
 
+<!-- NAV -->
+
 <nav class="bottom-nav">
 
 <button class="nav-item active" data-page="home">
+
 <div class="nav-item-icon">⌂</div>
+
 <small>Guide</small>
+
 </button>
 
 <button class="nav-item" data-page="results">
+
 <div class="nav-item-icon">✦</div>
+
 <small>Results</small>
+
 </button>
 
 <button class="nav-item" data-page="health">
+
 <div class="nav-item-icon">♡</div>
+
 <small>Health</small>
+
 </button>
 
 <button class="nav-item" data-page="history">
+
 <div class="nav-item-icon">🌿</div>
+
 <small>My Plants</small>
+
 </button>
 
 <button class="nav-item" data-page="settings">
+
 <div class="nav-item-icon">⚙</div>
+
 <small>Settings</small>
+
 </button>
 
 </nav>
@@ -1569,1306 +1649,8 @@ locally on this device.
 <script>
 
 /* =========================================================
-   TAYNPLANTZ FREE PLANT ENCYCLOPEDIA
-   No encyclopedia API required.
-   ========================================================= */
-
-const PLANTS = [
-
-/* HERBS */
-
-{
-name:"Dill",
-scientific:"Anethum graveolens",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"15–24°C",
-description:"Dill is a fast-growing aromatic herb commonly grown for its feathery leaves and seeds.",
-care:[
-"Give dill at least 6 hours of direct sunlight.",
-"Keep soil evenly moist but never constantly soggy.",
-"Harvest young leaves regularly to encourage fresh growth.",
-"Allow flower heads to develop if you want to collect seeds."
-],
-problems:"Aphids, powdery mildew and bolting in hot weather."
-},
-
-{
-name:"Basil",
-scientific:"Ocimum basilicum",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Basil is a warm-season culinary herb valued for its fragrant leaves.",
-care:[
-"Provide 6–8 hours of sunlight.",
-"Water when the upper layer of soil begins to dry.",
-"Pinch flower buds to keep leaves productive.",
-"Harvest from the top rather than stripping individual lower leaves."
-],
-problems:"Aphids, whiteflies, fungal leaf problems and cold damage."
-},
-
-{
-name:"Mint",
-scientific:"Mentha",
-type:"herb",
-icon:"🌿",
-light:"Sun to partial shade",
-water:"High",
-soil:"Moist, rich",
-temperature:"13–27°C",
-description:"Mint is a vigorous perennial herb with aromatic leaves and spreading stems.",
-care:[
-"Keep the soil consistently moist.",
-"Give morning sun or bright partial shade.",
-"Container growing can help control its spreading habit.",
-"Trim regularly to encourage bushy growth."
-],
-problems:"Spider mites, rust and root problems from poorly drained soil."
-},
-
-{
-name:"Rosemary",
-scientific:"Salvia rosmarinus",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Low–moderate",
-soil:"Very well-draining",
-temperature:"15–27°C",
-description:"Rosemary is a woody Mediterranean herb that prefers strong sunlight and relatively dry soil.",
-care:[
-"Give rosemary plenty of direct sunlight.",
-"Allow soil to dry somewhat between waterings.",
-"Use a gritty, well-draining potting mix.",
-"Avoid leaving roots in standing water."
-],
-problems:"Root rot, spider mites and powdery mildew."
-},
-
-{
-name:"Thyme",
-scientific:"Thymus vulgaris",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Low",
-soil:"Dry, well-draining",
-temperature:"10–27°C",
-description:"Thyme is a compact aromatic herb that thrives in sunny, relatively dry conditions.",
-care:[
-"Provide strong direct sunlight.",
-"Let soil dry between thorough waterings.",
-"Use sandy or gritty soil.",
-"Trim stems after flowering to maintain shape."
-],
-problems:"Root rot and fungal problems caused by excessive moisture."
-},
-
-{
-name:"Oregano",
-scientific:"Origanum vulgare",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Low–moderate",
-soil:"Well-draining",
-temperature:"15–30°C",
-description:"Oregano is a hardy aromatic herb grown for its flavorful leaves.",
-care:[
-"Give full sun whenever possible.",
-"Allow soil to partially dry before watering.",
-"Harvest stems regularly.",
-"Avoid heavy, constantly wet soil."
-],
-problems:"Aphids, spider mites and root rot."
-},
-
-{
-name:"Cilantro",
-scientific:"Coriandrum sativum",
-type:"herb",
-icon:"🌿",
-light:"Full sun / partial shade",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"10–25°C",
-description:"Cilantro is a cool-season herb grown for its leaves and seeds.",
-care:[
-"Keep the soil evenly moist.",
-"Provide morning sun in hot weather.",
-"Sow succession crops because plants can bolt quickly.",
-"Harvest outer leaves first."
-],
-problems:"Bolting, aphids and fungal disease in overly wet conditions."
-},
-
-{
-name:"Parsley",
-scientific:"Petroselinum crispum",
-type:"herb",
-icon:"🌿",
-light:"Sun to partial shade",
-water:"Moderate",
-soil:"Rich, moist",
-temperature:"10–24°C",
-description:"Parsley is a biennial culinary herb commonly grown for its leafy foliage.",
-care:[
-"Keep soil lightly and consistently moist.",
-"Give several hours of sunlight.",
-"Harvest outer stems first.",
-"Deep containers help support its root system."
-],
-problems:"Aphids, caterpillars and fungal leaf spots."
-},
-
-{
-name:"Sage",
-scientific:"Salvia officinalis",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Low–moderate",
-soil:"Well-draining",
-temperature:"10–27°C",
-description:"Sage is a woody perennial herb with aromatic, textured leaves.",
-care:[
-"Give full sun.",
-"Let soil dry between waterings.",
-"Do not over-fertilize.",
-"Prune lightly after flowering."
-],
-problems:"Root rot, mildew and spider mites."
-},
-
-{
-name:"Tarragon",
-scientific:"Artemisia dracunculus",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"13–27°C",
-description:"Tarragon is a perennial culinary herb with slender aromatic leaves.",
-care:[
-"Provide strong sunlight.",
-"Use soil that drains freely.",
-"Water when the upper soil begins drying.",
-"Harvest young stems for the best flavor."
-],
-problems:"Root rot and fungal problems from excessive moisture."
-},
-
-/* VEGETABLES */
-
-{
-name:"Tomato",
-scientific:"Solanum lycopersicum",
-type:"vegetable",
-icon:"🍅",
-light:"Full sun",
-water:"Moderate–high",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Tomatoes are warm-season fruiting plants commonly grown in gardens and containers.",
-care:[
-"Give at least 6–8 hours of direct sun.",
-"Water deeply and consistently.",
-"Support tall varieties with stakes or cages.",
-"Mulch around the root zone to reduce moisture swings."
-],
-problems:"Blight, aphids, hornworms, blossom-end rot and cracking."
-},
-
-{
-name:"Pepper",
-scientific:"Capsicum annuum",
-type:"vegetable",
-icon:"🌶️",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Peppers are warm-season plants producing sweet or hot fruits.",
-care:[
-"Provide full sun.",
-"Keep soil evenly moist.",
-"Feed during active fruit production.",
-"Protect plants from cold temperatures."
-],
-problems:"Aphids, mites, blossom drop and fungal disease."
-},
-
-{
-name:"Cucumber",
-scientific:"Cucumis sativus",
-type:"vegetable",
-icon:"🥒",
-light:"Full sun",
-water:"High",
-soil:"Rich, moist",
-temperature:"18–30°C",
-description:"Cucumbers are fast-growing warm-season vines that need consistent moisture.",
-care:[
-"Provide full sunlight.",
-"Keep the soil consistently moist.",
-"Give vines a trellis when possible.",
-"Harvest regularly to encourage production."
-],
-problems:"Powdery mildew, cucumber beetles and spider mites."
-},
-
-{
-name:"Carrot",
-scientific:"Daucus carota",
-type:"vegetable",
-icon:"🥕",
-light:"Full sun",
-water:"Moderate",
-soil:"Loose, sandy",
-temperature:"10–24°C",
-description:"Carrots are root vegetables that develop best in loose, stone-free soil.",
-care:[
-"Use deep loose soil.",
-"Keep seedlings evenly moist.",
-"Thin crowded seedlings.",
-"Avoid heavy compacted soil."
-],
-problems:"Carrot rust fly, root-knot nematodes and forked roots."
-},
-
-{
-name:"Lettuce",
-scientific:"Lactuca sativa",
-type:"vegetable",
-icon:"🥬",
-light:"Sun / partial shade",
-water:"Moderate",
-soil:"Rich, moist",
-temperature:"7–21°C",
-description:"Lettuce is a cool-season leafy vegetable that grows quickly.",
-care:[
-"Keep soil evenly moist.",
-"Give partial afternoon shade during hot weather.",
-"Harvest outer leaves as needed.",
-"Succession planting extends the harvest."
-],
-problems:"Slugs, aphids, leaf miners and bolting."
-},
-
-{
-name:"Spinach",
-scientific:"Spinacia oleracea",
-type:"vegetable",
-icon:"🥬",
-light:"Sun / partial shade",
-water:"Moderate",
-soil:"Rich, moist",
-temperature:"5–21°C",
-description:"Spinach is a cool-season leafy vegetable with tender edible leaves.",
-care:[
-"Grow during cooler weather.",
-"Keep soil evenly moist.",
-"Harvest young outer leaves.",
-"Protect from intense summer heat."
-],
-problems:"Leaf miners, aphids and bolting."
-},
-
-{
-name:"Pea",
-scientific:"Pisum sativum",
-type:"vegetable",
-icon:"🫛",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"7–21°C",
-description:"Peas are cool-season legumes that can be grown as compact or climbing plants.",
-care:[
-"Plant during cool weather.",
-"Provide support for climbing varieties.",
-"Keep soil evenly moist.",
-"Harvest pods frequently."
-],
-problems:"Aphids, powdery mildew and pea moths."
-},
-
-{
-name:"Zucchini",
-scientific:"Cucurbita pepo",
-type:"vegetable",
-icon:"🥒",
-light:"Full sun",
-water:"High",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Zucchini is a vigorous summer squash that produces large leaves and edible fruits.",
-care:[
-"Give full sun.",
-"Water deeply.",
-"Leave enough room for plants to spread.",
-"Harvest fruits while they are young."
-],
-problems:"Squash bugs, powdery mildew and vine borers."
-},
-
-{
-name:"Broccoli",
-scientific:"Brassica oleracea var. italica",
-type:"vegetable",
-icon:"🥦",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"10–23°C",
-description:"Broccoli is a cool-season brassica grown for its edible flower heads.",
-care:[
-"Grow during cool weather.",
-"Keep soil evenly moist.",
-"Feed during active growth.",
-"Harvest the main head before flowers open."
-],
-problems:"Cabbage worms, aphids and clubroot."
-},
-
-/* HOUSEPLANTS */
-
-{
-name:"Monstera",
-scientific:"Monstera deliciosa",
-type:"houseplant",
-icon:"🌿",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Airy, well-draining",
-temperature:"18–30°C",
-description:"Monstera is a tropical climbing plant known for its large split leaves.",
-care:[
-"Provide bright indirect light.",
-"Allow the upper soil to dry slightly between watering.",
-"Use an airy potting mix.",
-"Provide a moss pole or support as the plant matures."
-],
-problems:"Spider mites, thrips, root rot and leaf browning."
-},
-
-{
-name:"Snake Plant",
-scientific:"Dracaena trifasciata",
-type:"houseplant",
-icon:"🪴",
-light:"Low to bright",
-water:"Low",
-soil:"Very well-draining",
-temperature:"15–30°C",
-description:"Snake plant is a tough indoor plant that tolerates lower light and infrequent watering.",
-care:[
-"Allow soil to dry thoroughly between watering.",
-"Avoid standing water.",
-"Bright indirect light encourages stronger growth.",
-"Use a cactus or succulent-style mix."
-],
-problems:"Root rot, mealybugs and overwatering damage."
-},
-
-{
-name:"Pothos",
-scientific:"Epipremnum aureum",
-type:"houseplant",
-icon:"🌿",
-light:"Low to bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"18–30°C",
-description:"Pothos is a popular trailing houseplant known for vigorous growth.",
-care:[
-"Allow the upper soil to dry before watering.",
-"Bright indirect light helps maintain variegation.",
-"Trim long vines to encourage fullness.",
-"Keep away from prolonged cold temperatures."
-],
-problems:"Root rot, mealybugs and spider mites."
-},
-
-{
-name:"Peace Lily",
-scientific:"Spathiphyllum",
-type:"houseplant",
-icon:"🌸",
-light:"Low to bright indirect",
-water:"Moderate–high",
-soil:"Moist, well-draining",
-temperature:"18–30°C",
-description:"Peace lilies are tropical foliage plants known for their white flower-like spathes.",
-care:[
-"Keep soil lightly moist.",
-"Use filtered or settled water if leaf tips brown easily.",
-"Provide bright indirect light for flowering.",
-"Increase humidity in dry indoor environments."
-],
-problems:"Spider mites, scale, root rot and brown leaf tips."
-},
-
-{
-name:"ZZ Plant",
-scientific:"Zamioculcas zamiifolia",
-type:"houseplant",
-icon:"🪴",
-light:"Low to bright indirect",
-water:"Low",
-soil:"Very well-draining",
-temperature:"18–30°C",
-description:"ZZ plants are drought-tolerant indoor plants with thick stems and glossy foliage.",
-care:[
-"Allow soil to dry substantially between watering.",
-"Avoid constantly wet soil.",
-"Bright indirect light encourages faster growth.",
-"Dust leaves occasionally."
-],
-problems:"Root rot, scale and mealybugs."
-},
-
-{
-name:"Spider Plant",
-scientific:"Chlorophytum comosum",
-type:"houseplant",
-icon:"🌿",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"15–27°C",
-description:"Spider plants are easy-care houseplants that produce arching leaves and plantlets.",
-care:[
-"Provide bright indirect light.",
-"Water when the upper soil begins to dry.",
-"Trim brown tips if desired.",
-"Repot when roots become crowded."
-],
-problems:"Brown tips, spider mites and root rot."
-},
-
-{
-name:"Rubber Plant",
-scientific:"Ficus elastica",
-type:"houseplant",
-icon:"🌿",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"18–30°C",
-description:"Rubber plants are upright tropical houseplants with thick glossy leaves.",
-care:[
-"Give bright indirect light.",
-"Let the upper soil dry slightly.",
-"Rotate the plant for even growth.",
-"Clean broad leaves occasionally."
-],
-problems:"Scale, mealybugs, spider mites and leaf drop."
-},
-
-{
-name:"Fiddle Leaf Fig",
-scientific:"Ficus lyrata",
-type:"houseplant",
-icon:"🌿",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"18–30°C",
-description:"Fiddle leaf figs are tropical trees grown indoors for their large violin-shaped leaves.",
-care:[
-"Provide bright filtered light.",
-"Water thoroughly when the upper soil dries.",
-"Avoid frequent location changes.",
-"Clean large leaves to improve light absorption."
-],
-problems:"Spider mites, scale, root rot and leaf drop."
-},
-
-{
-name:"Calathea",
-scientific:"Calathea",
-type:"houseplant",
-icon:"🌿",
-light:"Medium to bright indirect",
-water:"Moderate–high",
-soil:"Moist, airy",
-temperature:"18–30°C",
-description:"Calatheas are tropical foliage plants prized for patterned leaves.",
-care:[
-"Keep soil lightly moist.",
-"Provide indirect light.",
-"Humidity is helpful.",
-"Avoid prolonged dry conditions."
-],
-problems:"Spider mites, crispy leaves and watering stress."
-},
-
-{
-name:"Philodendron",
-scientific:"Philodendron",
-type:"houseplant",
-icon:"🌿",
-light:"Medium to bright indirect",
-water:"Moderate",
-soil:"Airy, well-draining",
-temperature:"18–30°C",
-description:"Philodendrons are adaptable tropical foliage plants available in climbing and upright forms.",
-care:[
-"Provide indirect light.",
-"Allow the upper soil to dry slightly.",
-"Use an airy mix.",
-"Support climbing varieties."
-],
-problems:"Mealybugs, thrips and root rot."
-},
-
-{
-name:"Chinese Money Plant",
-scientific:"Pilea peperomioides",
-type:"houseplant",
-icon:"🪴",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"15–27°C",
-description:"Chinese money plant is a compact houseplant recognized by its round coin-shaped leaves.",
-care:[
-"Provide bright indirect light.",
-"Let the upper soil dry before watering.",
-"Rotate regularly.",
-"Remove damaged leaves."
-],
-problems:"Fungus gnats, spider mites and overwatering."
-},
-
-{
-name:"Aloe Vera",
-scientific:"Aloe vera",
-type:"succulent",
-icon:"🌵",
-light:"Bright light",
-water:"Low",
-soil:"Cactus mix",
-temperature:"15–30°C",
-description:"Aloe vera is a succulent with fleshy leaves adapted to dry conditions.",
-care:[
-"Give bright light.",
-"Allow soil to dry completely between watering.",
-"Use a fast-draining succulent mix.",
-"Avoid water collecting in the leaf center."
-],
-problems:"Root rot, scale and overwatering."
-},
-
-/* SUCCULENTS */
-
-{
-name:"Echeveria",
-scientific:"Echeveria",
-type:"succulent",
-icon:"🌵",
-light:"Bright light",
-water:"Low",
-soil:"Cactus mix",
-temperature:"10–30°C",
-description:"Echeverias are rosette-forming succulents available in many colors and shapes.",
-care:[
-"Provide strong light.",
-"Water deeply only after soil dries.",
-"Keep leaves dry when watering.",
-"Use excellent drainage."
-],
-problems:"Mealybugs, root rot and stretching from low light."
-},
-
-{
-name:"Jade Plant",
-scientific:"Crassula ovata",
-type:"succulent",
-icon:"🌵",
-light:"Bright light",
-water:"Low",
-soil:"Very well-draining",
-temperature:"15–30°C",
-description:"Jade plant is a long-lived succulent with thick stems and fleshy oval leaves.",
-care:[
-"Provide several hours of bright light.",
-"Let soil dry thoroughly.",
-"Use a gritty potting mix.",
-"Prune to shape when actively growing."
-],
-problems:"Root rot, scale and mealybugs."
-},
-
-{
-name:"String of Pearls",
-scientific:"Curio rowleyanus",
-type:"succulent",
-icon:"🌿",
-light:"Bright indirect",
-water:"Low",
-soil:"Cactus mix",
-temperature:"15–27°C",
-description:"String of pearls is a trailing succulent with bead-like leaves.",
-care:[
-"Provide bright filtered light.",
-"Let soil dry between watering.",
-"Use a very fast-draining mix.",
-"Avoid water sitting around the stems."
-],
-problems:"Root rot, mealybugs and sun scorch."
-},
-
-{
-name:"Christmas Cactus",
-scientific:"Schlumbergera",
-type:"succulent",
-icon:"🌸",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"15–27°C",
-description:"Christmas cactus is a tropical cactus that produces colorful flowers around the holiday season.",
-care:[
-"Provide bright indirect light.",
-"Water when the upper soil dries.",
-"Do not treat it like a desert cactus.",
-"Cooler nights and shorter days can encourage flowering."
-],
-problems:"Root rot, mealybugs and bud drop."
-},
-
-/* FLOWERS */
-
-{
-name:"Rose",
-scientific:"Rosa",
-type:"flower",
-icon:"🌹",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"10–30°C",
-description:"Roses are flowering shrubs grown for their colorful and often fragrant blooms.",
-care:[
-"Give at least 6 hours of direct sunlight.",
-"Water deeply at the base.",
-"Prune appropriately for the rose type.",
-"Feed during active growth."
-],
-problems:"Black spot, powdery mildew, aphids and Japanese beetles."
-},
-
-{
-name:"Sunflower",
-scientific:"Helianthus annuus",
-type:"flower",
-icon:"🌻",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"18–30°C",
-description:"Sunflowers are fast-growing annual flowers known for their large bright flower heads.",
-care:[
-"Provide full sun.",
-"Water deeply while establishing.",
-"Support tall varieties.",
-"Protect seedlings from pests."
-],
-problems:"Aphids, birds, mildew and caterpillars."
-},
-
-{
-name:"Lavender",
-scientific:"Lavandula",
-type:"flower",
-icon:"💜",
-light:"Full sun",
-water:"Low",
-soil:"Dry, well-draining",
-temperature:"10–30°C",
-description:"Lavender is a fragrant flowering plant that prefers sunny, dry conditions.",
-care:[
-"Give full sun.",
-"Use sharply draining soil.",
-"Allow soil to dry between watering.",
-"Prune lightly after flowering."
-],
-problems:"Root rot, fungal disease and aphids."
-},
-
-{
-name:"Marigold",
-scientific:"Tagetes",
-type:"flower",
-icon:"🌼",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"15–30°C",
-description:"Marigolds are easy-growing annual flowers that bloom in shades of yellow and orange.",
-care:[
-"Provide full sun.",
-"Water when soil begins to dry.",
-"Remove spent flowers.",
-"Do not keep roots constantly wet."
-],
-problems:"Spider mites, aphids and fungal leaf problems."
-},
-
-{
-name:"Petunia",
-scientific:"Petunia",
-type:"flower",
-icon:"🌸",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"15–30°C",
-description:"Petunias are colorful flowering plants commonly grown in containers and garden beds.",
-care:[
-"Give full sun.",
-"Water regularly during hot weather.",
-"Feed flowering plants periodically.",
-"Trim leggy growth."
-],
-problems:"Aphids, caterpillars and fungal disease."
-},
-
-{
-name:"Geranium",
-scientific:"Pelargonium",
-type:"flower",
-icon:"🌸",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"12–27°C",
-description:"Geraniums are popular flowering container plants with long-lasting blooms.",
-care:[
-"Provide bright sunlight.",
-"Allow the upper soil to dry.",
-"Remove spent flowers.",
-"Avoid soggy soil."
-],
-problems:"Whiteflies, aphids, botrytis and root rot."
-},
-
-{
-name:"Hydrangea",
-scientific:"Hydrangea",
-type:"flower",
-icon:"💠",
-light:"Morning sun / partial shade",
-water:"High",
-soil:"Rich, moist",
-temperature:"10–27°C",
-description:"Hydrangeas are flowering shrubs known for large clusters of blooms.",
-care:[
-"Provide morning sun and afternoon protection in hot climates.",
-"Keep soil consistently moist.",
-"Mulch around the root zone.",
-"Pruning requirements vary by species."
-],
-problems:"Powdery mildew, leaf spot, aphids and spider mites."
-},
-
-{
-name:"Tulip",
-scientific:"Tulipa",
-type:"flower",
-icon:"🌷",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"5–21°C",
-description:"Tulips are spring-flowering bulb plants with colorful cup-shaped flowers.",
-care:[
-"Plant bulbs in well-draining soil.",
-"Give full sun during active growth.",
-"Do not allow bulbs to sit in water.",
-"Allow foliage to yellow naturally after flowering."
-],
-problems:"Botrytis, bulb rot, aphids and rodents."
-},
-
-/* TREES */
-
-{
-name:"Japanese Maple",
-scientific:"Acer palmatum",
-type:"tree",
-icon:"🍁",
-light:"Partial shade",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"5–27°C",
-description:"Japanese maple is a small ornamental tree valued for delicate leaves and brilliant seasonal color.",
-care:[
-"Protect from intense afternoon heat.",
-"Keep soil evenly moist.",
-"Use mulch around but not against the trunk.",
-"Protect young trees from drying winds."
-],
-problems:"Leaf scorch, verticillium wilt and aphids."
-},
-
-{
-name:"Oak",
-scientific:"Quercus",
-type:"tree",
-icon:"🌳",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"5–30°C",
-description:"Oaks are long-lived trees that provide shade and habitat for many organisms.",
-care:[
-"Give young trees adequate water.",
-"Provide plenty of growing space.",
-"Mulch around the root zone.",
-"Avoid damaging the trunk with equipment."
-],
-problems:"Oak wilt, leaf miners, scale and various caterpillars."
-},
-
-{
-name:"Maple",
-scientific:"Acer",
-type:"tree",
-icon:"🍁",
-light:"Full sun / partial shade",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"5–30°C",
-description:"Maples are deciduous trees known for attractive foliage and autumn color.",
-care:[
-"Water young trees during dry periods.",
-"Provide adequate root space.",
-"Mulch to protect the root zone.",
-"Prune damaged branches appropriately."
-],
-problems:"Leaf scorch, scale and fungal leaf spots."
-},
-
-{
-name:"Birch",
-scientific:"Betula",
-type:"tree",
-icon:"🌳",
-light:"Full sun / partial shade",
-water:"Moderate–high",
-soil:"Moist, well-draining",
-temperature:"5–25°C",
-description:"Birches are graceful deciduous trees often recognized by their pale bark.",
-care:[
-"Keep the root zone adequately moist.",
-"Mulch to protect shallow roots.",
-"Avoid severe drought stress.",
-"Plant in a suitable climate."
-],
-problems:"Bronze birch borer, leaf miners and fungal diseases."
-},
-
-/* TROPICAL */
-
-{
-name:"Bird of Paradise",
-scientific:"Strelitzia reginae",
-type:"tropical",
-icon:"🌴",
-light:"Bright light",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"18–30°C",
-description:"Bird of paradise is a tropical plant with large leaves and dramatic orange flowers.",
-care:[
-"Provide very bright light.",
-"Water thoroughly when the upper soil dries.",
-"Give the plant plenty of space.",
-"Increase humidity when indoor air is very dry."
-],
-problems:"Spider mites, scale and leaf splitting."
-},
-
-{
-name:"Croton",
-scientific:"Codiaeum variegatum",
-type:"tropical",
-icon:"🌿",
-light:"Bright light",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"18–30°C",
-description:"Crotons are colorful tropical foliage plants with brightly patterned leaves.",
-care:[
-"Give bright light to maintain strong coloration.",
-"Keep soil moderately moist.",
-"Avoid cold drafts.",
-"Increase humidity in dry indoor environments."
-],
-problems:"Spider mites, scale and leaf drop."
-},
-
-{
-name:"Hibiscus",
-scientific:"Hibiscus rosa-sinensis",
-type:"tropical",
-icon:"🌺",
-light:"Full sun / bright light",
-water:"Moderate–high",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Tropical hibiscus produces large colorful flowers in warm conditions.",
-care:[
-"Provide strong sunlight.",
-"Water consistently during active growth.",
-"Feed regularly while flowering.",
-"Protect from cold temperatures."
-],
-problems:"Aphids, whiteflies, spider mites and bud drop."
-},
-
-{
-name:"Bromeliad",
-scientific:"Bromeliaceae",
-type:"tropical",
-icon:"🌺",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Very well-draining",
-temperature:"18–30°C",
-description:"Bromeliads are tropical plants often grown for their colorful central rosettes.",
-care:[
-"Provide bright filtered light.",
-"Use an airy growing medium.",
-"Do not keep the root zone saturated.",
-"Some types benefit from water in the central cup."
-],
-problems:"Scale, mealybugs and rot from excessive moisture."
-},
-
-/* MORE COMMON PLANTS */
-
-{
-name:"Orchid",
-scientific:"Phalaenopsis",
-type:"houseplant",
-icon:"🌸",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Orchid bark mix",
-temperature:"18–30°C",
-description:"Phalaenopsis orchids are popular indoor flowering plants with long-lasting blooms.",
-care:[
-"Provide bright indirect light.",
-"Water thoroughly then allow the growing medium to approach dryness.",
-"Use orchid bark rather than ordinary dense potting soil.",
-"Keep water out of the crown."
-],
-problems:"Root rot, scale, mealybugs and crown rot."
-},
-
-{
-name:"Boston Fern",
-scientific:"Nephrolepis exaltata",
-type:"houseplant",
-icon:"🌿",
-light:"Bright indirect",
-water:"High",
-soil:"Moist, airy",
-temperature:"16–27°C",
-description:"Boston ferns are lush foliage plants that prefer consistent moisture and humidity.",
-care:[
-"Keep soil consistently lightly moist.",
-"Provide indirect light.",
-"Increase humidity in dry rooms.",
-"Protect from hot direct sunlight."
-],
-problems:"Spider mites, dry fronds and root problems."
-},
-
-{
-name:"English Ivy",
-scientific:"Hedera helix",
-type:"houseplant",
-icon:"🌿",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"10–24°C",
-description:"English ivy is a trailing vine that can be grown indoors or outdoors in suitable climates.",
-care:[
-"Provide bright indirect light indoors.",
-"Let the upper soil dry slightly.",
-"Trim regularly.",
-"Good airflow helps reduce fungal issues."
-],
-problems:"Spider mites, aphids and fungal disease."
-},
-
-{
-name:"African Violet",
-scientific:"Streptocarpus sect. Saintpaulia",
-type:"houseplant",
-icon:"💜",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Light, well-draining",
-temperature:"18–27°C",
-description:"African violets are compact flowering houseplants with soft leaves and colorful blooms.",
-care:[
-"Provide bright indirect light.",
-"Water when the surface begins drying.",
-"Avoid getting water on fuzzy leaves.",
-"Use a light specialized potting mix."
-],
-problems:"Cyclamen mites, powdery mildew and crown rot."
-},
-
-{
-name:"Lucky Bamboo",
-scientific:"Dracaena sanderiana",
-type:"houseplant",
-icon:"🎋",
-light:"Bright indirect",
-water:"Moderate",
-soil:"Water or well-draining soil",
-temperature:"18–30°C",
-description:"Lucky bamboo is a popular tropical foliage plant often grown in water.",
-care:[
-"Use bright indirect light.",
-"Change standing water regularly if grown hydroponically.",
-"Avoid harsh direct sun.",
-"Use clean water."
-],
-problems:"Algae, root rot and leaf yellowing."
-},
-
-{
-name:"Boston Ivy",
-scientific:"Parthenocissus tricuspidata",
-type:"tree",
-icon:"🍃",
-light:"Full sun / partial shade",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"5–30°C",
-description:"Boston ivy is a vigorous deciduous vine known for brilliant autumn color.",
-care:[
-"Provide sun or partial shade.",
-"Give climbing support.",
-"Water young plants during dry periods.",
-"Prune to control spread."
-],
-problems:"Leaf spot, mildew and scale."
-},
-
-{
-name:"Gardenia",
-scientific:"Gardenia jasminoides",
-type:"flower",
-icon:"🌸",
-light:"Bright light",
-water:"Moderate–high",
-soil:"Acidic, well-draining",
-temperature:"18–27°C",
-description:"Gardenias are fragrant flowering shrubs that prefer bright light, humidity and acidic soil.",
-care:[
-"Provide bright light.",
-"Keep soil consistently but not excessively moist.",
-"Use acidic fertilizer when needed.",
-"Humidity helps indoor gardenias."
-],
-problems:"Scale, aphids, spider mites and yellow leaves."
-},
-
-{
-name:"Azalea",
-scientific:"Rhododendron",
-type:"flower",
-icon:"🌸",
-light:"Partial shade",
-water:"Moderate",
-soil:"Acidic, well-draining",
-temperature:"5–24°C",
-description:"Azaleas are flowering shrubs known for abundant spring blooms.",
-care:[
-"Use acidic soil.",
-"Keep roots evenly moist.",
-"Protect from intense afternoon heat.",
-"Mulch to maintain root moisture."
-],
-problems:"Root rot, lace bugs and fungal leaf spots."
-},
-
-{
-name:"Daisy",
-scientific:"Bellis perennis",
-type:"flower",
-icon:"🌼",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"7–24°C",
-description:"Daisies are cheerful flowering plants commonly grown in lawns, beds and containers.",
-care:[
-"Provide sunlight.",
-"Water when soil begins drying.",
-"Remove spent flowers.",
-"Provide good drainage."
-],
-problems:"Aphids, slugs and fungal disease."
-},
-
-{
-name:"Snapdragon",
-scientific:"Antirrhinum majus",
-type:"flower",
-icon:"🌸",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"7–24°C",
-description:"Snapdragons are cool-season flowering plants with tall spikes of colorful blooms.",
-care:[
-"Grow in sun.",
-"Keep soil moderately moist.",
-"Deadhead spent flowers.",
-"Support tall varieties."
-],
-problems:"Rust, aphids and powdery mildew."
-},
-
-{
-name:"Chive",
-scientific:"Allium schoenoprasum",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"10–27°C",
-description:"Chives are hardy perennial herbs with slender leaves and edible purple flowers.",
-care:[
-"Provide full sun.",
-"Water when soil begins to dry.",
-"Cut leaves regularly.",
-"Divide crowded clumps."
-],
-problems:"Thrips, onion maggots and fungal disease."
-},
-
-{
-name:"Lemon Balm",
-scientific:"Melissa officinalis",
-type:"herb",
-icon:"🌿",
-light:"Sun / partial shade",
-water:"Moderate",
-soil:"Moist, well-draining",
-temperature:"10–27°C",
-description:"Lemon balm is a fragrant member of the mint family with lemon-scented leaves.",
-care:[
-"Keep soil moderately moist.",
-"Provide sun or partial shade.",
-"Trim regularly to prevent flowering and spreading.",
-"Containers can help control growth."
-],
-problems:"Spider mites, aphids and powdery mildew."
-},
-
-{
-name:"Fennel",
-scientific:"Foeniculum vulgare",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"10–27°C",
-description:"Fennel is an aromatic herb with feathery foliage and a distinctive anise flavor.",
-care:[
-"Provide full sun.",
-"Water consistently while establishing.",
-"Give plants plenty of space.",
-"Harvest leaves before flowering for tender foliage."
-],
-problems:"Aphids, swallowtail caterpillars and fungal disease."
-},
-
-{
-name:"Tarragon",
-scientific:"Artemisia dracunculus",
-type:"herb",
-icon:"🌿",
-light:"Full sun",
-water:"Moderate",
-soil:"Well-draining",
-temperature:"10–27°C",
-description:"Tarragon is a perennial culinary herb valued for its distinctive flavor.",
-care:[
-"Give full sun.",
-"Use free-draining soil.",
-"Water when the upper soil begins drying.",
-"Harvest young shoots."
-],
-problems:"Root rot and fungal disease."
-},
-
-{
-name:"Chili Pepper",
-scientific:"Capsicum",
-type:"vegetable",
-icon:"🌶️",
-light:"Full sun",
-water:"Moderate",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Chili peppers are warm-season plants producing fruits ranging from mild to extremely hot.",
-care:[
-"Give full sun.",
-"Water consistently.",
-"Feed during fruit development.",
-"Protect from cold temperatures."
-],
-problems:"Aphids, spider mites, blossom drop and fungal disease."
-},
-
-{
-name:"Pumpkin",
-scientific:"Cucurbita",
-type:"vegetable",
-icon:"🎃",
-light:"Full sun",
-water:"High",
-soil:"Rich, well-draining",
-temperature:"18–30°C",
-description:"Pumpkins are vigorous warm-season vines that require significant growing space.",
-care:[
-"Provide full sun.",
-"Give vines room to spread.",
-"Water deeply and consistently.",
-"Feed during active growth."
-],
-problems:"Powdery mildew, squash bugs and vine borers."
-}
-
-];
-
-
-/* =========================================================
-   HELPERS
+   TAYNPLANTZ
+   Built-in plant encyclopedia
    ========================================================= */
 
 const API="https://my-api.plantnet.org/v2";
@@ -2894,6 +1676,539 @@ const pct=x=>Math.round((x||0)*100);
 
 
 /* =========================================================
+   PLANT DATABASE
+   ========================================================= */
+
+const PLANTS=[
+
+/* HERBS */
+
+{
+id:"dill",
+name:"Dill",
+scientific:"Anethum graveolens",
+category:"Herbs",
+type:"Herb",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A fragrant culinary herb with fine, feathery foliage. Dill grows quickly and is commonly used fresh or dried in cooking.",
+image:"https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Edible","Sun"]
+},
+
+{
+id:"basil",
+name:"Basil",
+scientific:"Ocimum basilicum",
+category:"Herbs",
+type:"Herb",
+light:"Full sun",
+water:"Moderate",
+soil:"Rich, well-draining",
+difficulty:"Easy",
+description:"A popular aromatic herb with soft green leaves. Basil prefers warmth, sunlight and consistent moisture without waterlogged soil.",
+image:"https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Edible","Warm"]
+},
+
+{
+id:"mint",
+name:"Mint",
+scientific:"Mentha",
+category:"Herbs",
+type:"Herb",
+light:"Sun to partial shade",
+water:"Regular",
+soil:"Moist, rich",
+difficulty:"Easy",
+description:"Mint is a vigorous aromatic herb. It prefers consistently moist soil and can spread rapidly when planted directly in the garden.",
+image:"https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Edible","Aromatic"]
+},
+
+{
+id:"parsley",
+name:"Parsley",
+scientific:"Petroselinum crispum",
+category:"Herbs",
+type:"Herb",
+light:"Full sun to partial shade",
+water:"Moderate",
+soil:"Rich, well-draining",
+difficulty:"Easy",
+description:"Parsley is a biennial herb grown for its flavorful leaves. It works well in containers, kitchen gardens and borders.",
+image:"https://images.unsplash.com/photo-1600326145552-327f74b2c6c9?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Edible","Kitchen"]
+},
+
+{
+id:"rosemary",
+name:"Rosemary",
+scientific:"Salvia rosmarinus",
+category:"Herbs",
+type:"Herb",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Very well-draining",
+difficulty:"Easy",
+description:"Rosemary is a woody Mediterranean herb with fragrant needle-like foliage. Allow soil to dry somewhat between waterings.",
+image:"https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Mediterranean","Aromatic"]
+},
+
+{
+id:"thyme",
+name:"Thyme",
+scientific:"Thymus vulgaris",
+category:"Herbs",
+type:"Herb",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A compact aromatic herb that enjoys sunlight and dry, well-drained conditions.",
+image:"https://images.unsplash.com/photo-1599909533730-f9d7a2b2f3b5?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Edible","Sun"]
+},
+
+{
+id:"oregano",
+name:"Oregano",
+scientific:"Origanum vulgare",
+category:"Herbs",
+type:"Herb",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A hardy Mediterranean herb with strongly flavored leaves. It performs best with plenty of sun and good drainage.",
+image:"https://images.unsplash.com/photo-1602924572351-0c9f6c6c7c9e?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Mediterranean","Edible"]
+},
+
+{
+id:"cilantro",
+name:"Cilantro",
+scientific:"Coriandrum sativum",
+category:"Herbs",
+type:"Herb",
+light:"Full sun to partial shade",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"Cilantro is a fast-growing culinary herb. It prefers cool conditions and regular moisture.",
+image:"https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=900&q=85",
+tags:["Herb","Edible","Kitchen"]
+},
+
+/* HOUSEPLANTS */
+
+{
+id:"monstera",
+name:"Monstera",
+scientific:"Monstera deliciosa",
+category:"Houseplants",
+type:"Tropical houseplant",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Airy, well-draining",
+difficulty:"Easy",
+description:"A tropical foliage plant famous for its large leaves and natural splits. Give it bright indirect light and allow the upper soil to dry between waterings.",
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
+tags:["Tropical","Indoor","Popular"]
+},
+
+{
+id:"snake",
+name:"Snake Plant",
+scientific:"Dracaena trifasciata",
+category:"Houseplants",
+type:"Succulent-like houseplant",
+light:"Low to bright indirect",
+water:"Low",
+soil:"Very well-draining",
+difficulty:"Very easy",
+description:"A durable indoor plant that tolerates lower light and infrequent watering. One of the easiest houseplants for beginners.",
+image:"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=900&q=85",
+tags:["Easy","Indoor","Low light"]
+},
+
+{
+id:"pothos",
+name:"Golden Pothos",
+scientific:"Epipremnum aureum",
+category:"Houseplants",
+type:"Vining houseplant",
+light:"Low to bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A vigorous trailing houseplant with heart-shaped leaves. It adapts well to many indoor conditions.",
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
+tags:["Indoor","Vining","Easy"]
+},
+
+{
+id:"spider",
+name:"Spider Plant",
+scientific:"Chlorophytum comosum",
+category:"Houseplants",
+type:"Houseplant",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A classic houseplant that produces long arching leaves and small plantlets on runners.",
+image:"https://images.unsplash.com/photo-1572688484438-313a6e50c333?auto=format&fit=crop&w=900&q=85",
+tags:["Indoor","Easy","Beginner"]
+},
+
+{
+id:"peace-lily",
+name:"Peace Lily",
+scientific:"Spathiphyllum",
+category:"Houseplants",
+type:"Tropical houseplant",
+light:"Low to bright indirect",
+water:"Moderate",
+soil:"Moist, well-draining",
+difficulty:"Easy",
+description:"A tropical foliage plant with glossy leaves and distinctive white flower-like spathes.",
+image:"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=900&q=85",
+tags:["Indoor","Flowering","Shade tolerant"]
+},
+
+{
+id:"zz",
+name:"ZZ Plant",
+scientific:"Zamioculcas zamiifolia",
+category:"Houseplants",
+type:"Houseplant",
+light:"Low to bright indirect",
+water:"Low",
+soil:"Very well-draining",
+difficulty:"Very easy",
+description:"A highly durable indoor plant with glossy foliage and thick underground rhizomes that store water.",
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
+tags:["Easy","Low water","Indoor"]
+},
+
+{
+id:"rubber",
+name:"Rubber Plant",
+scientific:"Ficus elastica",
+category:"Houseplants",
+type:"Tropical tree",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A popular indoor ficus with large glossy leaves. It appreciates bright filtered light and moderate watering.",
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
+tags:["Indoor","Tropical","Foliage"]
+},
+
+/* FLOWERS */
+
+{
+id:"rose",
+name:"Rose",
+scientific:"Rosa",
+category:"Flowering",
+type:"Flowering shrub",
+light:"Full sun",
+water:"Moderate",
+soil:"Rich, well-draining",
+difficulty:"Moderate",
+description:"Roses are flowering shrubs grown for their colorful, often fragrant blooms. Good sunlight and airflow are important.",
+image:"https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85",
+tags:["Flowering","Outdoor","Fragrant"]
+},
+
+{
+id:"sunflower",
+name:"Sunflower",
+scientific:"Helianthus annuus",
+category:"Flowering",
+type:"Annual flower",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"A tall annual flower known for its large yellow flower heads. Sunflowers thrive in direct sunlight.",
+image:"https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=900&q=85",
+tags:["Flowering","Annual","Sun"]
+},
+
+{
+id:"lavender",
+name:"Lavender",
+scientific:"Lavandula",
+category:"Flowering",
+type:"Flowering herb",
+light:"Full sun",
+water:"Low",
+soil:"Very well-draining",
+difficulty:"Easy",
+description:"Lavender is a fragrant flowering plant that prefers full sun and relatively dry, well-draining soil.",
+image:"https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=900&q=85",
+tags:["Flowering","Fragrant","Sun"]
+},
+
+{
+id:"marigold",
+name:"Marigold",
+scientific:"Tagetes",
+category:"Flowering",
+type:"Annual flower",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"Marigolds are cheerful flowering annuals that produce yellow, orange or red blooms.",
+image:"https://images.unsplash.com/photo-1509223197845-458d87318791?auto=format&fit=crop&w=900&q=85",
+tags:["Flowering","Annual","Garden"]
+},
+
+{
+id:"tulip",
+name:"Tulip",
+scientific:"Tulipa",
+category:"Flowering",
+type:"Bulb",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Easy",
+description:"Tulips are spring-flowering bulbs available in a wide variety of colors and forms.",
+image:"https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=900&q=85",
+tags:["Flowering","Bulb","Spring"]
+},
+
+/* SUCCULENTS */
+
+{
+id:"aloe",
+name:"Aloe Vera",
+scientific:"Aloe vera",
+category:"Succulent",
+type:"Succulent",
+light:"Bright light",
+water:"Low",
+soil:"Cactus mix",
+difficulty:"Easy",
+description:"Aloe vera is a drought-tolerant succulent with thick fleshy leaves. Allow the soil to dry thoroughly between waterings.",
+image:"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=900&q=85",
+tags:["Succulent","Low water","Sun"]
+},
+
+{
+id:"echeveria",
+name:"Echeveria",
+scientific:"Echeveria",
+category:"Succulent",
+type:"Rosette succulent",
+light:"Bright light",
+water:"Low",
+soil:"Cactus mix",
+difficulty:"Easy",
+description:"Echeverias form attractive rosettes and prefer strong light, excellent drainage and infrequent watering.",
+image:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=900&q=85",
+tags:["Succulent","Rosette","Dry"]
+},
+
+{
+id:"jade",
+name:"Jade Plant",
+scientific:"Crassula ovata",
+category:"Succulent",
+type:"Succulent shrub",
+light:"Bright light",
+water:"Low",
+soil:"Very well-draining",
+difficulty:"Easy",
+description:"Jade plants have thick stems and fleshy leaves. They prefer bright light and drying between waterings.",
+image:"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=900&q=85",
+tags:["Succulent","Indoor","Easy"]
+},
+
+{
+id:"cactus",
+name:"Cactus",
+scientific:"Cactaceae",
+category:"Succulent",
+type:"Cactus",
+light:"Bright direct",
+water:"Very low",
+soil:"Cactus mix",
+difficulty:"Easy",
+description:"Cacti are drought-adapted plants that generally require strong light and excellent drainage.",
+image:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=900&q=85",
+tags:["Cactus","Dry","Sun"]
+},
+
+/* VEGETABLES */
+
+{
+id:"tomato",
+name:"Tomato",
+scientific:"Solanum lycopersicum",
+category:"Vegetable",
+type:"Fruit vegetable",
+light:"Full sun",
+water:"Regular",
+soil:"Rich, well-draining",
+difficulty:"Moderate",
+description:"Tomatoes are warm-season garden plants that need strong sunlight, regular watering and fertile soil.",
+image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=900&q=85",
+tags:["Edible","Garden","Sun"]
+},
+
+{
+id:"pepper",
+name:"Bell Pepper",
+scientific:"Capsicum annuum",
+category:"Vegetable",
+type:"Fruit vegetable",
+light:"Full sun",
+water:"Regular",
+soil:"Rich, well-draining",
+difficulty:"Moderate",
+description:"Bell peppers are warm-season plants producing crisp fruits in green, red, yellow and other colors.",
+image:"https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=900&q=85",
+tags:["Edible","Garden","Warm"]
+},
+
+{
+id:"lettuce",
+name:"Lettuce",
+scientific:"Lactuca sativa",
+category:"Vegetable",
+type:"Leaf vegetable",
+light:"Sun to partial shade",
+water:"Regular",
+soil:"Moist, fertile",
+difficulty:"Easy",
+description:"Lettuce is a cool-season leafy crop that grows quickly when supplied with consistent moisture.",
+image:"https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?auto=format&fit=crop&w=900&q=85",
+tags:["Edible","Leafy","Cool season"]
+},
+
+{
+id:"carrot",
+name:"Carrot",
+scientific:"Daucus carota",
+category:"Vegetable",
+type:"Root vegetable",
+light:"Full sun",
+water:"Regular",
+soil:"Loose, sandy",
+difficulty:"Easy",
+description:"Carrots develop best in loose, stone-free soil where their roots can expand freely.",
+image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=900&q=85",
+tags:["Edible","Root","Garden"]
+},
+
+{
+id:"cucumber",
+name:"Cucumber",
+scientific:"Cucumis sativus",
+category:"Vegetable",
+type:"Vining vegetable",
+light:"Full sun",
+water:"Regular",
+soil:"Rich, well-draining",
+difficulty:"Easy",
+description:"Cucumbers are vigorous warm-season vines that benefit from consistent moisture and sunlight.",
+image:"https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=900&q=85",
+tags:["Edible","Vine","Summer"]
+},
+
+/* TREES */
+
+{
+id:"maple",
+name:"Red Maple",
+scientific:"Acer rubrum",
+category:"Tree",
+type:"Deciduous tree",
+light:"Full sun to partial shade",
+water:"Moderate",
+soil:"Adaptable",
+difficulty:"Moderate",
+description:"Red maple is a widespread deciduous tree known for attractive foliage and strong autumn color.",
+image:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85",
+tags:["Tree","Outdoor","Autumn"]
+},
+
+{
+id:"oak",
+name:"Oak",
+scientific:"Quercus",
+category:"Tree",
+type:"Deciduous tree",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Moderate",
+description:"Oaks are long-lived trees that provide substantial habitat and shade. Many species develop large canopies.",
+image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85",
+tags:["Tree","Outdoor","Wildlife"]
+},
+
+{
+id:"apple",
+name:"Apple Tree",
+scientific:"Malus domestica",
+category:"Tree",
+type:"Fruit tree",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Moderate",
+description:"Apple trees are deciduous fruit trees requiring sunlight, good drainage and appropriate pollination for many varieties.",
+image:"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=900&q=85",
+tags:["Tree","Fruit","Garden"]
+},
+
+/* TROPICAL */
+
+{
+id:"banana",
+name:"Banana",
+scientific:"Musa",
+category:"Tropical",
+type:"Tropical herb",
+light:"Full sun",
+water:"Regular",
+soil:"Rich, moist",
+difficulty:"Moderate",
+description:"Bananas are large tropical plants that enjoy warmth, sunlight, moisture and fertile soil.",
+image:"https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=900&q=85",
+tags:["Tropical","Fruit","Warm"]
+},
+
+{
+id:"bird-paradise",
+name:"Bird of Paradise",
+scientific:"Strelitzia reginae",
+category:"Tropical",
+type:"Tropical perennial",
+light:"Bright light",
+water:"Moderate",
+soil:"Well-draining",
+difficulty:"Moderate",
+description:"Bird of Paradise is a striking tropical plant with large leaves and dramatic flowers when mature.",
+image:"https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=900&q=85",
+tags:["Tropical","Indoor","Flowering"]
+}
+
+];
+
+
+/* =========================================================
    NAVIGATION
    ========================================================= */
 
@@ -2913,7 +2228,9 @@ x.classList.toggle(
 x.dataset.page===id
 ));
 
-if(id==="history") renderHistory();
+if(id==="history"){
+renderHistory();
+}
 
 window.scrollTo({
 top:0,
@@ -2921,283 +2238,14 @@ behavior:"smooth"
 });
 
 }
+
+
+/* NAV BUTTONS */
 
 document.querySelectorAll(".nav-item")
 .forEach(x=>
 x.onclick=()=>show(x.dataset.page)
 );
-
-
-/* =========================================================
-   ENCYCLOPEDIA
-   ========================================================= */
-
-function plantMatches(query){
-
-const q=query.toLowerCase().trim();
-
-if(!q)return PLANTS;
-
-return PLANTS.filter(p=>
-(
-p.name+" "+
-p.scientific+" "+
-p.type+" "+
-p.light+" "+
-p.soil+" "+
-p.description
-)
-.toLowerCase()
-.includes(q)
-);
-
-}
-
-
-function renderPlants(list=PLANTS){
-
-const container=$("#featuredPlants");
-
-$("#plantTotal").textContent=
-PLANTS.length+" PLANTS";
-
-if(!list.length){
-
-container.innerHTML=`
-<div class="no-results" style="grid-column:1/-1">
-<div style="font-size:40px">🌱</div>
-<b style="color:var(--ink)">
-No plant found
-</b>
-<p>
-Try another name such as dill, basil, mint,
-tomato, rose or monstera.
-</p>
-</div>
-`;
-
-$("#searchCount").textContent=
-"No matching plants";
-
-return;
-
-}
-
-$("#searchCount").textContent=
-list.length+
-(list.length===1?" plant":" plants")+
-" found";
-
-container.innerHTML=list.map((p,i)=>`
-
-<button
-class="plant-card"
-onclick="openPlant(${PLANTS.indexOf(p)})">
-
-<div class="plant-art">
-${p.icon}
-</div>
-
-<div class="plant-card-info">
-
-<div class="plant-card-name">
-${esc(p.name)}
-</div>
-
-<div class="plant-card-scientific">
-${esc(p.scientific)}
-</div>
-
-<div class="plant-card-tags">
-
-<span class="tag">
-${esc(capitalize(p.type))}
-</span>
-
-<span class="tag">
-${esc(p.light)}
-</span>
-
-</div>
-
-</div>
-
-</button>
-
-`).join("");
-
-}
-
-
-function capitalize(s){
-return s.charAt(0).toUpperCase()+s.slice(1);
-}
-
-
-function openPlant(index){
-
-const p=PLANTS[index];
-
-if(!p){
-
-toast("Plant information could not be opened.");
-
-return;
-
-}
-
-$("#plantDetailContent").innerHTML=`
-
-<div class="plant-detail">
-
-<div class="detail-art">
-
-<div class="detail-badge">
-${esc(capitalize(p.type))}
-</div>
-
-<div class="big-plant">
-${p.icon}
-</div>
-
-</div>
-
-<div class="detail-content">
-
-<h1>
-${esc(p.name)}
-</h1>
-
-<div class="detail-scientific">
-${esc(p.scientific)}
-</div>
-
-<p class="detail-description">
-${esc(p.description)}
-</p>
-
-<div class="detail-grid">
-
-<div class="detail-box">
-<div class="icon">☀️</div>
-<small>Light</small>
-<b>${esc(p.light)}</b>
-</div>
-
-<div class="detail-box">
-<div class="icon">💧</div>
-<small>Water</small>
-<b>${esc(p.water)}</b>
-</div>
-
-<div class="detail-box">
-<div class="icon">🌱</div>
-<small>Soil</small>
-<b>${esc(p.soil)}</b>
-</div>
-
-<div class="detail-box">
-<div class="icon">🌡️</div>
-<small>Temperature</small>
-<b>${esc(p.temperature)}</b>
-</div>
-
-</div>
-
-<div class="detail-section">
-
-<h3>🌿 Care guide</h3>
-
-<ul class="detail-list">
-
-${p.care.map((item,i)=>`
-
-<li>
-<strong>${i+1}.</strong>
-${esc(item)}
-</li>
-
-`).join("")}
-
-</ul>
-
-</div>
-
-<div class="detail-section">
-
-<h3>⚠️ Common problems</h3>
-
-<div
-style="
-padding:14px;
-background:#fff8df;
-border-radius:15px;
-font-size:11px;
-line-height:1.5;
-color:#706544">
-
-${esc(p.problems)}
-
-</div>
-
-</div>
-
-<div class="detail-section">
-
-<h3>🔎 Identify yours</h3>
-
-<button
-class="action-button action-primary"
-style="width:100%"
-onclick="show('home');setTimeout(()=>document.getElementById('file').click(),250)">
-
-📷 Scan a ${esc(p.name)}
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-`;
-
-show("plantDetail");
-
-}
-
-
-function filterCategory(type){
-
-$("#plantSearch").value="";
-
-const list=PLANTS.filter(p=>p.type===type);
-
-renderPlants(list);
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* SEARCH */
-
-$("#plantSearch").addEventListener(
-"input",
-e=>{
-renderPlants(
-plantMatches(e.target.value)
-);
-}
-);
-
-
-/* INITIAL ENCYCLOPEDIA */
-
-renderPlants();
 
 
 /* =========================================================
@@ -3224,8 +2272,436 @@ setTimeout(
 
 
 /* =========================================================
-   API KEY
+   ENCYCLOPEDIA
    ========================================================= */
+
+function plantCard(p){
+
+return`
+
+<button
+class="ency-card"
+onclick="openPlant('${p.id}')">
+
+<img
+src="${p.image}"
+alt="${esc(p.name)}"
+loading="lazy">
+
+<div class="ency-info">
+
+<div class="ency-name">
+${esc(p.name)}
+</div>
+
+<div class="ency-scientific">
+${esc(p.scientific)}
+</div>
+
+<div class="ency-tags">
+
+${p.tags.slice(0,2).map(
+tag=>`<span class="tag">${esc(tag)}</span>`
+).join("")}
+
+</div>
+
+</div>
+
+</button>
+
+`;
+
+}
+
+
+function renderPlants(list,title="Plants"){
+
+$("#encyTitle").textContent=title;
+
+const grid=$("#encyGrid");
+
+if(!list.length){
+
+grid.innerHTML=`
+
+<div class="no-results">
+
+<div style="font-size:38px">🌱</div>
+
+<div style="
+margin-top:8px;
+font-weight:800;
+color:var(--ink)">
+
+No plants found
+
+</div>
+
+<div style="margin-top:5px">
+
+Try another plant name, herb,
+flower or category.
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+grid.innerHTML=list.map(plantCard).join("");
+
+}
+
+
+function openPlant(id){
+
+const p=PLANTS.find(x=>x.id===id);
+
+if(!p){
+
+toast("Plant profile unavailable.");
+
+return;
+
+}
+
+$("#plantDetailContent").innerHTML=`
+
+<div class="plant-detail">
+
+<img
+class="plant-detail-hero"
+src="${p.image}"
+alt="${esc(p.name)}">
+
+<div class="plant-detail-content">
+
+<div class="detail-label">
+PLANT ENCYCLOPEDIA
+</div>
+
+<h2 class="detail-name">
+${esc(p.name)}
+</h2>
+
+<div class="detail-scientific">
+${esc(p.scientific)}
+</div>
+
+<div class="detail-tags">
+
+${p.tags.map(
+tag=>`<span class="tag">${esc(tag)}</span>`
+).join("")}
+
+</div>
+
+<div class="detail-description">
+${esc(p.description)}
+</div>
+
+<div class="detail-grid">
+
+<div class="detail-box">
+<small>Type</small>
+<b>${esc(p.type)}</b>
+</div>
+
+<div class="detail-box">
+<small>Difficulty</small>
+<b>${esc(p.difficulty)}</b>
+</div>
+
+<div class="detail-box">
+<small>Light</small>
+<b>${esc(p.light)}</b>
+</div>
+
+<div class="detail-box">
+<small>Water</small>
+<b>${esc(p.water)}</b>
+</div>
+
+</div>
+
+<div class="detail-section">
+
+<h3>Care guide</h3>
+
+<div class="detail-row">
+
+<div class="detail-icon">☀️</div>
+
+<div>
+<b>Light</b>
+<div>${esc(p.light)} is a good starting point.</div>
+</div>
+
+</div>
+
+<div class="detail-row">
+
+<div class="detail-icon">💧</div>
+
+<div>
+<b>Water</b>
+<div>
+${esc(p.water)}. Check the soil before watering rather than following a rigid schedule.
+</div>
+</div>
+
+</div>
+
+<div class="detail-row">
+
+<div class="detail-icon">🪴</div>
+
+<div>
+<b>Soil</b>
+<div>
+Use ${esc(p.soil.toLowerCase())} conditions where possible.
+</div>
+</div>
+
+</div>
+
+<div class="detail-row">
+
+<div class="detail-icon">🌿</div>
+
+<div>
+<b>Growing tip</b>
+<div>
+Watch the leaves for changes in color, texture or growth and adjust care gradually.
+</div>
+</div>
+
+</div>
+
+</div>
+
+<button
+class="action-button action-primary"
+style="width:100%;margin-top:15px"
+onclick="startScanner()">
+
+📷 Identify this type of plant
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+show("plantDetail");
+
+}
+
+
+function openCategory(category){
+
+const list=
+PLANTS.filter(
+p=>
+p.category.toLowerCase().includes(category.toLowerCase())||
+p.type.toLowerCase().includes(category.toLowerCase())
+);
+
+renderPlants(list,category);
+
+show("encyclopedia");
+
+}
+
+
+function openSearch(query){
+
+query=query.toLowerCase().trim();
+
+if(!query){
+
+renderPlants(PLANTS,"All Plants");
+
+show("encyclopedia");
+
+return;
+
+}
+
+const list=
+PLANTS.filter(p=>{
+
+const text=[
+p.name,
+p.scientific,
+p.category,
+p.type,
+p.description,
+...p.tags
+]
+.join(" ")
+.toLowerCase();
+
+return text.includes(query);
+
+});
+
+renderPlants(
+list,
+`Search: ${query}`
+);
+
+show("encyclopedia");
+
+}
+
+
+/* SEARCH */
+
+$("#plantSearch").addEventListener(
+"input",
+e=>{
+
+const query=
+e.target.value
+.toLowerCase()
+.trim();
+
+if(!query){
+
+renderFeatured();
+
+return;
+
+}
+
+const list=
+PLANTS.filter(p=>{
+
+const text=[
+p.name,
+p.scientific,
+p.category,
+p.type,
+...p.tags
+]
+.join(" ")
+.toLowerCase();
+
+return text.includes(query);
+
+});
+
+if(list.length){
+
+$("#featuredPlants").innerHTML=
+list.map(plantCard).join("");
+
+}else{
+
+$("#featuredPlants").innerHTML=`
+
+<div class="no-results">
+
+<div style="font-size:35px">🔎</div>
+
+<div style="
+margin-top:7px;
+font-weight:800;
+color:var(--ink)">
+
+No matching plant in the built-in guide
+
+</div>
+
+<div style="margin-top:5px">
+
+Try the scanner below for identification.
+
+</div>
+
+</div>
+
+`;
+
+}
+
+}
+);
+
+
+/* ENTER KEY SEARCH */
+
+$("#plantSearch").addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Enter"){
+
+openSearch(e.target.value);
+
+}
+
+}
+);
+
+
+/* FEATURED */
+
+function renderFeatured(){
+
+const featured=[
+"dill",
+"basil",
+"mint",
+"rosemary",
+"monstera",
+"snake",
+"rose",
+"aloe"
+];
+
+$("#featuredPlants").innerHTML=
+featured
+.map(id=>PLANTS.find(p=>p.id===id))
+.filter(Boolean)
+.map(plantCard)
+.join("");
+
+}
+
+renderFeatured();
+
+
+/* =========================================================
+   SCANNER
+   ========================================================= */
+
+function startScanner(){
+
+show("home");
+
+setTimeout(
+()=>{
+document
+.querySelector(".scan-card")
+.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+},
+250
+);
+
+}
+
 
 function getApiKey(){
 
@@ -3235,10 +2711,6 @@ return localStorage.getItem("tayn-key")
 
 }
 
-
-/* =========================================================
-   PLANTNET API
-   ========================================================= */
 
 async function api(path,opt={}){
 
@@ -3269,7 +2741,7 @@ if(!r.ok){
 
 if(r.status===401||r.status===403)
 throw Error(
-"Pl@ntNet rejected the API key."
+"Pl@ntNet rejected the API key or domain."
 );
 
 if(r.status===429)
@@ -3289,9 +2761,7 @@ return d;
 }
 
 
-/* =========================================================
-   PHOTO
-   ========================================================= */
+/* PHOTO */
 
 $("#file").onchange=e=>{
 
@@ -3328,9 +2798,7 @@ toast("Plant photo ready.");
 };
 
 
-/* =========================================================
-   IDENTIFY
-   ========================================================= */
+/* IDENTIFY */
 
 $("#identify").onclick=
 async()=>{
@@ -3430,6 +2898,7 @@ Possible match
 )
 .join("");
 
+
 $("#result").innerHTML=`
 
 <img
@@ -3457,10 +2926,12 @@ ${esc(common)}
 </div>
 
 <div class="confidence-track">
+
 <div
 class="confidence-fill"
 style="width:${confidence}%">
 </div>
+
 </div>
 
 </div>
@@ -3508,35 +2979,55 @@ ${d.remainingIdentificationRequests??"—"}
 <h3>Care snapshot</h3>
 
 <div class="care-row">
+
 <div class="care-icon">☀️</div>
+
 <div>
 <b>Light</b>
-<div>Start with bright, indirect light.</div>
+<div>
+Start with bright, indirect light unless the plant's profile indicates otherwise.
 </div>
 </div>
 
+</div>
+
 <div class="care-row">
+
 <div class="care-icon">💧</div>
+
 <div>
 <b>Water</b>
-<div>Check the upper soil before watering.</div>
+<div>
+Check the upper soil before watering.
 </div>
 </div>
 
+</div>
+
 <div class="care-row">
+
 <div class="care-icon">💨</div>
+
 <div>
 <b>Humidity</b>
-<div>Moderate humidity is a useful starting point.</div>
+<div>
+Moderate humidity is a useful starting point for many houseplants.
 </div>
 </div>
 
+</div>
+
 <div class="care-row">
+
 <div class="care-icon">🪴</div>
+
 <div>
 <b>Soil</b>
-<div>Choose a well-draining growing mix.</div>
+<div>
+Choose a well-draining growing mix.
 </div>
+</div>
+
 </div>
 
 </div>
@@ -3983,23 +3474,50 @@ toast(
 };
 
 
+/* =========================================================
+   STARTUP
+   ========================================================= */
+
 refreshSettings();
 
 renderHistory();
 
-/* TAYNPLANTZ PWA */
+renderFeatured();
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js")
-      .then(() => {
-        console.log("TaynPlantz offline support enabled.");
-      })
-      .catch(error => {
-        console.log("Service worker registration failed:", error);
-      });
-  });
-}</script>
+
+/* =========================================================
+   PWA SERVICE WORKER
+   ========================================================= */
+
+if("serviceWorker" in navigator){
+
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker
+.register("./sw.js")
+.then(
+()=>{
+console.log(
+"TaynPlantz offline support enabled."
+);
+}
+)
+.catch(
+error=>{
+console.log(
+"Service worker registration failed:",
+error
+);
+}
+);
+
+});
+
+}
+
+</script>
 
 </body>
 </html>
