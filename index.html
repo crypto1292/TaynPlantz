@@ -2,72 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0d3324">
   <title>TaynPlantz</title>
-
-  <link rel="manifest" href="./manifest.json">
-
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="TaynPlantz">
-
-  <link rel="apple-touch-icon" href="./icon-192.png">
-
-  <style>
-    html,body{
-      margin:0;
-      min-height:100%;
-      background:#0d3324;
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-      "SF Pro Text",system-ui,sans-serif;
-    }
-
-    .loading{
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      color:white;
-      text-align:center;
-    }
-
-    .logo{
-      width:76px;
-      height:76px;
-      margin:auto;
-      display:grid;
-      place-items:center;
-      border-radius:25px;
-      background:linear-gradient(145deg,#123d2a,#3b9660);
-      font-size:38px;
-      box-shadow:0 15px 40px rgba(0,0,0,.25);
-    }
-
-    h1{
-      margin:18px 0 5px;
-      font-size:25px;
-    }
-
-    p{
-      margin:0;
-      opacity:.75;
-      font-size:13px;
-    }
-  </style>
 </head>
 
-<body>
+<body style="
+  margin:0;
+  background:#0d3324;
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+">
 
-<div class="loading">
+<div style="
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+">
+
   <div>
-    <div class="logo">🌿</div>
+    <div style="font-size:60px">🌿</div>
     <h1>TaynPlantz</h1>
-    <p>Plant intelligence</p>
+    <p>Loading your plant intelligence...</p>
   </div>
+
 </div>
 
 <script>
-  window.location.replace("./taynplantz.html");
+  window.location.href = "./TaynPlantz.html";
 </script>
 
 </body>
