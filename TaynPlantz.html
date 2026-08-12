@@ -2,26 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#214936">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3f5b43">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="TaynPlantz">
+
 <title>TaynPlantz</title>
 
 <style>
 :root{
-  --green:#214936;
-  --green2:#2f6045;
-  --green3:#46785a;
-  --cream:#f4ecdc;
-  --cream2:#fbf7ed;
-  --beige:#e8dcc6;
-  --sage:#dce5d5;
-  --text:#26382d;
-  --muted:#718078;
+  --cream:#f5efe2;
+  --cream2:#fffaf0;
+  --green:#3f5b43;
+  --green2:#58745a;
+  --sage:#91a88d;
+  --lightgreen:#dce7d7;
+  --dark:#243329;
+  --brown:#765f49;
+  --gold:#c99c58;
   --white:#fffdf8;
-  --shadow:0 12px 35px rgba(33,73,54,.12);
+  --red:#a94c43;
+  --shadow:0 12px 35px rgba(53,69,49,.12);
   --radius:24px;
 }
 
@@ -36,414 +38,450 @@ html{
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Arial,sans-serif;
-  background:var(--cream);
-  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 0%,rgba(220,231,215,.65),transparent 30%),
+    var(--cream);
+  color:var(--dark);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif;
+  min-height:100vh;
 }
 
 button,
-input{
+input,
+select{
   font:inherit;
 }
 
 button{
-  border:0;
   cursor:pointer;
 }
 
 .app{
   width:100%;
-  max-width:620px;
-  margin:auto;
+  max-width:520px;
+  margin:0 auto;
   min-height:100vh;
-  background:var(--cream);
-  padding-bottom:95px;
+  padding-bottom:100px;
 }
 
-/* =========================
-   HEADER / LOGO
-========================= */
+/* HEADER */
 
-.hero{
-  background:
-    radial-gradient(circle at 15% 15%,rgba(255,255,255,.75),transparent 30%),
-    linear-gradient(145deg,#f8f0e1,#e8dcc6);
-  padding:28px 20px 22px;
-  border-bottom-left-radius:34px;
-  border-bottom-right-radius:34px;
+.header{
+  padding:22px 18px 8px;
 }
 
-.logo-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.logo-card{
+  background:linear-gradient(145deg,#fffaf0,#e9f0e2);
+  border:1px solid rgba(63,91,67,.1);
+  border-radius:30px;
+  padding:18px 18px 16px;
+  box-shadow:var(--shadow);
 }
 
 .logo{
   width:100%;
-  max-width:380px;
-  height:auto;
   display:block;
 }
 
-.logo-word{
-  font-weight:800;
-  letter-spacing:-2px;
-}
-
-.tagline{
-  text-align:center;
-  margin:4px 0 0;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:600;
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.content{
-  padding:18px;
-}
-
-.section{
-  margin-bottom:24px;
-}
-
-.section-title{
+.logo-subtitle{
+  margin-top:4px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  margin:0 3px 12px;
+  justify-content:center;
+  gap:8px;
+  color:var(--green);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.2px;
 }
 
-.section-title h2{
-  margin:0;
-  font-size:21px;
-  letter-spacing:-.5px;
+.pot{
+  font-size:22px;
 }
 
-.section-title span{
-  color:var(--muted);
-  font-size:12px;
+/* NAV */
+
+.nav{
+  display:flex;
+  gap:8px;
+  padding:14px 16px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav::-webkit-scrollbar{
+  display:none;
+}
+
+.nav button{
+  border:0;
+  background:#e5eadf;
+  color:var(--green);
+  padding:10px 14px;
+  border-radius:999px;
+  white-space:nowrap;
+  font-size:13px;
   font-weight:700;
 }
 
-/* =========================
-   SCANNER
-========================= */
-
-.scanner-card{
+.nav button.active{
   background:var(--green);
-  border-radius:30px;
+  color:white;
+}
+
+/* SECTIONS */
+
+.section{
+  padding:8px 16px;
+}
+
+.section-title{
+  font-size:22px;
+  margin:8px 2px 5px;
+  color:var(--green);
+  font-weight:800;
+}
+
+.section-subtitle{
+  margin:0 2px 15px;
+  color:#68736a;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.card{
+  background:rgba(255,253,248,.9);
+  border:1px solid rgba(63,91,67,.09);
+  border-radius:var(--radius);
   padding:18px;
-  color:white;
   box-shadow:var(--shadow);
-  overflow:hidden;
+  margin-bottom:14px;
 }
 
-.scanner-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
+/* HERO */
+
+.hero{
+  background:
+    linear-gradient(145deg,#dce7d7,#f9f2e4);
+  border-radius:28px;
+  padding:20px;
   margin-bottom:16px;
-}
-
-.scanner-head h2{
-  margin:0 0 4px;
-  font-size:23px;
-}
-
-.scanner-head p{
-  margin:0;
-  color:#cbdccf;
-  font-size:13px;
-  line-height:1.4;
-}
-
-.camera-box{
   position:relative;
-  width:100%;
-  aspect-ratio:4/5;
-  background:#102b1e;
-  border-radius:23px;
   overflow:hidden;
-  display:none;
 }
 
-.camera-box video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.camera-box.active{
-  display:block;
-}
-
-.scan-corners{
+.hero:after{
+  content:"🌿";
   position:absolute;
-  inset:16%;
-  border:2px solid rgba(255,255,255,.8);
-  border-radius:20px;
-  pointer-events:none;
+  right:18px;
+  bottom:-14px;
+  font-size:72px;
+  opacity:.16;
+  transform:rotate(-10deg);
 }
 
-.scan-line{
-  position:absolute;
-  left:18%;
-  right:18%;
-  top:22%;
-  height:2px;
-  background:#d8efcb;
-  box-shadow:0 0 15px rgba(216,239,203,.8);
-  animation:scan 2.4s infinite;
-}
-
-@keyframes scan{
-  0%{top:22%}
-  50%{top:75%}
-  100%{top:22%}
-}
-
-.scanner-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:12px;
-}
-
-.btn{
-  min-height:48px;
-  border-radius:16px;
-  padding:12px 15px;
-  font-weight:750;
-  transition:.2s;
-}
-
-.btn:active{
-  transform:scale(.97);
-}
-
-.btn-primary{
-  background:#dfead8;
+.hero h1{
+  margin:0 0 7px;
+  font-size:27px;
   color:var(--green);
 }
 
-.btn-secondary{
-  background:rgba(255,255,255,.12);
-  color:white;
-  border:1px solid rgba(255,255,255,.15);
-}
-
-.btn-light{
-  background:white;
-  color:var(--green);
-}
-
-.file-label{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:48px;
-  border-radius:16px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.15);
-  color:white;
-  font-weight:750;
-  cursor:pointer;
-}
-
-#photoInput{
-  display:none;
-}
-
-/* =========================
-   IDENTIFICATION RESULT
-========================= */
-
-.result-card{
-  display:none;
-  background:var(--white);
-  border-radius:25px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  margin-top:14px;
-}
-
-.result-card.show{
-  display:block;
-}
-
-.result-image{
-  width:100%;
-  aspect-ratio:16/10;
-  object-fit:cover;
-  display:block;
-}
-
-.result-body{
-  padding:17px;
-}
-
-.result-label{
-  color:var(--green3);
-  font-size:12px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.result-name{
-  font-size:25px;
-  margin:4px 0;
-  font-weight:800;
-}
-
-.result-scientific{
-  color:var(--muted);
-  font-style:italic;
+.hero p{
+  margin:0;
+  max-width:330px;
+  line-height:1.45;
+  color:#58645a;
   font-size:14px;
 }
 
-.confidence{
-  margin-top:14px;
+.primary-btn{
+  width:100%;
+  border:0;
+  background:var(--green);
+  color:white;
+  border-radius:18px;
+  padding:16px;
+  font-weight:800;
+  font-size:16px;
+  box-shadow:0 8px 18px rgba(63,91,67,.2);
 }
 
-.confidence-top{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
+.primary-btn:active{
+  transform:scale(.98);
+}
+
+.secondary-btn{
+  border:0;
+  background:var(--lightgreen);
+  color:var(--green);
+  border-radius:15px;
+  padding:12px 14px;
   font-weight:750;
 }
 
-.confidence-bar{
-  height:8px;
-  border-radius:10px;
-  background:#e7eadf;
-  margin-top:6px;
+.danger-btn{
+  border:0;
+  background:#f3ded9;
+  color:var(--red);
+  border-radius:15px;
+  padding:12px 14px;
+  font-weight:750;
+}
+
+/* SCANNER */
+
+.scanner-card{
+  background:#26362b;
+  border-radius:28px;
+  padding:10px;
+  box-shadow:var(--shadow);
   overflow:hidden;
 }
 
-.confidence-fill{
-  height:100%;
-  width:0;
-  background:var(--green3);
-  border-radius:10px;
+.camera-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:3/4;
+  background:#17221b;
+  border-radius:22px;
+  overflow:hidden;
 }
 
-.result-actions{
+#cameraVideo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+
+#captureCanvas{
+  display:none;
+}
+
+.camera-placeholder{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+  color:white;
+  background:
+    radial-gradient(circle at center,rgba(140,174,138,.25),transparent 45%),
+    #26362b;
+}
+
+.camera-placeholder .big{
+  font-size:58px;
+  margin-bottom:10px;
+}
+
+.camera-placeholder h3{
+  margin:0 0 5px;
+  font-size:19px;
+}
+
+.camera-placeholder p{
+  margin:0;
+  color:#c9d5ca;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.scan-frame{
+  position:absolute;
+  width:70%;
+  aspect-ratio:1;
+  left:15%;
+  top:25%;
+  border:2px solid rgba(255,255,255,.85);
+  border-radius:35px;
+  box-shadow:
+    0 0 0 999px rgba(0,0,0,.16),
+    inset 0 0 30px rgba(255,255,255,.08);
+  pointer-events:none;
+}
+
+.scan-frame:before,
+.scan-frame:after{
+  content:"";
+  position:absolute;
+  width:32px;
+  height:32px;
+  border-color:#dce7d7;
+}
+
+.scan-frame:before{
+  top:-2px;
+  left:-2px;
+  border-top:4px solid;
+  border-left:4px solid;
+  border-radius:12px 0 0 0;
+}
+
+.scan-frame:after{
+  bottom:-2px;
+  right:-2px;
+  border-right:4px solid;
+  border-bottom:4px solid;
+  border-radius:0 0 12px 0;
+}
+
+.camera-status{
+  color:#dce7d7;
+  text-align:center;
+  font-size:13px;
+  padding:12px 5px 7px;
+}
+
+.camera-controls{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
-  margin-top:14px;
 }
 
-.small-btn{
-  min-height:43px;
-  border-radius:14px;
-  background:var(--sage);
+.camera-controls button{
+  border:0;
+  border-radius:16px;
+  padding:14px 8px;
+  font-weight:800;
+}
+
+.capture-btn{
+  background:#f4eee2;
   color:var(--green);
-  font-weight:750;
 }
 
-/* =========================
-   API SETTINGS
-========================= */
-
-.settings-card{
-  background:var(--white);
-  border-radius:24px;
-  padding:17px;
-  box-shadow:var(--shadow);
+.flip-btn{
+  background:#516957;
+  color:white;
 }
 
-.settings-card p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
+/* RESULT */
+
+.result{
+  display:none;
 }
 
-.api-row{
+.result.visible{
+  display:block;
+}
+
+.result-photo{
+  width:100%;
+  border-radius:20px;
+  max-height:300px;
+  object-fit:cover;
+  margin-bottom:14px;
+}
+
+.match{
+  padding:14px;
+  background:#eef3e9;
+  border-radius:18px;
+  margin-bottom:9px;
+}
+
+.match-top{
   display:flex;
-  gap:8px;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
 }
 
-.api-row input{
-  flex:1;
-  min-width:0;
-  border:1px solid #d9dfd5;
-  background:#f8f8f2;
-  border-radius:14px;
-  padding:12px;
-  outline:none;
+.match h3{
+  margin:0;
+  font-size:17px;
+  color:var(--green);
 }
 
-.api-row button{
+.match p{
+  margin:4px 0 0;
+  font-size:12px;
+  color:#68736a;
+}
+
+.score{
   background:var(--green);
   color:white;
-  border-radius:14px;
-  padding:0 16px;
-  font-weight:750;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:800;
+  white-space:nowrap;
 }
 
-.status{
-  margin-top:9px;
-  font-size:12px;
-  color:var(--muted);
+.loading{
+  display:none;
+  text-align:center;
+  padding:20px;
 }
 
-/* =========================
-   GUIDE
-========================= */
+.loading.visible{
+  display:block;
+}
+
+.spinner{
+  width:34px;
+  height:34px;
+  margin:0 auto 10px;
+  border:3px solid #dce7d7;
+  border-top-color:var(--green);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* GUIDE */
 
 .guide-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:1fr 1fr;
   gap:11px;
 }
 
-.guide-card{
-  background:var(--white);
-  border-radius:22px;
-  padding:15px;
-  min-height:150px;
-  box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
+.guide-item{
+  border:0;
+  text-align:left;
+  background:#eef2e8;
+  border-radius:20px;
+  padding:14px;
+  min-height:140px;
 }
 
 .guide-icon{
-  font-size:34px;
+  font-size:39px;
+  display:block;
   margin-bottom:8px;
 }
 
-.guide-card h3{
-  margin:0 0 5px;
-  font-size:16px;
+.guide-item strong{
+  color:var(--green);
+  display:block;
+  margin-bottom:4px;
 }
 
-.guide-card p{
-  margin:0;
+.guide-item span{
   font-size:12px;
-  line-height:1.4;
-  color:var(--muted);
+  color:#68736a;
+  line-height:1.35;
 }
 
-/* =========================
-   ENCYCLOPEDIA
-========================= */
+/* ENCYCLOPEDIA */
 
 .search{
   width:100%;
-  border:0;
-  background:var(--white);
-  padding:15px 17px;
-  border-radius:17px;
-  box-shadow:var(--shadow);
+  border:1px solid #d5ddd1;
+  background:white;
+  border-radius:16px;
+  padding:13px 14px;
   outline:none;
+  color:var(--dark);
   margin-bottom:12px;
 }
 
@@ -453,263 +491,198 @@ button{
 }
 
 .plant-card{
+  background:#f4f1e8;
+  border-radius:18px;
+  padding:15px;
   display:flex;
-  gap:13px;
+  gap:12px;
   align-items:center;
-  background:var(--white);
-  border-radius:19px;
-  padding:12px;
-  box-shadow:var(--shadow);
 }
 
 .plant-emoji{
-  width:58px;
-  height:58px;
+  width:55px;
+  height:55px;
   border-radius:16px;
-  background:var(--sage);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
-  flex-shrink:0;
+  background:#dce7d7;
+  font-size:31px;
+  flex:none;
 }
 
-.plant-info{
-  min-width:0;
-  flex:1;
+.plant-card h3{
+  margin:0;
+  color:var(--green);
+  font-size:15px;
 }
 
-.plant-info h3{
-  margin:0 0 2px;
-  font-size:16px;
+.plant-card p{
+  margin:4px 0 0;
+  font-size:12px;
+  color:#69746b;
 }
 
-.plant-info em{
-  color:var(--muted);
-  font-size:11px;
-}
-
-.plant-info p{
-  margin:5px 0 0;
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* =========================
-   HISTORY
-========================= */
+/* HISTORY */
 
 .history-empty{
-  background:var(--white);
-  padding:28px 18px;
-  border-radius:22px;
   text-align:center;
-  color:var(--muted);
-  box-shadow:var(--shadow);
-}
-
-.history-list{
-  display:grid;
-  gap:10px;
+  padding:35px 15px;
+  color:#748076;
 }
 
 .history-item{
   display:flex;
-  align-items:center;
   gap:12px;
-  background:var(--white);
-  border-radius:19px;
-  padding:11px;
-  box-shadow:var(--shadow);
+  padding:12px 0;
+  border-bottom:1px solid #e3e6dc;
 }
 
-.history-item img{
-  width:62px;
-  height:62px;
+.history-item:last-child{
+  border-bottom:0;
+}
+
+.history-photo{
+  width:70px;
+  height:70px;
   object-fit:cover;
-  border-radius:15px;
-  background:var(--sage);
+  border-radius:16px;
+  background:#dce7d7;
 }
 
-.history-item h3{
-  margin:0;
+.history-info{
+  min-width:0;
+}
+
+.history-info h3{
+  margin:3px 0 4px;
   font-size:15px;
-}
-
-.history-item p{
-  margin:4px 0 0;
-  color:var(--muted);
-  font-size:11px;
-}
-
-.clear-history{
-  background:none;
-  color:#9b665c;
-  font-size:12px;
-  font-weight:750;
-}
-
-/* =========================
-   PLANT DETAIL MODAL
-========================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(20,35,26,.45);
-  backdrop-filter:blur(8px);
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-  z-index:100;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-sheet{
-  width:min(620px,100%);
-  max-height:88vh;
-  overflow:auto;
-  background:var(--cream2);
-  border-radius:30px 30px 0 0;
-  padding:22px;
-}
-
-.modal-close{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:var(--beige);
   color:var(--green);
-  float:right;
-  font-size:20px;
 }
 
-.modal-sheet h2{
-  clear:both;
-  padding-top:12px;
-  font-size:27px;
-  margin-bottom:4px;
-}
-
-.detail-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:18px;
-}
-
-.detail{
-  background:white;
-  border-radius:17px;
-  padding:13px;
-}
-
-.detail strong{
-  display:block;
+.history-info p{
+  margin:0;
   font-size:11px;
-  color:var(--muted);
-  margin-bottom:5px;
-  text-transform:uppercase;
+  color:#788178;
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
+/* SETTINGS */
+
+.setting-label{
+  display:block;
+  font-weight:800;
+  color:var(--green);
+  margin-bottom:7px;
+}
+
+.api-row{
+  display:flex;
+  gap:8px;
+}
+
+.api-row input{
+  min-width:0;
+  flex:1;
+}
+
+.api-input{
+  width:100%;
+  border:1px solid #d5ddd1;
+  background:white;
+  border-radius:15px;
+  padding:13px;
+  outline:none;
+}
+
+.status{
+  margin-top:12px;
+  padding:11px 13px;
+  border-radius:14px;
+  background:#eef2e8;
+  color:var(--green);
+  font-size:13px;
+  font-weight:700;
+}
+
+.warning{
+  background:#f7ead7;
+  color:#725a39;
+  border-radius:16px;
+  padding:13px;
+  font-size:12px;
+  line-height:1.45;
+  margin-top:12px;
+}
+
+/* BOTTOM NAV */
 
 .bottom-nav{
   position:fixed;
   left:50%;
   bottom:12px;
   transform:translateX(-50%);
-  width:min(580px,calc(100% - 24px));
-  background:rgba(255,253,248,.93);
+  width:min(488px,calc(100% - 24px));
+  background:rgba(255,253,248,.94);
   backdrop-filter:blur(18px);
-  border:1px solid rgba(33,73,54,.1);
-  border-radius:23px;
-  padding:7px;
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(63,91,67,.12);
+  box-shadow:0 12px 35px rgba(30,42,32,.16);
+  border-radius:25px;
+  padding:8px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  box-shadow:0 12px 35px rgba(0,0,0,.12);
   z-index:50;
 }
 
-.nav-btn{
-  background:none;
-  color:#718078;
-  border-radius:17px;
-  padding:8px 3px;
+.bottom-nav button{
+  border:0;
+  background:transparent;
+  color:#768077;
+  padding:8px 4px;
+  border-radius:18px;
   font-size:10px;
   font-weight:750;
 }
 
-.nav-btn span{
+.bottom-nav button.active{
+  background:#e5eddf;
+  color:var(--green);
+}
+
+.bottom-icon{
   display:block;
-  font-size:20px;
-  margin-bottom:2px;
+  font-size:21px;
+  margin-bottom:3px;
 }
 
-.nav-btn.active{
-  background:var(--green);
-  color:white;
-}
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast{
   position:fixed;
   left:50%;
-  bottom:90px;
-  transform:translate(-50%,20px);
-  background:var(--green);
+  top:20px;
+  transform:translate(-50%,-120px);
+  background:#26362b;
   color:white;
-  padding:12px 17px;
-  border-radius:15px;
-  font-size:12px;
+  padding:13px 17px;
+  border-radius:999px;
+  font-size:13px;
   font-weight:700;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-  z-index:200;
+  z-index:100;
+  transition:.3s;
+  box-shadow:var(--shadow);
 }
 
 .toast.show{
-  opacity:1;
   transform:translate(-50%,0);
 }
 
-.loading{
-  display:none;
-  text-align:center;
-  padding:20px;
-}
+/* RESPONSIVE */
 
-.loading.show{
-  display:block;
-}
-
-.spinner{
-  width:34px;
-  height:34px;
-  border:3px solid #dce5d5;
-  border-top-color:var(--green);
-  border-radius:50%;
-  animation:spin .8s linear infinite;
-  margin:auto auto 8px;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-@media(max-width:390px){
-  .content{padding:14px}
-  .guide-grid{grid-template-columns:1fr 1fr}
-  .scanner-actions{grid-template-columns:1fr}
+@media(max-width:370px){
+  .guide-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -718,755 +691,663 @@ button{
 
 <div class="app">
 
-<!-- =========================
-     HEADER
-========================= -->
+<header class="header">
+  <div class="logo-card">
 
-<header class="hero">
+    <!-- TAYN PLANTZ CUSTOM SVG LOGO -->
+    <svg class="logo" viewBox="0 0 700 210" xmlns="http://www.w3.org/2000/svg" aria-label="Tayn Plantz">
+      <defs>
+        <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7f9f7c"/>
+          <stop offset="100%" stop-color="#3f5b43"/>
+        </linearGradient>
+      </defs>
 
-  <!-- CUSTOM TAYNPLANTZ SVG LOGO -->
-  <div class="logo-wrap">
-
-    <svg class="logo"
-         viewBox="0 0 700 190"
-         xmlns="http://www.w3.org/2000/svg"
-         aria-label="TaynPlantz">
-
-      <!-- soft background -->
-      <rect x="4" y="4" width="692" height="182" rx="48"
-            fill="#fbf7ed"/>
-
-      <!-- decorative leaves behind word -->
-      <path d="M83 42 C54 17 34 35 44 61 C54 81 79 77 94 56"
-            fill="#6f9b6e"/>
-
-      <path d="M88 51 C66 48 57 61 64 73 C73 85 89 73 96 56"
-            fill="#4f7f59"/>
-
-      <!-- T stem growing from letter -->
-      <path d="M118 66 C116 46 122 29 138 15"
+      <!-- Decorative plant stems kept behind/around letters -->
+      <path d="M88 145 C88 120 91 94 83 67"
             fill="none"
-            stroke="#2f6045"
+            stroke="#58745a"
             stroke-width="7"
             stroke-linecap="round"/>
 
-      <path d="M137 18 C122 18 112 8 115 1 C129 1 139 6 142 16Z"
-            fill="#6d9967"/>
+      <path d="M83 82 C60 72 52 55 61 42 C77 43 89 58 83 82Z"
+            fill="url(#leafGrad)"/>
 
-      <path d="M139 17 C143 4 155 1 163 7 C159 19 149 23 139 17Z"
-            fill="#4c7d56"/>
+      <path d="M87 103 C109 95 119 78 112 65 C97 67 85 82 87 103Z"
+            fill="#91a88d"/>
 
-      <!-- main word -->
-      <text x="105"
-            y="124"
-            font-family="-apple-system,BlinkMacSystemFont,Arial,sans-serif"
-            font-size="78"
-            font-weight="800"
-            letter-spacing="-4"
-            fill="#214936">
-        TaynPlantz
+      <!-- Main letters -->
+      <text x="112" y="145"
+            font-family="Arial Rounded MT Bold, Arial, sans-serif"
+            font-size="110"
+            font-weight="900"
+            letter-spacing="-7"
+            fill="#3f5b43">
+        Tayn
       </text>
 
-      <!-- vine coming from the P -->
-      <path d="M354 72 C365 50 383 49 394 63 C405 77 394 92 381 96"
+      <!-- Little plant accent between words -->
+      <path d="M392 143 C395 121 394 106 387 91"
             fill="none"
-            stroke="#46785a"
+            stroke="#58745a"
             stroke-width="6"
             stroke-linecap="round"/>
 
-      <path d="M369 58 C358 43 365 30 378 29 C386 42 382 52 369 58Z"
-            fill="#6f9b6e"/>
+      <ellipse cx="378" cy="91" rx="14" ry="25"
+               transform="rotate(-30 378 91)"
+               fill="#7f9f7c"/>
 
-      <path d="M390 67 C404 54 417 60 420 71 C408 80 397 78 390 67Z"
-            fill="#86a978"/>
+      <ellipse cx="402" cy="84" rx="14" ry="25"
+               transform="rotate(32 402 84)"
+               fill="#58745a"/>
 
-      <!-- plant-styled lowercase l -->
-      <path d="M414 110 C413 88 414 63 424 44"
-            fill="none"
-            stroke="#46785a"
-            stroke-width="5"
-            stroke-linecap="round"/>
+      <text x="418" y="145"
+            font-family="Arial Rounded MT Bold, Arial, sans-serif"
+            font-size="110"
+            font-weight="900"
+            letter-spacing="-7"
+            fill="#3f5b43">
+        Plantz
+      </text>
 
-      <path d="M425 50 C411 44 408 32 416 25 C429 31 432 40 425 50Z"
-            fill="#6d9967"/>
-
-      <!-- leaves emerging from z -->
-      <path d="M599 107 C615 91 629 88 640 98"
-            fill="none"
-            stroke="#46785a"
-            stroke-width="5"
-            stroke-linecap="round"/>
-
-      <path d="M620 92 C615 76 625 67 638 71 C640 83 632 91 620 92Z"
-            fill="#6d9967"/>
-
-      <!-- tiny decorative leaf -->
-      <path d="M73 142 C54 132 43 143 48 155 C58 164 69 155 73 142Z"
-            fill="#86a978"/>
-
+      <!-- tiny soil dots / botanical accents -->
+      <circle cx="570" cy="164" r="5" fill="#c99c58"/>
+      <circle cx="588" cy="157" r="3.5" fill="#c99c58"/>
+      <circle cx="602" cy="166" r="4" fill="#c99c58"/>
     </svg>
 
+    <div class="logo-subtitle">
+      <span>Planting with Tayn</span>
+      <span class="pot">🪴</span>
+    </div>
+
   </div>
-
-  <p class="tagline">Identify • Learn • Grow 🌱</p>
-
 </header>
 
+<nav class="nav">
+  <button class="active" data-section="home">Home</button>
+  <button data-section="scanner">Scanner</button>
+  <button data-section="guide">Resource Guide</button>
+  <button data-section="encyclopedia">Encyclopedia</button>
+  <button data-section="history">History</button>
+  <button data-section="settings">Settings</button>
+</nav>
 
-<main class="content">
+<main>
 
-<!-- =========================
-     SCANNER
-========================= -->
+<!-- HOME -->
 
-<section class="section" id="scannerSection">
+<section id="home" class="section page-section">
 
-  <div class="section-title">
-    <h2>Plant Scanner</h2>
-    <span>AI identification</span>
+  <div class="hero">
+    <h1>Welcome to TaynPlantz 🌿</h1>
+    <p>
+      Identify plants, learn how to care for them, and keep your discoveries
+      together in your personal plant journal.
+    </p>
   </div>
+
+  <div class="card">
+    <div class="section-title" style="margin-top:0">Plant Intelligence</div>
+    <p class="section-subtitle">
+      Your plant identification and learning center.
+    </p>
+
+    <button class="primary-btn" onclick="openScanner()">
+      📷 Scan a Plant
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="section-title" style="margin-top:0">Plant Resource Guide</div>
+    <p class="section-subtitle">
+      Quick guides for understanding what your plants need.
+    </p>
+
+    <div class="guide-grid">
+
+      <button class="guide-item" onclick="showGuide('light')">
+        <span class="guide-icon">☀️</span>
+        <strong>Light</strong>
+        <span>Bright, indirect, low-light and direct-sun basics.</span>
+      </button>
+
+      <button class="guide-item" onclick="showGuide('water')">
+        <span class="guide-icon">💧</span>
+        <strong>Water</strong>
+        <span>Learn when and how much to water.</span>
+      </button>
+
+      <button class="guide-item" onclick="showGuide('soil')">
+        <span class="guide-icon">🪴</span>
+        <strong>Soil</strong>
+        <span>Potting mixes, drainage and repotting.</span>
+      </button>
+
+      <button class="guide-item" onclick="showGuide('humidity')">
+        <span class="guide-icon">💨</span>
+        <strong>Humidity</strong>
+        <span>Simple ways to understand plant humidity.</span>
+      </button>
+
+      <button class="guide-item" onclick="showGuide('feeding')">
+        <span class="guide-icon">🌱</span>
+        <strong>Feeding</strong>
+        <span>General fertilizer and feeding guidance.</span>
+      </button>
+
+      <button class="guide-item" onclick="showGuide('problems')">
+        <span class="guide-icon">🩺</span>
+        <strong>Problems</strong>
+        <span>Yellow leaves, wilting, pests and common issues.</span>
+      </button>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- SCANNER -->
+
+<section id="scanner" class="section page-section" style="display:none">
+
+  <div class="section-title">Plant Scanner 📷</div>
+  <p class="section-subtitle">
+    Point your camera at one plant and capture a clear image for identification.
+  </p>
 
   <div class="scanner-card">
 
-    <div class="scanner-head">
-      <div>
-        <h2>What plant is this?</h2>
-        <p>Take a clear photo of the leaves, flowers or whole plant.</p>
+    <div class="camera-wrap">
+
+      <div id="cameraPlaceholder" class="camera-placeholder">
+        <div class="big">🌿</div>
+        <h3>Live Plant Camera</h3>
+        <p>
+          Tap Start Camera and allow camera access when your iPhone asks.
+        </p>
       </div>
-      <div style="font-size:30px">🌿</div>
-    </div>
 
-    <div class="camera-box" id="cameraBox">
+      <video id="cameraVideo" autoplay playsinline muted></video>
 
-      <video id="camera"
-             autoplay
-             playsinline
-             muted></video>
-
-      <div class="scan-corners"></div>
-      <div class="scan-line"></div>
+      <div id="scanFrame" class="scan-frame" style="display:none"></div>
 
     </div>
 
-    <div class="scanner-actions">
+    <div id="cameraStatus" class="camera-status">
+      Camera not started
+    </div>
 
-      <button class="btn btn-primary"
-              id="cameraButton"
-              onclick="startCamera()">
-        📷 Open Camera
+    <div class="camera-controls">
+
+      <button class="capture-btn" id="cameraMainButton" onclick="startCamera()">
+        📷 Start Camera
       </button>
 
-      <label class="file-label">
-        🖼️ Choose Photo
-        <input id="photoInput"
-               type="file"
-               accept="image/*"
-               onchange="photoSelected(event)">
-      </label>
-
-    </div>
-
-    <div id="cameraControls"
-         class="scanner-actions"
-         style="display:none">
-
-      <button class="btn btn-light"
-              onclick="takePhoto()">
-        🌱 Scan Plant
-      </button>
-
-      <button class="btn btn-secondary"
-              onclick="stopCamera()">
-        Close Camera
+      <button class="flip-btn" onclick="flipCamera()">
+        🔄 Flip Camera
       </button>
 
     </div>
 
-    <canvas id="canvas" style="display:none"></canvas>
+  </div>
 
-    <div class="loading" id="loading">
+  <div style="height:12px"></div>
+
+  <div class="card">
+
+    <button
+      class="primary-btn"
+      id="identifyButton"
+      onclick="captureAndIdentify()"
+      disabled>
+      🔍 Capture & Identify
+    </button>
+
+    <div id="loading" class="loading">
       <div class="spinner"></div>
-      <div>Identifying your plant…</div>
-    </div>
-
-    <div class="result-card" id="resultCard">
-
-      <img id="resultImage"
-           class="result-image"
-           alt="Scanned plant">
-
-      <div class="result-body">
-
-        <div class="result-label">
-          TaynPlantz identification
-        </div>
-
-        <div class="result-name"
-             id="resultName">
-          Plant
-        </div>
-
-        <div class="result-scientific"
-             id="resultScientific">
-        </div>
-
-        <div class="confidence">
-
-          <div class="confidence-top">
-            <span>Confidence</span>
-            <span id="confidenceText">0%</span>
-          </div>
-
-          <div class="confidence-bar">
-            <div class="confidence-fill"
-                 id="confidenceFill"></div>
-          </div>
-
-        </div>
-
-        <div class="result-actions">
-
-          <button class="small-btn"
-                  onclick="saveCurrentScan()">
-            ❤️ Save
-          </button>
-
-          <button class="small-btn"
-                  onclick="openPlantFromResult()">
-            📖 Learn More
-          </button>
-
-        </div>
-
-      </div>
-
+      <strong>PlantNet is identifying your plant…</strong>
+      <p style="font-size:12px;color:#788178">
+        This can take a few moments.
+      </p>
     </div>
 
   </div>
 
-</section>
+  <div id="resultCard" class="card result">
 
-
-<!-- =========================
-     PLANTNET SETTINGS
-========================= -->
-
-<section class="section">
-
-  <div class="section-title">
-    <h2>Plant Identification</h2>
-    <span>Pl@ntNet</span>
-  </div>
-
-  <div class="settings-card">
-
-    <p>
-      TaynPlantz uses the Pl@ntNet identification service to analyze
-      your plant photo. Enter your own Pl@ntNet API key below.
-      The key is stored only in this browser's local storage.
-    </p>
-
-    <div class="api-row">
-
-      <input
-        id="apiKey"
-        type="password"
-        placeholder="Enter your Pl@ntNet API key">
-
-      <button onclick="saveApiKey()">
-        Save
-      </button>
-
+    <div class="section-title" style="margin-top:0">
+      Identification
     </div>
 
-    <div class="status"
-         id="apiStatus">
-      No API key saved.
-    </div>
+    <img id="resultPhoto" class="result-photo" alt="Captured plant">
 
-  </div>
+    <div id="resultContent"></div>
 
-</section>
-
-
-<!-- =========================
-     RESOURCE GUIDE
-========================= -->
-
-<section class="section"
-         id="guideSection">
-
-  <div class="section-title">
-    <h2>Plant Resource Guide</h2>
-    <span>Quick help</span>
-  </div>
-
-  <div class="guide-grid">
-
-    <div class="guide-card">
-      <div class="guide-icon">☀️</div>
-      <h3>Light</h3>
-      <p>Bright, indirect light is ideal for many indoor plants.</p>
-    </div>
-
-    <div class="guide-card">
-      <div class="guide-icon">💧</div>
-      <h3>Water</h3>
-      <p>Check the soil before watering instead of following a strict schedule.</p>
-    </div>
-
-    <div class="guide-card">
-      <div class="guide-icon">🪴</div>
-      <h3>Potting</h3>
-      <p>Use a container with drainage and soil appropriate for your plant.</p>
-    </div>
-
-    <div class="guide-card">
-      <div class="guide-icon">🌱</div>
-      <h3>Growth</h3>
-      <p>Rotate plants occasionally so growth remains balanced.</p>
-    </div>
-
-    <div class="guide-card">
-      <div class="guide-icon">✂️</div>
-      <h3>Pruning</h3>
-      <p>Remove dead or damaged growth with clean cutting tools.</p>
-    </div>
-
-    <div class="guide-card">
-      <div class="guide-icon">🐛</div>
-      <h3>Pests</h3>
-      <p>Check leaf undersides regularly for insects, webbing or sticky residue.</p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     ENCYCLOPEDIA
-========================= -->
-
-<section class="section"
-         id="encyclopediaSection">
-
-  <div class="section-title">
-    <h2>Plant Encyclopedia</h2>
-    <span id="plantCount"></span>
-  </div>
-
-  <input
-    class="search"
-    id="plantSearch"
-    placeholder="Search plants…"
-    oninput="renderPlants()">
-
-  <div class="plant-list"
-       id="plantList">
-  </div>
-
-</section>
-
-
-<!-- =========================
-     HISTORY
-========================= -->
-
-<section class="section"
-         id="historySection">
-
-  <div class="section-title">
-
-    <h2>Scan History</h2>
-
-    <button class="clear-history"
-            onclick="clearHistory()">
-      Clear all
+    <button class="secondary-btn" onclick="clearResult()" style="width:100%;margin-top:8px">
+      Scan Another Plant
     </button>
 
   </div>
 
-  <div id="historyList"
-       class="history-list">
+  <canvas id="captureCanvas"></canvas>
+
+</section>
+
+<!-- RESOURCE GUIDE -->
+
+<section id="guide" class="section page-section" style="display:none">
+
+  <div class="section-title">Plant Resource Guide 🌿</div>
+  <p class="section-subtitle">
+    Practical plant-care information organized by topic.
+  </p>
+
+  <div id="guideContent">
+
+    <div class="card">
+      <h3 style="color:var(--green)">☀️ Light</h3>
+      <p>
+        Light requirements vary significantly by plant. Bright indirect light
+        works well for many indoor plants, while some plants tolerate lower
+        light and others need several hours of direct sunlight.
+      </p>
+      <p>
+        Watch the plant rather than relying only on a window's direction.
+        Stretching, pale growth and small new leaves can indicate insufficient
+        light, while scorched or bleached patches can indicate excessive sun.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--green)">💧 Water</h3>
+      <p>
+        Check the soil before watering. Many houseplants do better when the
+        upper portion of the potting mix dries before the next watering.
+      </p>
+      <p>
+        Avoid leaving plants sitting in standing water unless the species is
+        specifically adapted to wet conditions.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--green)">🪴 Soil & Drainage</h3>
+      <p>
+        Container plants generally benefit from a potting mix appropriate to
+        their species and a container that allows excess water to drain.
+      </p>
+      <p>
+        Dense or continually saturated soil can reduce airflow around roots.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--green)">💨 Humidity</h3>
+      <p>
+        Tropical plants often appreciate higher humidity, but increasing
+        humidity does not replace appropriate light, watering and airflow.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--green)">🌱 Feeding</h3>
+      <p>
+        Fertilizer requirements depend on species, growing conditions and
+        season. Follow the fertilizer's label and avoid assuming that more
+        fertilizer means faster or healthier growth.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--green)">🩺 Common Problems</h3>
+      <p>
+        Yellow leaves, wilting, leaf spots, pests and sudden growth changes
+        can have several causes. Use the plant's identification and growing
+        conditions together when troubleshooting.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ENCYCLOPEDIA -->
+
+<section id="encyclopedia" class="section page-section" style="display:none">
+
+  <div class="section-title">Plant Encyclopedia 📚</div>
+  <p class="section-subtitle">
+    A starter collection of common plants. Your Pl@ntNet results can also
+    point you toward more specific information.
+  </p>
+
+  <input
+    id="plantSearch"
+    class="search"
+    type="search"
+    placeholder="Search plants…"
+    oninput="filterPlants()">
+
+  <div id="plantList" class="plant-list"></div>
+
+</section>
+
+<!-- HISTORY -->
+
+<section id="history" class="section page-section" style="display:none">
+
+  <div class="section-title">Scan History 🕘</div>
+  <p class="section-subtitle">
+    Your previous plant discoveries are stored locally in this browser.
+  </p>
+
+  <div class="card">
+
+    <div id="historyList"></div>
+
+    <button
+      class="danger-btn"
+      style="width:100%;margin-top:12px"
+      onclick="clearHistory()">
+      Delete Scan History
+    </button>
+
+  </div>
+
+</section>
+
+<!-- SETTINGS -->
+
+<section id="settings" class="section page-section" style="display:none">
+
+  <div class="section-title">Settings ⚙️</div>
+
+  <p class="section-subtitle">
+    Connect your own Pl@ntNet API key to enable plant identification.
+  </p>
+
+  <div class="card">
+
+    <label class="setting-label" for="apiKey">
+      Pl@ntNet API Key
+    </label>
+
+    <div class="api-row">
+      <input
+        id="apiKey"
+        class="api-input"
+        type="password"
+        autocomplete="off"
+        placeholder="Enter your Pl@ntNet API key">
+
+      <button class="secondary-btn" onclick="toggleApiVisibility()">
+        👁
+      </button>
+    </div>
+
+    <button
+      class="primary-btn"
+      style="margin-top:10px"
+      onclick="saveApiKey()">
+      Save API Key
+    </button>
+
+    <div id="apiStatus" class="status">
+      🔴 No API key saved
+    </div>
+
+    <div class="warning">
+      <strong>Privacy & security:</strong><br>
+      Your key is not written into this HTML file. TaynPlantz stores it locally
+      in this browser. However, because this is a browser app, the key is still
+      available to the browser while making the Pl@ntNet request. Do not use
+      this approach for distributing a shared/private production API key.
+    </div>
+
+    <button
+      class="danger-btn"
+      style="width:100%;margin-top:12px"
+      onclick="deleteApiKey()">
+      Delete Saved API Key
+    </button>
+
+  </div>
+
+  <div class="card">
+
+    <h3 style="color:var(--green);margin-top:0">
+      Pl@ntNet browser setup
+    </h3>
+
+    <p style="font-size:13px;line-height:1.5">
+      For a GitHub Pages version, Pl@ntNet requires browser/client access to
+      be enabled for your API key and your GitHub Pages domain to be added to
+      the API key's authorized domains.
+    </p>
+
+    <a
+      href="https://my.plantnet.org/settings/api-key"
+      target="_blank"
+      rel="noopener"
+      style="color:var(--green);font-weight:800">
+      Open Pl@ntNet API Key Settings →
+    </a>
+
   </div>
 
 </section>
 
 </main>
 
-
-<!-- =========================
-     BOTTOM NAV
-========================= -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-  <button class="nav-btn active"
-          onclick="scrollToSection('scannerSection',this)">
-    <span>📷</span>
+  <button class="active" onclick="navigate('home',this)">
+    <span class="bottom-icon">🏡</span>
+    Home
+  </button>
+
+  <button onclick="navigate('scanner',this)">
+    <span class="bottom-icon">📷</span>
     Scan
   </button>
 
-  <button class="nav-btn"
-          onclick="scrollToSection('guideSection',this)">
-    <span>🌿</span>
-    Guide
-  </button>
-
-  <button class="nav-btn"
-          onclick="scrollToSection('encyclopediaSection',this)">
-    <span>📚</span>
+  <button onclick="navigate('encyclopedia',this)">
+    <span class="bottom-icon">📚</span>
     Plants
   </button>
 
-  <button class="nav-btn"
-          onclick="scrollToSection('historySection',this)">
-    <span>🕘</span>
+  <button onclick="navigate('history',this)">
+    <span class="bottom-icon">🕘</span>
     History
   </button>
 
 </nav>
 
-
-<!-- =========================
-     PLANT MODAL
-========================= -->
-
-<div class="modal"
-     id="plantModal"
-     onclick="closeModal(event)">
-
-  <div class="modal-sheet">
-
-    <button class="modal-close"
-            onclick="closePlantModal()">
-      ×
-    </button>
-
-    <div id="modalEmoji"
-         style="font-size:55px">
-      🌿
-    </div>
-
-    <h2 id="modalName">
-      Plant
-    </h2>
-
-    <div id="modalScientific"
-         style="color:#718078;font-style:italic">
-    </div>
-
-    <div class="detail-grid">
-
-      <div class="detail">
-        <strong>Light</strong>
-        <span id="modalLight"></span>
-      </div>
-
-      <div class="detail">
-        <strong>Water</strong>
-        <span id="modalWater"></span>
-      </div>
-
-      <div class="detail">
-        <strong>Difficulty</strong>
-        <span id="modalDifficulty"></span>
-      </div>
-
-      <div class="detail">
-        <strong>Pet Safety</strong>
-        <span id="modalPet"></span>
-      </div>
-
-    </div>
-
-    <p id="modalDescription"
-       style="line-height:1.6;color:#536359;margin-top:18px">
-    </p>
-
-  </div>
-
-</div>
-
-
-<div class="toast"
-     id="toast">
-</div>
-
+<div id="toast" class="toast"></div>
 
 <script>
 
-/* =====================================================
+/* =========================================================
    TAYNPLANTZ
-   Main application
-===================================================== */
+   Single-file plant identifier
+   ========================================================= */
+
+const API_STORAGE_KEY = "taynplantz_plantnet_api_key";
+const HISTORY_STORAGE_KEY = "taynplantz_scan_history";
 
 let cameraStream = null;
-let currentImage = null;
-let currentResult = null;
+let facingMode = "environment";
+let lastCapturedImage = null;
 
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-/* =====================================================
-   PLANT ENCYCLOPEDIA
-===================================================== */
+function navigate(sectionId, button){
 
-const plants = [
+  document.querySelectorAll(".page-section").forEach(section=>{
+    section.style.display =
+      section.id === sectionId ? "block" : "none";
+  });
 
-{
- name:"Monstera deliciosa",
- common:"Monstera",
- emoji:"🌿",
- light:"Bright indirect",
- water:"When top soil dries",
- difficulty:"Easy",
- pet:"Not pet safe",
- description:"A popular tropical houseplant known for its large split leaves. Give it bright indirect light, moderate watering and room to climb."
-},
+  document.querySelectorAll(".nav button").forEach(btn=>{
+    btn.classList.toggle(
+      "active",
+      btn.dataset.section === sectionId
+    );
+  });
 
-{
- name:"Sansevieria trifasciata",
- common:"Snake Plant",
- emoji:"🌱",
- light:"Low to bright indirect",
- water:"Allow soil to dry",
- difficulty:"Very easy",
- pet:"Not pet safe",
- description:"A tough, drought-tolerant houseplant that handles lower light and infrequent watering."
-},
+  document.querySelectorAll(".bottom-nav button").forEach(btn=>{
+    btn.classList.remove("active");
+  });
 
-{
- name:"Epipremnum aureum",
- common:"Pothos",
- emoji:"🍃",
- light:"Low to bright indirect",
- water:"When soil begins drying",
- difficulty:"Easy",
- pet:"Not pet safe",
- description:"A fast-growing trailing plant that adapts to many indoor environments."
-},
-
-{
- name:"Spathiphyllum",
- common:"Peace Lily",
- emoji:"🌱",
- light:"Medium indirect",
- water:"Keep lightly moist",
- difficulty:"Easy",
- pet:"Not pet safe",
- description:"Known for its glossy foliage and white flower-like spathes. It prefers consistent moisture and indirect light."
-},
-
-{
- name:"Ficus elastica",
- common:"Rubber Plant",
- emoji:"🌿",
- light:"Bright indirect",
- water:"When top soil dries",
- difficulty:"Moderate",
- pet:"Not pet safe",
- description:"A sturdy plant with thick glossy leaves. Bright indirect light helps it maintain strong growth."
-},
-
-{
- name:"Chlorophytum comosum",
- common:"Spider Plant",
- emoji:"🌱",
- light:"Bright indirect",
- water:"Moderately",
- difficulty:"Easy",
- pet:"Generally considered pet safe",
- description:"A resilient plant producing arching leaves and small plantlets."
-},
-
-{
- name:"Zamioculcas zamiifolia",
- common:"ZZ Plant",
- emoji:"🌿",
- light:"Low to bright indirect",
- water:"Let soil dry",
- difficulty:"Very easy",
- pet:"Not pet safe",
- description:"A highly drought-tolerant plant with thick stems and glossy leaves."
-},
-
-{
- name:"Aloe vera",
- common:"Aloe Vera",
- emoji:"🌵",
- light:"Bright light",
- water:"Allow soil to dry",
- difficulty:"Easy",
- pet:"Not pet safe",
- description:"A succulent that prefers strong light and infrequent watering in well-draining soil."
-},
-
-{
- name:"Calathea orbifolia",
- common:"Calathea",
- emoji:"🍃",
- light:"Medium indirect",
- water:"Keep evenly moist",
- difficulty:"Moderate",
- pet:"Generally considered pet safe",
- description:"A tropical foliage plant with patterned leaves that appreciates humidity and consistent moisture."
-},
-
-{
- name:"Dracaena marginata",
- common:"Dragon Tree",
- emoji:"🌴",
- light:"Medium to bright indirect",
- water:"Allow partial drying",
- difficulty:"Easy",
- pet:"Not pet safe",
- description:"A striking indoor plant with narrow arching leaves and a tree-like form."
-},
-
-{
- name:"Hoya carnosa",
- common:"Hoya",
- emoji:"🌿",
- light:"Bright indirect",
- water:"Let soil dry between watering",
- difficulty:"Moderate",
- pet:"Generally considered pet safe",
- description:"A trailing plant with thick waxy leaves and clusters of fragrant flowers."
-},
-
-{
- name:"Peperomia obtusifolia",
- common:"Baby Rubber Plant",
- emoji:"🍃",
- light:"Bright indirect",
- water:"Moderately",
- difficulty:"Easy",
- pet:"Generally considered pet safe",
- description:"A compact houseplant with thick rounded leaves that prefers good drainage."
-}
-
-];
-
-
-/* =====================================================
-   INITIALIZATION
-===================================================== */
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-  const savedKey = localStorage.getItem("taynplantz_api_key");
-
-  if(savedKey){
-
-    document.getElementById("apiKey").value = savedKey;
-
-    document.getElementById("apiStatus").textContent =
-      "✓ Pl@ntNet API key saved on this device.";
-
+  if(button){
+    button.classList.add("active");
   }
 
-  renderPlants();
-  renderHistory();
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-});
+  if(sectionId === "history"){
+    renderHistory();
+  }
+}
 
+function openScanner(){
 
-/* =====================================================
+  navigate("scanner");
+
+  setTimeout(()=>{
+    startCamera();
+  },250);
+}
+
+/* =========================================================
    CAMERA
-===================================================== */
+   ========================================================= */
 
 async function startCamera(){
 
+  if(!navigator.mediaDevices ||
+     !navigator.mediaDevices.getUserMedia){
+
+    showToast("Camera access is not supported by this browser.");
+    return;
+  }
+
   try{
+
+    stopCamera();
 
     cameraStream =
       await navigator.mediaDevices.getUserMedia({
-
         video:{
-          facingMode:{
-            ideal:"environment"
-          },
-          width:{
-            ideal:1920
-          },
-          height:{
-            ideal:1080
-          }
+          facingMode:facingMode,
+          width:{ideal:1280},
+          height:{ideal:1280}
         },
-
         audio:false
-
       });
 
     const video =
-      document.getElementById("camera");
+      document.getElementById("cameraVideo");
 
     video.srcObject = cameraStream;
 
-    document.getElementById("cameraBox")
-      .classList.add("active");
+    await video.play();
 
-    document.getElementById("cameraControls")
-      .style.display="grid";
+    document.getElementById("cameraPlaceholder").style.display="none";
+    video.style.display="block";
+    document.getElementById("scanFrame").style.display="block";
 
-    document.getElementById("cameraButton")
-      .style.display="none";
+    document.getElementById("cameraStatus").textContent =
+      "🟢 Camera ready — place the plant inside the frame";
+
+    document.getElementById("cameraMainButton").textContent =
+      "📷 Camera Ready";
+
+    document.getElementById("identifyButton").disabled=false;
 
   }catch(error){
 
     console.error(error);
 
+    document.getElementById("cameraStatus").textContent =
+      "🔴 Camera permission or access failed";
+
     showToast(
-      "Camera access was unavailable. Use Choose Photo instead."
+      "Please allow camera access and try again."
     );
-
   }
-
 }
 
+async function flipCamera(){
+
+  facingMode =
+    facingMode === "environment"
+      ? "user"
+      : "environment";
+
+  await startCamera();
+}
 
 function stopCamera(){
 
   if(cameraStream){
 
-    cameraStream.getTracks().forEach(
-      track=>track.stop()
-    );
+    cameraStream.getTracks().forEach(track=>{
+      track.stop();
+    });
 
     cameraStream=null;
-
   }
-
-  document.getElementById("cameraBox")
-    .classList.remove("active");
-
-  document.getElementById("cameraControls")
-    .style.display="none";
-
-  document.getElementById("cameraButton")
-    .style.display="block";
-
 }
 
+/* =========================================================
+   CAPTURE + IDENTIFICATION
+   ========================================================= */
 
-function takePhoto(){
+async function captureAndIdentify(){
 
   const video =
-    document.getElementById("camera");
+    document.getElementById("cameraVideo");
 
-  const canvas =
-    document.getElementById("canvas");
+  if(!cameraStream || video.readyState < 2){
 
-  if(!video.videoWidth){
-
-    showToast("Camera is not ready yet.");
-
+    showToast("Start the camera first.");
     return;
-
   }
 
-  canvas.width=video.videoWidth;
-  canvas.height=video.videoHeight;
+  const canvas =
+    document.getElementById("captureCanvas");
+
+  /*
+    Keep the captured image reasonably sized.
+    Pl@ntNet accepts JPEG and PNG images and allows
+    up to five images per identification request.
+  */
+
+  const maxSize=1400;
+
+  let width=video.videoWidth;
+  let height=video.videoHeight;
+
+  if(width > maxSize || height > maxSize){
+
+    const scale =
+      Math.min(maxSize/width,maxSize/height);
+
+    width=Math.round(width*scale);
+    height=Math.round(height*scale);
+  }
+
+  canvas.width=width;
+  canvas.height=height;
 
   const ctx=canvas.getContext("2d");
 
@@ -1474,261 +1355,670 @@ function takePhoto(){
     video,
     0,
     0,
-    canvas.width,
-    canvas.height
+    width,
+    height
   );
 
-  canvas.toBlob(
-    blob=>{
-
-      const file =
-        new File(
-          [blob],
-          "taynplantz-scan.jpg",
-          {type:"image/jpeg"}
-        );
-
-      currentImage=file;
-
-      showPreview(
-        URL.createObjectURL(blob)
-      );
-
-      identifyPlant(file);
-
-    },
-    "image/jpeg",
-    .92
-  );
-
-}
-
-
-/* =====================================================
-   PHOTO UPLOAD
-===================================================== */
-
-function photoSelected(event){
-
-  const file =
-    event.target.files[0];
-
-  if(!file) return;
-
-  currentImage=file;
-
-  const url =
-    URL.createObjectURL(file);
-
-  showPreview(url);
-
-  identifyPlant(file);
-
-}
-
-
-function showPreview(url){
-
-  document.getElementById("resultImage")
-    .src=url;
-
-  document.getElementById("resultCard")
-    .classList.add("show");
-
-}
-
-
-/* =====================================================
-   PLANTNET IDENTIFICATION
-===================================================== */
-
-async function identifyPlant(file){
-
-  const apiKey =
-    localStorage.getItem("taynplantz_api_key");
-
-  if(!apiKey){
-
-    showToast(
-      "Add your Pl@ntNet API key first."
+  const imageData =
+    canvas.toDataURL(
+      "image/jpeg",
+      .88
     );
 
-    return;
+  lastCapturedImage=imageData;
 
+  document.getElementById("resultPhoto").src=imageData;
+
+  const key=getApiKey();
+
+  if(!key){
+
+    showToast("Add your Pl@ntNet API key in Settings.");
+
+    navigate("settings");
+
+    return;
   }
 
   document.getElementById("loading")
-    .classList.add("show");
+    .classList.add("visible");
 
   document.getElementById("resultCard")
-    .classList.add("show");
+    .classList.add("visible");
+
+  document.getElementById("resultContent").innerHTML="";
 
   try{
 
-    const form =
-      new FormData();
+    const blob =
+      await dataURLToBlob(imageData);
 
-    form.append(
+    const formData=new FormData();
+
+    formData.append(
       "images",
-      file,
-      file.name || "plant.jpg"
+      blob,
+      "taynplantz-scan.jpg"
     );
 
-    form.append(
+    formData.append(
       "organs",
       "auto"
     );
 
+    /*
+      Current Pl@ntNet v2 endpoint.
+      "all" asks Pl@ntNet to use its general
+      relevant project selection.
+    */
+
+    const endpoint =
+      "https://my-api.plantnet.org/v2/identify/all" +
+      "?api-key=" +
+      encodeURIComponent(key) +
+      "&lang=en" +
+      "&nb-results=5";
+
     const response =
       await fetch(
-        "https://my-api.plantnet.org/v2/identify/all?api-key="
-        + encodeURIComponent(apiKey),
+        endpoint,
         {
           method:"POST",
-          body:form
+          body:formData
         }
       );
 
     if(!response.ok){
 
-      throw new Error(
-        "Pl@ntNet request failed: "
-        + response.status
-      );
+      let message =
+        "Pl@ntNet returned an error.";
 
+      try{
+        const errorData=await response.json();
+
+        if(errorData.message){
+          message=errorData.message;
+        }
+      }catch(e){}
+
+      if(response.status===401 ||
+         response.status===403){
+
+        message=
+          "API key rejected. Check your key and Pl@ntNet browser/domain settings.";
+      }
+
+      if(response.status===429){
+
+        message=
+          "Pl@ntNet request quota has been reached.";
+      }
+
+      throw new Error(message);
     }
 
-    const data =
-      await response.json();
+    const data=await response.json();
 
-    if(!data.results ||
-       !data.results.length){
+    displayIdentification(data);
 
-      throw new Error(
-        "No plant identification was returned."
-      );
-
-    }
-
-    const best =
-      data.results[0];
-
-    const score =
-      Math.round(
-        (best.score || 0)*100
-      );
-
-    const scientific =
-      best.species &&
-      best.species.scientificName
-        ? best.species.scientificName
-        : "Unknown species";
-
-    const commonNames =
-      best.species &&
-      best.species.commonNames
-        ? best.species.commonNames
-        : [];
-
-    const common =
-      commonNames.length
-        ? commonNames[0]
-        : scientific;
-
-    currentResult={
-      name:common,
-      scientific:scientific,
-      confidence:score,
-      image:document.getElementById("resultImage").src,
-      date:new Date().toISOString()
-    };
-
-    document.getElementById("resultName")
-      .textContent=common;
-
-    document.getElementById("resultScientific")
-      .textContent=scientific;
-
-    document.getElementById("confidenceText")
-      .textContent=score+"%";
-
-    document.getElementById("confidenceFill")
-      .style.width=
-        Math.min(score,100)+"%";
-
-    showToast(
-      "Plant identified 🌱"
-    );
+    saveScanToHistory(data,imageData);
 
   }catch(error){
 
     console.error(error);
 
-    document.getElementById("resultName")
-      .textContent="Identification unavailable";
+    document.getElementById("resultContent").innerHTML=`
 
-    document.getElementById("resultScientific")
-      .textContent=
-        error.message ||
-        "Please try another photo.";
+      <div class="match" style="background:#f5e1dc">
 
-    document.getElementById("confidenceText")
-      .textContent="—";
+        <h3 style="color:#914b43">
+          Identification couldn't be completed
+        </h3>
 
-    document.getElementById("confidenceFill")
-      .style.width="0%";
+        <p style="color:#765f58;margin-top:8px">
+          ${escapeHtml(error.message)}
+        </p>
 
-    showToast(
-      "We couldn't identify that plant."
-    );
+      </div>
+
+    `;
 
   }finally{
 
     document.getElementById("loading")
-      .classList.remove("show");
-
+      .classList.remove("visible");
   }
-
 }
 
+async function dataURLToBlob(dataURL){
 
-/* =====================================================
+  const response =
+    await fetch(dataURL);
+
+  return await response.blob();
+}
+
+/* =========================================================
+   RESULTS
+   ========================================================= */
+
+function displayIdentification(data){
+
+  const results =
+    Array.isArray(data.results)
+      ? data.results
+      : [];
+
+  if(!results.length){
+
+    document.getElementById("resultContent").innerHTML=`
+
+      <div class="match">
+        <h3>No confident plant match found</h3>
+        <p>
+          Try another photo with the plant filling more of the frame,
+          preferably showing clear leaves, flowers or fruit.
+        </p>
+      </div>
+
+    `;
+
+    return;
+  }
+
+  const best=results[0];
+
+  const species=best.species || {};
+
+  const commonNames=
+    Array.isArray(species.commonNames)
+      ? species.commonNames
+      : [];
+
+  const commonName=
+    commonNames.length
+      ? commonNames[0]
+      : "Common name unavailable";
+
+  const scientificName=
+    species.scientificName ||
+    species.scientificNameWithoutAuthor ||
+    data.bestMatch ||
+    "Unknown plant";
+
+  const score=
+    typeof best.score==="number"
+      ? Math.round(best.score*100)
+      : 0;
+
+  let html=`
+
+    <div class="match">
+
+      <div class="match-top">
+
+        <div>
+          <h3>${escapeHtml(commonName)}</h3>
+          <p>
+            ${escapeHtml(scientificName)}
+          </p>
+        </div>
+
+        <div class="score">
+          ${score}% match
+        </div>
+
+      </div>
+
+      ${
+        species.family &&
+        species.family.scientificName
+          ? `<p style="margin-top:8px">
+              Family: ${escapeHtml(
+                species.family.scientificName
+              )}
+             </p>`
+          : ""
+      }
+
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#667168;
+      margin:12px 2px 8px;
+      font-weight:750;">
+      Other likely matches
+    </div>
+
+  `;
+
+  results.slice(1,5).forEach(result=>{
+
+    const s=result.species || {};
+
+    const names=
+      Array.isArray(s.commonNames)
+        ? s.commonNames
+        : [];
+
+    const name=
+      names[0] ||
+      s.scientificName ||
+      "Unknown";
+
+    const scientific=
+      s.scientificName || "";
+
+    const percentage=
+      typeof result.score==="number"
+        ? Math.round(result.score*100)
+        : 0;
+
+    html+=`
+
+      <div class="match">
+
+        <div class="match-top">
+
+          <div>
+            <h3>${escapeHtml(name)}</h3>
+            <p>${escapeHtml(scientific)}</p>
+          </div>
+
+          <div class="score">
+            ${percentage}%
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+  });
+
+  html+=`
+
+    <div style="
+      margin-top:12px;
+      padding:12px;
+      background:#f1eee5;
+      border-radius:15px;
+      font-size:11px;
+      color:#727b73;
+      line-height:1.45;">
+
+      Plant identification is an AI-assisted result.
+      Use the photographs, confidence score and additional
+      plant characteristics when confirming an identification.
+
+    </div>
+
+  `;
+
+  document.getElementById("resultContent").innerHTML=html;
+}
+
+function clearResult(){
+
+  document.getElementById("resultCard")
+    .classList.remove("visible");
+
+  document.getElementById("resultContent")
+    .innerHTML="";
+
+  lastCapturedImage=null;
+
+  navigate("scanner");
+}
+
+/* =========================================================
    API KEY
-===================================================== */
+   ========================================================= */
+
+function getApiKey(){
+
+  return localStorage.getItem(API_STORAGE_KEY) || "";
+}
 
 function saveApiKey(){
 
   const input =
     document.getElementById("apiKey");
 
-  const key =
-    input.value.trim();
+  const key=input.value.trim();
 
   if(!key){
 
     showToast("Enter your Pl@ntNet API key.");
-
     return;
-
   }
 
   localStorage.setItem(
-    "taynplantz_api_key",
+    API_STORAGE_KEY,
     key
   );
 
-  document.getElementById("apiStatus")
-    .textContent=
-      "✓ Pl@ntNet API key saved on this device.";
+  updateApiStatus();
 
-  showToast("API key saved.");
-
+  showToast("API key saved on this device.");
 }
 
+function deleteApiKey(){
 
-/* =====================================================
+  if(
+    confirm(
+      "Delete the saved Pl@ntNet API key from this device?"
+    )
+  ){
+
+    localStorage.removeItem(
+      API_STORAGE_KEY
+    );
+
+    document.getElementById("apiKey").value="";
+
+    updateApiStatus();
+
+    showToast("API key deleted.");
+  }
+}
+
+function toggleApiVisibility(){
+
+  const input =
+    document.getElementById("apiKey");
+
+  input.type =
+    input.type==="password"
+      ? "text"
+      : "password";
+}
+
+function updateApiStatus(){
+
+  const status =
+    document.getElementById("apiStatus");
+
+  if(getApiKey()){
+
+    status.textContent =
+      "🟢 API key saved on this device";
+
+  }else{
+
+    status.textContent =
+      "🔴 No API key saved";
+  }
+}
+
+/* =========================================================
+   ENCYCLOPEDIA
+   ========================================================= */
+
+const encyclopedia=[
+
+  {
+    name:"Monstera deliciosa",
+    common:"Monstera / Swiss Cheese Plant",
+    emoji:"🌿",
+    description:"Tropical foliage plant known for large split leaves."
+  },
+
+  {
+    name:"Epipremnum aureum",
+    common:"Golden Pothos",
+    emoji:"🍃",
+    description:"Hardy trailing houseplant that tolerates a range of conditions."
+  },
+
+  {
+    name:"Sansevieria trifasciata",
+    common:"Snake Plant",
+    emoji:"🌱",
+    description:"Upright succulent-like foliage plant with strong drought tolerance."
+  },
+
+  {
+    name:"Chlorophytum comosum",
+    common:"Spider Plant",
+    emoji:"🌿",
+    description:"Easy-care plant that produces long arching leaves and plantlets."
+  },
+
+  {
+    name:"Ficus elastica",
+    common:"Rubber Plant",
+    emoji:"🌳",
+    description:"Broad-leaved indoor tree with glossy foliage."
+  },
+
+  {
+    name:"Spathiphyllum",
+    common:"Peace Lily",
+    emoji:"🌱",
+    description:"Popular indoor plant with glossy leaves and white flower structures."
+  },
+
+  {
+    name:"Aloe vera",
+    common:"Aloe Vera",
+    emoji:"🌵",
+    description:"Succulent with thick leaves that store water."
+  },
+
+  {
+    name:"Calathea",
+    common:"Calathea",
+    emoji:"🍃",
+    description:"Decorative tropical foliage plants with patterned leaves."
+  },
+
+  {
+    name:"Pilea peperomioides",
+    common:"Chinese Money Plant",
+    emoji:"🪴",
+    description:"Compact plant recognized by its round coin-shaped leaves."
+  },
+
+  {
+    name:"Hoya",
+    common:"Hoya / Wax Plant",
+    emoji:"🌸",
+    description:"Trailing or climbing plant often grown for waxy foliage and flowers."
+  },
+
+  {
+    name:"Ficus lyrata",
+    common:"Fiddle Leaf Fig",
+    emoji:"🌳",
+    description:"Large-leaved indoor tree with violin-shaped leaves."
+  },
+
+  {
+    name:"Zamioculcas zamiifolia",
+    common:"ZZ Plant",
+    emoji:"🌿",
+    description:"Glossy-leaved plant known for tolerance of lower light and dry conditions."
+  }
+
+];
+
+function renderEncyclopedia(){
+
+  const list=
+    document.getElementById("plantList");
+
+  list.innerHTML="";
+
+  encyclopedia.forEach(plant=>{
+
+    const card=
+      document.createElement("div");
+
+    card.className="plant-card";
+
+    card.innerHTML=`
+
+      <div class="plant-emoji">
+        ${plant.emoji}
+      </div>
+
+      <div>
+
+        <h3>
+          ${escapeHtml(plant.common)}
+        </h3>
+
+        <p>
+          <em>${escapeHtml(plant.name)}</em>
+        </p>
+
+        <p>
+          ${escapeHtml(plant.description)}
+        </p>
+
+      </div>
+
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+function filterPlants(){
+
+  const query=
+    document.getElementById("plantSearch")
+      .value
+      .toLowerCase()
+      .trim();
+
+  const list=
+    document.getElementById("plantList");
+
+  list.innerHTML="";
+
+  const filtered=
+    encyclopedia.filter(plant=>
+      (
+        plant.name+" "+
+        plant.common+" "+
+        plant.description
+      )
+      .toLowerCase()
+      .includes(query)
+    );
+
+  if(!filtered.length){
+
+    list.innerHTML=`
+
+      <div class="card">
+        No plants found for "${escapeHtml(query)}".
+      </div>
+
+    `;
+
+    return;
+  }
+
+  filtered.forEach(plant=>{
+
+    const card=
+      document.createElement("div");
+
+    card.className="plant-card";
+
+    card.innerHTML=`
+
+      <div class="plant-emoji">
+        ${plant.emoji}
+      </div>
+
+      <div>
+
+        <h3>${escapeHtml(plant.common)}</h3>
+
+        <p><em>${escapeHtml(plant.name)}</em></p>
+
+        <p>${escapeHtml(plant.description)}</p>
+
+      </div>
+
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+/* =========================================================
+   RESOURCE GUIDE
+   ========================================================= */
+
+function showGuide(topic){
+
+  const titles={
+    light:"☀️ Understanding Plant Light",
+    water:"💧 Understanding Plant Watering",
+    soil:"🪴 Understanding Soil",
+    humidity:"💨 Understanding Humidity",
+    feeding:"🌱 Understanding Plant Feeding",
+    problems:"🩺 Troubleshooting Plant Problems"
+  };
+
+  const text={
+
+    light:
+      "Start by determining whether your plant prefers direct sun, bright indirect light, medium light or lower light. Watch new growth and leaf condition as the plant adapts.",
+
+    water:
+      "Check the soil before watering. Different plants have different requirements, so avoid following a fixed schedule without checking the plant and growing medium.",
+
+    soil:
+      "Choose a potting mix suited to the plant. Containers should generally have drainage so excess water can escape.",
+
+    humidity:
+      "Humidity matters most for plants adapted to humid environments. Grouping plants, using a humidifier and maintaining reasonable airflow can help.",
+
+    feeding:
+      "Plants need nutrients for growth, but fertilizer should be used according to the species and product instructions. Over-fertilizing can damage roots.",
+
+    problems:
+      "When a plant changes suddenly, examine light, watering, drainage, temperature, pests and recent environmental changes before assuming one specific cause."
+  };
+
+  const content=
+    document.getElementById("guideContent");
+
+  content.innerHTML=`
+
+    <div class="card">
+
+      <button
+        class="secondary-btn"
+        onclick="location.reload()">
+        ← All Guides
+      </button>
+
+      <h2 style="color:var(--green)">
+        ${titles[topic]}
+      </h2>
+
+      <p style="line-height:1.6">
+        ${text[topic]}
+      </p>
+
+    </div>
+
+  `;
+
+  navigate("guide");
+}
+
+/* =========================================================
    HISTORY
-===================================================== */
+   ========================================================= */
 
 function getHistory(){
 
@@ -1736,351 +2026,275 @@ function getHistory(){
 
     return JSON.parse(
       localStorage.getItem(
-        "taynplantz_history"
+        HISTORY_STORAGE_KEY
       ) || "[]"
     );
 
-  }catch{
+  }catch(e){
 
     return [];
-
   }
-
 }
 
+function saveScanToHistory(data,image){
+
+  const results=
+    Array.isArray(data.results)
+      ? data.results
+      : [];
+
+  const best=results[0];
+
+  if(!best) return;
+
+  const species=best.species || {};
+
+  const commonNames=
+    Array.isArray(species.commonNames)
+      ? species.commonNames
+      : [];
+
+  const record={
+
+    id:Date.now(),
+
+    date:new Date().toISOString(),
+
+    image:image,
+
+    commonName:
+      commonNames[0] ||
+      species.scientificName ||
+      "Unknown plant",
+
+    scientificName:
+      species.scientificName ||
+      "Unknown",
+
+    score:
+      typeof best.score==="number"
+        ? best.score
+        : 0
+  };
+
+  const history=getHistory();
+
+  history.unshift(record);
+
+  /*
+    Keep history manageable.
+    Images can be large, so retain the newest 30 scans.
+  */
+
+  localStorage.setItem(
+    HISTORY_STORAGE_KEY,
+    JSON.stringify(history.slice(0,30))
+  );
+
+  renderHistory();
+}
 
 function renderHistory(){
 
-  const list =
+  const list=
     document.getElementById("historyList");
 
-  const history =
-    getHistory();
+  const history=getHistory();
 
   if(!history.length){
 
     list.innerHTML=`
+
       <div class="history-empty">
-        <div style="font-size:38px">🌱</div>
-        <strong>No scans yet</strong>
-        <p>Your identified plants will appear here.</p>
+
+        <div style="font-size:48px">
+          🌱
+        </div>
+
+        <strong>
+          No plant scans yet
+        </strong>
+
+        <p>
+          Your identified plants will appear here.
+        </p>
+
       </div>
+
     `;
 
     return;
-
   }
 
-  list.innerHTML =
-    history.map((item,index)=>`
+  list.innerHTML="";
 
-      <div class="history-item">
+  history.forEach(item=>{
 
-        <img
-          src="${item.image}"
-          alt="Plant scan">
+    const div=
+      document.createElement("div");
 
-        <div style="flex:1">
+    div.className="history-item";
 
-          <h3>${escapeHTML(item.name)}</h3>
+    const date=
+      new Date(item.date)
+        .toLocaleDateString(
+          undefined,
+          {
+            month:"short",
+            day:"numeric",
+            year:"numeric"
+          }
+        );
 
-          <p>
-            ${escapeHTML(item.scientific || "")}
-            ${item.confidence != null
-              ? " • "+item.confidence+"%"
-              : ""}
-          </p>
+    const score=
+      Math.round(
+        Number(item.score || 0)*100
+      );
 
-          <p>
-            ${formatDate(item.date)}
-          </p>
+    div.innerHTML=`
 
-        </div>
+      <img
+        class="history-photo"
+        src="${item.image}"
+        alt="Plant scan">
+
+      <div class="history-info">
+
+        <h3>
+          ${escapeHtml(item.commonName)}
+        </h3>
+
+        <p>
+          ${escapeHtml(item.scientificName)}
+        </p>
+
+        <p style="margin-top:5px">
+          ${date} · ${score}% match
+        </p>
 
       </div>
 
-    `).join("");
+    `;
 
+    list.appendChild(div);
+  });
 }
-
-
-function saveCurrentScan(){
-
-  if(!currentResult){
-
-    showToast(
-      "There isn't a completed identification to save."
-    );
-
-    return;
-
-  }
-
-  const history =
-    getHistory();
-
-  history.unshift(currentResult);
-
-  const trimmed =
-    history.slice(0,50);
-
-  localStorage.setItem(
-    "taynplantz_history",
-    JSON.stringify(trimmed)
-  );
-
-  renderHistory();
-
-  showToast(
-    "Saved to scan history ❤️"
-  );
-
-}
-
 
 function clearHistory(){
 
-  if(!confirm(
-    "Clear all TaynPlantz scan history?"
-  )) return;
+  if(
+    !confirm(
+      "Delete all TaynPlantz scan history?"
+    )
+  ){
+    return;
+  }
 
   localStorage.removeItem(
-    "taynplantz_history"
+    HISTORY_STORAGE_KEY
   );
 
   renderHistory();
 
-  showToast("Scan history cleared.");
-
+  showToast("Scan history deleted.");
 }
 
+/* =========================================================
+   UTILITIES
+   ========================================================= */
 
-/* =====================================================
-   ENCYCLOPEDIA
-===================================================== */
+function escapeHtml(value){
 
-function renderPlants(){
-
-  const search =
-    document.getElementById("plantSearch")
-      .value
-      .toLowerCase()
-      .trim();
-
-  const filtered =
-    plants.filter(p=>
-      p.name.toLowerCase().includes(search) ||
-      p.common.toLowerCase().includes(search)
-    );
-
-  document.getElementById("plantCount")
-    .textContent=
-      filtered.length+" plants";
-
-  document.getElementById("plantList")
-    .innerHTML =
-      filtered.map((p,index)=>`
-
-        <button
-          class="plant-card"
-          style="text-align:left"
-          onclick="openPlant(${plants.indexOf(p)})">
-
-          <div class="plant-emoji">
-            ${p.emoji}
-          </div>
-
-          <div class="plant-info">
-
-            <h3>${escapeHTML(p.common)}</h3>
-
-            <em>${escapeHTML(p.name)}</em>
-
-            <p>
-              ${escapeHTML(p.light)}
-              • ${escapeHTML(p.difficulty)}
-            </p>
-
-          </div>
-
-          <div style="font-size:20px;color:#718078">
-            ›
-          </div>
-
-        </button>
-
-      `).join("");
-
-}
-
-
-function openPlant(index){
-
-  const p =
-    plants[index];
-
-  document.getElementById("modalEmoji")
-    .textContent=p.emoji;
-
-  document.getElementById("modalName")
-    .textContent=p.common;
-
-  document.getElementById("modalScientific")
-    .textContent=p.name;
-
-  document.getElementById("modalLight")
-    .textContent=p.light;
-
-  document.getElementById("modalWater")
-    .textContent=p.water;
-
-  document.getElementById("modalDifficulty")
-    .textContent=p.difficulty;
-
-  document.getElementById("modalPet")
-    .textContent=p.pet;
-
-  document.getElementById("modalDescription")
-    .textContent=p.description;
-
-  document.getElementById("plantModal")
-    .classList.add("show");
-
-}
-
-
-function openPlantFromResult(){
-
-  if(!currentResult) return;
-
-  const match =
-    plants.find(p=>
-      p.name.toLowerCase()
-        === currentResult.scientific.toLowerCase()
-      ||
-      p.common.toLowerCase()
-        === currentResult.name.toLowerCase()
-  );
-
-  if(match){
-
-    openPlant(
-      plants.indexOf(match)
-    );
-
-  }else{
-
-    showToast(
-      "That plant isn't in the built-in encyclopedia yet."
-    );
-
-  }
-
-}
-
-
-function closePlantModal(){
-
-  document.getElementById("plantModal")
-    .classList.remove("show");
-
-}
-
-
-function closeModal(event){
-
-  if(event.target.id==="plantModal"){
-
-    closePlantModal();
-
-  }
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function scrollToSection(id,button){
-
-  document.getElementById(id)
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  document.querySelectorAll(".nav-btn")
-    .forEach(btn=>
-      btn.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-}
-
-
-/* =====================================================
-   HELPERS
-===================================================== */
-
-function formatDate(date){
-
-  try{
-
-    return new Date(date)
-      .toLocaleDateString(
-        undefined,
-        {
-          month:"short",
-          day:"numeric",
-          year:"numeric"
-        }
-      );
-
-  }catch{
-
-    return "";
-
-  }
-
-}
-
-
-function escapeHTML(value){
-
-  return String(value || "")
+  return String(value ?? "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
-
 }
-
-
-let toastTimer;
 
 function showToast(message){
 
-  const toast =
+  const toast=
     document.getElementById("toast");
 
   toast.textContent=message;
 
   toast.classList.add("show");
 
-  clearTimeout(toastTimer);
+  clearTimeout(
+    window.__toastTimer
+  );
 
-  toastTimer =
-    setTimeout(
-      ()=>{
-        toast.classList.remove("show");
-      },
-      2800
-    );
-
+  window.__toastTimer=
+    setTimeout(()=>{
+      toast.classList.remove("show");
+    },2800);
 }
+
+/* =========================================================
+   NAV BUTTON SETUP
+   ========================================================= */
+
+document.querySelectorAll(
+  ".nav button"
+).forEach(button=>{
+
+  button.addEventListener(
+    "click",
+    ()=>{
+      navigate(
+        button.dataset.section,
+        button
+      );
+    }
+  );
+
+});
+
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  ()=>{
+
+    const key=getApiKey();
+
+    document.getElementById("apiKey").value=
+      key;
+
+    updateApiStatus();
+
+    renderEncyclopedia();
+
+    renderHistory();
+
+  }
+);
+
+/* Stop camera when leaving page */
+
+document.addEventListener(
+  "visibilitychange",
+  ()=>{
+
+    if(document.hidden){
+
+      stopCamera();
+
+    }
+
+  }
+);
+
+window.addEventListener(
+  "beforeunload",
+  ()=>{
+    stopCamera();
+  }
+);
 
 </script>
 
