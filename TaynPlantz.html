@@ -3987,7 +3987,19 @@ refreshSettings();
 
 renderHistory();
 
-</script>
+/* TAYNPLANTZ PWA */
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => {
+        console.log("TaynPlantz offline support enabled.");
+      })
+      .catch(error => {
+        console.log("Service worker registration failed:", error);
+      });
+  });
+}</script>
 
 </body>
 </html>
