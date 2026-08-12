@@ -1,14 +1,1835 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123b29"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>TaynPlantz</title><style>
-:root{--g:#123b29;--l:#31905a;--m:#e2f3e5;--bg:#f5f7f1;--ink:#102019;--muted:#718078;--line:#dce7de}*{box-sizing:border-box}body{margin:0;background:#dce7de;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif}.app{max-width:560px;margin:auto;min-height:100vh;background:rgba(247,249,244,.94);backdrop-filter:blur(16px);padding-bottom:88px}.top{height:74px;position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#f7f9f4e8;backdrop-filter:blur(20px);border-bottom:1px solid #fff}.brand{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border-radius:14px;background:var(--g);display:grid;place-items:center;color:#fff;font-size:22px}.brand b{display:block;font-size:18px}.brand small{color:var(--muted)}main{padding:18px}.screen{display:none}.screen.active{display:block}.hero{min-height:340px;border-radius:30px;padding:25px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:linear-gradient(135deg,#123b29dd,#2f8055aa),url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=85') center/cover;box-shadow:0 18px 45px #173b2a22}.hero h1{font-size:42px;line-height:.98;letter-spacing:-2px;margin:7px 0 14px}.hero em{font-style:normal;color:#c9efd1}.hero p{font-size:13px;line-height:1.55;color:#e7f3e9;margin:0}.eyebrow{font-size:9px;letter-spacing:1.8px;font-weight:900;color:var(--l);margin:0}.hero .eyebrow{color:#d8f2dd}.scan{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:14px;box-shadow:0 15px 40px #173b2a0c}.photo{height:225px;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(#174a2c44,#174a2c55),url('https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=1000&q=85') center/cover;display:grid;place-items:center}.photo img{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo.has img{display:block}.prompt{position:relative;text-align:center;color:#fff;text-shadow:0 2px 9px #000}.has .prompt{display:none}.cam{width:62px;height:62px;border-radius:20px;background:#ffffffe8;display:grid;place-items:center;color:var(--g);font-size:27px;margin:auto auto 10px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.btn{min-height:48px;border:0;border-radius:14px;font:inherit;font-weight:800;cursor:pointer}.primary{background:var(--g);color:#fff}.secondary{background:var(--m);color:var(--g)}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.quick button{border:1px solid var(--line);background:#fff;border-radius:17px;padding:13px 10px;text-align:left}.quick b{display:block;font-size:11px;margin-top:7px}.quick small{color:var(--muted);font-size:9px}.head{display:flex;gap:10px;align-items:center;padding:7px 0 16px}.head h2{margin:2px 0 0;font-size:29px}.back{width:39px;height:39px;border:1px solid var(--line);background:#fff;border-radius:13px;font-size:25px}.card{background:#fff;border:1px solid var(--line);border-radius:23px;padding:16px;box-shadow:0 15px 40px #173b2a0c}.resultimg{width:100%;max-height:310px;object-fit:cover;border-radius:17px}.name{font-size:27px;margin:13px 0 2px}.muted{color:var(--muted)}.confidence{display:flex;justify-content:space-between;background:var(--m);color:var(--g);padding:11px;border-radius:12px;font-size:12px;font-weight:800}.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.fact{background:#f4f7f3;padding:10px;border-radius:12px}.fact small{font-size:8px;color:var(--muted);text-transform:uppercase}.fact b{display:block;font-size:12px;margin-top:4px}.care{margin-top:15px}.care h3{margin:0}.row{padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.row:last-child{border:0}.health{color:#fff;text-align:center;padding:23px;border-radius:21px;background:linear-gradient(135deg,#123b29ee,#318255aa),url('https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1000&q=85') center/cover}.disease{margin-top:11px;background:#f5f9f5;border-radius:14px;padding:11px}.bar{height:6px;background:#dfe9df;border-radius:9px;margin-top:7px}.bar i{display:block;height:100%;background:var(--l);border-radius:9px}.setting input{width:100%;height:48px;margin-top:7px;border:1px solid var(--line);border-radius:12px;padding:0 12px;font:inherit}.notice{margin-top:14px;padding:12px;border-radius:14px;background:#fff8dc;font-size:11px;line-height:1.45;color:#716640}.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);height:82px;background:#ffffffeF;backdrop-filter:blur(20px);display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);z-index:9}.tab{border:0;background:none;color:#89958e;font:inherit}.tab span{display:block;font-size:19px}.tab small{font-size:9px;font-weight:800}.tab.active{color:var(--g)}.toast{position:fixed;bottom:95px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;padding:11px 15px;border-radius:12px;font-size:11px;display:none;z-index:20}.toast.show{display:block}@media(max-width:390px){.hero h1{font-size:36px}.actions{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.quick button:last-child{grid-column:1/-1}}
-</style></head><body><div class="app"><header class="top"><div class="brand"><div class="logo">🌿</div><div><b>TaynPlantz</b><small>Plant intelligence</small></div></div><button onclick="show('settings')" style="border:0;background:#fff;border-radius:50%;width:40px;height:40px">⚙️</button></header><main>
-<section id="home" class="screen active"><div class="hero"><p class="eyebrow">YOUR PERSONAL PLANT GUIDE</p><h1>Know your plant.<br><em>Grow with confidence.</em></h1><p>Identify plants from your camera, explore likely matches and screen for probable plant diseases.</p></div><div class="scan"><div id="photo" class="photo"><img id="preview"><div class="prompt"><div class="cam">📷</div><b>Scan a plant</b><div style="font-size:11px;margin-top:4px">Take a photo or choose from your library</div></div></div><div class="actions"><label class="btn primary" style="display:grid;place-items:center">📷 Take / Choose<input id="file" hidden type="file" accept="image/jpeg,image/png,image/webp" capture="environment"></label><button id="identify" class="btn secondary" disabled>Identify plant</button></div><div style="text-align:center;font-size:9px;color:#93a098;margin-top:9px">Clear leaf, flower, fruit or whole-plant photos work best.</div></div><div class="quick"><button onclick="show('health')">🩺<b>Health scan</b><small>Check likely problems</small></button><button onclick="show('history')">🗂️<b>My scans</b><small>Saved results</small></button><button onclick="show('settings')">⚙️<b>API settings</b><small>Connect Pl@ntNet</small></button></div></section>
-<section id="results" class="screen"><div class="head"><button class="back" onclick="show('home')">‹</button><div><p class="eyebrow">IDENTIFICATION</p><h2>Your plant</h2></div></div><div id="result" class="card"><p class="muted">Scan a plant to see the result.</p></div></section>
-<section id="health" class="screen"><div class="head"><button class="back" onclick="show('home')">‹</button><div><p class="eyebrow">PLANT HEALTH</p><h2>Health scan</h2></div></div><div class="card"><div class="health"><div style="font-size:38px">🩺</div><h3>How is your plant doing?</h3><p style="font-size:12px;line-height:1.5">Screen the selected photo for probable diseases. Results are a screening aid, not a guaranteed diagnosis.</p><button id="healthBtn" class="btn" style="width:100%;margin-top:12px">Run health scan</button></div><div id="healthResults"></div></div></section>
-<section id="history" class="screen"><div class="head"><div><p class="eyebrow">YOUR LIBRARY</p><h2>My scans</h2></div><button onclick="clearHistory()" style="margin-left:auto;border:0;background:none;color:#a33;font-weight:800">Clear</button></div><div id="history"></div></section>
-<section id="settings" class="screen"><div class="head"><button class="back" onclick="show('home')">‹</button><div><p class="eyebrow">CONNECTION</p><h2>API settings</h2></div></div><div class="card setting"><div style="display:flex;justify-content:space-between"><span>Pl@ntNet connection</span><b id="status">Not configured</b></div><label style="display:block;margin-top:16px;font-size:12px;font-weight:800">API key<input id="key" type="password" placeholder="Paste your Pl@ntNet API key"></label><label style="display:block;margin-top:12px;font-size:12px"><input id="remember" type="checkbox"> Keep key on this device</label><button id="save" class="btn primary" style="width:100%;margin-top:13px">Save API key</button><button id="remove" class="btn" style="width:100%;margin-top:8px;background:#fff0f0;color:#a33">Remove saved key</button><div class="notice"><b>Browser access required.</b><br>Pl@ntNet requires browser access to be enabled for the key and the exact hosted domain to be authorized.</div><p style="font-size:11px"><a href="https://my.plantnet.org/doc/getting-started/introduction" target="_blank">Pl@ntNet API setup guide ↗</a></p></div></section></main><nav class="tabs"><button class="tab active" data-p="home"><span>⌂</span><small>Home</small></button><button class="tab" data-p="results"><span>✦</span><small>Results</small></button><button class="tab" data-p="health"><span>♡</span><small>Health</small></button><button class="tab" data-p="history"><span>▣</span><small>Scans</small></button><button class="tab" data-p="settings"><span>⚙</span><small>Settings</small></button></nav><div id="toast" class="toast"></div></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123b29">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TaynPlantz">
+<title>TaynPlantz</title>
+
+<style>
+:root{
+  --g:#123b29;
+  --g2:#1d6540;
+  --l:#31905a;
+  --m:#e2f3e5;
+  --bg:#f4f7f2;
+  --card:#ffffff;
+  --ink:#102019;
+  --muted:#718078;
+  --line:#dce7de;
+  --danger:#a33;
+  --shadow:0 16px 45px rgba(18,59,41,.09);
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#dce7de;
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+  "SF Pro Text",system-ui,sans-serif;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.app{
+  width:100%;
+  max-width:560px;
+  min-height:100vh;
+  margin:auto;
+  background:rgba(247,249,244,.96);
+  backdrop-filter:blur(18px);
+  padding-bottom:96px;
+  box-shadow:0 0 50px rgba(0,0,0,.08);
+}
+
+/* HEADER */
+
+.top{
+  height:74px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 18px;
+  background:rgba(247,249,244,.91);
+  backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(255,255,255,.8);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:43px;
+  height:43px;
+  border-radius:15px;
+  background:linear-gradient(145deg,var(--g),var(--g2));
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:22px;
+  box-shadow:0 8px 20px rgba(18,59,41,.18);
+}
+
+.brand b{
+  display:block;
+  font-size:18px;
+  letter-spacing:-.3px;
+}
+
+.brand small{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+/* CONTENT */
+
+main{
+  padding:18px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+  animation:fadeIn .22s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(4px)}
+  to{opacity:1;transform:none}
+}
+
+/* HERO */
+
+.hero{
+  min-height:350px;
+  border-radius:30px;
+  padding:25px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(18,59,41,.96),rgba(47,128,85,.62)),
+    url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=85")
+    center/cover;
+  box-shadow:0 18px 45px rgba(23,59,42,.15);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:auto -80px -100px auto;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,.07);
+}
+
+.hero h1{
+  position:relative;
+  z-index:1;
+  font-size:42px;
+  line-height:.98;
+  letter-spacing:-2px;
+  margin:7px 0 14px;
+}
+
+.hero em{
+  font-style:normal;
+  color:#c9efd1;
+}
+
+.hero p{
+  position:relative;
+  z-index:1;
+  font-size:13px;
+  line-height:1.55;
+  color:#e7f3e9;
+  margin:0;
+}
+
+.eyebrow{
+  font-size:9px;
+  letter-spacing:1.8px;
+  font-weight:900;
+  color:var(--l);
+  margin:0;
+}
+
+.hero .eyebrow{
+  color:#d8f2dd;
+}
+
+/* SCANNER */
+
+.scan{
+  margin-top:14px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+
+.photo{
+  height:225px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:
+    linear-gradient(rgba(23,74,44,.3),rgba(23,74,44,.55)),
+    url("https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=1000&q=85")
+    center/cover;
+  display:grid;
+  place-items:center;
+}
+
+.photo img{
+  display:none;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo.has img{
+  display:block;
+}
+
+.prompt{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+  text-shadow:0 2px 9px rgba(0,0,0,.5);
+}
+
+.has .prompt{
+  display:none;
+}
+
+.cam{
+  width:62px;
+  height:62px;
+  border-radius:20px;
+  background:rgba(255,255,255,.92);
+  display:grid;
+  place-items:center;
+  color:var(--g);
+  font-size:27px;
+  margin:auto auto 10px;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:12px;
+}
+
+.btn{
+  min-height:48px;
+  border:0;
+  border-radius:14px;
+  font-weight:800;
+  transition:transform .15s ease,opacity .15s ease;
+}
+
+.btn:active{
+  transform:scale(.97);
+}
+
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.primary{
+  background:var(--g);
+  color:white;
+}
+
+.secondary{
+  background:var(--m);
+  color:var(--g);
+}
+
+/* QUICK ACTIONS */
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-top:12px;
+}
+
+.quick button{
+  border:1px solid var(--line);
+  background:white;
+  border-radius:17px;
+  padding:13px 10px;
+  text-align:left;
+  color:var(--ink);
+}
+
+.quick b{
+  display:block;
+  font-size:11px;
+  margin-top:7px;
+}
+
+.quick small{
+  color:var(--muted);
+  font-size:9px;
+}
+
+/* HEADERS */
+
+.head{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:7px 0 16px;
+}
+
+.head h2{
+  margin:2px 0 0;
+  font-size:29px;
+  letter-spacing:-1px;
+}
+
+.back{
+  width:39px;
+  height:39px;
+  border:1px solid var(--line);
+  background:white;
+  border-radius:13px;
+  font-size:25px;
+}
+
+/* CARDS */
+
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:23px;
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+
+.resultimg{
+  width:100%;
+  max-height:310px;
+  object-fit:cover;
+  border-radius:17px;
+}
+
+.name{
+  font-size:27px;
+  margin:13px 0 2px;
+  letter-spacing:-.7px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.confidence{
+  display:flex;
+  justify-content:space-between;
+  background:var(--m);
+  color:var(--g);
+  padding:11px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.facts{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:8px;
+}
+
+.fact{
+  background:#f4f7f3;
+  padding:10px;
+  border-radius:12px;
+}
+
+.fact small{
+  font-size:8px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+.fact b{
+  display:block;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.care{
+  margin-top:17px;
+}
+
+.care h3{
+  margin:0 0 5px;
+}
+
+.row{
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+
+.row:last-child{
+  border:0;
+}
+
+/* HEALTH */
+
+.health{
+  color:white;
+  text-align:center;
+  padding:23px;
+  border-radius:21px;
+  background:
+    linear-gradient(135deg,rgba(18,59,41,.94),rgba(49,130,85,.66)),
+    url("https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1000&q=85")
+    center/cover;
+}
+
+.disease{
+  margin-top:11px;
+  background:#f5f9f5;
+  border-radius:14px;
+  padding:12px;
+}
+
+.disease b{
+  display:block;
+}
+
+.disease small{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.bar{
+  height:6px;
+  background:#dfe9df;
+  border-radius:9px;
+  margin-top:8px;
+  overflow:hidden;
+}
+
+.bar i{
+  display:block;
+  height:100%;
+  background:var(--l);
+  border-radius:9px;
+}
+
+/* SETTINGS */
+
+.setting input[type=password],
+.setting input[type=text]{
+  width:100%;
+  height:48px;
+  margin-top:7px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:0 12px;
+  outline:none;
+}
+
+.setting input:focus{
+  border-color:var(--l);
+  box-shadow:0 0 0 3px rgba(49,144,90,.1);
+}
+
+.notice{
+  margin-top:14px;
+  padding:12px;
+  border-radius:14px;
+  background:#fff8dc;
+  font-size:11px;
+  line-height:1.45;
+  color:#716640;
+}
+
+/* EMPTY STATE */
+
+.empty{
+  text-align:center;
+  padding:48px 20px;
+  color:var(--muted);
+}
+
+.empty-icon{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+/* TABS */
+
+.tabs{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(560px,100%);
+  height:82px;
+  padding-bottom:env(safe-area-inset-bottom);
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(20px);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border-top:1px solid var(--line);
+  z-index:50;
+}
+
+.tab{
+  border:0;
+  background:none;
+  color:#89958e;
+  font:inherit;
+}
+
+.tab span{
+  display:block;
+  font-size:19px;
+}
+
+.tab small{
+  font-size:9px;
+  font-weight:800;
+}
+
+.tab.active{
+  color:var(--g);
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:95px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--g);
+  color:white;
+  padding:11px 15px;
+  border-radius:12px;
+  font-size:11px;
+  display:none;
+  z-index:100;
+  max-width:90%;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.toast.show{
+  display:block;
+}
+
+/* LOADING */
+
+.loading{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.spinner{
+  width:15px;
+  height:15px;
+  border:2px solid rgba(255,255,255,.35);
+  border-top-color:white;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:390px){
+  .hero h1{
+    font-size:36px;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+  .quick{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .quick button:last-child{
+    grid-column:1/-1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="top">
+  <div class="brand">
+    <div class="logo">🌿</div>
+    <div>
+      <b>TaynPlantz</b>
+      <small>Plant intelligence</small>
+    </div>
+  </div>
+
+  <button
+    onclick="show('settings')"
+    aria-label="Settings"
+    style="border:0;background:#fff;border-radius:50%;width:40px;height:40px">
+    ⚙️
+  </button>
+</header>
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="screen active">
+
+  <div class="hero">
+    <p class="eyebrow">YOUR PERSONAL PLANT GUIDE</p>
+
+    <h1>
+      Know your plant.<br>
+      <em>Grow with confidence.</em>
+    </h1>
+
+    <p>
+      Identify plants from your camera, explore likely matches
+      and screen for probable plant health problems.
+    </p>
+  </div>
+
+  <div class="scan">
+
+    <div id="photo" class="photo">
+
+      <img id="preview" alt="Selected plant">
+
+      <div class="prompt">
+
+        <div class="cam">📷</div>
+
+        <b>Scan a plant</b>
+
+        <div style="font-size:11px;margin-top:4px">
+          Take a photo or choose from your library
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="actions">
+
+      <label
+        class="btn primary"
+        style="display:grid;place-items:center">
+
+        📷 Take / Choose
+
+        <input
+          id="file"
+          hidden
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          capture="environment">
+
+      </label>
+
+      <button
+        id="identify"
+        class="btn secondary"
+        disabled>
+
+        Identify plant
+
+      </button>
+
+    </div>
+
+    <div style="
+      text-align:center;
+      font-size:9px;
+      color:#93a098;
+      margin-top:9px">
+
+      Clear leaf, flower, fruit or whole-plant photos work best.
+
+    </div>
+
+  </div>
+
+  <div class="quick">
+
+    <button onclick="show('health')">
+      🩺
+      <b>Health scan</b>
+      <small>Check likely problems</small>
+    </button>
+
+    <button onclick="show('history')">
+      🗂️
+      <b>My scans</b>
+      <small>Saved results</small>
+    </button>
+
+    <button onclick="show('settings')">
+      ⚙️
+      <b>API settings</b>
+      <small>Connect Pl@ntNet</small>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section id="results" class="screen">
+
+  <div class="head">
+
+    <button class="back" onclick="show('home')">
+      ‹
+    </button>
+
+    <div>
+      <p class="eyebrow">IDENTIFICATION</p>
+      <h2>Your plant</h2>
+    </div>
+
+  </div>
+
+  <div id="result" class="card">
+
+    <div class="empty">
+      <div class="empty-icon">🌱</div>
+      Scan a plant to see the result.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- HEALTH -->
+
+<section id="health" class="screen">
+
+  <div class="head">
+
+    <button class="back" onclick="show('home')">
+      ‹
+    </button>
+
+    <div>
+      <p class="eyebrow">PLANT HEALTH</p>
+      <h2>Health scan</h2>
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="health">
+
+      <div style="font-size:38px">🩺</div>
+
+      <h3>How is your plant doing?</h3>
+
+      <p style="font-size:12px;line-height:1.5">
+        Screen the selected photo for probable diseases.
+        Results are a screening aid, not a guaranteed diagnosis.
+      </p>
+
+      <button
+        id="healthBtn"
+        class="btn"
+        style="width:100%;margin-top:12px">
+
+        Run health scan
+
+      </button>
+
+    </div>
+
+    <div id="healthResults"></div>
+
+  </div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section id="history" class="screen">
+
+  <div class="head">
+
+    <div>
+      <p class="eyebrow">YOUR LIBRARY</p>
+      <h2>My scans</h2>
+    </div>
+
+    <button
+      onclick="clearHistory()"
+      style="
+        margin-left:auto;
+        border:0;
+        background:none;
+        color:#a33;
+        font-weight:800">
+
+      Clear
+
+    </button>
+
+  </div>
+
+  <div id="historyList"></div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section id="settings" class="screen">
+
+  <div class="head">
+
+    <button class="back" onclick="show('home')">
+      ‹
+    </button>
+
+    <div>
+      <p class="eyebrow">CONNECTION</p>
+      <h2>API settings</h2>
+    </div>
+
+  </div>
+
+  <div class="card setting">
+
+    <div style="display:flex;justify-content:space-between;align-items:center">
+
+      <span>Pl@ntNet connection</span>
+
+      <b id="status">
+        Not configured
+      </b>
+
+    </div>
+
+    <label
+      style="
+        display:block;
+        margin-top:16px;
+        font-size:12px;
+        font-weight:800">
+
+      API key
+
+      <input
+        id="key"
+        type="password"
+        placeholder="Paste your Pl@ntNet API key"
+        autocomplete="off">
+
+    </label>
+
+    <label
+      style="
+        display:block;
+        margin-top:12px;
+        font-size:12px">
+
+      <input
+        id="remember"
+        type="checkbox">
+
+      Keep key on this device
+
+    </label>
+
+    <button
+      id="save"
+      class="btn primary"
+      style="width:100%;margin-top:13px">
+
+      Save API key
+
+    </button>
+
+    <button
+      id="remove"
+      class="btn"
+      style="
+        width:100%;
+        margin-top:8px;
+        background:#fff0f0;
+        color:#a33">
+
+      Remove saved key
+
+    </button>
+
+    <div class="notice">
+
+      <b>Browser access required.</b><br>
+
+      Your Pl@ntNet API key must be permitted for the
+      domain where this app is hosted.
+
+    </div>
+
+    <p style="font-size:11px">
+
+      <a
+        href="https://my.plantnet.org/doc/getting-started/introduction"
+        target="_blank"
+        rel="noopener">
+
+        Pl@ntNet API setup guide ↗
+
+      </a>
+
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- NAVIGATION -->
+
+<nav class="tabs">
+
+  <button class="tab active" data-p="home">
+    <span>⌂</span>
+    <small>Home</small>
+  </button>
+
+  <button class="tab" data-p="results">
+    <span>✦</span>
+    <small>Results</small>
+  </button>
+
+  <button class="tab" data-p="health">
+    <span>♡</span>
+    <small>Health</small>
+  </button>
+
+  <button class="tab" data-p="history">
+    <span>▣</span>
+    <small>Scans</small>
+  </button>
+
+  <button class="tab" data-p="settings">
+    <span>⚙</span>
+    <small>Settings</small>
+  </button>
+
+</nav>
+
+
+<div id="toast" class="toast"></div>
+
+</div>
+
+
 <script>
-const API='https://my-api.plantnet.org/v2';let photo=null;const $=s=>document.querySelector(s);const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));const pct=x=>Math.round((x||0)*100);function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.p===id));if(id==='history')renderHistory();scrollTo(0,0)}document.querySelectorAll('.tab').forEach(x=>x.onclick=()=>show(x.dataset.p));function toast(x){let t=$('#toast');t.textContent=x;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}function key(){return localStorage.getItem('tayn-key')||sessionStorage.getItem('tayn-key')||''}async function api(path,opt={}){let k=key();if(!k)throw Error('Add your Pl@ntNet API key in Settings first.');let r=await fetch(API+path+(path.includes('?')?'&':'?')+'api-key='+encodeURIComponent(k),opt);let d={};try{d=await r.json()}catch{}if(!r.ok)throw Error(d.message||'Pl@ntNet request failed.');return d}
-$('#file').onchange=e=>{let f=e.target.files[0];if(!f)return;if(!/^image\/(jpeg|png|webp)$/.test(f.type))return toast('Choose a JPG, PNG or WebP image.');photo=f;$('#preview').src=URL.createObjectURL(f);$('#photo').classList.add('has');$('#identify').disabled=false};$('#identify').onclick=async()=>{try{toast('Identifying…');let fd=new FormData();fd.append('images',photo,photo.name||'plant.jpg');fd.append('organs','auto');let d=await api('/identify/all?lang=en&nb-results=8',{method:'POST',body:fd});let r=d.results?.[0],s=r?.species;if(!r)return toast('No confident plant match.');$('#result').innerHTML=`<img class="resultimg" src="${URL.createObjectURL(photo)}"><p class="eyebrow" style="margin-top:14px">BEST MATCH</p><h3 class="name">${esc(s.scientificName)}</h3><p class="muted">${esc((s.commonNames||[])[0]||'Common name unavailable')}</p><div class="confidence"><span>AI confidence</span><span>${pct(r.score)}%</span></div><div class="facts"><div class="fact"><small>Genus</small><b>${esc(s.genus?.scientificNameWithoutAuthor||'—')}</b></div><div class="fact"><small>Family</small><b>${esc(s.family?.scientificNameWithoutAuthor||'—')}</b></div><div class="fact"><small>Engine</small><b>${esc(d.version||'Pl@ntNet')}</b></div><div class="fact"><small>Daily requests left</small><b>${d.remainingIdentificationRequests??'—'}</b></div></div><div class="care"><h3>Care snapshot</h3><div class="row">☀️ <b>Light:</b> Start with bright, indirect light.</div><div class="row">💧 <b>Water:</b> Check the upper soil before watering.</div><div class="row">💨 <b>Humidity:</b> Moderate humidity is a good starting point.</div><div class="row">🪴 <b>Soil:</b> Choose a well-draining mix.</div></div><div class="care"><h3>Other possible matches</h3>${(d.results||[]).slice(1,6).map((x,i)=>`<div class="row">${i+2}. ${esc(x.species?.scientificName||'Unknown')} <b style="float:right">${pct(x.score)}%</b></div>`).join('')}</div>`;saveHistory(d);show('results')}catch(e){toast(e.message)}};
-$('#healthBtn').onclick=async()=>{if(!photo){toast('Choose a plant photo first.');show('home');return}try{toast('Running health scan…');let fd=new FormData();fd.append('images',photo,photo.name||'plant.jpg');fd.append('organs','auto');let d=await api('/diseases/identify?lang=en&nb-results=8',{method:'POST',body:fd});if(!d.results?.length){$('#healthResults').innerHTML='<div class="disease"><b>No supported disease detected.</b><small>This does not prove the plant is healthy.</small></div>';return}$('#healthResults').innerHTML=d.results.map(x=>`<div class="disease"><b>${esc(x.description||x.name||'Probable condition')}</b><small>${esc(x.name||'—')} • ${pct(x.score)}% confidence</small><div class="bar"><i style="width:${pct(x.score)}%"></i></div></div>`).join('')}catch(e){toast(e.message)}};
-function saveHistory(d){let r=d.results?.[0],s=r?.species;if(!s)return;let h=JSON.parse(localStorage.getItem('tayn-history')||'[]');h.unshift({name:s.scientificName,common:(s.commonNames||[])[0]||'',score:r.score,date:new Date().toLocaleString()});localStorage.setItem('tayn-history',JSON.stringify(h.slice(0,50)))}function renderHistory(){let h=JSON.parse(localStorage.getItem('tayn-history')||'[]');$('#history').innerHTML=h.length?h.map(x=>`<div class="row"><b>${esc(x.name)}</b><br><span class="muted">${esc(x.common)} • ${pct(x.score)}% • ${esc(x.date)}</span></div>`).join(''):'<div class="muted" style="text-align:center;padding:45px">🌱<br><br>No scans yet.</div>'}function clearHistory(){localStorage.removeItem('tayn-history');renderHistory()}function refresh(){let k=key();$('#key').value=k;$('#status').textContent=k?'Configured':'Not configured';$('#status').style.color=k?'#2f8550':'#a33';$('#remember').checked=!!localStorage.getItem('tayn-key')}$('#save').onclick=()=>{let k=$('#key').value.trim();if(!k)return toast('Paste your API key first.');($('#remember').checked?localStorage:sessionStorage).setItem('tayn-key',k);if($('#remember').checked)sessionStorage.removeItem('tayn-key');else localStorage.removeItem('tayn-key');refresh();toast('API key saved.');};$('#remove').onclick=()=>{localStorage.removeItem('tayn-key');sessionStorage.removeItem('tayn-key');refresh();toast('API key removed.');};refresh();renderHistory();
-</script></body></html>
+
+const API="https://my-api.plantnet.org/v2";
+
+let photo=null;
+
+
+/* HELPERS */
+
+const $=s=>document.querySelector(s);
+
+const esc=x=>
+  String(x??"").replace(/[&<>"']/g,m=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[m]));
+
+const pct=x=>
+  Math.round((x||0)*100);
+
+
+/* NAVIGATION */
+
+function show(id){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(x=>
+      x.classList.toggle("active",x.id===id)
+    );
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(x=>
+      x.classList.toggle("active",x.dataset.p===id)
+    );
+
+  if(id==="history"){
+    renderHistory();
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+document
+  .querySelectorAll(".tab")
+  .forEach(x=>{
+    x.onclick=()=>show(x.dataset.p);
+  });
+
+
+/* TOAST */
+
+function toast(message){
+
+  const t=$("#toast");
+
+  t.textContent=message;
+
+  t.classList.add("show");
+
+  clearTimeout(window.__toastTimer);
+
+  window.__toastTimer=setTimeout(()=>{
+    t.classList.remove("show");
+  },2800);
+}
+
+
+/* API KEY */
+
+function getApiKey(){
+
+  return localStorage.getItem("tayn-key")
+    || sessionStorage.getItem("tayn-key")
+    || "";
+}
+
+
+/* API */
+
+async function api(path,opt={}){
+
+  const k=getApiKey();
+
+  if(!k){
+    throw new Error(
+      "Add your Pl@ntNet API key in Settings first."
+    );
+  }
+
+  const separator=
+    path.includes("?") ? "&" : "?";
+
+  const url=
+    API+
+    path+
+    separator+
+    "api-key="+
+    encodeURIComponent(k);
+
+  const response=
+    await fetch(url,opt);
+
+  let data={};
+
+  try{
+    data=await response.json();
+  }catch{}
+
+  if(!response.ok){
+
+    if(response.status===401 ||
+       response.status===403){
+
+      throw new Error(
+        "Pl@ntNet rejected the API key or domain."
+      );
+
+    }
+
+    if(response.status===429){
+
+      throw new Error(
+        "Pl@ntNet request limit reached. Try again later."
+      );
+
+    }
+
+    throw new Error(
+      data.message ||
+      "Pl@ntNet request failed."
+    );
+  }
+
+  return data;
+}
+
+
+/* PHOTO SELECTION */
+
+$("#file").onchange=e=>{
+
+  const file=e.target.files[0];
+
+  if(!file) return;
+
+  if(
+    !/^image\/(jpeg|png|webp)$/.test(file.type)
+  ){
+
+    toast("Choose a JPG, PNG or WebP image.");
+
+    return;
+  }
+
+  photo=file;
+
+  const url=
+    URL.createObjectURL(file);
+
+  $("#preview").src=url;
+
+  $("#photo").classList.add("has");
+
+  $("#identify").disabled=false;
+
+  $("#healthBtn").disabled=false;
+
+  toast("Plant photo ready.");
+
+};
+
+
+/* IDENTIFICATION */
+
+$("#identify").onclick=async()=>{
+
+  if(!photo){
+
+    toast("Choose a plant photo first.");
+
+    return;
+  }
+
+  const button=$("#identify");
+
+  button.disabled=true;
+
+  button.innerHTML=
+    '<span class="loading"><span class="spinner"></span>Identifying…</span>';
+
+  try{
+
+    const form=
+      new FormData();
+
+    form.append(
+      "images",
+      photo,
+      photo.name||"plant.jpg"
+    );
+
+    form.append(
+      "organs",
+      "auto"
+    );
+
+    const data=
+      await api(
+        "/identify/all?lang=en&nb-results=8",
+        {
+          method:"POST",
+          body:form
+        }
+      );
+
+    const best=
+      data.results?.[0];
+
+    const species=
+      best?.species;
+
+    if(!best || !species){
+
+      toast(
+        "No confident plant match was found."
+      );
+
+      return;
+    }
+
+    const common=
+      (species.commonNames||[])[0]
+      ||"Common name unavailable";
+
+    const imageURL=
+      URL.createObjectURL(photo);
+
+    let alternatives="";
+
+    if(data.results?.length>1){
+
+      alternatives=
+        data.results
+          .slice(1,6)
+          .map((item,index)=>`
+
+            <div class="row">
+
+              ${index+2}.
+              ${esc(
+                item.species?.scientificName
+                ||"Unknown"
+              )}
+
+              <b style="float:right">
+                ${pct(item.score)}%
+              </b>
+
+            </div>
+
+          `)
+          .join("");
+    }
+
+    $("#result").innerHTML=`
+
+      <img
+        class="resultimg"
+        src="${imageURL}"
+        alt="Identified plant">
+
+      <p
+        class="eyebrow"
+        style="margin-top:14px">
+
+        BEST MATCH
+
+      </p>
+
+      <h3 class="name">
+        ${esc(species.scientificName)}
+      </h3>
+
+      <p class="muted">
+        ${esc(common)}
+      </p>
+
+      <div class="confidence">
+
+        <span>
+          AI confidence
+        </span>
+
+        <span>
+          ${pct(best.score)}%
+        </span>
+
+      </div>
+
+      <div class="facts">
+
+        <div class="fact">
+          <small>Genus</small>
+          <b>
+            ${esc(
+              species.genus
+                ?.scientificNameWithoutAuthor
+              ||"—"
+            )}
+          </b>
+        </div>
+
+        <div class="fact">
+          <small>Family</small>
+          <b>
+            ${esc(
+              species.family
+                ?.scientificNameWithoutAuthor
+              ||"—"
+            )}
+          </b>
+        </div>
+
+        <div class="fact">
+          <small>Engine</small>
+          <b>
+            ${esc(
+              data.version||"Pl@ntNet"
+            )}
+          </b>
+        </div>
+
+        <div class="fact">
+          <small>Requests left</small>
+          <b>
+            ${data.remainingIdentificationRequests??"—"}
+          </b>
+        </div>
+
+      </div>
+
+      <div class="care">
+
+        <h3>
+          Care snapshot
+        </h3>
+
+        <div class="row">
+          ☀️ <b>Light:</b>
+          Start with bright, indirect light.
+        </div>
+
+        <div class="row">
+          💧 <b>Water:</b>
+          Check the upper soil before watering.
+        </div>
+
+        <div class="row">
+          💨 <b>Humidity:</b>
+          Moderate humidity is a good starting point.
+        </div>
+
+        <div class="row">
+          🪴 <b>Soil:</b>
+          Choose a well-draining mix.
+        </div>
+
+      </div>
+
+      ${
+        alternatives
+        ?`
+
+          <div class="care">
+
+            <h3>
+              Other possible matches
+            </h3>
+
+            ${alternatives}
+
+          </div>
+
+        `
+        :""
+      }
+
+      <button
+        class="btn secondary"
+        style="width:100%;margin-top:15px"
+        onclick="show('health')">
+
+        🩺 Check this plant's health
+
+      </button>
+
+    `;
+
+    saveHistory(data,imageURL);
+
+    show("results");
+
+    toast("Plant identified.");
+
+  }catch(error){
+
+    toast(error.message);
+
+  }finally{
+
+    button.disabled=!photo;
+
+    button.textContent=
+      "Identify plant";
+
+  }
+
+};
+
+
+/* HEALTH */
+
+$("#healthBtn").onclick=async()=>{
+
+  if(!photo){
+
+    toast("Choose a plant photo first.");
+
+    show("home");
+
+    return;
+  }
+
+  const button=$("#healthBtn");
+
+  button.disabled=true;
+
+  button.innerHTML=
+    '<span class="loading"><span class="spinner"></span>Scanning…</span>';
+
+  try{
+
+    const form=
+      new FormData();
+
+    form.append(
+      "images",
+      photo,
+      photo.name||"plant.jpg"
+    );
+
+    form.append(
+      "organs",
+      "auto"
+    );
+
+    const data=
+      await api(
+        "/diseases/identify?lang=en&nb-results=8",
+        {
+          method:"POST",
+          body:form
+        }
+      );
+
+    if(!data.results?.length){
+
+      $("#healthResults").innerHTML=`
+
+        <div class="disease">
+
+          <b>
+            No supported condition detected.
+          </b>
+
+          <small>
+            This does not prove the plant is healthy.
+          </small>
+
+        </div>
+
+      `;
+
+      toast("Health scan complete.");
+
+      return;
+    }
+
+    $("#healthResults").innerHTML=
+      data.results
+        .map(item=>{
+
+          const score=
+            pct(item.score);
+
+          return`
+
+            <div class="disease">
+
+              <b>
+                ${esc(
+                  item.description
+                  ||item.name
+                  ||"Probable condition"
+                )}
+              </b>
+
+              <small>
+                ${esc(item.name||"Unknown")}
+                •
+                ${score}%
+                confidence
+              </small>
+
+              <div class="bar">
+                <i style="width:${score}%"></i>
+              </div>
+
+            </div>
+
+          `;
+
+        })
+        .join("");
+
+    toast("Health scan complete.");
+
+  }catch(error){
+
+    toast(error.message);
+
+  }finally{
+
+    button.disabled=false;
+
+    button.textContent=
+      "Run health scan";
+
+  }
+
+};
+
+
+/* HISTORY */
+
+function saveHistory(data,imageURL){
+
+  const best=
+    data.results?.[0];
+
+  const species=
+    best?.species;
+
+  if(!species) return;
+
+  let history=
+    JSON.parse(
+      localStorage.getItem("tayn-history")
+      ||"[]"
+    );
+
+  history.unshift({
+
+    name:
+      species.scientificName
+      ||"Unknown plant",
+
+    common:
+      (species.commonNames||[])[0]
+      ||"",
+
+    score:
+      best.score||0,
+
+    image:
+      imageURL||"",
+
+    date:
+      new Date().toLocaleString()
+
+  });
+
+  localStorage.setItem(
+    "tayn-history",
+    JSON.stringify(
+      history.slice(0,50)
+    )
+  );
+}
+
+
+function renderHistory(){
+
+  const history=
+    JSON.parse(
+      localStorage.getItem("tayn-history")
+      ||"[]"
+    );
+
+  const container=
+    $("#historyList");
+
+  if(!history.length){
+
+    container.innerHTML=`
+
+      <div class="card empty">
+
+        <div class="empty-icon">
+          🌱
+        </div>
+
+        <b>
+          No scans yet
+        </b>
+
+        <p>
+          Your identified plants will appear here.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+  container.innerHTML=
+    history
+      .map((item,index)=>`
+
+        <div
+          class="card"
+          style="margin-bottom:10px;padding:13px">
+
+          <div
+            style="
+              display:flex;
+              gap:12px;
+              align-items:center">
+
+            ${
+              item.image
+              ?`
+
+                <img
+                  src="${esc(item.image)}"
+                  style="
+                    width:62px;
+                    height:62px;
+                    object-fit:cover;
+                    border-radius:14px"
+                  alt="Plant scan">
+
+              `
+              :`
+
+                <div
+                  style="
+                    width:62px;
+                    height:62px;
+                    border-radius:14px;
+                    background:#e2f3e5;
+                    display:grid;
+                    place-items:center;
+                    font-size:25px">
+
+                  🌿
+
+                </div>
+
+              `
+            }
+
+            <div style="min-width:0;flex:1">
+
+              <b style="display:block">
+                ${esc(item.name)}
+              </b>
+
+              <span
+                class="muted"
+                style="font-size:11px">
+
+                ${esc(item.common||"Common name unavailable")}
+
+              </span>
+
+              <div
+                style="
+                  margin-top:5px;
+                  font-size:10px;
+                  color:#718078">
+
+                ${pct(item.score)}%
+                confidence
+                •
+                ${esc(item.date)}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `)
+      .join("");
+}
+
+
+function clearHistory(){
+
+  if(!confirm(
+    "Delete all saved plant scans?"
+  )) return;
+
+  localStorage.removeItem(
+    "tayn-history"
+  );
+
+  renderHistory();
+
+  toast("Scan history cleared.");
+
+}
+
+
+/* SETTINGS */
+
+function refreshSettings(){
+
+  const saved=
+    getApiKey();
+
+  $("#key").value=
+    saved;
+
+  $("#status").textContent=
+    saved
+    ?"Configured"
+    :"Not configured";
+
+  $("#status").style.color=
+    saved
+    ?"#2f8550"
+    :"#a33";
+
+  $("#remember").checked=
+    !!localStorage.getItem("tayn-key");
+}
+
+
+$("#save").onclick=()=>{
+
+  const value=
+    $("#key").value.trim();
+
+  if(!value){
+
+    toast(
+      "Paste your API key first."
+    );
+
+    return;
+  }
+
+  if($("#remember").checked){
+
+    localStorage.setItem(
+      "tayn-key",
+      value
+    );
+
+    sessionStorage.removeItem(
+      "tayn-key"
+    );
+
+  }else{
+
+    sessionStorage.setItem(
+      "tayn-key",
+      value
+    );
+
+    localStorage.removeItem(
+      "tayn-key"
+    );
+
+  }
+
+  refreshSettings();
+
+  toast(
+    "API key saved on this device."
+  );
+
+};
+
+
+$("#remove").onclick=()=>{
+
+  localStorage.removeItem(
+    "tayn-key"
+  );
+
+  sessionStorage.removeItem(
+    "tayn-key"
+  );
+
+  $("#key").value="";
+
+  refreshSettings();
+
+  toast(
+    "API key removed."
+  );
+
+};
+
+
+/* STARTUP */
+
+refreshSettings();
+
+renderHistory();
+
+</script>
+
+</body>
+</html>
