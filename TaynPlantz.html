@@ -7,12 +7,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="TaynPlantz">
-<title>TaynPlantz — Plant Intelligence</title>
+<title>TaynPlantz</title>
 
 <style>
+
 :root{
 --forest:#0d3324;
---forest2:#1d6845;
+--forest2:#1d6a45;
 --leaf:#48a66a;
 --mint:#e6f4e9;
 --cream:#f5f8f3;
@@ -22,12 +23,12 @@
 --line:#dfe8e1;
 --gold:#d8a84f;
 --red:#b94b4b;
---shadow:0 18px 45px rgba(13,51,36,.10)
+--shadow:0 18px 45px rgba(13,51,36,.10);
 }
 
 *{
 box-sizing:border-box;
--webkit-tap-highlight-color:transparent
+-webkit-tap-highlight-color:transparent;
 }
 
 html,body{
@@ -36,16 +37,16 @@ min-height:100%;
 background:#dce7df;
 font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
 "SF Pro Text",system-ui,sans-serif;
-color:var(--ink)
+color:var(--ink);
 }
 
 button,input{
-font:inherit
+font:inherit;
 }
 
 button{
 -webkit-appearance:none;
-cursor:pointer
+cursor:pointer;
 }
 
 .app{
@@ -55,10 +56,8 @@ min-height:100vh;
 margin:auto;
 background:var(--cream);
 padding-bottom:105px;
-overflow:hidden
+overflow:hidden;
 }
-
-/* TOP */
 
 .topbar{
 position:sticky;
@@ -72,13 +71,13 @@ justify-content:space-between;
 background:rgba(246,248,243,.92);
 backdrop-filter:blur(25px);
 -webkit-backdrop-filter:blur(25px);
-border-bottom:1px solid rgba(255,255,255,.8)
+border-bottom:1px solid rgba(255,255,255,.8);
 }
 
 .brand{
 display:flex;
 align-items:center;
-gap:11px
+gap:11px;
 }
 
 .logo{
@@ -89,20 +88,20 @@ background:linear-gradient(145deg,#0d3324,#318657);
 display:grid;
 place-items:center;
 font-size:22px;
-box-shadow:0 8px 22px rgba(13,51,36,.20)
+box-shadow:0 8px 22px rgba(13,51,36,.20);
 }
 
 .brand-title{
 font-size:18px;
 font-weight:850;
-letter-spacing:-.5px
+letter-spacing:-.5px;
 }
 
 .brand-sub{
 display:block;
 margin-top:2px;
 font-size:10px;
-color:var(--muted)
+color:var(--muted);
 }
 
 .settings-button{
@@ -112,62 +111,62 @@ border:1px solid var(--line);
 border-radius:50%;
 background:white;
 display:grid;
-place-items:center
+place-items:center;
 }
 
 main{
-padding:18px
+padding:18px;
 }
 
 .screen{
-display:none
+display:none;
 }
 
 .screen.active{
 display:block;
-animation:appear .25s ease
+animation:appear .25s ease;
 }
 
 @keyframes appear{
 from{
 opacity:0;
-transform:translateY(7px)
+transform:translateY(7px);
 }
 to{
 opacity:1;
-transform:none
+transform:none;
 }
 }
 
 /* GUIDE */
 
 .guide-intro{
-margin:4px 3px 15px
+margin:4px 3px 15px;
 }
 
 .guide-kicker{
 font-size:9px;
 font-weight:900;
 letter-spacing:1.7px;
-color:var(--leaf)
+color:var(--leaf);
 }
 
 .guide-intro h1{
 margin:5px 0;
 font-size:31px;
 line-height:1.04;
-letter-spacing:-1.5px
+letter-spacing:-1.5px;
 }
 
 .guide-intro p{
 margin:0;
 font-size:11px;
 line-height:1.5;
-color:var(--muted)
+color:var(--muted);
 }
 
 .guide-search{
-height:49px;
+height:51px;
 display:flex;
 align-items:center;
 gap:9px;
@@ -176,11 +175,11 @@ background:white;
 border:1px solid var(--line);
 border-radius:17px;
 box-shadow:0 9px 25px rgba(13,51,36,.05);
-margin-bottom:14px
+margin-bottom:12px;
 }
 
 .guide-search span{
-font-size:17px
+font-size:18px;
 }
 
 .guide-search input{
@@ -188,7 +187,14 @@ width:100%;
 border:0;
 outline:0;
 background:transparent;
-font-size:12px
+font-size:13px;
+}
+
+.search-status{
+font-size:9px;
+color:var(--muted);
+margin:0 4px 12px;
+min-height:14px;
 }
 
 .guide-feature{
@@ -199,16 +205,17 @@ position:relative;
 color:white;
 background:
 linear-gradient(180deg,rgba(8,35,23,.05),rgba(8,35,23,.88)),
-linear-gradient(135deg,#1d6845,#0d3324);
+url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=88")
+center/cover;
 box-shadow:var(--shadow);
-margin-bottom:14px
+margin-bottom:16px;
 }
 
 .guide-feature-content{
 position:absolute;
 left:20px;
 right:20px;
-bottom:19px
+bottom:19px;
 }
 
 .guide-badge{
@@ -219,44 +226,42 @@ background:rgba(255,255,255,.17);
 backdrop-filter:blur(10px);
 font-size:8px;
 font-weight:900;
-letter-spacing:1px
+letter-spacing:1px;
 }
 
 .guide-feature h2{
 margin:8px 0 4px;
 font-size:27px;
-letter-spacing:-1px
+letter-spacing:-1px;
 }
 
 .guide-feature p{
 margin:0;
 font-size:10px;
-color:#e7f4ea
+color:#e7f4ea;
 }
 
 .guide-section-title{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin:20px 3px 10px
+margin:20px 3px 10px;
 }
 
 .guide-section-title b{
-font-size:15px
+font-size:15px;
 }
 
 .guide-section-title small{
 color:var(--leaf);
 font-size:9px;
-font-weight:850
+font-weight:850;
 }
-
-/* CATEGORIES */
 
 .category-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px
+gap:10px;
 }
 
 .category{
@@ -267,16 +272,21 @@ overflow:hidden;
 position:relative;
 background:white;
 padding:0;
-text-align:left
+text-align:left;
 }
 
-.category-illustration{
+.category-image{
 position:absolute;
 inset:0;
-display:grid;
-place-items:center;
-font-size:65px;
-background:linear-gradient(145deg,#e7f5e9,#cde5d3)
+background-size:cover;
+background-position:center;
+}
+
+.category-image:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(180deg,transparent 25%,rgba(5,30,19,.83));
 }
 
 .category-content{
@@ -285,48 +295,31 @@ z-index:2;
 left:13px;
 right:10px;
 bottom:12px;
-color:white
-}
-
-.category-content:before{
-content:"";
-position:absolute;
-z-index:-1;
-left:-13px;
-right:-10px;
-top:-65px;
-bottom:-12px;
-background:linear-gradient(
-180deg,
-transparent,
-rgba(5,30,19,.83)
-)
+color:white;
 }
 
 .category-icon{
-font-size:18px
+font-size:18px;
 }
 
 .category-name{
 display:block;
 font-size:12px;
 font-weight:850;
-margin-top:4px
+margin-top:4px;
 }
 
 .category-count{
 display:block;
 font-size:8px;
 color:#dcecdf;
-margin-top:2px
+margin-top:2px;
 }
-
-/* PLANT CARDS */
 
 .featured-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px
+gap:10px;
 }
 
 .plant-card{
@@ -336,38 +329,38 @@ border-radius:20px;
 overflow:hidden;
 box-shadow:0 8px 25px rgba(13,51,36,.05);
 text-align:left;
-padding:0
+padding:0;
 }
 
-.plant-art{
+.plant-card img{
+width:100%;
 height:130px;
-display:grid;
-place-items:center;
-font-size:70px;
-background:linear-gradient(145deg,#e9f5eb,#d4e9d8)
+object-fit:cover;
+display:block;
+background:var(--mint);
 }
 
 .plant-card-info{
-padding:11px
+padding:11px;
 }
 
 .plant-card-name{
 font-size:12px;
-font-weight:850
+font-weight:850;
 }
 
 .plant-card-scientific{
 font-size:9px;
 color:var(--muted);
 margin-top:4px;
-font-style:italic
+font-style:italic;
 }
 
 .plant-card-tags{
 display:flex;
 gap:4px;
 margin-top:8px;
-flex-wrap:wrap
+flex-wrap:wrap;
 }
 
 .tag{
@@ -376,174 +369,172 @@ border-radius:8px;
 background:var(--mint);
 color:var(--forest);
 font-size:7px;
-font-weight:800
+font-weight:800;
 }
 
 /* ENCYCLOPEDIA */
 
-.encyclopedia{
-margin-top:22px
-}
-
-.plant-list{
+.encyclopedia-results{
 display:grid;
-gap:9px
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:10px;
 }
 
-.plant-list-item{
-width:100%;
-border:1px solid var(--line);
+.ency-card{
 background:white;
-border-radius:18px;
-padding:12px;
-display:flex;
-align-items:center;
-gap:12px;
+border:1px solid var(--line);
+border-radius:19px;
+overflow:hidden;
+padding:0;
 text-align:left;
-box-shadow:0 6px 18px rgba(13,51,36,.04)
+box-shadow:0 8px 25px rgba(13,51,36,.05);
 }
 
-.plant-list-art{
-width:55px;
-height:55px;
-border-radius:15px;
-display:grid;
-place-items:center;
-font-size:30px;
+.ency-card img{
+width:100%;
+height:125px;
+object-fit:cover;
+display:block;
 background:var(--mint);
-flex:none
 }
 
-.plant-list-name{
+.ency-info{
+padding:11px;
+}
+
+.ency-name{
 font-size:12px;
-font-weight:850
+font-weight:850;
+line-height:1.25;
 }
 
-.plant-list-scientific{
+.ency-scientific{
 font-size:9px;
 font-style:italic;
 color:var(--muted);
-margin-top:3px
+margin-top:4px;
 }
 
-.plant-list-desc{
-font-size:9px;
-color:var(--muted);
-margin-top:5px;
-line-height:1.35
+.ency-type{
+display:inline-block;
+margin-top:8px;
+padding:4px 7px;
+border-radius:8px;
+background:var(--mint);
+color:var(--forest);
+font-size:7px;
+font-weight:850;
 }
 
-.plant-detail{
+.no-results{
+padding:28px 18px;
 background:white;
 border:1px solid var(--line);
-border-radius:25px;
-padding:16px;
-box-shadow:var(--shadow)
-}
-
-.detail-hero{
-height:180px;
 border-radius:20px;
-display:grid;
-place-items:center;
-font-size:90px;
-background:linear-gradient(145deg,#e6f4e9,#c9e3d0);
-margin-bottom:15px
+text-align:center;
+color:var(--muted);
+font-size:11px;
+grid-column:1/-1;
 }
 
-.detail-label{
+/* PLANT DETAIL */
+
+.detail-card{
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.detail-image{
+width:100%;
+height:275px;
+object-fit:cover;
+display:block;
+background:var(--mint);
+}
+
+.detail-content{
+padding:17px;
+}
+
+.detail-kicker{
 font-size:8px;
 font-weight:900;
 letter-spacing:1.5px;
-color:var(--leaf)
+color:var(--leaf);
 }
 
 .detail-title{
-font-size:27px;
-font-weight:900;
-margin-top:4px
+margin:5px 0;
+font-size:28px;
+line-height:1.05;
+letter-spacing:-1px;
 }
 
 .detail-scientific{
 font-size:12px;
 font-style:italic;
 color:var(--muted);
-margin-top:4px
 }
 
 .detail-description{
 font-size:11px;
-line-height:1.55;
-color:#536159;
-margin:14px 0
+line-height:1.6;
+color:#526059;
+margin-top:14px;
 }
 
 .detail-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:8px
+gap:8px;
+margin-top:14px;
 }
 
 .detail-box{
-padding:12px;
+background:#f5f7f4;
 border-radius:15px;
-background:#f5f7f4
+padding:12px;
 }
 
 .detail-box small{
 display:block;
 font-size:8px;
 color:var(--muted);
-text-transform:uppercase
+text-transform:uppercase;
 }
 
 .detail-box b{
 display:block;
 font-size:11px;
-margin-top:5px
+margin-top:5px;
 }
 
-.detail-care{
-margin-top:18px
-}
-
-.detail-care h3{
-font-size:16px;
-margin:0 0 8px
-}
-
-.detail-care-row{
-display:flex;
-gap:10px;
-padding:11px 0;
-border-bottom:1px solid var(--line);
-font-size:11px;
-line-height:1.4
-}
-
-.detail-care-row:last-child{
-border-bottom:0
-}
-
-.detail-icon{
-width:31px;
-height:31px;
-border-radius:10px;
-background:var(--mint);
+.detail-actions{
 display:grid;
-place-items:center;
-flex:none
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-top:14px;
 }
 
-.back-guide{
-width:100%;
-height:45px;
-margin-bottom:12px;
+.detail-button{
+min-height:46px;
 border:0;
 border-radius:14px;
+font-weight:800;
+}
+
+.detail-primary{
+background:var(--forest);
+color:white;
+}
+
+.detail-secondary{
 background:var(--mint);
 color:var(--forest);
-font-weight:850
 }
 
 /* SCANNER */
@@ -551,7 +542,7 @@ font-weight:850
 .scan-heading{
 margin:24px 3px 10px;
 font-size:15px;
-font-weight:850
+font-weight:850;
 }
 
 .scan-card{
@@ -559,7 +550,7 @@ padding:14px;
 background:white;
 border:1px solid var(--line);
 border-radius:27px;
-box-shadow:var(--shadow)
+box-shadow:var(--shadow);
 }
 
 .scan-preview{
@@ -567,9 +558,12 @@ height:210px;
 border-radius:21px;
 overflow:hidden;
 position:relative;
-background:linear-gradient(145deg,#315e45,#0d3324);
+background:
+linear-gradient(rgba(13,51,36,.30),rgba(13,51,36,.65)),
+url("https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=1000&q=85")
+center/cover;
 display:grid;
-place-items:center
+place-items:center;
 }
 
 .scan-preview img{
@@ -578,22 +572,23 @@ position:absolute;
 inset:0;
 width:100%;
 height:100%;
-object-fit:cover
+object-fit:cover;
 }
 
 .scan-preview.has-image img{
-display:block
+display:block;
 }
 
 .scan-prompt{
 position:relative;
 z-index:2;
 text-align:center;
-color:white
+color:white;
+text-shadow:0 2px 8px rgba(0,0,0,.45);
 }
 
 .scan-preview.has-image .scan-prompt{
-display:none
+display:none;
 }
 
 .camera-icon{
@@ -605,52 +600,52 @@ display:grid;
 place-items:center;
 background:rgba(255,255,255,.94);
 color:var(--forest);
-font-size:27px
+font-size:27px;
 }
 
 .scan-prompt b{
-font-size:14px
+font-size:14px;
 }
 
 .scan-prompt small{
 display:block;
 margin-top:5px;
-font-size:10px
+font-size:10px;
 }
 
 .scan-actions{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:9px;
-margin-top:11px
+margin-top:11px;
 }
 
 .action-button{
 min-height:50px;
 border:0;
 border-radius:15px;
-font-weight:800
+font-weight:800;
 }
 
 .action-primary{
 background:var(--forest);
-color:white
+color:white;
 }
 
 .action-secondary{
 background:var(--mint);
-color:var(--forest)
+color:var(--forest);
 }
 
 .action-button:disabled{
-opacity:.42
+opacity:.42;
 }
 
 .scan-tip{
 margin:10px 4px 1px;
 text-align:center;
 color:#8a958e;
-font-size:9px
+font-size:9px;
 }
 
 /* PAGES */
@@ -659,7 +654,7 @@ font-size:9px
 display:flex;
 align-items:center;
 gap:11px;
-margin:5px 0 17px
+margin:5px 0 17px;
 }
 
 .back-button{
@@ -668,7 +663,7 @@ height:42px;
 border:1px solid var(--line);
 background:white;
 border-radius:14px;
-font-size:25px
+font-size:25px;
 }
 
 .page-kicker{
@@ -676,14 +671,14 @@ margin:0 0 3px;
 color:var(--leaf);
 font-size:8px;
 font-weight:900;
-letter-spacing:1.7px
+letter-spacing:1.7px;
 }
 
 .page-header h1{
 margin:0;
 font-size:29px;
 line-height:1;
-letter-spacing:-1.2px
+letter-spacing:-1.2px;
 }
 
 /* RESULTS */
@@ -693,14 +688,14 @@ background:white;
 border:1px solid var(--line);
 border-radius:27px;
 padding:14px;
-box-shadow:var(--shadow)
+box-shadow:var(--shadow);
 }
 
 .result-photo{
 width:100%;
 height:275px;
 object-fit:cover;
-border-radius:21px
+border-radius:21px;
 }
 
 .result-label{
@@ -708,25 +703,26 @@ margin:16px 2px 4px;
 color:var(--leaf);
 font-size:8px;
 font-weight:900;
-letter-spacing:1.6px
+letter-spacing:1.6px;
 }
 
 .result-name{
 margin:0;
 font-size:27px;
-line-height:1.08
+line-height:1.08;
+letter-spacing:-1px;
 }
 
 .result-common{
 margin:5px 0 13px;
 color:var(--muted);
-font-size:13px
+font-size:13px;
 }
 
 .confidence{
 padding:13px;
 background:var(--mint);
-border-radius:15px
+border-radius:15px;
 }
 
 .confidence-top{
@@ -734,7 +730,7 @@ display:flex;
 justify-content:space-between;
 font-size:11px;
 font-weight:800;
-color:var(--forest)
+color:var(--forest);
 }
 
 .confidence-track{
@@ -742,39 +738,72 @@ height:7px;
 margin-top:9px;
 background:#cfe2d3;
 border-radius:20px;
-overflow:hidden
+overflow:hidden;
 }
 
 .confidence-fill{
 height:100%;
 background:var(--leaf);
-border-radius:20px
+border-radius:20px;
 }
 
 .info-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:8px;
-margin-top:9px
+margin-top:9px;
 }
 
 .info-box{
 padding:12px;
 border-radius:15px;
-background:#f5f7f4
+background:#f5f7f4;
 }
 
 .info-box small{
 display:block;
 color:var(--muted);
 font-size:8px;
-text-transform:uppercase
+text-transform:uppercase;
 }
 
 .info-box b{
 display:block;
 margin-top:5px;
-font-size:11px
+font-size:11px;
+}
+
+.care-section{
+margin-top:19px;
+}
+
+.care-section h3{
+margin:0 0 7px;
+font-size:16px;
+}
+
+.care-row{
+display:flex;
+gap:10px;
+align-items:flex-start;
+padding:12px 0;
+border-bottom:1px solid var(--line);
+font-size:12px;
+line-height:1.4;
+}
+
+.care-row:last-child{
+border-bottom:0;
+}
+
+.care-icon{
+width:30px;
+height:30px;
+border-radius:10px;
+background:var(--mint);
+display:grid;
+place-items:center;
+flex:none;
 }
 
 /* HEALTH */
@@ -784,7 +813,7 @@ background:white;
 border:1px solid var(--line);
 border-radius:27px;
 padding:14px;
-box-shadow:var(--shadow)
+box-shadow:var(--shadow);
 }
 
 .health-hero{
@@ -792,11 +821,10 @@ padding:25px 18px;
 border-radius:22px;
 text-align:center;
 color:white;
-background:linear-gradient(
-135deg,
-rgba(13,51,36,.98),
-rgba(39,119,76,.92)
-)
+background:
+linear-gradient(135deg,rgba(13,51,36,.95),rgba(39,119,76,.72)),
+url("https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1000&q=85")
+center/cover;
 }
 
 .health-icon{
@@ -807,19 +835,19 @@ border-radius:22px;
 background:rgba(255,255,255,.14);
 display:grid;
 place-items:center;
-font-size:30px
+font-size:30px;
 }
 
 .health-hero h3{
 margin:13px 0 6px;
-font-size:18px
+font-size:18px;
 }
 
 .health-hero p{
 margin:0;
 font-size:10px;
 line-height:1.5;
-color:#e7f3e9
+color:#e7f3e9;
 }
 
 .health-button{
@@ -830,25 +858,25 @@ border:0;
 border-radius:14px;
 background:white;
 color:var(--forest);
-font-weight:850
+font-weight:850;
 }
 
 .disease{
 margin-top:10px;
 padding:14px;
 border-radius:16px;
-background:#f5f8f4
+background:#f5f8f4;
 }
 
 .disease-title{
 font-weight:850;
-font-size:12px
+font-size:12px;
 }
 
 .disease-meta{
 color:var(--muted);
 font-size:10px;
-margin-top:5px
+margin-top:5px;
 }
 
 .disease-bar{
@@ -856,13 +884,13 @@ height:6px;
 margin-top:9px;
 background:#dce7dd;
 border-radius:20px;
-overflow:hidden
+overflow:hidden;
 }
 
 .disease-bar i{
 display:block;
 height:100%;
-background:var(--leaf)
+background:var(--leaf);
 }
 
 /* HISTORY */
@@ -874,7 +902,7 @@ background:white;
 border:1px solid var(--line);
 border-radius:27px;
 color:var(--muted);
-box-shadow:var(--shadow)
+box-shadow:var(--shadow);
 }
 
 .history-item{
@@ -882,13 +910,13 @@ padding:12px;
 margin-bottom:10px;
 background:white;
 border:1px solid var(--line);
-border-radius:20px
+border-radius:20px;
 }
 
 .history-content{
 display:flex;
 gap:12px;
-align-items:center
+align-items:center;
 }
 
 .history-image{
@@ -897,24 +925,24 @@ height:65px;
 border-radius:16px;
 object-fit:cover;
 background:var(--mint);
-flex:none
+flex:none;
 }
 
 .history-name{
 font-size:12px;
-font-weight:850
+font-weight:850;
 }
 
 .history-common{
 margin-top:4px;
 color:var(--muted);
-font-size:10px
+font-size:10px;
 }
 
 .history-meta{
 margin-top:6px;
 color:#8b958f;
-font-size:9px
+font-size:9px;
 }
 
 /* SETTINGS */
@@ -924,7 +952,7 @@ padding:17px;
 background:white;
 border:1px solid var(--line);
 border-radius:25px;
-box-shadow:var(--shadow)
+box-shadow:var(--shadow);
 }
 
 .connection{
@@ -932,12 +960,12 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 padding-bottom:15px;
-border-bottom:1px solid var(--line)
+border-bottom:1px solid var(--line);
 }
 
 .connection-name{
 font-size:13px;
-font-weight:800
+font-weight:800;
 }
 
 .status{
@@ -946,19 +974,19 @@ border-radius:20px;
 background:#fceeee;
 color:var(--red);
 font-size:9px;
-font-weight:850
+font-weight:850;
 }
 
 .status.good{
 background:var(--mint);
-color:#267345
+color:#267345;
 }
 
 .form-label{
 display:block;
 margin-top:16px;
 font-size:11px;
-font-weight:850
+font-weight:850;
 }
 
 .form-input{
@@ -969,7 +997,7 @@ padding:0 13px;
 border:1px solid var(--line);
 border-radius:14px;
 outline:none;
-background:#fafcf9
+background:#fafcf9;
 }
 
 .checkbox-line{
@@ -978,7 +1006,7 @@ align-items:center;
 gap:8px;
 margin-top:12px;
 font-size:10px;
-color:var(--muted)
+color:var(--muted);
 }
 
 .save-key{
@@ -989,7 +1017,7 @@ border:0;
 border-radius:14px;
 background:var(--forest);
 color:white;
-font-weight:850
+font-weight:850;
 }
 
 .remove-key{
@@ -1000,7 +1028,7 @@ border:0;
 border-radius:14px;
 background:#fff0f0;
 color:var(--red);
-font-weight:800
+font-weight:800;
 }
 
 .notice{
@@ -1010,7 +1038,7 @@ border-radius:15px;
 background:#fff8df;
 color:#706544;
 font-size:10px;
-line-height:1.5
+line-height:1.5;
 }
 
 /* NAV */
@@ -1029,7 +1057,7 @@ border-top:1px solid rgba(218,228,220,.9);
 backdrop-filter:blur(25px);
 -webkit-backdrop-filter:blur(25px);
 display:grid;
-grid-template-columns:repeat(5,1fr)
+grid-template-columns:repeat(5,1fr);
 }
 
 .nav-item{
@@ -1041,7 +1069,7 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 gap:4px;
-border-radius:17px
+border-radius:17px;
 }
 
 .nav-item-icon{
@@ -1049,21 +1077,21 @@ width:36px;
 height:30px;
 display:grid;
 place-items:center;
-font-size:18px
+font-size:18px;
 }
 
 .nav-item small{
 font-size:8px;
-font-weight:850
+font-weight:850;
 }
 
 .nav-item.active{
-color:var(--forest)
+color:var(--forest);
 }
 
 .nav-item.active .nav-item-icon{
 background:var(--mint);
-border-radius:12px
+border-radius:12px;
 }
 
 .toast{
@@ -1081,11 +1109,11 @@ font-size:11px;
 font-weight:700;
 text-align:center;
 display:none;
-box-shadow:0 12px 35px rgba(0,0,0,.2)
+box-shadow:0 12px 35px rgba(0,0,0,.2);
 }
 
 .toast.show{
-display:block
+display:block;
 }
 
 .spinner{
@@ -1097,20 +1125,37 @@ margin-right:7px;
 border:2px solid rgba(255,255,255,.3);
 border-top-color:white;
 border-radius:50%;
-animation:spin .7s linear infinite
+animation:spin .7s linear infinite;
 }
 
 @keyframes spin{
-to{transform:rotate(360deg)}
+to{transform:rotate(360deg);}
 }
 
 @media(max-width:390px){
-main{padding:15px}
-.guide-intro h1{font-size:28px}
-.guide-feature{height:205px}
-.scan-actions{grid-template-columns:1fr}
-.result-photo{height:240px}
+
+main{
+padding:15px;
 }
+
+.guide-intro h1{
+font-size:28px;
+}
+
+.guide-feature{
+height:205px;
+}
+
+.scan-actions{
+grid-template-columns:1fr;
+}
+
+.result-photo{
+height:240px;
+}
+
+}
+
 </style>
 </head>
 
@@ -1125,8 +1170,15 @@ main{padding:15px}
 <div class="logo">🌿</div>
 
 <div>
-<div class="brand-title">TaynPlantz</div>
-<span class="brand-sub">Plant intelligence</span>
+
+<div class="brand-title">
+TaynPlantz
+</div>
+
+<span class="brand-sub">
+Plant intelligence
+</span>
+
 </div>
 
 </div>
@@ -1138,7 +1190,6 @@ onclick="show('settings')">
 </button>
 
 </header>
-
 
 <main>
 
@@ -1158,12 +1209,10 @@ Grow smarter.
 </h1>
 
 <p>
-A built-in plant encyclopedia with care information,
-plant types and identification tools.
+Search plants, herbs, flowers, trees and houseplants.
 </p>
 
 </div>
-
 
 <div class="guide-search">
 
@@ -1172,18 +1221,33 @@ plant types and identification tools.
 <input
 id="plantSearch"
 type="search"
-placeholder="Search Monstera, roses, herbs..."
+placeholder="Search dill, basil, monstera, rose..."
 autocomplete="off">
 
 </div>
 
+<div
+id="searchStatus"
+class="search-status">
+Try searching for any plant name.
+</div>
+
+
+<div id="encyclopediaResults"
+class="encyclopedia-results">
+
+</div>
+
+
+<div
+id="guideDefault">
 
 <div class="guide-feature">
 
 <div class="guide-feature-content">
 
 <div class="guide-badge">
-🌿 TAYNPLANTZ ENCYCLOPEDIA
+🌿 TAYNPLANTZ GUIDE
 </div>
 
 <h2>
@@ -1191,8 +1255,7 @@ Your plant encyclopedia
 </h2>
 
 <p>
-Tap any plant below to open its complete guide.
-No subscription required.
+Explore plant types, illustrated guides and essential care information.
 </p>
 
 </div>
@@ -1204,24 +1267,28 @@ No subscription required.
 
 <b>Browse plant types</b>
 
-<small>FREE GUIDE</small>
+<small>EXPLORE</small>
 
 </div>
 
 
 <div class="category-grid">
 
+
 <button
 class="category"
-onclick="filterCategory('house')">
+onclick="searchCategory('houseplant')">
 
-<div class="category-illustration">
-🪴
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=700&q=80')">
 </div>
 
 <div class="category-content">
 
-<div class="category-icon">🪴</div>
+<div class="category-icon">
+🪴
+</div>
 
 <span class="category-name">
 Houseplants
@@ -1238,15 +1305,18 @@ Indoor favorites
 
 <button
 class="category"
-onclick="filterCategory('flower')">
+onclick="searchCategory('flower')">
 
-<div class="category-illustration">
-🌸
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80')">
 </div>
 
 <div class="category-content">
 
-<div class="category-icon">🌸</div>
+<div class="category-icon">
+🌸
+</div>
 
 <span class="category-name">
 Flowering Plants
@@ -1263,15 +1333,18 @@ Blooms & color
 
 <button
 class="category"
-onclick="filterCategory('succulent')">
+onclick="searchCategory('succulent')">
 
-<div class="category-illustration">
-🌵
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=700&q=80')">
 </div>
 
 <div class="category-content">
 
-<div class="category-icon">🌵</div>
+<div class="category-icon">
+🌵
+</div>
 
 <span class="category-name">
 Succulents & Cacti
@@ -1288,15 +1361,18 @@ Low-water plants
 
 <button
 class="category"
-onclick="filterCategory('herb')">
+onclick="searchCategory('herb')">
 
-<div class="category-illustration">
-🌿
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=700&q=80')">
 </div>
 
 <div class="category-content">
 
-<div class="category-icon">🌿</div>
+<div class="category-icon">
+🌿
+</div>
 
 <span class="category-name">
 Herbs & Vegetables
@@ -1313,22 +1389,25 @@ Grow your own
 
 <button
 class="category"
-onclick="filterCategory('tree')">
+onclick="searchCategory('tree')">
 
-<div class="category-illustration">
-🌳
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80')">
 </div>
 
 <div class="category-content">
 
-<div class="category-icon">🌳</div>
+<div class="category-icon">
+🌳
+</div>
 
 <span class="category-name">
 Trees
 </span>
 
 <span class="category-count">
-Garden & landscape
+Forest & garden
 </span>
 
 </div>
@@ -1338,15 +1417,18 @@ Garden & landscape
 
 <button
 class="category"
-onclick="filterCategory('tropical')">
+onclick="searchCategory('tropical')">
 
-<div class="category-illustration">
-🌴
+<div
+class="category-image"
+style="background-image:url('https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=700&q=80')">
 </div>
 
 <div class="category-content">
 
-<div class="category-icon">🌴</div>
+<div class="category-icon">
+🌴
+</div>
 
 <span class="category-name">
 Tropical Plants
@@ -1365,20 +1447,161 @@ Warm-climate plants
 
 <div class="guide-section-title">
 
-<b>Featured plants</b>
+<b>
+Popular plants
+</b>
 
-<small>10+ GUIDES</small>
+<small>
+TAP TO EXPLORE
+</small>
 
 </div>
 
 
-<div
-id="plantList"
-class="plant-list">
+<div class="featured-grid">
+
+
+<button
+class="plant-card"
+onclick="openPlant('Monstera deliciosa')">
+
+<img
+src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=700&q=85"
+alt="Monstera">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Monstera
 </div>
 
+<div class="plant-card-scientific">
+Monstera deliciosa
+</div>
 
-<!-- SCANNER -->
+<div class="plant-card-tags">
+
+<span class="tag">
+Tropical
+</span>
+
+<span class="tag">
+Houseplant
+</span>
+
+</div>
+
+</div>
+
+</button>
+
+
+<button
+class="plant-card"
+onclick="openPlant('Snake plant')">
+
+<img
+src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=85"
+alt="Snake Plant">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Snake Plant
+</div>
+
+<div class="plant-card-scientific">
+Dracaena trifasciata
+</div>
+
+<div class="plant-card-tags">
+
+<span class="tag">
+Easy
+</span>
+
+<span class="tag">
+Indoor
+</span>
+
+</div>
+
+</div>
+
+</button>
+
+
+<button
+class="plant-card"
+onclick="openPlant('Rose')">
+
+<img
+src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=85"
+alt="Rose">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Rose
+</div>
+
+<div class="plant-card-scientific">
+Rosa
+</div>
+
+<div class="plant-card-tags">
+
+<span class="tag">
+Flowering
+</span>
+
+<span class="tag">
+Outdoor
+</span>
+
+</div>
+
+</div>
+
+</button>
+
+
+<button
+class="plant-card"
+onclick="openPlant('Basil')">
+
+<img
+src="https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=700&q=85"
+alt="Basil">
+
+<div class="plant-card-info">
+
+<div class="plant-card-name">
+Basil
+</div>
+
+<div class="plant-card-scientific">
+Ocimum basilicum
+</div>
+
+<div class="plant-card-tags">
+
+<span class="tag">
+Herb
+</span>
+
+<span class="tag">
+Edible
+</span>
+
+</div>
+
+</div>
+
+</button>
+
+</div>
+
 
 <div class="scan-heading">
 Identify a plant
@@ -1387,7 +1610,9 @@ Identify a plant
 
 <div class="scan-card">
 
-<div id="photo" class="scan-preview">
+<div
+id="photo"
+class="scan-preview">
 
 <img
 id="preview"
@@ -1443,8 +1668,9 @@ Identify plant
 
 
 <div class="scan-tip">
-Your encyclopedia works without an API.
-Plant identification can use Pl@ntNet when configured.
+Clear leaves, flowers or whole-plant photos usually work best.
+</div>
+
 </div>
 
 </div>
@@ -1454,19 +1680,34 @@ Plant identification can use Pl@ntNet when configured.
 
 <!-- PLANT DETAIL -->
 
-<section id="plantDetail" class="screen">
+<section
+id="plantDetail"
+class="screen">
+
+<div class="page-header">
 
 <button
-class="back-guide"
+class="back-button"
 onclick="show('home')">
-
-← Back to Plant Encyclopedia
-
+‹
 </button>
 
+<div>
+
+<p class="page-kicker">
+PLANT ENCYCLOPEDIA
+</p>
+
+<h1>
+Plant guide
+</h1>
+
+</div>
+
+</div>
+
 <div
-id="plantDetailContent"
-class="plant-detail">
+id="plantDetailContent">
 </div>
 
 </section>
@@ -1474,7 +1715,9 @@ class="plant-detail">
 
 <!-- RESULTS -->
 
-<section id="results" class="screen">
+<section
+id="results"
+class="screen">
 
 <div class="page-header">
 
@@ -1498,8 +1741,9 @@ Your plant
 
 </div>
 
-
-<div id="result" class="result-card">
+<div
+id="result"
+class="result-card">
 
 <div class="history-empty">
 
@@ -1524,7 +1768,9 @@ Scan a plant to see your identification.
 
 <!-- HEALTH -->
 
-<section id="health" class="screen">
+<section
+id="health"
+class="screen">
 
 <div class="page-header">
 
@@ -1562,8 +1808,8 @@ How is your plant doing?
 </h3>
 
 <p>
-Screen your selected photo for probable plant
-health problems. Results are a screening aid.
+Screen your selected photo for probable plant health problems.
+Results are a screening aid and not a guaranteed diagnosis.
 </p>
 
 <button
@@ -1585,7 +1831,9 @@ Run health scan
 
 <!-- HISTORY -->
 
-<section id="history" class="screen">
+<section
+id="history"
+class="screen">
 
 <div class="page-header">
 
@@ -1624,7 +1872,9 @@ Clear
 
 <!-- SETTINGS -->
 
-<section id="settings" class="screen">
+<section
+id="settings"
+class="screen">
 
 <div class="page-header">
 
@@ -1660,7 +1910,9 @@ Pl@ntNet connection
 <div
 id="status"
 class="status">
+
 Not configured
+
 </div>
 
 </div>
@@ -1711,18 +1963,19 @@ Remove saved key
 
 <div class="notice">
 
-<b>About the free Plant Encyclopedia</b>
+<b>
+Privacy & security
+</b>
 
 <br><br>
 
-The TaynPlantz Resource Guide is built directly
-into this HTML file. It does not require a paid
-database, subscription or encyclopedia API.
+Your PlantNet API key is not included in this HTML.
+
+If you choose to remember it, the browser stores it locally on this device.
 
 <br><br>
 
-The optional plant identification scanner uses
-Pl@ntNet when you enter your own API key.
+The encyclopedia itself does not require an API key.
 
 </div>
 
@@ -1732,8 +1985,6 @@ Pl@ntNet when you enter your own API key.
 
 </main>
 
-
-<!-- NAVIGATION -->
 
 <nav class="bottom-nav">
 
@@ -1824,257 +2075,584 @@ class="toast">
 
 <script>
 
-/* =====================================================
+/* =========================================================
    TAYNPLANTZ
-   BUILT-IN FREE PLANT ENCYCLOPEDIA
-   ===================================================== */
+   FREE PLANT ENCYCLOPEDIA + PLANTNET SCANNER
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   LARGE FREE LOCAL PLANT DATABASE
+   --------------------------------------------------------- */
 
 const PLANTS=[
 
-{
-id:"monstera",
-name:"Monstera",
-scientific:"Monstera deliciosa",
-category:"house tropical",
-icon:"🌿",
-description:
-"A popular tropical houseplant known for its large leaves and natural splits and holes.",
-light:"Bright indirect",
-water:"When upper soil dries",
-humidity:"Moderate to high",
-soil:"Well draining",
-difficulty:"Easy"
-},
+/* HERBS */
 
 {
-id:"snake",
-name:"Snake Plant",
-scientific:"Dracaena trifasciata",
-category:"house",
-icon:"🌱",
-description:
-"A hardy indoor plant that tolerates lower light and periods of dry soil.",
-light:"Low to bright indirect",
-water:"Allow soil to dry",
-humidity:"Average",
-soil:"Fast draining",
-difficulty:"Very easy"
-},
-
-{
-id:"pothos",
-name:"Golden Pothos",
-scientific:"Epipremnum aureum",
-category:"house tropical",
-icon:"🍃",
-description:
-"A trailing tropical plant with heart-shaped leaves and excellent adaptability indoors.",
-light:"Medium indirect",
-water:"When soil begins drying",
-humidity:"Average",
-soil:"Well draining",
-difficulty:"Easy"
-},
-
-{
-id:"peace",
-name:"Peace Lily",
-scientific:"Spathiphyllum",
-category:"house flower tropical",
-icon:"🌱",
-description:
-"A tropical indoor plant with glossy leaves and distinctive white flowers.",
-light:"Medium indirect",
-water:"Keep lightly moist",
-humidity:"Moderate",
-soil:"Rich draining mix",
-difficulty:"Moderate"
-},
-
-{
-id:"rubber",
-name:"Rubber Plant",
-scientific:"Ficus elastica",
-category:"house tropical",
-icon:"🌿",
-description:
-"A bold indoor tree with thick glossy leaves that can grow into an impressive specimen.",
-light:"Bright indirect",
-water:"When upper soil dries",
-humidity:"Average",
-soil:"Well draining",
-difficulty:"Easy"
-},
-
-{
-id:"rose",
-name:"Rose",
-scientific:"Rosa",
-category:"flower",
-icon:"🌹",
-description:
-"A classic flowering garden plant available in many colors, forms and growth habits.",
+name:"Dill",
+scientific:"Anethum graveolens",
+type:"Herb",
+aliases:["dill weed","dill herb"],
+image:"https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=900&q=85",
 light:"Full sun",
-water:"Deep regular watering",
-humidity:"Outdoor average",
-soil:"Rich well drained",
-difficulty:"Moderate"
+water:"Moderate",
+soil:"Well-draining",
+description:"Dill is an aromatic annual herb commonly grown for its feathery leaves and seeds. It is widely used in cooking and is especially popular in pickling."
 },
 
 {
-id:"orchid",
-name:"Phalaenopsis Orchid",
-scientific:"Phalaenopsis",
-category:"flower tropical house",
-icon:"🌸",
-description:
-"A popular flowering orchid that can bloom repeatedly when given suitable light and watering.",
-light:"Bright indirect",
-water:"When roots and medium dry",
-humidity:"Moderate",
-soil:"Orchid bark mix",
-difficulty:"Moderate"
-},
-
-{
-id:"aloe",
-name:"Aloe Vera",
-scientific:"Aloe vera",
-category:"succulent",
-icon:"🌵",
-description:
-"A sun-loving succulent with fleshy leaves designed to store water.",
-light:"Bright light",
-water:"Let soil dry completely",
-humidity:"Low to average",
-soil:"Cactus mix",
-difficulty:"Easy"
-},
-
-{
-id:"cactus",
-name:"Cactus",
-scientific:"Cactaceae",
-category:"succulent",
-icon:"🌵",
-description:
-"A diverse family of drought-adapted plants that generally prefer strong light and excellent drainage.",
-light:"Bright direct",
-water:"Allow soil to fully dry",
-humidity:"Low",
-soil:"Very fast draining",
-difficulty:"Easy"
-},
-
-{
-id:"basil",
 name:"Basil",
 scientific:"Ocimum basilicum",
-category:"herb",
-icon:"🌿",
-description:
-"A fragrant culinary herb commonly grown in containers, gardens and sunny windows.",
+type:"Herb",
+aliases:["sweet basil","genovese basil"],
+image:"https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=900&q=85",
 light:"Full sun",
-water:"Keep evenly moist",
-humidity:"Average",
-soil:"Rich draining",
-difficulty:"Easy"
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Basil is a warm-season culinary herb grown for its fragrant leaves. It performs best with warmth, sunlight and consistently moist but not waterlogged soil."
 },
 
 {
-id:"mint",
+name:"Parsley",
+scientific:"Petroselinum crispum",
+type:"Herb",
+aliases:["flat leaf parsley","italian parsley","curly parsley"],
+image:"https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?auto=format&fit=crop&w=900&q=85",
+light:"Sun / partial shade",
+water:"Moderate",
+soil:"Rich, moist",
+description:"Parsley is a biennial herb grown as a culinary plant for its nutritious aromatic leaves."
+},
+
+{
+name:"Cilantro",
+scientific:"Coriandrum sativum",
+type:"Herb",
+aliases:["coriander","coriander herb"],
+image:"https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Cilantro is the leafy herb produced by Coriandrum sativum. The same plant produces coriander seeds when mature."
+},
+
+{
+name:"Rosemary",
+scientific:"Salvia rosmarinus",
+type:"Herb",
+aliases:["rosemary herb"],
+image:"https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Very well-draining",
+description:"Rosemary is an aromatic evergreen herb with needle-like leaves. It prefers bright sunlight and soil that dries between waterings."
+},
+
+{
+name:"Thyme",
+scientific:"Thymus vulgaris",
+type:"Herb",
+aliases:["common thyme","garden thyme"],
+image:"https://images.unsplash.com/photo-1628773822503-930a7eaecf80?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Well-draining",
+description:"Thyme is a small aromatic perennial herb commonly grown in herb gardens and containers."
+},
+
+{
+name:"Sage",
+scientific:"Salvia officinalis",
+type:"Herb",
+aliases:["common sage","garden sage"],
+image:"https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Well-draining",
+description:"Common sage is a woody perennial herb with gray-green aromatic leaves."
+},
+
+{
 name:"Mint",
 scientific:"Mentha",
-category:"herb",
-icon:"🌿",
-description:
-"A vigorous aromatic herb that grows well in containers and consistently moist soil.",
-light:"Sun to partial shade",
-water:"Keep moist",
-humidity:"Average",
-soil:"Rich moist soil",
-difficulty:"Easy"
+type:"Herb",
+aliases:["peppermint","spearmint","garden mint"],
+image:"https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=85",
+light:"Partial shade / sun",
+water:"Moderate",
+soil:"Moist, rich",
+description:"Mint is a vigorous aromatic plant commonly grown for tea, cooking and fragrance."
 },
 
 {
-id:"tomato",
-name:"Tomato",
-scientific:"Solanum lycopersicum",
-category:"herb",
-icon:"🍅",
-description:
-"A warm-season garden crop that produces fruit best with strong sunlight and consistent care.",
+name:"Oregano",
+scientific:"Origanum vulgare",
+type:"Herb",
+aliases:["common oregano","wild marjoram"],
+image:"https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=900&q=85",
 light:"Full sun",
-water:"Regular deep watering",
-humidity:"Average",
-soil:"Rich well drained",
-difficulty:"Moderate"
+water:"Low to moderate",
+soil:"Well-draining",
+description:"Oregano is a hardy aromatic perennial herb widely used in Mediterranean cooking."
 },
 
 {
-id:"maple",
-name:"Maple",
-scientific:"Acer",
-category:"tree",
-icon:"🍁",
-description:
-"A large group of deciduous trees known for attractive foliage and often brilliant autumn color.",
-light:"Full sun to partial shade",
-water:"Regular while establishing",
-humidity:"Outdoor",
-soil:"Well drained",
-difficulty:"Moderate"
+name:"Chives",
+scientific:"Allium schoenoprasum",
+type:"Herb",
+aliases:["garden chives"],
+image:"https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=85",
+light:"Full sun / partial shade",
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Chives are perennial members of the onion family grown for their mild onion-flavored leaves."
 },
 
 {
-id:"oak",
-name:"Oak",
-scientific:"Quercus",
-category:"tree",
-icon:"🌳",
-description:
-"Long-lived trees that provide important habitat and can become large landscape specimens.",
+name:"Tarragon",
+scientific:"Artemisia dracunculus",
+type:"Herb",
+aliases:["French tarragon"],
+image:"https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=900&q=85",
 light:"Full sun",
-water:"Regular while young",
-humidity:"Outdoor",
-soil:"Deep well drained",
-difficulty:"Moderate"
+water:"Moderate",
+soil:"Well-draining",
+description:"Tarragon is a perennial culinary herb with narrow aromatic leaves."
 },
 
 {
-id:"lavender",
 name:"Lavender",
 scientific:"Lavandula",
-category:"flower herb",
-icon:"💜",
-description:
-"A fragrant flowering plant that prefers abundant sunlight and relatively dry, well-drained soil.",
+type:"Herb",
+aliases:["english lavender","lavender plant"],
+image:"https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=900&q=85",
 light:"Full sun",
-water:"Allow soil to dry",
-humidity:"Low",
-soil:"Very well drained",
-difficulty:"Easy"
+water:"Low",
+soil:"Very well-draining",
+description:"Lavender is a fragrant flowering plant grown for its aromatic foliage and purple flowers."
+},
+
+
+/* VEGETABLES */
+
+{
+name:"Tomato",
+scientific:"Solanum lycopersicum",
+type:"Vegetable",
+aliases:["tomatoes","tomato plant"],
+image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Tomatoes are warm-season plants grown for their edible fruits."
 },
 
 {
-id:"bird",
-name:"Bird of Paradise",
-scientific:"Strelitzia",
-category:"tropical house",
-icon:"🌴",
-description:
-"A dramatic tropical plant with large leaves that can become a major indoor specimen.",
+name:"Pepper",
+scientific:"Capsicum annuum",
+type:"Vegetable",
+aliases:["bell pepper","sweet pepper","pepper plant"],
+image:"https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Pepper plants are warm-season crops producing fruits ranging from sweet bell peppers to hot varieties."
+},
+
+{
+name:"Cucumber",
+scientific:"Cucumis sativus",
+type:"Vegetable",
+aliases:["cucumber plant"],
+image:"https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"High",
+soil:"Rich, moist",
+description:"Cucumber is a warm-season vine that produces edible fruits."
+},
+
+{
+name:"Carrot",
+scientific:"Daucus carota",
+type:"Vegetable",
+aliases:["garden carrot"],
+image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=900&q=85",
+light:"Full sun / partial shade",
+water:"Moderate",
+soil:"Loose, sandy",
+description:"Carrots are root vegetables best grown in loose soil that allows the roots to develop freely."
+},
+
+{
+name:"Lettuce",
+scientific:"Lactuca sativa",
+type:"Vegetable",
+aliases:["leaf lettuce","garden lettuce"],
+image:"https://images.unsplash.com/photo-1622205313162-be1d5712a43c?auto=format&fit=crop&w=900&q=85",
+light:"Sun / partial shade",
+water:"Moderate",
+soil:"Rich, moist",
+description:"Lettuce is a cool-season leafy vegetable commonly grown in gardens and containers."
+},
+
+
+/* HOUSEPLANTS */
+
+{
+name:"Monstera",
+scientific:"Monstera deliciosa",
+type:"Houseplant",
+aliases:["monstera deliciosa","split leaf philodendron"],
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
 light:"Bright indirect",
-water:"When upper soil dries",
-humidity:"Moderate to high",
-soil:"Well draining",
-difficulty:"Moderate"
+water:"Moderate",
+soil:"Well-draining",
+description:"Monstera deliciosa is a tropical climbing plant known for its large leaves with natural splits and holes."
+},
+
+{
+name:"Snake Plant",
+scientific:"Dracaena trifasciata",
+type:"Houseplant",
+aliases:["sansevieria","mother in law's tongue","snake plant"],
+image:"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=900&q=85",
+light:"Low to bright indirect",
+water:"Low",
+soil:"Very well-draining",
+description:"Snake plant is a tough houseplant tolerant of lower light and infrequent watering."
+},
+
+{
+name:"Pothos",
+scientific:"Epipremnum aureum",
+type:"Houseplant",
+aliases:["golden pothos","devils ivy"],
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
+light:"Low to bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+description:"Pothos is a popular trailing tropical houseplant valued for its attractive foliage and adaptability."
+},
+
+{
+name:"Spider Plant",
+scientific:"Chlorophytum comosum",
+type:"Houseplant",
+aliases:["spider plant","airplane plant"],
+image:"https://images.unsplash.com/photo-1572688484438-313a6e50c333?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+description:"Spider plant is a popular houseplant that produces long arching leaves and small plantlets."
+},
+
+{
+name:"Peace Lily",
+scientific:"Spathiphyllum",
+type:"Houseplant",
+aliases:["peace lily","spathiphyllum"],
+image:"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=900&q=85",
+light:"Low to bright indirect",
+water:"Moderate",
+soil:"Moist, well-draining",
+description:"Peace lilies are tropical plants recognized for their glossy leaves and white flower-like spathes."
+},
+
+{
+name:"Rubber Plant",
+scientific:"Ficus elastica",
+type:"Houseplant",
+aliases:["rubber tree","rubber fig"],
+image:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+description:"Rubber plant is an evergreen tropical tree commonly grown indoors for its large glossy leaves."
+},
+
+{
+name:"Fiddle Leaf Fig",
+scientific:"Ficus lyrata",
+type:"Houseplant",
+aliases:["fiddle leaf fig","fiddle-leaf fig"],
+image:"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+description:"Fiddle leaf fig is known for its large violin-shaped leaves and preference for bright light."
+},
+
+{
+name:"Aloe Vera",
+scientific:"Aloe vera",
+type:"Succulent",
+aliases:["aloe","medicinal aloe"],
+image:"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=900&q=85",
+light:"Bright light",
+water:"Low",
+soil:"Very well-draining",
+description:"Aloe vera is a succulent with fleshy leaves that store water."
+},
+
+{
+name:"Jade Plant",
+scientific:"Crassula ovata",
+type:"Succulent",
+aliases:["jade","money plant"],
+image:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=900&q=85",
+light:"Bright light",
+water:"Low",
+soil:"Very well-draining",
+description:"Jade plant is a succulent shrub with thick fleshy leaves and woody stems."
+},
+
+{
+name:"String of Pearls",
+scientific:"Curio rowleyanus",
+type:"Succulent",
+aliases:["string of pearls","senecio rowleyanus"],
+image:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Low",
+soil:"Very well-draining",
+description:"String of pearls is a trailing succulent with distinctive spherical leaves."
+},
+
+
+/* FLOWERS */
+
+{
+name:"Rose",
+scientific:"Rosa",
+type:"Flowering Plant",
+aliases:["rose plant","garden rose"],
+image:"https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Roses are flowering plants grown in gardens worldwide for their colorful and often fragrant blooms."
+},
+
+{
+name:"Sunflower",
+scientific:"Helianthus annuus",
+type:"Flowering Plant",
+aliases:["common sunflower","sunflower plant"],
+image:"https://images.unsplash.com/photo-1597848212624-e19d4b9d5e5c?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Sunflower is a tall annual plant known for its large flower heads and edible seeds."
+},
+
+{
+name:"Tulip",
+scientific:"Tulipa",
+type:"Flowering Plant",
+aliases:["tulip flower","tulips"],
+image:"https://images.unsplash.com/photo-1520763185298-1b434c919abe?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Tulips are spring-flowering bulb plants available in a wide variety of colors and forms."
+},
+
+{
+name:"Daffodil",
+scientific:"Narcissus",
+type:"Flowering Plant",
+aliases:["daffodils","narcissus","jonquil"],
+image:"https://images.unsplash.com/photo-1589994160839-163cd867cfe8?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Daffodils are spring-flowering bulb plants known for their bright yellow or white flowers."
+},
+
+{
+name:"Hydrangea",
+scientific:"Hydrangea",
+type:"Flowering Plant",
+aliases:["hydrangea plant","garden hydrangea"],
+image:"https://images.unsplash.com/photo-1566847438217-76e82d383f84?auto=format&fit=crop&w=900&q=85",
+light:"Partial shade",
+water:"High",
+soil:"Moist, rich",
+description:"Hydrangeas are flowering shrubs known for large clusters of flowers."
+},
+
+{
+name:"Marigold",
+scientific:"Tagetes",
+type:"Flowering Plant",
+aliases:["marigold flower","garden marigold"],
+image:"https://images.unsplash.com/photo-1509223197845-458d87318791?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Marigolds are colorful flowering plants widely grown in gardens and containers."
+},
+
+{
+name:"Geranium",
+scientific:"Pelargonium",
+type:"Flowering Plant",
+aliases:["geranium flower","pelargonium"],
+image:"https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Pelargoniums are commonly called geraniums and are popular flowering container and garden plants."
+},
+
+
+/* TREES */
+
+{
+name:"Maple",
+scientific:"Acer",
+type:"Tree",
+aliases:["maple tree","maple trees"],
+image:"https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Varies by species",
+description:"Maples are a diverse group of trees known for attractive foliage and, in many species, brilliant autumn color."
+},
+
+{
+name:"Oak",
+scientific:"Quercus",
+type:"Tree",
+aliases:["oak tree","oak trees"],
+image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Well-draining",
+description:"Oaks are long-lived trees belonging to the genus Quercus."
+},
+
+{
+name:"Birch",
+scientific:"Betula",
+type:"Tree",
+aliases:["birch tree","birch trees"],
+image:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Moist, well-draining",
+description:"Birches are deciduous trees commonly recognized by their pale bark and graceful form."
+},
+
+{
+name:"Pine",
+scientific:"Pinus",
+type:"Tree",
+aliases:["pine tree","pine trees"],
+image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Low to moderate",
+soil:"Well-draining",
+description:"Pines are evergreen coniferous trees with needle-like foliage and cones."
+},
+
+{
+name:"Apple Tree",
+scientific:"Malus domestica",
+type:"Fruit Tree",
+aliases:["apple","apple tree"],
+image:"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=900&q=85",
+light:"Full sun",
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Apple trees are deciduous fruit trees grown for their edible apples."
+},
+
+
+/* TROPICAL */
+
+{
+name:"Bird of Paradise",
+scientific:"Strelitzia reginae",
+type:"Tropical",
+aliases:["bird of paradise plant","strelitzia"],
+image:"https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=900&q=85",
+light:"Bright light",
+water:"Moderate",
+soil:"Well-draining",
+description:"Bird of paradise is a tropical plant known for large banana-like leaves and distinctive flowers."
+},
+
+{
+name:"Calathea",
+scientific:"Goeppertia",
+type:"Tropical",
+aliases:["prayer plant family","calathea plant"],
+image:"https://images.unsplash.com/photo-1601985705806-5b70c86e3d4d?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Moderate to high",
+soil:"Moist, well-draining",
+description:"Calatheas are tropical foliage plants valued for patterned leaves."
+},
+
+{
+name:"Philodendron",
+scientific:"Philodendron",
+type:"Tropical",
+aliases:["philodendron plant"],
+image:"https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Well-draining",
+description:"Philodendrons are a large group of tropical plants popular as indoor foliage plants."
+},
+
+{
+name:"Alocasia",
+scientific:"Alocasia",
+type:"Tropical",
+aliases:["elephant ear","alocasia plant"],
+image:"https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"Moderate",
+soil:"Rich, well-draining",
+description:"Alocasias are tropical foliage plants known for large decorative leaves."
+},
+
+
+/* FERNS */
+
+{
+name:"Boston Fern",
+scientific:"Nephrolepis exaltata",
+type:"Fern",
+aliases:["sword fern","boston sword fern"],
+image:"https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=900&q=85",
+light:"Bright indirect",
+water:"High",
+soil:"Moist, well-draining",
+description:"Boston fern is a popular fern with long arching fronds that prefers humidity and consistently moist soil."
+},
+
+{
+name:"Maidenhair Fern",
+scientific:"Adiantum",
+type:"Fern",
+aliases:["maidenhair"],
+image:"https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=900&q=85",
+light:"Indirect light",
+water:"High",
+soil:"Moist",
+description:"Maidenhair ferns have delicate foliage and generally prefer humid conditions."
 }
 
 ];
 
 
-/* HELPERS */
+/* ---------------------------------------------------------
+   UTILITIES
+   --------------------------------------------------------- */
 
 const $=s=>document.querySelector(s);
 
@@ -2093,7 +2671,9 @@ m=>({
 const pct=x=>Math.round((x||0)*100);
 
 
-/* NAVIGATION */
+/* ---------------------------------------------------------
+   NAVIGATION
+   --------------------------------------------------------- */
 
 function show(id){
 
@@ -2123,267 +2703,17 @@ behavior:"smooth"
 }
 
 
+/* NAV BUTTONS */
+
 document.querySelectorAll(".nav-item")
 .forEach(x=>
 x.onclick=()=>show(x.dataset.page)
 );
 
 
-/* PLANT ENCYCLOPEDIA */
-
-function renderPlants(list=PLANTS){
-
-const container=$("#plantList");
-
-if(!list.length){
-
-container.innerHTML=`
-
-<div class="history-empty">
-
-<div style="font-size:40px">
-🔎
-</div>
-
-<div style="color:var(--ink);font-weight:850">
-No plants found
-</div>
-
-<p style="font-size:10px">
-Try another plant name or category.
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-container.innerHTML=
-list.map(p=>`
-
-<button
-class="plant-list-item"
-onclick="openPlant('${p.id}')">
-
-<div class="plant-list-art">
-${p.icon}
-</div>
-
-<div style="min-width:0">
-
-<div class="plant-list-name">
-${esc(p.name)}
-</div>
-
-<div class="plant-list-scientific">
-${esc(p.scientific)}
-</div>
-
-<div class="plant-list-desc">
-${esc(p.description)}
-</div>
-
-</div>
-
-</button>
-
-`).join("");
-
-}
-
-
-function openPlant(id){
-
-const p=PLANTS.find(x=>x.id===id);
-
-if(!p)return;
-
-$("#plantDetailContent").innerHTML=`
-
-<div class="detail-hero">
-${p.icon}
-</div>
-
-<div class="detail-label">
-TAYNPLANTZ PLANT GUIDE
-</div>
-
-<div class="detail-title">
-${esc(p.name)}
-</div>
-
-<div class="detail-scientific">
-${esc(p.scientific)}
-</div>
-
-<div class="detail-description">
-${esc(p.description)}
-</div>
-
-<div class="detail-grid">
-
-<div class="detail-box">
-<small>Light</small>
-<b>${esc(p.light)}</b>
-</div>
-
-<div class="detail-box">
-<small>Water</small>
-<b>${esc(p.water)}</b>
-</div>
-
-<div class="detail-box">
-<small>Humidity</small>
-<b>${esc(p.humidity)}</b>
-</div>
-
-<div class="detail-box">
-<small>Soil</small>
-<b>${esc(p.soil)}</b>
-</div>
-
-<div class="detail-box">
-<small>Difficulty</small>
-<b>${esc(p.difficulty)}</b>
-</div>
-
-<div class="detail-box">
-<small>Type</small>
-<b>${esc(p.category)}</b>
-</div>
-
-</div>
-
-<div class="detail-care">
-
-<h3>
-Care snapshot
-</h3>
-
-<div class="detail-care-row">
-
-<div class="detail-icon">
-☀️
-</div>
-
-<div>
-<b>Light</b><br>
-${esc(p.light)}
-</div>
-
-</div>
-
-<div class="detail-care-row">
-
-<div class="detail-icon">
-💧
-</div>
-
-<div>
-<b>Water</b><br>
-${esc(p.water)}
-</div>
-
-</div>
-
-<div class="detail-care-row">
-
-<div class="detail-icon">
-🪴
-</div>
-
-<div>
-<b>Soil</b><br>
-${esc(p.soil)}
-</div>
-
-</div>
-
-<div class="detail-care-row">
-
-<div class="detail-icon">
-🌿
-</div>
-
-<div>
-<b>Difficulty</b><br>
-${esc(p.difficulty)}
-</div>
-
-</div>
-
-</div>
-
-`;
-
-show("plantDetail");
-
-}
-
-
-function filterCategory(category){
-
-const filtered=
-PLANTS.filter(p=>
-p.category.includes(category)
-);
-
-renderPlants(filtered);
-
-window.scrollTo({
-top:430,
-behavior:"smooth"
-});
-
-toast(
-filtered.length+
-" plant guides found."
-);
-
-}
-
-
-/* SEARCH */
-
-$("#plantSearch").addEventListener(
-"input",
-e=>{
-
-const q=
-e.target.value
-.toLowerCase()
-.trim();
-
-if(!q){
-
-renderPlants();
-
-return;
-
-}
-
-const filtered=
-PLANTS.filter(p=>
-(
-p.name+" "+
-p.scientific+" "+
-p.category+" "+
-p.description
-)
-.toLowerCase()
-.includes(q)
-);
-
-renderPlants(filtered);
-
-}
-);
-
-
-/* TOAST */
+/* ---------------------------------------------------------
+   TOAST
+   --------------------------------------------------------- */
 
 function toast(message){
 
@@ -2404,15 +2734,699 @@ setTimeout(
 }
 
 
-/* =====================================================
-   OPTIONAL PLANTNET IDENTIFICATION
-   ===================================================== */
+/* ---------------------------------------------------------
+   PLANT SEARCH
+   --------------------------------------------------------- */
+
+let searchTimer=null;
+
+$("#plantSearch").addEventListener(
+"input",
+e=>{
+
+clearTimeout(searchTimer);
+
+const query=
+e.target.value
+.toLowerCase()
+.trim();
+
+if(!query){
+
+$("#guideDefault").style.display="block";
+
+$("#encyclopediaResults").innerHTML="";
+
+$("#searchStatus").textContent=
+"Try searching for any plant name.";
+
+return;
+
+}
+
+$("#guideDefault").style.display="none";
+
+const results=
+PLANTS.filter(p=>{
+
+const text=[
+p.name,
+p.scientific,
+p.type,
+...(p.aliases||[])
+].join(" ").toLowerCase();
+
+return text.includes(query);
+
+});
+
+renderPlantResults(results);
+
+if(results.length){
+
+$("#searchStatus").textContent=
+results.length+
+" plant"+
+(results.length===1?"":"s")+
+" found.";
+
+}else{
+
+$("#searchStatus").textContent=
+"Searching the free plant encyclopedia…";
+
+searchTimer=setTimeout(
+()=>searchWikipedia(query),
+350
+);
+
+}
+
+});
+
+
+/* ---------------------------------------------------------
+   LOCAL DATABASE RESULTS
+   --------------------------------------------------------- */
+
+function renderPlantResults(results){
+
+const container=
+$("#encyclopediaResults");
+
+if(!results.length){
+
+container.innerHTML=`
+
+<div class="no-results">
+
+<div style="font-size:35px">
+🌱
+</div>
+
+<b>
+No exact match in the local guide
+</b>
+
+<p>
+TaynPlantz will search the free online encyclopedia too.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+container.innerHTML=
+results.map((p,i)=>`
+
+<button
+class="ency-card"
+onclick="openLocalPlant(${i},${JSON.stringify(results).replace(/"/g,'&quot;')})">
+
+<img
+src="${esc(p.image)}"
+alt="${esc(p.name)}"
+onerror="this.style.display='none'">
+
+<div class="ency-info">
+
+<div class="ency-name">
+${esc(p.name)}
+</div>
+
+<div class="ency-scientific">
+${esc(p.scientific)}
+</div>
+
+<span class="ency-type">
+${esc(p.type)}
+</span>
+
+</div>
+
+</button>
+
+`).join("");
+
+}
+
+
+/* Safer local plant opener */
+
+window.openLocalPlant=function(index,dataString){
+
+try{
+
+const data=
+JSON.parse(
+dataString.replace(/&quot;/g,'"')
+);
+
+const p=data[index];
+
+if(p){
+showLocalPlant(p);
+}
+
+}catch{
+
+toast("Unable to open plant.");
+
+}
+
+};
+
+
+/* ---------------------------------------------------------
+   CATEGORY SEARCH
+   --------------------------------------------------------- */
+
+function searchCategory(category){
+
+$("#plantSearch").value=category;
+
+$("#plantSearch").dispatchEvent(
+new Event("input")
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* ---------------------------------------------------------
+   OPEN LOCAL PLANT
+   --------------------------------------------------------- */
+
+function showLocalPlant(p){
+
+$("#plantDetailContent").innerHTML=`
+
+<div class="detail-card">
+
+<img
+class="detail-image"
+src="${esc(p.image)}"
+alt="${esc(p.name)}"
+onerror="this.src='https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=85'">
+
+<div class="detail-content">
+
+<div class="detail-kicker">
+TAYNPLANTZ ENCYCLOPEDIA
+</div>
+
+<h2 class="detail-title">
+${esc(p.name)}
+</h2>
+
+<div class="detail-scientific">
+${esc(p.scientific)}
+</div>
+
+<div class="detail-description">
+${esc(p.description)}
+</div>
+
+<div class="detail-grid">
+
+<div class="detail-box">
+
+<small>
+Type
+</small>
+
+<b>
+${esc(p.type)}
+</b>
+
+</div>
+
+<div class="detail-box">
+
+<small>
+Light
+</small>
+
+<b>
+${esc(p.light)}
+</b>
+
+</div>
+
+<div class="detail-box">
+
+<small>
+Water
+</small>
+
+<b>
+${esc(p.water)}
+</b>
+
+</div>
+
+<div class="detail-box">
+
+<small>
+Soil
+</small>
+
+<b>
+${esc(p.soil)}
+</b>
+
+</div>
+
+</div>
+
+<div class="detail-actions">
+
+<button
+class="detail-button detail-primary"
+onclick="show('home');document.getElementById('plantSearch').focus()">
+
+🔎 Search plants
+
+</button>
+
+<button
+class="detail-button detail-secondary"
+onclick="show('home');window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+
+📷 Identify one
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+show("plantDetail");
+
+}
+
+
+/* ---------------------------------------------------------
+   OPEN BY NAME
+   --------------------------------------------------------- */
+
+async function openPlant(name){
+
+const local=
+PLANTS.find(
+p=>
+p.name.toLowerCase()===name.toLowerCase() ||
+p.scientific.toLowerCase()===name.toLowerCase()
+);
+
+if(local){
+
+showLocalPlant(local);
+
+return;
+
+}
+
+await searchWikipedia(name);
+
+}
+
+
+/* ---------------------------------------------------------
+   FREE WIKIPEDIA SEARCH
+   NO API KEY
+   --------------------------------------------------------- */
+
+async function searchWikipedia(query){
+
+try{
+
+const url=
+"https://en.wikipedia.org/w/api.php"+
+"?action=query"+
+"&generator=search"+
+"&gsrsearch="+
+encodeURIComponent(query)+
+"&gsrnamespace=0"+
+"&gsrlimit=12"+
+"&prop=pageimages|extracts"+
+"&exintro=1"+
+"&explaintext=1"+
+"&piprop=thumbnail"+
+"&pithumbsize=700"+
+"&format=json"+
+"&origin=*";
+
+const response=
+await fetch(url);
+
+if(!response.ok)
+throw Error("Wikipedia search failed.");
+
+const data=
+await response.json();
+
+const pages=
+Object.values(
+data.query?.pages||{}
+);
+
+if(!pages.length){
+
+$("#encyclopediaResults").innerHTML=`
+
+<div class="no-results">
+
+<div style="font-size:35px">
+🌿
+</div>
+
+<b>
+No plant found for "${esc(query)}"
+</b>
+
+<p>
+Try another spelling or a more specific plant name.
+</p>
+
+</div>
+
+`;
+
+$("#searchStatus").textContent=
+"No matching encyclopedia entry found.";
+
+return;
+
+}
+
+
+/*
+ Filter results that look plant-related.
+ We still show the search results if Wikipedia
+ doesn't provide a plant classification.
+*/
+
+const plantPages=
+pages.filter(p=>{
+
+const text=
+(
+(p.title||"")+" "+
+(p.extract||"")
+).toLowerCase();
+
+return /plant|herb|flower|tree|shrub|grass|fern|succulent|cactus|vegetable|fruit|species|botanical/.test(text);
+
+});
+
+const finalResults=
+plantPages.length?
+plantPages:
+pages;
+
+$("#searchStatus").textContent=
+finalResults.length+
+" encyclopedia result"+
+(finalResults.length===1?"":"s")+
+" found.";
+
+$("#encyclopediaResults").innerHTML=
+finalResults.map(p=>{
+
+const image=
+p.thumbnail?.source||
+"https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=85";
+
+return`
+
+<button
+class="ency-card"
+onclick="openWikipediaPlant(${Number(p.pageid)})">
+
+<img
+src="${esc(image)}"
+alt="${esc(p.title)}">
+
+<div class="ency-info">
+
+<div class="ency-name">
+${esc(p.title)}
+</div>
+
+<div class="ency-scientific">
+Free encyclopedia entry
+</div>
+
+<span class="ency-type">
+WIKIPEDIA
+</span>
+
+</div>
+
+</button>
+
+`;
+
+}).join("");
+
+}catch(e){
+
+$("#searchStatus").textContent=
+"Online encyclopedia unavailable.";
+
+$("#encyclopediaResults").innerHTML=`
+
+<div class="no-results">
+
+<div style="font-size:35px">
+📚
+</div>
+
+<b>
+Couldn't reach the online encyclopedia
+</b>
+
+<p>
+Your built-in TaynPlantz plant guide is still available.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* ---------------------------------------------------------
+   WIKIPEDIA PLANT DETAIL
+   --------------------------------------------------------- */
+
+async function openWikipediaPlant(pageid){
+
+show("plantDetail");
+
+$("#plantDetailContent").innerHTML=`
+
+<div class="history-empty">
+
+<div style="font-size:40px">
+🌿
+</div>
+
+<p>
+Loading plant information…
+</p>
+
+</div>
+
+`;
+
+try{
+
+const url=
+"https://en.wikipedia.org/w/api.php"+
+"?action=query"+
+"&pageids="+
+encodeURIComponent(pageid)+
+"&prop=pageimages|extracts"+
+"&exintro=1"+
+"&explaintext=1"+
+"&piprop=original"+
+"&format=json"+
+"&origin=*";
+
+const response=
+await fetch(url);
+
+const data=
+await response.json();
+
+const page=
+data.query?.pages?.[pageid];
+
+if(!page)
+throw Error("Plant unavailable.");
+
+const image=
+page.original?.source||
+page.thumbnail?.source||
+"https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=85";
+
+const description=
+page.extract||
+"No detailed description was returned.";
+
+$("#plantDetailContent").innerHTML=`
+
+<div class="detail-card">
+
+<img
+class="detail-image"
+src="${esc(image)}"
+alt="${esc(page.title)}">
+
+<div class="detail-content">
+
+<div class="detail-kicker">
+FREE PLANT ENCYCLOPEDIA
+</div>
+
+<h2 class="detail-title">
+${esc(page.title)}
+</h2>
+
+<div class="detail-scientific">
+Wikipedia reference
+</div>
+
+<div class="detail-description">
+${esc(description)}
+</div>
+
+<div class="detail-grid">
+
+<div class="detail-box">
+
+<small>
+Source
+</small>
+
+<b>
+Wikipedia
+</b>
+
+</div>
+
+<div class="detail-box">
+
+<small>
+Access
+</small>
+
+<b>
+Free
+</b>
+
+</div>
+
+</div>
+
+<div class="detail-actions">
+
+<button
+class="detail-button detail-primary"
+onclick="show('home')">
+
+← Back to guide
+
+</button>
+
+<button
+class="detail-button detail-secondary"
+onclick="openPlantSearch('${esc(page.title)}')">
+
+🔎 Search again
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}catch(e){
+
+$("#plantDetailContent").innerHTML=`
+
+<div class="history-empty">
+
+<div style="font-size:40px">
+🌱
+</div>
+
+<b>
+Plant information unavailable
+</b>
+
+<p>
+Try searching for the plant again.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* ---------------------------------------------------------
+   SEARCH AGAIN
+   --------------------------------------------------------- */
+
+function openPlantSearch(name){
+
+show("home");
+
+$("#plantSearch").value=name;
+
+$("#plantSearch").dispatchEvent(
+new Event("input")
+);
+
+}
+
+
+/* ---------------------------------------------------------
+   PLANTNET
+   --------------------------------------------------------- */
 
 const API="https://my-api.plantnet.org/v2";
 
 let photo=null;
 let latestImageURL=null;
 
+
+/* API KEY */
 
 function getApiKey(){
 
@@ -2424,6 +3438,8 @@ sessionStorage.getItem("tayn-key")
 
 }
 
+
+/* API */
 
 async function api(path,opt={}){
 
@@ -2474,7 +3490,9 @@ return d;
 }
 
 
-/* PHOTO */
+/* ---------------------------------------------------------
+   PHOTO
+   --------------------------------------------------------- */
 
 $("#file").onchange=e=>{
 
@@ -2513,7 +3531,9 @@ toast(
 };
 
 
-/* IDENTIFY */
+/* ---------------------------------------------------------
+   IDENTIFY
+   --------------------------------------------------------- */
 
 $("#identify").onclick=
 async()=>{
@@ -2545,7 +3565,10 @@ photo,
 photo.name||"plant.jpg"
 );
 
-fd.append("organs","auto");
+fd.append(
+"organs",
+"auto"
+);
 
 const d=
 await api(
@@ -2577,6 +3600,49 @@ const common=
 const confidence=
 pct(r.score);
 
+const alternatives=
+(d.results||[])
+.slice(1,6)
+.map(
+x=>`
+
+<div class="care-row">
+
+<div class="care-icon">
+🌿
+</div>
+
+<div style="flex:1">
+
+<b>
+${esc(
+x.species?.scientificName||
+"Unknown"
+)}
+</b>
+
+<div style="
+color:var(--muted);
+font-size:10px;
+margin-top:3px">
+
+Possible match
+
+</div>
+
+</div>
+
+<b>
+${pct(x.score)}%
+</b>
+
+</div>
+
+`
+)
+.join("");
+
+
 $("#result").innerHTML=`
 
 <img
@@ -2599,6 +3665,7 @@ ${esc(common)}
 <div class="confidence">
 
 <div class="confidence-top">
+
 <span>
 Identification confidence
 </span>
@@ -2620,97 +3687,182 @@ style="width:${confidence}%">
 
 </div>
 
-
 <div class="info-grid">
 
 <div class="info-box">
-<small>Genus</small>
+
+<small>
+Genus
+</small>
+
 <b>
 ${esc(
 s.genus?.scientificNameWithoutAuthor||
 "—"
 )}
 </b>
+
 </div>
 
 <div class="info-box">
-<small>Family</small>
+
+<small>
+Family
+</small>
+
 <b>
 ${esc(
 s.family?.scientificNameWithoutAuthor||
 "—"
 )}
 </b>
+
 </div>
 
 <div class="info-box">
-<small>Engine</small>
+
+<small>
+Engine
+</small>
+
 <b>
 ${esc(d.version||"Pl@ntNet")}
 </b>
+
 </div>
 
 <div class="info-box">
-<small>Requests left</small>
+
+<small>
+Requests left
+</small>
+
 <b>
 ${d.remainingIdentificationRequests??"—"}
 </b>
-</div>
 
 </div>
 
+</div>
 
-<div class="detail-care">
+
+<div class="care-section">
 
 <h3>
 Care snapshot
 </h3>
 
-<div class="detail-care-row">
+<div class="care-row">
 
-<div class="detail-icon">
+<div class="care-icon">
 ☀️
 </div>
 
 <div>
-<b>Light</b><br>
-Bright, indirect light is a safe starting point.
+
+<b>
+Light
+</b>
+
+<div>
+Start with bright, indirect light unless species requirements differ.
 </div>
 
 </div>
 
-<div class="detail-care-row">
+</div>
 
-<div class="detail-icon">
+
+<div class="care-row">
+
+<div class="care-icon">
 💧
 </div>
 
 <div>
-<b>Water</b><br>
+
+<b>
+Water
+</b>
+
+<div>
 Check the upper soil before watering.
 </div>
 
 </div>
 
-<div class="detail-care-row">
+</div>
 
-<div class="detail-icon">
+
+<div class="care-row">
+
+<div class="care-icon">
+💨
+</div>
+
+<div>
+
+<b>
+Humidity
+</b>
+
+<div>
+Moderate humidity is a useful starting point.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="care-row">
+
+<div class="care-icon">
 🪴
 </div>
 
 <div>
-<b>Soil</b><br>
-Use a well-draining growing mix.
+
+<b>
+Soil
+</b>
+
+<div>
+Use an appropriate well-draining growing mix.
 </div>
 
 </div>
 
 </div>
+
+</div>
+
+
+${
+alternatives
+?
+`
+
+<div class="care-section">
+
+<h3>
+Other possible matches
+</h3>
+
+${alternatives}
+
+</div>
+
+`
+:""
+}
 
 
 <button
 class="action-button action-secondary"
-style="width:100%;margin-top:15px"
+style="
+width:100%;
+margin-top:15px"
 onclick="show('health')">
 
 🩺 Check plant health
@@ -2718,6 +3870,7 @@ onclick="show('health')">
 </button>
 
 `;
+
 
 saveHistory(
 d,
@@ -2746,7 +3899,9 @@ button.textContent=
 };
 
 
-/* HEALTH */
+/* ---------------------------------------------------------
+   HEALTH
+   --------------------------------------------------------- */
 
 $("#healthBtn").onclick=
 async()=>{
@@ -2780,7 +3935,10 @@ photo,
 photo.name||"plant.jpg"
 );
 
-fd.append("organs","auto");
+fd.append(
+"organs",
+"auto"
+);
 
 const d=
 await api(
@@ -2816,7 +3974,8 @@ return;
 $("#healthResults").innerHTML=
 d.results.map(x=>{
 
-const score=pct(x.score);
+const score=
+pct(x.score);
 
 return`
 
@@ -2866,7 +4025,9 @@ button.textContent=
 };
 
 
-/* HISTORY */
+/* ---------------------------------------------------------
+   HISTORY
+   --------------------------------------------------------- */
 
 function saveHistory(d,image){
 
@@ -2893,7 +4054,8 @@ score:r.score,
 
 image:image||"",
 
-date:new Date().toLocaleString()
+date:
+new Date().toLocaleString()
 
 });
 
@@ -2915,7 +4077,8 @@ localStorage.getItem("tayn-history")||
 "[]"
 );
 
-const container=$("#historyList");
+const container=
+$("#historyList");
 
 if(!h.length){
 
@@ -2961,13 +4124,15 @@ h.map(x=>`
 
 ${
 x.image
-?`
+?
+`
 <img
 class="history-image"
 src="${esc(x.image)}"
 alt="Plant">
 `
-:`
+:
+`
 <div
 class="history-image"
 style="
@@ -2981,7 +4146,10 @@ font-size:25px">
 `
 }
 
-<div style="min-width:0;flex:1">
+<div
+style="
+min-width:0;
+flex:1">
 
 <div class="history-name">
 ${esc(x.name)}
@@ -3032,7 +4200,9 @@ toast(
 }
 
 
-/* SETTINGS */
+/* ---------------------------------------------------------
+   SETTINGS
+   --------------------------------------------------------- */
 
 function refreshSettings(){
 
@@ -3044,20 +4214,28 @@ const status=$("#status");
 
 if(k){
 
-status.textContent="Connected";
+status.textContent=
+"Connected";
 
-status.classList.add("good");
+status.classList.add(
+"good"
+);
 
 }else{
 
-status.textContent="Not configured";
+status.textContent=
+"Not configured";
 
-status.classList.remove("good");
+status.classList.remove(
+"good"
+);
 
 }
 
 $("#remember").checked=
-!!localStorage.getItem("tayn-key");
+!!localStorage.getItem(
+"tayn-key"
+);
 
 }
 
@@ -3077,7 +4255,9 @@ return;
 
 }
 
-if($("#remember").checked){
+if(
+$("#remember").checked
+){
 
 localStorage.setItem(
 "tayn-key",
@@ -3112,9 +4292,13 @@ toast(
 
 $("#remove").onclick=()=>{
 
-localStorage.removeItem("tayn-key");
+localStorage.removeItem(
+"tayn-key"
+);
 
-sessionStorage.removeItem("tayn-key");
+sessionStorage.removeItem(
+"tayn-key"
+);
 
 $("#key").value="";
 
@@ -3127,9 +4311,9 @@ toast(
 };
 
 
-/* START */
-
-renderPlants();
+/* ---------------------------------------------------------
+   STARTUP
+   --------------------------------------------------------- */
 
 refreshSettings();
 
