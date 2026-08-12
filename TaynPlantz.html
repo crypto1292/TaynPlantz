@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
 <meta name="theme-color" content="#526b3f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
 
 <title>Taynz Plantz</title>
 
@@ -24,7 +24,7 @@
     --text:#30402a;
     --muted:#777566;
     --white:#ffffff;
-    --danger:#a34d43;
+    --border:#ddd4c1;
     --shadow:0 10px 30px rgba(57,68,43,.12);
     --radius:24px;
 }
@@ -42,12 +42,7 @@ body{
     margin:0;
     min-height:100vh;
     background:
-        radial-gradient(
-            circle at top left,
-            #faf4e8 0,
-            #f5efe1 42%,
-            #e7dec9 100%
-        );
+        radial-gradient(circle at top left,#fbf6eb 0,#f5efe1 44%,#e7dec9 100%);
     color:var(--text);
     font-family:
         -apple-system,
@@ -71,20 +66,20 @@ button{
 .app{
     width:100%;
     max-width:520px;
-    min-height:100vh;
     margin:auto;
+    min-height:100vh;
     padding-bottom:105px;
 }
 
-/* ==========================================
-   HEADER / LOGO
-========================================== */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     padding:
-        calc(env(safe-area-inset-top) + 18px)
+        calc(env(safe-area-inset-top) + 16px)
         16px
-        8px;
+        10px;
     text-align:center;
 }
 
@@ -98,8 +93,8 @@ button{
 .logo{
     position:relative;
     width:100%;
-    max-width:410px;
-    min-height:76px;
+    max-width:390px;
+    min-height:82px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -108,178 +103,139 @@ button{
 
 .logo-text{
     position:relative;
-    z-index:2;
-    margin:0;
+    z-index:3;
     color:var(--dark-green);
-    font-size:43px;
+    font-size:42px;
     line-height:1;
     font-weight:900;
     letter-spacing:-2.7px;
     white-space:nowrap;
 }
 
-.logo-text .accent{
+.logo-text .green{
     color:var(--green);
 }
 
 .logo-decoration{
     position:absolute;
+    width:44px;
+    height:58px;
     z-index:1;
     pointer-events:none;
 }
 
 .logo-decoration.left{
-    left:2px;
-    bottom:2px;
-    width:58px;
-    height:64px;
+    left:8%;
+    bottom:3px;
     transform:rotate(-12deg);
 }
 
 .logo-decoration.right{
-    right:2px;
+    right:7%;
     bottom:1px;
-    width:58px;
-    height:64px;
     transform:rotate(12deg);
 }
 
 .logo-stem{
     position:absolute;
+    left:50%;
+    bottom:0;
     width:3px;
-    height:53px;
-    left:28px;
-    bottom:2px;
+    height:49px;
+    transform:translateX(-50%);
     background:var(--green);
     border-radius:99px;
 }
 
 .logo-leaf{
     position:absolute;
-    width:22px;
-    height:13px;
+    width:20px;
+    height:12px;
     background:var(--sage);
     border-radius:100% 0 100% 0;
 }
 
 .logo-leaf.a{
-    left:7px;
-    top:19px;
-    transform:rotate(-32deg);
+    left:0;
+    top:21px;
+    transform:rotate(-30deg);
 }
 
 .logo-leaf.b{
-    right:3px;
+    right:0;
     top:29px;
-    transform:scaleX(-1) rotate(32deg);
+    transform:scaleX(-1) rotate(-30deg);
 }
 
 .logo-leaf.c{
-    left:21px;
-    top:6px;
-    transform:rotate(8deg);
+    left:13px;
+    top:4px;
+    transform:rotate(15deg);
 }
 
-.brand-tagline{
+.tagline{
+    margin-top:2px;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:9px;
-    margin-top:3px;
     color:var(--brown);
     font-size:15px;
     font-weight:800;
-    letter-spacing:.15px;
 }
 
 .pot{
     position:relative;
     width:27px;
-    height:22px;
-    background:#c88957;
-    border-radius:3px 3px 9px 9px;
+    height:21px;
+    background:#c98957;
+    border-radius:3px 3px 8px 8px;
 }
 
 .pot:before{
     content:"";
     position:absolute;
-    width:33px;
-    height:5px;
     left:-3px;
     top:-4px;
+    width:33px;
+    height:5px;
+    border-radius:5px;
     background:#a96d43;
-    border-radius:6px;
 }
 
 .pot:after{
     content:"";
     position:absolute;
-    width:3px;
-    height:18px;
     left:12px;
-    top:-19px;
+    top:-18px;
+    width:3px;
+    height:17px;
     background:var(--green);
     border-radius:99px;
 }
 
-/* ==========================================
-   GENERAL CARDS
-========================================== */
-
-.card{
-    margin:14px 16px;
-    background:rgba(255,250,240,.94);
-    border:1px solid rgba(82,107,63,.12);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    overflow:hidden;
-}
-
-.card-header{
-    padding:20px 20px 10px;
-}
-
-.card-title{
-    margin:0;
-    font-size:21px;
-    font-weight:850;
-    letter-spacing:-.4px;
-}
-
-.card-subtitle{
-    margin:5px 0 0;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.45;
-}
-
-/* ==========================================
+/* =========================
    HERO
-========================================== */
+========================= */
 
 .hero{
-    margin:10px 16px 18px;
+    margin:8px 16px 18px;
     padding:25px 20px;
     border-radius:28px;
-    background:linear-gradient(
-        135deg,
-        #506c3e,
-        #718b5a
-    );
+    background:linear-gradient(135deg,#506c3e,#718b5a);
     color:white;
-    box-shadow:
-        0 14px 30px rgba(59,79,45,.24);
+    box-shadow:0 14px 30px rgba(59,79,45,.23);
 }
 
 .hero h1{
     margin:0;
     font-size:28px;
-    line-height:1.06;
+    line-height:1.08;
     letter-spacing:-1px;
 }
 
 .hero p{
-    margin:10px 0 18px;
+    margin:11px 0 18px;
     color:rgba(255,255,255,.86);
     font-size:14px;
     line-height:1.5;
@@ -293,209 +249,187 @@ button{
 
 .hero-btn{
     border:0;
-    padding:13px 10px;
     border-radius:15px;
+    padding:13px 9px;
     background:#fffaf0;
     color:var(--dark-green);
-    font-weight:800;
+    font-weight:850;
 }
 
 .hero-btn.secondary{
     background:rgba(255,255,255,.16);
     color:white;
-    border:1px solid rgba(255,255,255,.3);
+    border:1px solid rgba(255,255,255,.28);
 }
 
-/* ==========================================
-   SCANNER
-========================================== */
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    margin:14px 16px;
+    background:rgba(255,250,240,.94);
+    border:1px solid rgba(82,107,63,.12);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.card-header{
+    padding:20px 20px 12px;
+}
+
+.card-title{
+    margin:0;
+    color:var(--dark-green);
+    font-size:21px;
+    font-weight:900;
+    letter-spacing:-.4px;
+}
+
+.card-subtitle{
+    margin:5px 0 0;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* =========================
+   NATIVE CAMERA SCANNER
+========================= */
 
 .scanner-card{
     padding-bottom:18px;
 }
 
-.camera{
-    position:relative;
-    margin:10px 16px 0;
-    width:calc(100% - 32px);
-    aspect-ratio:4 / 3;
-    min-height:0;
+.native-camera{
+    margin:8px 16px 0;
+    padding:24px 18px 20px;
     border-radius:24px;
-    overflow:hidden;
-    background:#172319;
+    background:
+        linear-gradient(
+            145deg,
+            #e8efdf,
+            #f5efe1
+        );
+    border:1px solid #d5dec9;
+    text-align:center;
 }
 
-#video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-    background:#172319;
-}
-
-#previewImage{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    display:none;
-    object-fit:contain;
-    background:#172319;
-}
-
-/* ==========================================
-   CAMERA GUIDE
-   The guide sits ABOVE the camera but does
-   not cover the plant with a solid shape.
-========================================== */
-
-.plant-guide{
-    position:absolute;
-    z-index:4;
-    inset:0;
-    pointer-events:none;
+.scanner-icon{
+    width:78px;
+    height:78px;
+    margin:2px auto 14px;
+    border-radius:24px;
     display:flex;
     align-items:center;
     justify-content:center;
-}
-
-.plant-frame{
-    position:relative;
-    width:66%;
-    height:82%;
-    border:2px solid rgba(255,255,255,.82);
-    border-radius:42% 42% 34% 34%;
-    box-shadow:
-        0 0 0 999px rgba(0,0,0,.05),
-        0 0 18px rgba(0,0,0,.15);
-}
-
-.plant-frame:before{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:7%;
-    width:3px;
-    height:58%;
-    transform:translateX(-50%);
-    background:rgba(255,255,255,.78);
-    border-radius:99px;
-}
-
-.frame-leaf{
-    position:absolute;
-    width:30%;
-    height:14%;
-    border:2px dashed rgba(255,255,255,.8);
-    border-radius:100% 0 100% 0;
-}
-
-.frame-leaf.left-one{
-    left:5%;
-    top:40%;
-    transform:rotate(-18deg);
-}
-
-.frame-leaf.right-one{
-    right:5%;
-    top:32%;
-    transform:scaleX(-1) rotate(-18deg);
-}
-
-.frame-leaf.left-two{
-    left:9%;
-    top:60%;
-    transform:rotate(-13deg);
-}
-
-.frame-leaf.right-two{
-    right:9%;
-    top:54%;
-    transform:scaleX(-1) rotate(-13deg);
-}
-
-.camera-message{
-    position:absolute;
-    z-index:6;
-    top:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:88%;
-    padding:7px 12px;
-    border-radius:99px;
-    background:rgba(20,30,21,.42);
-    backdrop-filter:blur(5px);
+    background:var(--green);
     color:white;
-    text-align:center;
-    font-size:12px;
-    font-weight:800;
-    text-shadow:0 1px 3px rgba(0,0,0,.7);
+    font-size:38px;
+    box-shadow:0 8px 20px rgba(49,71,42,.2);
 }
 
-.corner{
-    position:absolute;
-    z-index:6;
-    width:26px;
-    height:26px;
-    border-color:rgba(255,255,255,.92);
-    filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));
+.native-camera h3{
+    margin:0;
+    color:var(--dark-green);
+    font-size:21px;
+    font-weight:900;
 }
 
-.corner.tl{
-    left:14px;
-    top:14px;
-    border-left:3px solid;
-    border-top:3px solid;
+.native-camera p{
+    margin:8px auto 18px;
+    max-width:340px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
 }
 
-.corner.tr{
-    right:14px;
-    top:14px;
-    border-right:3px solid;
-    border-top:3px solid;
+.camera-tips{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:0 0 16px;
 }
 
-.corner.bl{
-    left:14px;
-    bottom:14px;
-    border-left:3px solid;
-    border-bottom:3px solid;
+.camera-tip{
+    padding:10px 7px;
+    border-radius:13px;
+    background:rgba(255,255,255,.72);
+    color:#68705d;
+    font-size:11px;
+    font-weight:700;
 }
 
-.corner.br{
-    right:14px;
-    bottom:14px;
-    border-right:3px solid;
-    border-bottom:3px solid;
-}
-
-.camera-bottom{
-    position:absolute;
-    z-index:7;
-    left:0;
-    right:0;
-    bottom:15px;
+.native-button{
+    position:relative;
     display:flex;
+    align-items:center;
     justify-content:center;
+    width:100%;
+    min-height:52px;
+    border:0;
+    border-radius:16px;
+    background:var(--green);
+    color:white;
+    font-weight:900;
+    box-shadow:0 7px 15px rgba(49,71,42,.18);
+    overflow:hidden;
 }
 
-.capture{
-    width:72px;
-    height:72px;
-    padding:0;
-    border-radius:50%;
+.native-button:active{
+    transform:scale(.98);
+}
+
+.native-button.secondary{
+    margin-top:9px;
     background:white;
-    border:6px solid rgba(255,255,255,.45);
-    box-shadow:0 5px 18px rgba(0,0,0,.32);
+    color:var(--dark-green);
+    border:1px solid #d8d0bd;
+    box-shadow:none;
 }
 
-.capture:active{
-    transform:scale(.93);
+.native-input{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    cursor:pointer;
 }
 
-.scanner-controls{
+.photo-preview{
+    display:none;
+    margin:15px 16px 0;
+    position:relative;
+}
+
+.photo-preview.show{
+    display:block;
+}
+
+.photo-preview img{
+    display:block;
+    width:100%;
+    max-height:360px;
+    object-fit:cover;
+    border-radius:20px;
+    background:#dfe7d4;
+}
+
+.preview-badge{
+    position:absolute;
+    left:12px;
+    top:12px;
+    padding:7px 10px;
+    border-radius:99px;
+    background:rgba(49,71,42,.86);
+    color:white;
+    font-size:11px;
+    font-weight:800;
+}
+
+.scanner-actions{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:10px;
@@ -505,10 +439,10 @@ button{
 .action-btn{
     border:0;
     border-radius:15px;
-    padding:14px 10px;
+    padding:14px 9px;
     background:var(--light-green);
     color:var(--dark-green);
-    font-weight:800;
+    font-weight:850;
 }
 
 .action-btn.primary{
@@ -516,27 +450,18 @@ button{
     color:white;
 }
 
-.action-btn:disabled{
-    opacity:.55;
-    cursor:not-allowed;
-}
-
-.file-input{
-    display:none;
-}
-
 .status{
-    margin:12px 18px 0;
     min-height:20px;
+    margin:12px 18px 0;
     text-align:center;
     color:var(--muted);
     font-size:13px;
     line-height:1.4;
 }
 
-/* ==========================================
-   IDENTIFICATION RESULT
-========================================== */
+/* =========================
+   RESULT
+========================= */
 
 .result{
     display:none;
@@ -553,23 +478,23 @@ button{
 
 .result-image{
     width:100%;
-    max-height:250px;
-    object-fit:contain;
-    background:#dfe7d4;
+    height:190px;
+    object-fit:cover;
     border-radius:18px;
     margin-bottom:15px;
 }
 
 .result-name{
-    font-size:25px;
-    font-weight:900;
     color:var(--dark-green);
+    font-size:25px;
+    line-height:1.15;
+    font-weight:900;
 }
 
 .result-scientific{
-    margin-top:3px;
-    font-style:italic;
+    margin-top:4px;
     color:var(--muted);
+    font-style:italic;
 }
 
 .confidence{
@@ -579,8 +504,8 @@ button{
     border-radius:99px;
     background:white;
     color:var(--green);
-    font-weight:800;
     font-size:12px;
+    font-weight:900;
 }
 
 .result-info{
@@ -594,15 +519,16 @@ button{
     border-radius:14px;
     background:white;
     font-size:13px;
+    line-height:1.4;
 }
 
 .info-row strong{
     color:var(--dark-green);
 }
 
-/* ==========================================
-   RESOURCE GUIDE
-========================================== */
+/* =========================
+   SEARCH
+========================= */
 
 .search-box{
     position:relative;
@@ -611,29 +537,30 @@ button{
 
 .search-box input{
     width:100%;
-    min-height:48px;
-    padding:13px 16px 13px 42px;
+    padding:14px 16px 14px 42px;
     border:1px solid #d7d0bd;
     border-radius:16px;
+    outline:none;
     background:white;
     color:var(--text);
-    outline:none;
-    -webkit-appearance:none;
-    appearance:none;
+    font-size:16px;
 }
 
 .search-box input:focus{
     border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(82,107,63,.12);
+    box-shadow:0 0 0 3px rgba(82,107,63,.1);
 }
 
 .search-icon{
     position:absolute;
     left:15px;
-    top:11px;
+    top:12px;
     font-size:18px;
-    pointer-events:none;
 }
+
+/* =========================
+   PLANT GUIDE
+========================= */
 
 .plant-grid{
     display:grid;
@@ -643,14 +570,14 @@ button{
 }
 
 .plant-card{
-    width:100%;
+    min-width:0;
     border:1px solid #ded7c6;
     border-radius:18px;
     padding:15px;
     background:#fffdf7;
-    text-align:left;
     color:var(--text);
-    transition:.2s;
+    text-align:left;
+    transition:.15s;
 }
 
 .plant-card:active{
@@ -664,19 +591,20 @@ button{
 
 .plant-card h3{
     margin:0;
+    color:var(--dark-green);
     font-size:15px;
 }
 
 .plant-card p{
     margin:4px 0 0;
-    font-size:11px;
     color:var(--muted);
+    font-size:11px;
     line-height:1.4;
 }
 
-/* ==========================================
+/* =========================
    ENCYCLOPEDIA
-========================================== */
+========================= */
 
 .encyclopedia{
     padding-bottom:18px;
@@ -690,20 +618,20 @@ button{
 }
 
 .ency-item h3{
-    margin:0 0 5px;
+    margin:0 0 6px;
     color:var(--dark-green);
 }
 
 .ency-item p{
     margin:0;
-    font-size:13px;
     color:#686759;
+    font-size:13px;
     line-height:1.5;
 }
 
-/* ==========================================
+/* =========================
    HISTORY
-========================================== */
+========================= */
 
 .history-list{
     padding:0 16px 18px;
@@ -717,23 +645,30 @@ button{
 }
 
 .history-thumb{
+    flex:0 0 64px;
     width:64px;
     height:64px;
     object-fit:cover;
     border-radius:15px;
     background:#dfe7d4;
-    flex:none;
 }
 
 .history-name{
-    font-weight:800;
     color:var(--dark-green);
+    font-weight:850;
+}
+
+.history-scientific{
+    margin-top:3px;
+    color:var(--muted);
+    font-size:12px;
+    font-style:italic;
 }
 
 .history-date{
-    margin-top:4px;
-    font-size:11px;
+    margin-top:5px;
     color:var(--muted);
+    font-size:11px;
 }
 
 .empty{
@@ -743,9 +678,9 @@ button{
     font-size:13px;
 }
 
-/* ==========================================
+/* =========================
    SETTINGS
-========================================== */
+========================= */
 
 .settings{
     padding-bottom:20px;
@@ -759,11 +694,12 @@ button{
 .setting-row label{
     display:block;
     margin-bottom:7px;
+    color:var(--dark-green);
     font-size:13px;
-    font-weight:800;
+    font-weight:850;
 }
 
-.key-wrap{
+.api-wrap{
     position:relative;
 }
 
@@ -771,31 +707,28 @@ button{
     display:block;
     width:100%;
     min-height:48px;
-    padding:12px 48px 12px 13px;
+    padding:12px 44px 12px 12px;
     border:1px solid #d5cebd;
     border-radius:12px;
+    outline:none;
     background:white;
     color:var(--text);
-    outline:none;
+    font-size:16px;
     -webkit-appearance:none;
     appearance:none;
-    opacity:1;
-    pointer-events:auto;
-    user-select:text;
 }
 
 .setting-row input:focus{
     border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(82,107,63,.12);
+    box-shadow:0 0 0 3px rgba(82,107,63,.1);
 }
 
-.show-key{
+.toggle-key{
     position:absolute;
-    z-index:2;
-    right:7px;
-    top:7px;
+    right:6px;
+    top:6px;
     width:36px;
-    height:34px;
+    height:36px;
     border:0;
     border-radius:9px;
     background:#eee8da;
@@ -803,37 +736,37 @@ button{
 }
 
 .save-key{
-    display:block;
     width:100%;
     margin-top:9px;
     padding:13px;
     border:0;
-    border-radius:12px;
+    border-radius:13px;
     background:var(--green);
     color:white;
-    font-weight:800;
+    font-weight:850;
 }
 
 .key-status{
+    min-height:18px;
     margin-top:8px;
-    font-size:12px;
     color:var(--muted);
+    font-size:12px;
     line-height:1.4;
 }
 
 .security-note{
-    margin-top:10px;
-    padding:11px;
-    border-radius:12px;
+    margin-top:12px;
+    padding:12px;
+    border-radius:13px;
     background:#f0eadb;
-    color:#6c685b;
+    color:#6d6b5f;
     font-size:11px;
-    line-height:1.45;
+    line-height:1.5;
 }
 
-/* ==========================================
+/* =========================
    BOTTOM NAV
-========================================== */
+========================= */
 
 .bottom-nav{
     position:fixed;
@@ -843,14 +776,14 @@ button{
     transform:translateX(-50%);
     width:min(520px,100%);
     padding:
-        8px
-        10px
+        8px 10px
         calc(8px + env(safe-area-inset-bottom));
-    background:rgba(255,250,240,.95);
-    backdrop-filter:blur(18px);
-    border-top:1px solid rgba(82,107,63,.14);
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    background:rgba(255,250,240,.95);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-top:1px solid rgba(82,107,63,.14);
 }
 
 .nav-btn{
@@ -859,7 +792,7 @@ button{
     color:#858475;
     padding:6px 3px;
     font-size:10px;
-    font-weight:700;
+    font-weight:750;
 }
 
 .nav-btn span{
@@ -872,9 +805,9 @@ button{
     color:var(--green);
 }
 
-/* ==========================================
+/* =========================
    MODAL
-========================================== */
+========================= */
 
 .modal{
     position:fixed;
@@ -903,6 +836,7 @@ button{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:15px;
 }
 
 .modal-head h2{
@@ -911,11 +845,13 @@ button{
 }
 
 .close{
+    flex:0 0 auto;
     width:36px;
     height:36px;
     border:0;
     border-radius:50%;
     background:#e8e0ce;
+    color:var(--dark-green);
 }
 
 .modal-content{
@@ -925,31 +861,27 @@ button{
     line-height:1.55;
 }
 
-/* ==========================================
-   SMALL DEVICES
-========================================== */
+/* =========================
+   SMALL SCREENS
+========================= */
 
-@media(max-width:380px){
+@media(max-width:370px){
 
     .logo-text{
-        font-size:37px;
+        font-size:36px;
         letter-spacing:-2.2px;
     }
 
     .logo-decoration.left{
-        left:-2px;
+        left:2%;
     }
 
     .logo-decoration.right{
-        right:-2px;
+        right:1%;
     }
 
     .hero h1{
         font-size:25px;
-    }
-
-    .plant-grid{
-        gap:8px;
     }
 }
 </style>
@@ -959,12 +891,15 @@ button{
 
 <div class="app">
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header">
 
     <div class="brand">
 
-        <div class="logo"
-             aria-label="Taynz Plantz">
+        <div class="logo" aria-label="Taynz Plantz">
 
             <div class="logo-decoration left">
                 <div class="logo-stem"></div>
@@ -974,7 +909,7 @@ button{
             </div>
 
             <div class="logo-text">
-                Tayn<span class="accent">z</span> Plantz
+                Tayn<span class="green">z</span> Plantz
             </div>
 
             <div class="logo-decoration right">
@@ -986,14 +921,18 @@ button{
 
         </div>
 
-        <div class="brand-tagline">
+        <div class="tagline">
             <span>Planting with Tayn</span>
-            <span class="pot"></span>
+            <span class="pot" aria-hidden="true"></span>
         </div>
 
     </div>
 
 </header>
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -1003,8 +942,8 @@ button{
     </h1>
 
     <p>
-        Identify a plant with your camera, explore the plant
-        encyclopedia, and keep your discoveries together in one place.
+        Take a photo with your iPhone camera, identify the plant,
+        explore its care information, and keep your discoveries together.
     </p>
 
     <div class="hero-buttons">
@@ -1023,6 +962,10 @@ button{
 
 </section>
 
+<!-- =========================
+     SCANNER
+========================= -->
+
 <section class="card scanner-card"
          id="scanner">
 
@@ -1033,61 +976,90 @@ button{
         </h2>
 
         <p class="card-subtitle">
-            Center the plant inside the guide and take a clear photo.
+            Use your iPhone camera to take a clear photo of the plant.
         </p>
 
     </div>
 
-    <div class="camera">
+    <div class="native-camera">
 
-        <video id="video"
-               autoplay
-               playsinline
-               muted>
-        </video>
+        <div class="scanner-icon">
+            📷
+        </div>
 
-        <img id="previewImage"
-             alt="Plant photo preview">
+        <h3>
+            Take a Plant Photo
+        </h3>
 
-        <div class="plant-guide">
+        <p>
+            Taynz Plantz will open your iPhone's camera.
+            Take a photo of the plant and return here to identify it.
+        </p>
 
-            <div class="plant-frame">
+        <div class="camera-tips">
 
-                <div class="frame-leaf left-one"></div>
-                <div class="frame-leaf right-one"></div>
-                <div class="frame-leaf left-two"></div>
-                <div class="frame-leaf right-two"></div>
+            <div class="camera-tip">
+                🌿 Show the leaves
+            </div>
 
+            <div class="camera-tip">
+                ☀️ Use good lighting
+            </div>
+
+            <div class="camera-tip">
+                🔎 Fill the frame
+            </div>
+
+            <div class="camera-tip">
+                📸 Keep it sharp
             </div>
 
         </div>
 
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
+        <label class="native-button">
 
-        <div class="camera-message"
-             id="cameraMessage">
-            Place the plant inside the outline
-        </div>
+            📷 Take Plant Photo
 
-        <div class="camera-bottom">
+            <input
+                id="cameraInput"
+                class="native-input"
+                type="file"
+                accept="image/*"
+                capture="environment">
 
-            <button class="capture"
-                    id="captureButton"
-                    aria-label="Take plant photo">
-            </button>
+        </label>
 
+        <label class="native-button secondary">
+
+            🖼️ Choose Existing Photo
+
+            <input
+                id="galleryInput"
+                class="native-input"
+                type="file"
+                accept="image/*">
+
+        </label>
+
+    </div>
+
+    <div class="photo-preview"
+         id="photoPreview">
+
+        <img id="previewImage"
+             alt="Selected plant photo">
+
+        <div class="preview-badge">
+            🌿 Photo ready
         </div>
 
     </div>
 
-    <div class="scanner-controls">
+    <div class="scanner-actions">
 
         <button class="action-btn"
-                id="galleryButton">
-            🖼️ Choose Photo
+                id="retakeButton">
+            📷 New Photo
         </button>
 
         <button class="action-btn primary"
@@ -1097,18 +1069,16 @@ button{
 
     </div>
 
-    <input
-        id="fileInput"
-        class="file-input"
-        type="file"
-        accept="image/jpeg,image/png,image/webp,image/heic,image/*">
-
     <div class="status"
          id="scannerStatus">
-        Starting camera...
+        Ready to scan a plant.
     </div>
 
 </section>
+
+<!-- =========================
+     RESULT
+========================= -->
 
 <section class="result"
          id="result">
@@ -1138,22 +1108,32 @@ button{
 
         <div class="info-row">
             <strong>💧 Water:</strong>
-            <span id="resultWater">—</span>
+            <span id="resultWater">
+                See plant guide
+            </span>
         </div>
 
         <div class="info-row">
             <strong>☀️ Light:</strong>
-            <span id="resultLight">—</span>
+            <span id="resultLight">
+                See plant guide
+            </span>
         </div>
 
         <div class="info-row">
             <strong>🪴 Care:</strong>
-            <span id="resultCare">—</span>
+            <span id="resultCare">
+                See encyclopedia
+            </span>
         </div>
 
     </div>
 
 </section>
+
+<!-- =========================
+     RESOURCE GUIDE
+========================= -->
 
 <section class="card"
          id="guide">
@@ -1172,7 +1152,9 @@ button{
 
     <div class="search-box">
 
-        <span class="search-icon">🔎</span>
+        <span class="search-icon">
+            🔎
+        </span>
 
         <input
             id="plantSearch"
@@ -1187,6 +1169,10 @@ button{
     </div>
 
 </section>
+
+<!-- =========================
+     ENCYCLOPEDIA
+========================= -->
 
 <section class="card encyclopedia"
          id="encyclopedia">
@@ -1206,6 +1192,10 @@ button{
     <div id="encyclopediaList"></div>
 
 </section>
+
+<!-- =========================
+     HISTORY
+========================= -->
 
 <section class="card"
          id="history">
@@ -1228,17 +1218,21 @@ button{
 
 </section>
 
+<!-- =========================
+     SETTINGS
+========================= -->
+
 <section class="card settings"
          id="settings">
 
     <div class="card-header">
 
         <h2 class="card-title">
-            ⚙️ Scanner Settings
+            ⚙️ Settings
         </h2>
 
         <p class="card-subtitle">
-            Add your own Pl@ntNet API key to identify plants.
+            Connect Taynz Plantz to Pl@ntNet.
         </p>
 
     </div>
@@ -1249,23 +1243,24 @@ button{
             Pl@ntNet API Key
         </label>
 
-        <div class="key-wrap">
+        <div class="api-wrap">
 
             <input
                 id="apiKey"
                 type="password"
                 inputmode="text"
                 autocomplete="off"
+                autocorrect="off"
                 autocapitalize="none"
                 spellcheck="false"
                 placeholder="Enter your Pl@ntNet API key">
 
             <button
                 type="button"
-                class="show-key"
-                id="showKey"
-                aria-label="Show API key">
-                👁️
+                class="toggle-key"
+                id="toggleKey"
+                aria-label="Show or hide API key">
+                👁
             </button>
 
         </div>
@@ -1279,13 +1274,12 @@ button{
 
         <div class="key-status"
              id="keyStatus">
-            No API key saved on this device.
         </div>
 
         <div class="security-note">
-            🔒 Your key is stored locally in this browser.
-            Do not put your personal API key directly into the
-            HTML file or publish it in your GitHub repository.
+            🔒 Your API key is stored only in this browser's local storage.
+            Do not place a personal API key directly into the HTML file
+            before publishing it publicly.
         </div>
 
     </div>
@@ -1294,33 +1288,49 @@ button{
 
 </div>
 
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
 <nav class="bottom-nav">
 
     <button class="nav-btn active"
             onclick="goTo('scanner')">
+
         <span>📷</span>
         Scan
+
     </button>
 
     <button class="nav-btn"
             onclick="goTo('guide')">
+
         <span>🌿</span>
         Plants
+
     </button>
 
     <button class="nav-btn"
             onclick="goTo('encyclopedia')">
+
         <span>📚</span>
         Learn
+
     </button>
 
     <button class="nav-btn"
             onclick="goTo('history')">
+
         <span>🕘</span>
         History
+
     </button>
 
 </nav>
+
+<!-- =========================
+     PLANT MODAL
+========================= -->
 
 <div class="modal"
      id="plantModal">
@@ -1335,6 +1345,7 @@ button{
 
             <button
                 class="close"
+                type="button"
                 onclick="closeModal()">
                 ✕
             </button>
@@ -1353,154 +1364,156 @@ button{
 
 /* ==========================================
    TAYNZ PLANTZ
-   Complete single-file application
 ========================================== */
 
-const API_KEY_STORAGE =
-    "taynz_plantz_api_key";
+const API_KEY_STORAGE = "taynz_plantz_api_key";
+const HISTORY_STORAGE = "taynz_plantz_history";
 
-const HISTORY_STORAGE =
-    "taynz_plantz_history";
-
-let cameraStream = null;
 let capturedBlob = null;
 let capturedImageURL = null;
-let identifying = false;
 
 /* ==========================================
-   PLANT RESOURCE DATA
+   PLANT DATABASE
 ========================================== */
 
 const plants = [
 
-{
-    name:"Monstera",
-    scientific:"Monstera deliciosa",
-    emoji:"🌿",
-    light:"Bright, indirect light",
-    water:"Water when the top 2–5 cm of soil is dry.",
-    care:"Likes humidity and well-draining soil.",
-    description:
-        "A tropical plant known for its large leaves and natural splits."
-},
+    {
+        name:"Monstera",
+        scientific:"Monstera deliciosa",
+        emoji:"🌿",
+        light:"Bright, indirect light",
+        water:"Water when the top 2–5 cm of soil is dry.",
+        care:"Likes humidity and well-draining soil.",
+        description:"A tropical plant known for its large leaves and natural splits."
+    },
 
-{
-    name:"Snake Plant",
-    scientific:"Dracaena trifasciata",
-    emoji:"🪴",
-    light:"Low to bright indirect light",
-    water:"Allow soil to dry between watering.",
-    care:"Very tolerant of missed waterings.",
-    description:
-        "One of the easiest houseplants for beginners."
-},
+    {
+        name:"Snake Plant",
+        scientific:"Dracaena trifasciata",
+        emoji:"🪴",
+        light:"Low to bright indirect light",
+        water:"Allow soil to dry between watering.",
+        care:"Very tolerant of missed waterings.",
+        description:"One of the easiest houseplants for beginners."
+    },
 
-{
-    name:"Pothos",
-    scientific:"Epipremnum aureum",
-    emoji:"🌱",
-    light:"Low to bright indirect light",
-    water:"Water when the upper soil dries.",
-    care:"Excellent trailing plant for beginners.",
-    description:
-        "A fast-growing tropical vine with heart-shaped leaves."
-},
+    {
+        name:"Pothos",
+        scientific:"Epipremnum aureum",
+        emoji:"🌱",
+        light:"Low to bright indirect light",
+        water:"Water when the upper soil dries.",
+        care:"Excellent trailing plant for beginners.",
+        description:"A fast-growing tropical vine with heart-shaped leaves."
+    },
 
-{
-    name:"Peace Lily",
-    scientific:"Spathiphyllum",
-    emoji:"🌼",
-    light:"Medium to bright indirect light",
-    water:"Keep soil lightly moist.",
-    care:"Enjoys humidity and consistent moisture.",
-    description:
-        "Known for dark green foliage and white flowers."
-},
+    {
+        name:"Peace Lily",
+        scientific:"Spathiphyllum",
+        emoji:"🌼",
+        light:"Medium to bright indirect light",
+        water:"Keep soil lightly moist.",
+        care:"Enjoys humidity and consistent moisture.",
+        description:"Known for its dark green foliage and white flowers."
+    },
 
-{
-    name:"Spider Plant",
-    scientific:"Chlorophytum comosum",
-    emoji:"🌱",
-    light:"Bright indirect light",
-    water:"Water when the top layer dries.",
-    care:"Easy-growing plant that produces baby plants.",
-    description:
-        "A classic houseplant with long arching leaves."
-},
+    {
+        name:"Spider Plant",
+        scientific:"Chlorophytum comosum",
+        emoji:"🌱",
+        light:"Bright indirect light",
+        water:"Water when the top layer dries.",
+        care:"Easy-growing plant that produces baby plants.",
+        description:"A classic houseplant with long arching leaves."
+    },
 
-{
-    name:"Rubber Plant",
-    scientific:"Ficus elastica",
-    emoji:"🌳",
-    light:"Bright indirect light",
-    water:"Allow upper soil to dry.",
-    care:"Keep away from sudden temperature changes.",
-    description:
-        "A popular indoor tree with thick glossy leaves."
-},
+    {
+        name:"Rubber Plant",
+        scientific:"Ficus elastica",
+        emoji:"🌳",
+        light:"Bright indirect light",
+        water:"Allow upper soil to dry.",
+        care:"Keep away from sudden temperature changes.",
+        description:"A popular indoor tree with thick glossy leaves."
+    },
 
-{
-    name:"Aloe Vera",
-    scientific:"Aloe barbadensis",
-    emoji:"🌵",
-    light:"Bright light",
-    water:"Allow soil to completely dry between watering.",
-    care:"Use cactus or succulent soil.",
-    description:
-        "A succulent that stores water in its thick leaves."
-},
+    {
+        name:"Aloe Vera",
+        scientific:"Aloe barbadensis",
+        emoji:"🌵",
+        light:"Bright light",
+        water:"Allow soil to completely dry between watering.",
+        care:"Use cactus or succulent soil.",
+        description:"A succulent that stores water in its thick leaves."
+    },
 
-{
-    name:"ZZ Plant",
-    scientific:"Zamioculcas zamiifolia",
-    emoji:"🌿",
-    light:"Low to bright indirect light",
-    water:"Water sparingly.",
-    care:"Highly tolerant of dry conditions.",
-    description:
-        "A resilient houseplant with thick glossy foliage."
-},
+    {
+        name:"ZZ Plant",
+        scientific:"Zamioculcas zamiifolia",
+        emoji:"🌿",
+        light:"Low to bright indirect light",
+        water:"Water sparingly.",
+        care:"Highly tolerant of dry conditions.",
+        description:"A resilient houseplant with thick glossy foliage."
+    },
 
-{
-    name:"Fiddle Leaf Fig",
-    scientific:"Ficus lyrata",
-    emoji:"🌳",
-    light:"Bright indirect light",
-    water:"Water when upper soil dries.",
-    care:"Avoid moving it frequently.",
-    description:
-        "A dramatic indoor tree with large fiddle-shaped leaves."
-},
+    {
+        name:"Fiddle Leaf Fig",
+        scientific:"Ficus lyrata",
+        emoji:"🌳",
+        light:"Bright indirect light",
+        water:"Water when upper soil dries.",
+        care:"Avoid moving it frequently.",
+        description:"A dramatic indoor tree with large fiddle-shaped leaves."
+    },
 
-{
-    name:"Calathea",
-    scientific:"Calathea",
-    emoji:"🍃",
-    light:"Medium indirect light",
-    water:"Keep soil evenly moist.",
-    care:"Prefers humidity and filtered water.",
-    description:
-        "Tropical plants known for decorative patterned leaves."
-}
+    {
+        name:"Calathea",
+        scientific:"Calathea",
+        emoji:"🍃",
+        light:"Medium indirect light",
+        water:"Keep soil evenly moist.",
+        care:"Prefers humidity and filtered water.",
+        description:"Tropical plants known for decorative patterned leaves."
+    },
+
+    {
+        name:"Boston Fern",
+        scientific:"Nephrolepis exaltata",
+        emoji:"🌿",
+        light:"Bright indirect light",
+        water:"Keep soil consistently lightly moist.",
+        care:"Enjoys higher humidity.",
+        description:"A lush fern with long arching fronds."
+    },
+
+    {
+        name:"Jade Plant",
+        scientific:"Crassula ovata",
+        emoji:"🌱",
+        light:"Bright light",
+        water:"Let soil dry between watering.",
+        care:"Use a well-draining succulent mix.",
+        description:"A popular succulent with thick rounded leaves."
+    }
 
 ];
 
 /* ==========================================
-   RESOURCE GUIDE
+   RENDER RESOURCE GUIDE
 ========================================== */
 
 function renderPlants(list = plants){
 
-    const grid =
-        document.getElementById("plantGrid");
+    const grid = document.getElementById("plantGrid");
 
     grid.innerHTML = "";
 
     if(!list.length){
 
         grid.innerHTML = `
-            <div class="empty"
-                 style="grid-column:1/-1">
+            <div class="empty" style="grid-column:1/-1">
                 No plants found.
             </div>
         `;
@@ -1508,10 +1521,11 @@ function renderPlants(list = plants){
         return;
     }
 
-    list.forEach((plant,index)=>{
+    list.forEach((plant)=>{
 
-        const card =
-            document.createElement("button");
+        const originalIndex = plants.indexOf(plant);
+
+        const card = document.createElement("button");
 
         card.type = "button";
         card.className = "plant-card";
@@ -1530,15 +1544,13 @@ function renderPlants(list = plants){
             </p>
         `;
 
-        card.addEventListener(
-            "click",
-            ()=>openPlant(index)
-        );
+        card.addEventListener("click",()=>{
+            openPlant(originalIndex);
+        });
 
         grid.appendChild(card);
 
     });
-
 }
 
 /* ==========================================
@@ -1552,7 +1564,7 @@ function renderEncyclopedia(){
 
     container.innerHTML = "";
 
-    plants.forEach(plant=>{
+    plants.forEach((plant)=>{
 
         const item =
             document.createElement("div");
@@ -1577,16 +1589,23 @@ function renderEncyclopedia(){
             </p>
 
             <p style="margin-top:8px">
-                ☀️ ${escapeHTML(plant.light)}<br>
-                💧 ${escapeHTML(plant.water)}<br>
-                🪴 ${escapeHTML(plant.care)}
+                ☀️ <strong>Light:</strong>
+                ${escapeHTML(plant.light)}
+                <br>
+
+                💧 <strong>Water:</strong>
+                ${escapeHTML(plant.water)}
+                <br>
+
+                🪴 <strong>Care:</strong>
+                ${escapeHTML(plant.care)}
             </p>
+
         `;
 
         container.appendChild(item);
 
     });
-
 }
 
 /* ==========================================
@@ -1594,207 +1613,51 @@ function renderEncyclopedia(){
 ========================================== */
 
 document
-.getElementById("plantSearch")
-.addEventListener("input",function(){
+    .getElementById("plantSearch")
+    .addEventListener("input",function(){
 
-    const query =
-        this.value.toLowerCase().trim();
+        const query =
+            this.value.toLowerCase().trim();
 
-    const filtered =
-        plants.filter(plant=>
-            plant.name
-                .toLowerCase()
-                .includes(query) ||
+        const filtered =
+            plants.filter(plant =>
 
-            plant.scientific
-                .toLowerCase()
-                .includes(query)
-        );
+                plant.name
+                    .toLowerCase()
+                    .includes(query)
 
-    renderPlants(filtered);
+                ||
 
-});
+                plant.scientific
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+        renderPlants(filtered);
+
+    });
 
 /* ==========================================
-   CAMERA START
+   NATIVE CAMERA / PHOTO PICKER
 ========================================== */
 
-async function startCamera(){
+function handlePhoto(file){
 
-    const video =
-        document.getElementById("video");
+    if(!file){
+        return;
+    }
 
-    if(!navigator.mediaDevices ||
-       !navigator.mediaDevices.getUserMedia){
+    if(!file.type.startsWith("image/")){
 
         setStatus(
-            "Camera isn't supported here. Use Choose Photo."
+            "Please choose an image."
         );
 
         return;
     }
 
-    try{
-
-        stopCamera();
-
-        cameraStream =
-            await navigator.mediaDevices.getUserMedia({
-
-                audio:false,
-
-                video:{
-                    facingMode:{
-                        ideal:"environment"
-                    },
-                    width:{
-                        ideal:1920
-                    },
-                    height:{
-                        ideal:1440
-                    }
-                }
-
-            });
-
-        video.srcObject =
-            cameraStream;
-
-        await video.play();
-
-        document
-        .getElementById("previewImage")
-        .style.display = "none";
-
-        video.style.display = "block";
-
-        setCameraMessage(
-            "Place the plant inside the outline"
-        );
-
-        setStatus(
-            "Camera ready — center the plant and take a photo."
-        );
-
-    }catch(error){
-
-        console.error(
-            "Camera error:",
-            error
-        );
-
-        setStatus(
-            "Camera access wasn't available. Tap Choose Photo to select a plant picture."
-        );
-
-    }
-
-}
-
-/* ==========================================
-   STOP CAMERA
-========================================== */
-
-function stopCamera(){
-
-    if(cameraStream){
-
-        cameraStream
-        .getTracks()
-        .forEach(track=>{
-            track.stop();
-        });
-
-        cameraStream = null;
-    }
-
-}
-
-/* ==========================================
-   CAPTURE PHOTO
-========================================== */
-
-document
-.getElementById("captureButton")
-.addEventListener("click",capturePhoto);
-
-function capturePhoto(){
-
-    const video =
-        document.getElementById("video");
-
-    if(!video.videoWidth ||
-       !video.videoHeight){
-
-        setStatus(
-            "The camera is still starting. Please wait a moment."
-        );
-
-        return;
-    }
-
-    const canvas =
-        document.createElement("canvas");
-
-    /*
-       Preserve the camera's actual aspect ratio.
-       This prevents the captured image from being
-       unnecessarily stretched or squashed.
-    */
-
-    canvas.width =
-        video.videoWidth;
-
-    canvas.height =
-        video.videoHeight;
-
-    const context =
-        canvas.getContext("2d",{
-            alpha:false
-        });
-
-    context.drawImage(
-        video,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    canvas.toBlob(
-        blob=>{
-
-            if(!blob){
-
-                setStatus(
-                    "The photo could not be captured."
-                );
-
-                return;
-            }
-
-            setCapturedPhoto(
-                blob
-            );
-
-            setStatus(
-                "Photo captured — tap Identify Plant."
-            );
-
-        },
-        "image/jpeg",
-        .92
-    );
-
-}
-
-/* ==========================================
-   SET CAPTURED PHOTO
-========================================== */
-
-function setCapturedPhoto(blob){
-
-    capturedBlob = blob;
+    capturedBlob = file;
 
     if(capturedImageURL){
 
@@ -1805,104 +1668,100 @@ function setCapturedPhoto(blob){
     }
 
     capturedImageURL =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(file);
 
     const preview =
-        document.getElementById(
-            "previewImage"
-        );
-
-    const video =
-        document.getElementById(
-            "video"
-        );
+        document.getElementById("previewImage");
 
     preview.src =
         capturedImageURL;
 
-    preview.style.display =
-        "block";
+    document
+        .getElementById("photoPreview")
+        .classList.add("show");
 
-    video.style.display =
-        "none";
-
-    setCameraMessage(
-        "Photo captured"
-    );
-
-}
-
-/* ==========================================
-   CHOOSE PHOTO
-========================================== */
-
-document
-.getElementById("galleryButton")
-.addEventListener(
-    "click",
-    ()=>{
-        document
-        .getElementById("fileInput")
-        .click();
-    }
-);
-
-document
-.getElementById("fileInput")
-.addEventListener(
-    "change",
-    handleFile
-);
-
-function handleFile(event){
-
-    const file =
-        event.target.files &&
-        event.target.files[0];
-
-    if(!file){
-        return;
-    }
-
-    if(!file.type.startsWith("image/")){
-
-        setStatus(
-            "Please choose an image file."
-        );
-
-        return;
-    }
-
-    setCapturedPhoto(file);
+    document
+        .getElementById("result")
+        .classList.remove("show");
 
     setStatus(
-        "Photo selected — tap Identify Plant."
+        "Photo ready — tap Identify Plant."
     );
 
+    document
+        .getElementById("photoPreview")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
 }
+
+/* Camera */
+
+document
+    .getElementById("cameraInput")
+    .addEventListener("change",function(){
+
+        const file =
+            this.files && this.files[0];
+
+        handlePhoto(file);
+
+        /*
+         * Clear the input so the same photo/camera
+         * action can be selected again later.
+         */
+        this.value = "";
+
+    });
+
+/* Gallery */
+
+document
+    .getElementById("galleryInput")
+    .addEventListener("change",function(){
+
+        const file =
+            this.files && this.files[0];
+
+        handlePhoto(file);
+
+        this.value = "";
+
+    });
+
+/* New photo */
+
+document
+    .getElementById("retakeButton")
+    .addEventListener("click",function(){
+
+        document
+            .getElementById("cameraInput")
+            .click();
+
+    });
 
 /* ==========================================
    IDENTIFICATION
 ========================================== */
 
 document
-.getElementById("identifyButton")
-.addEventListener(
-    "click",
-    identifyPlant
-);
+    .getElementById("identifyButton")
+    .addEventListener(
+        "click",
+        identifyPlant
+    );
 
 async function identifyPlant(){
-
-    if(identifying){
-        return;
-    }
 
     if(!capturedBlob){
 
         setStatus(
-            "Take a photo or choose one first."
+            "Take a plant photo first."
         );
+
+        goTo("scanner");
 
         return;
     }
@@ -1920,29 +1779,29 @@ async function identifyPlant(){
 
         goTo("settings");
 
-        document
-        .getElementById("apiKey")
-        .focus();
+        setTimeout(()=>{
+
+            document
+                .getElementById("apiKey")
+                .focus();
+
+        },500);
 
         return;
     }
 
-    identifying = true;
+    setStatus(
+        "🌿 Identifying your plant..."
+    );
 
     const identifyButton =
         document.getElementById(
             "identifyButton"
         );
 
-    identifyButton.disabled =
-        true;
-
+    identifyButton.disabled = true;
     identifyButton.textContent =
         "🌿 Identifying...";
-
-    setStatus(
-        "🌿 Pl@ntNet is identifying your plant..."
-    );
 
     try{
 
@@ -1956,24 +1815,22 @@ async function identifyPlant(){
         );
 
         /*
-           We don't force a specific plant organ.
-           This allows the submitted image to contain
-           a leaf, flower, fruit or other useful part.
-        */
-
+         * The user is photographing a plant.
+         * "leaf" works well for normal plant photos.
+         */
         formData.append(
             "organs",
             "leaf"
         );
 
-        const endpoint =
+        const url =
             "https://my-api.plantnet.org/v2/identify/all?api-key="
             +
             encodeURIComponent(apiKey);
 
         const response =
             await fetch(
-                endpoint,
+                url,
                 {
                     method:"POST",
                     body:formData
@@ -1982,32 +1839,34 @@ async function identifyPlant(){
 
         if(!response.ok){
 
-            const text =
-                await response.text();
+            let errorText = "";
 
-            let friendly =
-                "Pl@ntNet returned an error.";
+            try{
+                errorText =
+                    await response.text();
+            }catch(e){}
 
             if(response.status === 401 ||
                response.status === 403){
 
-                friendly =
-                    "Your Pl@ntNet API key was rejected. Check the key in Settings.";
+                throw new Error(
+                    "Your Pl@ntNet API key was rejected."
+                );
+            }
 
-            }else if(response.status === 429){
+            if(response.status === 429){
 
-                friendly =
-                    "Pl@ntNet has temporarily limited requests. Please try again later.";
-
+                throw new Error(
+                    "Pl@ntNet rate limit reached. Try again later."
+                );
             }
 
             throw new Error(
-                friendly +
-                " (" +
-                response.status +
-                ")"
+                "Pl@ntNet returned HTTP "
+                + response.status
+                + ". "
+                + errorText
             );
-
         }
 
         const data =
@@ -2019,37 +1878,36 @@ async function identifyPlant(){
             throw new Error(
                 "No plant identification was returned."
             );
-
         }
 
+        const best =
+            data.results[0];
+
         displayIdentification(
-            data.results[0],
+            best,
             capturedImageURL
         );
 
     }catch(error){
 
         console.error(
-            "Identification error:",
+            "Taynz Plantz identification error:",
             error
         );
 
         setStatus(
             error.message ||
-            "Unable to identify the plant. Try a clearer photo."
+            "Unable to identify this photo."
         );
 
     }finally{
 
-        identifying = false;
-
-        identifyButton.disabled =
-            false;
+        identifyButton.disabled = false;
 
         identifyButton.textContent =
             "🔍 Identify Plant";
-    }
 
+    }
 }
 
 /* ==========================================
@@ -2062,9 +1920,7 @@ function displayIdentification(
 ){
 
     const resultSection =
-        document.getElementById(
-            "result"
-        );
+        document.getElementById("result");
 
     const scientific =
         result.species?.scientificNameWithoutAuthor
@@ -2087,36 +1943,34 @@ function displayIdentification(
         typeof result.score === "number"
         ? Math.round(
             result.score * 100
-          )
+        )
         : null;
 
     document
-    .getElementById("resultImage")
-    .src = imageURL;
+        .getElementById("resultImage")
+        .src = imageURL;
 
     document
-    .getElementById("resultName")
-    .textContent =
-        common;
+        .getElementById("resultName")
+        .textContent = common;
 
     document
-    .getElementById("resultScientific")
-    .textContent =
-        scientific;
+        .getElementById("resultScientific")
+        .textContent = scientific;
 
     document
-    .getElementById("resultConfidence")
-    .textContent =
-        score !== null
-        ? score + "% match"
-        : "Plant identified";
+        .getElementById("resultConfidence")
+        .textContent =
+            score !== null
+            ? score + "% match"
+            : "Plant identified";
 
     document
-    .getElementById("resultFamily")
-    .textContent =
-        result.species?.family?.scientificName
-        ||
-        "Not provided";
+        .getElementById("resultFamily")
+        .textContent =
+            result.species?.family?.scientificName
+            ||
+            "Not provided";
 
     const local =
         findLocalPlant(
@@ -2124,54 +1978,62 @@ function displayIdentification(
             scientific
         );
 
-    document
-    .getElementById("resultWater")
-    .textContent =
-        local
-        ? local.water
-        : "See species-specific care information.";
+    if(local){
 
-    document
-    .getElementById("resultLight")
-    .textContent =
-        local
-        ? local.light
-        : "Check the requirements for this species.";
+        document
+            .getElementById("resultWater")
+            .textContent =
+                local.water;
 
-    document
-    .getElementById("resultCare")
-    .textContent =
-        local
-        ? local.care
-        : "Research the identified species before watering.";
+        document
+            .getElementById("resultLight")
+            .textContent =
+                local.light;
 
-    resultSection.classList.add(
-        "show"
-    );
+        document
+            .getElementById("resultCare")
+            .textContent =
+                local.care;
+
+    }else{
+
+        document
+            .getElementById("resultWater")
+            .textContent =
+                "Check species-specific requirements.";
+
+        document
+            .getElementById("resultLight")
+            .textContent =
+                "Check species-specific requirements.";
+
+        document
+            .getElementById("resultCare")
+            .textContent =
+                "Research the identified species before watering.";
+
+    }
+
+    resultSection.classList.add("show");
 
     saveHistory({
 
         name:common,
-
         scientific:scientific,
-
         score:score,
-
         image:imageURL,
-
         date:new Date().toISOString()
 
     });
+
+    setStatus(
+        "🌿 Plant identified successfully."
+    );
 
     resultSection.scrollIntoView({
         behavior:"smooth",
         block:"start"
     });
-
-    setStatus(
-        "Plant identified successfully."
-    );
-
 }
 
 /* ==========================================
@@ -2185,21 +2047,25 @@ function findLocalPlant(
 
     const c =
         String(common)
-        .toLowerCase();
+            .toLowerCase();
 
     const s =
         String(scientific)
-        .toLowerCase();
+            .toLowerCase();
 
-    return plants.find(plant=>
+    return plants.find(plant =>
+
         c.includes(
             plant.name.toLowerCase()
-        ) ||
+        )
+
+        ||
+
         s.includes(
             plant.scientific.toLowerCase()
         )
-    );
 
+    );
 }
 
 /* ==========================================
@@ -2208,12 +2074,22 @@ function findLocalPlant(
 
 function saveHistory(item){
 
-    let history =
-        JSON.parse(
-            localStorage.getItem(
-                HISTORY_STORAGE
-            ) || "[]"
-        );
+    let history = [];
+
+    try{
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    HISTORY_STORAGE
+                ) || "[]"
+            );
+
+    }catch(error){
+
+        history = [];
+
+    }
 
     history.unshift(item);
 
@@ -2226,7 +2102,6 @@ function saveHistory(item){
     );
 
     renderHistory();
-
 }
 
 function renderHistory(){
@@ -2247,7 +2122,7 @@ function renderHistory(){
                 ) || "[]"
             );
 
-    }catch{
+    }catch(error){
 
         history = [];
 
@@ -2266,83 +2141,58 @@ function renderHistory(){
 
     container.innerHTML = "";
 
-    history.forEach(item=>{
+    history.forEach(item => {
 
         const row =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         row.className =
             "history-item";
 
-        const image =
-            document.createElement(
-                "img"
-            );
+        row.innerHTML = `
 
-        image.className =
-            "history-thumb";
+            <img
+                class="history-thumb"
+                src="${escapeHTML(item.image)}"
+                alt="${escapeHTML(item.name)}">
 
-        image.src =
-            item.image;
+            <div>
 
-        image.alt =
-            item.name;
+                <div class="history-name">
+                    ${escapeHTML(item.name)}
+                </div>
 
-        const info =
-            document.createElement(
-                "div"
-            );
+                <div class="history-scientific">
+                    ${escapeHTML(item.scientific)}
+                </div>
 
-        const name =
-            document.createElement(
-                "div"
-            );
+                <div class="history-date">
+                    ${formatDate(item.date)}
 
-        name.className =
-            "history-name";
+                    ${
+                        item.score !== null &&
+                        item.score !== undefined
+                        ? " • " +
+                          item.score +
+                          "% match"
+                        : ""
+                    }
+                </div>
 
-        name.textContent =
-            item.name;
+            </div>
 
-        const date =
-            document.createElement(
-                "div"
-            );
-
-        date.className =
-            "history-date";
-
-        date.textContent =
-            formatDate(item.date)
-            +
-            (
-                item.score !== null &&
-                item.score !== undefined
-                ? " • " +
-                  item.score +
-                  "% match"
-                : ""
-            );
-
-        info.appendChild(name);
-        info.appendChild(date);
-
-        row.appendChild(image);
-        row.appendChild(info);
+        `;
 
         container.appendChild(row);
 
     });
-
 }
 
 /* ==========================================
-   API KEY SETTINGS
+   API KEY
 ========================================== */
 
-function loadAPIKey(){
+function loadApiKey(){
 
     const key =
         localStorage.getItem(
@@ -2354,127 +2204,101 @@ function loadAPIKey(){
             "apiKey"
         );
 
-    const status =
-        document.getElementById(
-            "keyStatus"
-        );
-
     if(key){
 
-        input.value =
-            key;
+        input.value = key;
 
-        status.textContent =
-            "✓ API key saved on this device.";
+        document
+            .getElementById("keyStatus")
+            .textContent =
+                "✓ API key is saved on this device.";
 
     }else{
 
-        input.value =
-            "";
+        input.value = "";
 
-        status.textContent =
-            "No API key saved on this device.";
+        document
+            .getElementById("keyStatus")
+            .textContent =
+                "No API key saved.";
 
     }
-
 }
 
-/* SAVE API KEY */
-
 document
-.getElementById("saveKey")
-.addEventListener(
-    "click",
-    saveAPIKey
-);
+    .getElementById("saveKey")
+    .addEventListener(
+        "click",
+        function(){
 
-function saveAPIKey(){
+            const input =
+                document.getElementById(
+                    "apiKey"
+                );
 
-    const input =
-        document.getElementById(
-            "apiKey"
-        );
+            const key =
+                input.value.trim();
 
-    const status =
-        document.getElementById(
-            "keyStatus"
-        );
+            if(!key){
 
-    const key =
-        input.value.trim();
+                document
+                    .getElementById(
+                        "keyStatus"
+                    )
+                    .textContent =
+                        "Please enter your Pl@ntNet API key.";
 
-    if(!key){
+                input.focus();
 
-        status.textContent =
-            "Please enter your Pl@ntNet API key.";
+                return;
+            }
 
-        input.focus();
-
-        return;
-    }
-
-    localStorage.setItem(
-        API_KEY_STORAGE,
-        key
-    );
-
-    status.textContent =
-        "✓ API key saved on this device.";
-
-    setStatus(
-        "Pl@ntNet API key saved."
-    );
-
-}
-
-/* SHOW / HIDE API KEY */
-
-document
-.getElementById("showKey")
-.addEventListener(
-    "click",
-    ()=>{
-
-        const input =
-            document.getElementById(
-                "apiKey"
+            localStorage.setItem(
+                API_KEY_STORAGE,
+                key
             );
 
-        const button =
-            document.getElementById(
-                "showKey"
-            );
+            document
+                .getElementById(
+                    "keyStatus"
+                )
+                .textContent =
+                    "✓ API key saved on this device.";
 
-        if(input.type === "password"){
-
-            input.type =
-                "text";
-
-            button.textContent =
-                "🙈";
-
-            button.setAttribute(
-                "aria-label",
-                "Hide API key"
-            );
-
-        }else{
-
-            input.type =
-                "password";
-
-            button.textContent =
-                "👁️";
-
-            button.setAttribute(
-                "aria-label",
-                "Show API key"
+            setStatus(
+                "✓ Pl@ntNet API key saved."
             );
 
         }
+    );
 
-    }
-);
+/* Show/hide key */
+
+document
+    .getElementById("toggleKey")
+    .addEventListener(
+        "click",
+        function(){
+
+            const input =
+                document.getElementById(
+                    "apiKey"
+                );
+
+            if(input.type === "password"){
+
+                input.type = "text";
+                this.textContent = "🙈";
+
+            }else{
+
+                input.type = "password";
+                this.textContent = "👁";
+
+            }
+
+        }
+    );
 
 /* ==========================================
    NAVIGATION
@@ -2493,7 +2317,6 @@ function goTo(id){
         behavior:"smooth",
         block:"start"
     });
-
 }
 
 /* ==========================================
@@ -2502,111 +2325,89 @@ function goTo(id){
 
 function openPlant(index){
 
-    /*
-       Because the resource guide can be filtered,
-       locate the actual plant by name rather than
-       assuming the filtered index is the original index.
-    */
-
-    const visibleCards =
-        Array.from(
-            document.querySelectorAll(
-                ".plant-card"
-            )
-        );
-
-    const card =
-        visibleCards[index];
-
-    if(!card){
-        return;
-    }
-
-    const name =
-        card.querySelector("h3")
-        ?.textContent
-        ?.trim();
-
     const plant =
-        plants.find(
-            p=>p.name === name
-        );
+        plants[index];
 
     if(!plant){
         return;
     }
 
     document
-    .getElementById("modalTitle")
-    .textContent =
-        plant.emoji +
-        " " +
-        plant.name;
+        .getElementById("modalTitle")
+        .textContent =
+            plant.emoji +
+            " " +
+            plant.name;
 
     document
-    .getElementById("modalContent")
-    .innerHTML = `
+        .getElementById("modalContent")
+        .innerHTML = `
 
-        <p>
-            <strong>
-                ${escapeHTML(plant.scientific)}
-            </strong>
-        </p>
+            <p>
+                <strong>
+                    ${escapeHTML(
+                        plant.scientific
+                    )}
+                </strong>
+            </p>
 
-        <p>
-            ${escapeHTML(plant.description)}
-        </p>
+            <p>
+                ${escapeHTML(
+                    plant.description
+                )}
+            </p>
 
-        <p>
-            ☀️ <strong>Light</strong><br>
-            ${escapeHTML(plant.light)}
-        </p>
+            <p>
+                ☀️ <strong>Light</strong><br>
+                ${escapeHTML(
+                    plant.light
+                )}
+            </p>
 
-        <p>
-            💧 <strong>Water</strong><br>
-            ${escapeHTML(plant.water)}
-        </p>
+            <p>
+                💧 <strong>Water</strong><br>
+                ${escapeHTML(
+                    plant.water
+                )}
+            </p>
 
-        <p>
-            🪴 <strong>Care</strong><br>
-            ${escapeHTML(plant.care)}
-        </p>
+            <p>
+                🪴 <strong>Care</strong><br>
+                ${escapeHTML(
+                    plant.care
+                )}
+            </p>
 
-    `;
+        `;
 
     document
-    .getElementById("plantModal")
-    .classList.add("show");
-
+        .getElementById("plantModal")
+        .classList.add("show");
 }
 
 function closeModal(){
 
     document
-    .getElementById("plantModal")
-    .classList.remove("show");
-
+        .getElementById("plantModal")
+        .classList.remove("show");
 }
 
-/* Close modal when tapping outside */
+/* Close modal by tapping outside */
 
 document
-.getElementById("plantModal")
-.addEventListener(
-    "click",
-    event=>{
+    .getElementById("plantModal")
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(
-            event.target.id ===
-            "plantModal"
-        ){
+            if(event.target === this){
 
-            closeModal();
+                closeModal();
+
+            }
 
         }
-
-    }
-);
+    );
 
 /* ==========================================
    HELPERS
@@ -2615,23 +2416,10 @@ document
 function setStatus(message){
 
     document
-    .getElementById(
-        "scannerStatus"
-    )
-    .textContent =
-        message;
-
-}
-
-function setCameraMessage(message){
-
-    document
-    .getElementById(
-        "cameraMessage"
-    )
-    .textContent =
-        message;
-
+        .getElementById(
+            "scannerStatus"
+        )
+        .textContent = message;
 }
 
 function formatDate(date){
@@ -2639,14 +2427,10 @@ function formatDate(date){
     const parsed =
         new Date(date);
 
-    if(
-        Number.isNaN(
-            parsed.getTime()
-        )
-    ){
-
-        return "Unknown date";
-
+    if(Number.isNaN(
+        parsed.getTime()
+    )){
+        return "";
     }
 
     return parsed.toLocaleDateString(
@@ -2657,7 +2441,6 @@ function formatDate(date){
             year:"numeric"
         }
     );
-
 }
 
 function escapeHTML(value){
@@ -2668,40 +2451,7 @@ function escapeHTML(value){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
-
-/* ==========================================
-   PAGE VISIBILITY
-========================================== */
-
-document.addEventListener(
-    "visibilitychange",
-    ()=>{
-
-        if(document.hidden){
-
-            stopCamera();
-
-        }else{
-
-            /*
-               Only restart if the user is back
-               on the scanner and no preview is active.
-            */
-
-            if(
-                !capturedBlob
-            ){
-
-                startCamera();
-
-            }
-
-        }
-
-    }
-);
 
 /* ==========================================
    INITIALIZE
@@ -2713,29 +2463,7 @@ renderEncyclopedia();
 
 renderHistory();
 
-loadAPIKey();
-
-/*
-   Camera permissions normally work on:
-   - HTTPS
-   - localhost
-
-   GitHub Pages provides HTTPS automatically.
-*/
-
-if(
-    window.isSecureContext
-){
-
-    startCamera();
-
-}else{
-
-    setStatus(
-        "Camera requires a secure HTTPS connection. Use your GitHub Pages URL."
-    );
-
-}
+loadApiKey();
 
 </script>
 
