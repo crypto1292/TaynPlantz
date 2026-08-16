@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#526b3f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Taynz Plantz">
+<meta name="apple-mobile-web-app-title" content="TaynPlantz">
 <meta name="format-detection" content="telephone=no">
 
 <link rel="manifest" href="./manifest.json">
@@ -68,6 +68,11 @@ button{
     cursor:pointer;
 }
 
+button:disabled{
+    opacity:.55;
+    cursor:default;
+}
+
 .app{
     width:100%;
     max-width:520px;
@@ -76,9 +81,7 @@ button{
     padding-bottom:105px;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
     padding:
@@ -219,9 +222,7 @@ button{
     border-radius:99px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
     margin:8px 16px 18px;
@@ -267,9 +268,7 @@ button{
     border:1px solid rgba(255,255,255,.28);
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .card{
     margin:14px 16px;
@@ -299,9 +298,7 @@ button{
     line-height:1.5;
 }
 
-/* =========================
-   CAMERA
-========================= */
+/* SCANNER */
 
 .scanner-card{
     padding-bottom:18px;
@@ -311,12 +308,7 @@ button{
     margin:8px 16px 0;
     padding:24px 18px 20px;
     border-radius:24px;
-    background:
-        linear-gradient(
-            145deg,
-            #e8efdf,
-            #f5efe1
-        );
+    background:linear-gradient(145deg,#e8efdf,#f5efe1);
     border:1px solid #d5dec9;
     text-align:center;
 }
@@ -406,31 +398,50 @@ button{
 .photo-preview{
     display:none;
     margin:15px 16px 0;
-    position:relative;
 }
 
 .photo-preview.show{
     display:block;
 }
 
-.photo-preview img{
-    display:block;
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.photo-tile{
+    position:relative;
+    aspect-ratio:1;
+}
+
+.photo-tile img{
     width:100%;
-    max-height:360px;
+    height:100%;
     object-fit:cover;
-    border-radius:20px;
+    border-radius:15px;
+    display:block;
     background:#dfe7d4;
 }
 
-.preview-badge{
+.remove-photo{
     position:absolute;
-    left:12px;
-    top:12px;
-    padding:7px 10px;
-    border-radius:99px;
+    top:5px;
+    right:5px;
+    width:28px;
+    height:28px;
+    border:0;
+    border-radius:50%;
     background:rgba(49,71,42,.86);
     color:white;
-    font-size:11px;
+    font-size:14px;
+}
+
+.photo-count{
+    margin-top:9px;
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
     font-weight:800;
 }
 
@@ -455,11 +466,6 @@ button{
     color:white;
 }
 
-.action-btn:disabled{
-    opacity:.65;
-    cursor:wait;
-}
-
 .status{
     min-height:20px;
     margin:12px 18px 0;
@@ -469,9 +475,23 @@ button{
     line-height:1.4;
 }
 
-/* =========================
-   RESULT
-========================= */
+.progress-note{
+    display:none;
+    margin:10px 16px 0;
+    padding:11px;
+    border-radius:14px;
+    background:#edf3e8;
+    color:var(--dark-green);
+    font-size:12px;
+    text-align:center;
+    font-weight:800;
+}
+
+.progress-note.show{
+    display:block;
+}
+
+/* RESULTS */
 
 .result{
     display:none;
@@ -518,6 +538,33 @@ button{
     font-weight:900;
 }
 
+.organ-result{
+    display:inline-flex;
+    margin-top:8px;
+    margin-left:5px;
+    padding:7px 11px;
+    border-radius:99px;
+    background:#dfe7d4;
+    color:var(--dark-green);
+    font-size:12px;
+    font-weight:900;
+}
+
+.result-warning{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    border-radius:14px;
+    background:#fff4d9;
+    color:#765f46;
+    font-size:12px;
+    line-height:1.45;
+}
+
+.result-warning.show{
+    display:block;
+}
+
 .result-info{
     display:grid;
     gap:8px;
@@ -536,9 +583,45 @@ button{
     color:var(--dark-green);
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* ALTERNATIVES */
+
+.alternatives{
+    margin-top:18px;
+}
+
+.alternatives-title{
+    color:var(--dark-green);
+    font-weight:900;
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.alt-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 12px;
+    margin-top:7px;
+    background:white;
+    border-radius:13px;
+}
+
+.alt-name{
+    min-width:0;
+    color:var(--text);
+    font-size:12px;
+    font-weight:800;
+}
+
+.alt-score{
+    flex:0 0 auto;
+    color:var(--green);
+    font-size:11px;
+    font-weight:900;
+}
+
+/* SEARCH */
 
 .search-box{
     position:relative;
@@ -568,9 +651,7 @@ button{
     font-size:18px;
 }
 
-/* =========================
-   PLANT GUIDE
-========================= */
+/* GUIDE */
 
 .plant-grid{
     display:grid;
@@ -612,9 +693,7 @@ button{
     line-height:1.4;
 }
 
-/* =========================
-   ENCYCLOPEDIA
-========================= */
+/* ENCYCLOPEDIA */
 
 .encyclopedia{
     padding-bottom:18px;
@@ -639,9 +718,7 @@ button{
     line-height:1.5;
 }
 
-/* =========================
-   HISTORY
-========================= */
+/* HISTORY */
 
 .history-list{
     padding:0 16px 18px;
@@ -688,9 +765,7 @@ button{
     font-size:13px;
 }
 
-/* =========================
-   SETTINGS
-========================= */
+/* SETTINGS */
 
 .settings{
     padding-bottom:20px;
@@ -701,22 +776,61 @@ button{
     border-top:1px solid #e4dece;
 }
 
-.about-box{
-    padding:14px;
-    border-radius:14px;
-    background:#f0eadb;
-    color:#6d6b5f;
-    font-size:12px;
-    line-height:1.55;
+.setting-row label{
+    display:block;
+    margin-bottom:7px;
+    color:var(--dark-green);
+    font-size:13px;
+    font-weight:850;
 }
 
-.about-box strong{
+.api-wrap{
+    position:relative;
+}
+
+.setting-row input{
+    display:block;
+    width:100%;
+    min-height:48px;
+    padding:12px 44px 12px 12px;
+    border:1px solid #d5cebd;
+    border-radius:12px;
+    outline:none;
+    background:white;
+    color:var(--text);
+    font-size:16px;
+}
+
+.toggle-key{
+    position:absolute;
+    right:6px;
+    top:6px;
+    width:36px;
+    height:36px;
+    border:0;
+    border-radius:9px;
+    background:#eee8da;
     color:var(--dark-green);
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
+.key-status{
+    min-height:18px;
+    margin-top:8px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.security-note{
+    margin-top:12px;
+    padding:12px;
+    border-radius:13px;
+    background:#f0eadb;
+    color:#6d6b5f;
+    font-size:11px;
+    line-height:1.5;
+}
+
+/* NAV */
 
 .bottom-nav{
     position:fixed;
@@ -755,9 +869,7 @@ button{
     color:var(--green);
 }
 
-/* =========================
-   MODAL
-========================= */
+/* MODAL */
 
 .modal{
     position:fixed;
@@ -811,10 +923,6 @@ button{
     line-height:1.55;
 }
 
-/* =========================
-   SMALL SCREENS
-========================= */
-
 @media(max-width:370px){
 
     .logo-text{
@@ -840,10 +948,6 @@ button{
 <body>
 
 <div class="app">
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header class="header">
 
@@ -880,10 +984,6 @@ button{
 
 </header>
 
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
 
     <h1>
@@ -892,8 +992,8 @@ button{
     </h1>
 
     <p>
-        Take a photo with your iPhone camera, identify the plant,
-        explore its care information, and keep your discoveries together.
+        Take a photo with your iPhone, identify flowers and plants,
+        explore care information, and keep your discoveries together.
     </p>
 
     <div class="hero-buttons">
@@ -910,10 +1010,6 @@ button{
 
 </section>
 
-<!-- =========================
-     SCANNER
-========================= -->
-
 <section class="card scanner-card" id="scanner">
 
     <div class="card-header">
@@ -923,7 +1019,7 @@ button{
         </h2>
 
         <p class="card-subtitle">
-            Use your iPhone camera to take a clear photo of the plant.
+            One photo is enough. Add more photos when you want the best possible identification.
         </p>
 
     </div>
@@ -939,14 +1035,18 @@ button{
         </h3>
 
         <p>
-            Taynz Plantz will open your iPhone's camera.
-            Take a photo of the plant and return here to identify it.
+            Taynz Plantz automatically analyzes whether you're showing
+            a flower, leaf, fruit, bark, or the whole plant.
         </p>
 
         <div class="camera-tips">
 
             <div class="camera-tip">
-                🌿 Show the leaves
+                🌸 Flowers are excellent
+            </div>
+
+            <div class="camera-tip">
+                🍃 Show clear leaves
             </div>
 
             <div class="camera-tip">
@@ -955,10 +1055,6 @@ button{
 
             <div class="camera-tip">
                 🔎 Fill the frame
-            </div>
-
-            <div class="camera-tip">
-                📸 Keep it sharp
             </div>
 
         </div>
@@ -992,10 +1088,10 @@ button{
 
     <div class="photo-preview" id="photoPreview">
 
-        <img id="previewImage" alt="Selected plant photo">
+        <div class="photo-grid" id="photoGrid"></div>
 
-        <div class="preview-badge">
-            🌿 Photo ready
+        <div class="photo-count" id="photoCount">
+            0 photos selected
         </div>
 
     </div>
@@ -1003,7 +1099,7 @@ button{
     <div class="scanner-actions">
 
         <button class="action-btn" id="retakeButton">
-            📷 New Photo
+            📷 Add Photo
         </button>
 
         <button class="action-btn primary" id="identifyButton">
@@ -1012,15 +1108,15 @@ button{
 
     </div>
 
+    <div class="progress-note" id="progressNote">
+        🌿 Analyzing your plant...
+    </div>
+
     <div class="status" id="scannerStatus">
         Ready to scan a plant.
     </div>
 
 </section>
-
-<!-- =========================
-     RESULT
-========================= -->
 
 <section class="result" id="result">
 
@@ -1032,7 +1128,15 @@ button{
 
     <div class="result-scientific" id="resultScientific"></div>
 
-    <div class="confidence" id="resultConfidence"></div>
+    <div>
+        <span class="confidence" id="resultConfidence"></span>
+        <span class="organ-result" id="resultOrgan"></span>
+    </div>
+
+    <div class="result-warning" id="resultWarning">
+        The identification is not highly certain. Try adding another clear
+        photo of the flower, leaf, or fruit and identify again.
+    </div>
 
     <div class="result-info">
 
@@ -1058,11 +1162,9 @@ button{
 
     </div>
 
-</section>
+    <div class="alternatives" id="alternatives"></div>
 
-<!-- =========================
-     RESOURCE GUIDE
-========================= -->
+</section>
 
 <section class="card" id="guide">
 
@@ -1094,10 +1196,6 @@ button{
 
 </section>
 
-<!-- =========================
-     ENCYCLOPEDIA
-========================= -->
-
 <section class="card encyclopedia" id="encyclopedia">
 
     <div class="card-header">
@@ -1115,10 +1213,6 @@ button{
     <div id="encyclopediaList"></div>
 
 </section>
-
-<!-- =========================
-     HISTORY
-========================= -->
 
 <section class="card" id="history">
 
@@ -1138,10 +1232,6 @@ button{
 
 </section>
 
-<!-- =========================
-     SETTINGS
-========================= -->
-
 <section class="card settings" id="settings">
 
     <div class="card-header">
@@ -1151,20 +1241,42 @@ button{
         </h2>
 
         <p class="card-subtitle">
-            Taynz Plantz is ready to identify plants.
+            Pl@ntNet identification is already connected.
         </p>
 
     </div>
 
     <div class="setting-row">
 
-        <div class="about-box">
+        <label for="apiKey">
+            Pl@ntNet API Key
+        </label>
 
-            <strong>🌿 Pl@ntNet connected</strong><br><br>
+        <div class="api-wrap">
 
-            Plant identification is built into Taynz Plantz.
-            You do not need to enter or save an API key on your device.
+            <input
+                id="apiKey"
+                type="password"
+                autocomplete="off"
+                readonly>
 
+            <button
+                type="button"
+                class="toggle-key"
+                id="toggleKey">
+                👁
+            </button>
+
+        </div>
+
+        <div class="key-status" id="keyStatus">
+            ✓ Taynz Plantz is connected to Pl@ntNet.
+        </div>
+
+        <div class="security-note">
+            🔒 The API key is embedded in this app as requested.
+            Because this app is published as a public GitHub Pages website,
+            the key should be considered visible to anyone who inspects the app.
         </div>
 
     </div>
@@ -1172,10 +1284,6 @@ button{
 </section>
 
 </div>
-
-<!-- =========================
-     BOTTOM NAV
-========================= -->
 
 <nav class="bottom-nav">
 
@@ -1200,10 +1308,6 @@ button{
     </button>
 
 </nav>
-
-<!-- =========================
-     PLANT MODAL
-========================= -->
 
 <div class="modal" id="plantModal">
 
@@ -1232,35 +1336,32 @@ button{
 
 <script>
 
-/* ==========================================
+/* ============================================================
    TAYNZ PLANTZ
-========================================== */
+   Improved multi-photo plant + flower identification
+============================================================ */
 
 /*
- * IMPORTANT:
- * This key is embedded because this is your
- * personal GitHub Pages application.
+ * API KEY
  *
- * Anyone who can inspect the public source can
- * potentially see this key.
- *
- * Regenerate the key if it has been exposed,
- * then replace only the value below.
+ * Kept hardcoded exactly as requested.
  */
+const API_KEY = "2b105OhIPTpCj2RM08UaL7rK";
 
-const PLANTNET_API_KEY =
-    "2b105OhIPTpCj2RM08UaL7rK";
+/*
+ * Pl@ntNet's current API accepts up to 5 photos of the
+ * SAME individual plant in one identification request.
+ */
+const MAX_PHOTOS = 5;
 
-const HISTORY_STORAGE =
-    "taynz_plantz_history";
+const HISTORY_STORAGE = "taynz_plantz_history";
 
-let capturedBlob = null;
-let capturedImageURL = null;
+let capturedPhotos = [];
+let capturedImageURLs = [];
 
-
-/* ==========================================
+/* ============================================================
    PLANT DATABASE
-========================================== */
+============================================================ */
 
 const plants = [
 
@@ -1382,19 +1483,97 @@ const plants = [
         water:"Let soil dry between watering.",
         care:"Use a well-draining succulent mix.",
         description:"A popular succulent with thick rounded leaves."
+    },
+
+    {
+        name:"Rose",
+        scientific:"Rosa",
+        emoji:"🌹",
+        light:"Full sun",
+        water:"Water deeply when the soil begins to dry.",
+        care:"Good airflow and regular pruning are helpful.",
+        description:"A large genus of flowering plants known for colorful fragrant blooms."
+    },
+
+    {
+        name:"Sunflower",
+        scientific:"Helianthus annuus",
+        emoji:"🌻",
+        light:"Full sun",
+        water:"Keep young plants consistently watered.",
+        care:"Needs strong sunlight and room to grow.",
+        description:"A tall annual flowering plant with a characteristic large flower head."
+    },
+
+    {
+        name:"Tulip",
+        scientific:"Tulipa",
+        emoji:"🌷",
+        light:"Full sun to partial shade",
+        water:"Keep soil moderately moist.",
+        care:"Well-draining soil is important.",
+        description:"A spring-flowering bulb with distinctive cup-shaped flowers."
+    },
+
+    {
+        name:"Daisy",
+        scientific:"Bellis perennis",
+        emoji:"🌼",
+        light:"Full sun to partial shade",
+        water:"Keep soil lightly moist.",
+        care:"Avoid constantly waterlogged soil.",
+        description:"A small flowering plant with a classic white-petal appearance."
+    },
+
+    {
+        name:"Lavender",
+        scientific:"Lavandula",
+        emoji:"💜",
+        light:"Full sun",
+        water:"Allow soil to dry somewhat between watering.",
+        care:"Excellent drainage is important.",
+        description:"A fragrant flowering plant commonly grown in gardens."
+    },
+
+    {
+        name:"Orchid",
+        scientific:"Orchidaceae",
+        emoji:"🌸",
+        light:"Bright indirect light",
+        water:"Water when the growing medium begins to dry.",
+        care:"Good airflow and humidity are helpful.",
+        description:"A diverse family of flowering plants with highly distinctive blooms."
+    },
+
+    {
+        name:"Hibiscus",
+        scientific:"Hibiscus",
+        emoji:"🌺",
+        light:"Bright light to full sun",
+        water:"Keep soil evenly moist but not waterlogged.",
+        care:"Likes warmth, light and humidity.",
+        description:"A flowering genus known for large colorful trumpet-shaped flowers."
+    },
+
+    {
+        name:"Marigold",
+        scientific:"Tagetes",
+        emoji:"🌼",
+        light:"Full sun",
+        water:"Water when the surface begins to dry.",
+        care:"Prefers well-draining soil.",
+        description:"A popular flowering garden plant with bright yellow, orange or red flowers."
     }
 
 ];
 
-
-/* ==========================================
-   RESOURCE GUIDE
-========================================== */
+/* ============================================================
+   RENDER GUIDE
+============================================================ */
 
 function renderPlants(list = plants){
 
-    const grid =
-        document.getElementById("plantGrid");
+    const grid = document.getElementById("plantGrid");
 
     grid.innerHTML = "";
 
@@ -1411,11 +1590,9 @@ function renderPlants(list = plants){
 
     list.forEach((plant)=>{
 
-        const originalIndex =
-            plants.indexOf(plant);
+        const originalIndex = plants.indexOf(plant);
 
-        const card =
-            document.createElement("button");
+        const card = document.createElement("button");
 
         card.type = "button";
         card.className = "plant-card";
@@ -1443,17 +1620,14 @@ function renderPlants(list = plants){
     });
 }
 
-
-/* ==========================================
+/* ============================================================
    ENCYCLOPEDIA
-========================================== */
+============================================================ */
 
 function renderEncyclopedia(){
 
     const container =
-        document.getElementById(
-            "encyclopediaList"
-        );
+        document.getElementById("encyclopediaList");
 
     container.innerHTML = "";
 
@@ -1482,7 +1656,6 @@ function renderEncyclopedia(){
             </p>
 
             <p style="margin-top:8px">
-
                 ☀️ <strong>Light:</strong>
                 ${escapeHTML(plant.light)}
                 <br>
@@ -1493,7 +1666,6 @@ function renderEncyclopedia(){
 
                 🪴 <strong>Care:</strong>
                 ${escapeHTML(plant.care)}
-
             </p>
 
         `;
@@ -1503,10 +1675,9 @@ function renderEncyclopedia(){
     });
 }
 
-
-/* ==========================================
+/* ============================================================
    SEARCH
-========================================== */
+============================================================ */
 
 document
     .getElementById("plantSearch")
@@ -1534,76 +1705,321 @@ document
 
     });
 
+/* ============================================================
+   IMAGE PROCESSING
+============================================================ */
 
-/* ==========================================
+/*
+ * iPhones can produce formats that are not accepted by the
+ * Pl@ntNet API in every browser situation.
+ *
+ * We convert each selected image into a JPEG before uploading.
+ *
+ * This also limits the size so multiple images stay comfortably
+ * under the API's request-size limit.
+ */
+
+function prepareImage(file){
+
+    return new Promise((resolve,reject)=>{
+
+        if(!file){
+            reject(
+                new Error("No image selected.")
+            );
+            return;
+        }
+
+        if(!file.type.startsWith("image/")){
+
+            reject(
+                new Error("Please choose an image.")
+            );
+
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(){
+
+            const img = new Image();
+
+            img.onload = function(){
+
+                const MAX_SIZE = 1600;
+
+                let width = img.naturalWidth;
+                let height = img.naturalHeight;
+
+                if(width > MAX_SIZE || height > MAX_SIZE){
+
+                    const scale =
+                        Math.min(
+                            MAX_SIZE / width,
+                            MAX_SIZE / height
+                        );
+
+                    width =
+                        Math.round(width * scale);
+
+                    height =
+                        Math.round(height * scale);
+                }
+
+                const canvas =
+                    document.createElement("canvas");
+
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx =
+                    canvas.getContext("2d");
+
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+                canvas.toBlob(
+                    function(blob){
+
+                        if(!blob){
+
+                            reject(
+                                new Error(
+                                    "Could not prepare the image."
+                                )
+                            );
+
+                            return;
+                        }
+
+                        resolve(
+                            new File(
+                                [blob],
+                                "taynplantz.jpg",
+                                {
+                                    type:"image/jpeg"
+                                }
+                            )
+                        );
+
+                    },
+                    "image/jpeg",
+                    0.90
+                );
+
+            };
+
+            img.onerror = function(){
+
+                reject(
+                    new Error(
+                        "This photo could not be read."
+                    )
+                );
+
+            };
+
+            img.src = reader.result;
+        };
+
+        reader.onerror = function(){
+
+            reject(
+                new Error(
+                    "Could not read this photo."
+                )
+            );
+
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+/* ============================================================
    PHOTO HANDLING
-========================================== */
+============================================================ */
 
-function handlePhoto(file){
+async function handlePhoto(file){
 
     if(!file){
         return;
     }
 
-    if(!file.type.startsWith("image/")){
+    if(capturedPhotos.length >= MAX_PHOTOS){
 
         setStatus(
-            "Please choose an image."
+            "You already have 5 photos. Identify these photos or remove one."
         );
 
         return;
     }
 
-    capturedBlob = file;
+    setStatus(
+        "Preparing photo..."
+    );
 
-    if(capturedImageURL){
+    try{
+
+        const prepared =
+            await prepareImage(file);
+
+        capturedPhotos.push(prepared);
+
+        const previewURL =
+            URL.createObjectURL(prepared);
+
+        capturedImageURLs.push(previewURL);
+
+        renderPhotoPreview();
+
+        document
+            .getElementById("result")
+            .classList.remove("show");
+
+        setStatus(
+            capturedPhotos.length === 1
+                ? "Photo ready — tap Identify Plant."
+                : capturedPhotos.length +
+                  " photos ready — tap Identify Plant."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        setStatus(
+            error.message ||
+            "Unable to prepare this photo."
+        );
+
+    }
+}
+
+function renderPhotoPreview(){
+
+    const preview =
+        document.getElementById("photoPreview");
+
+    const grid =
+        document.getElementById("photoGrid");
+
+    const count =
+        document.getElementById("photoCount");
+
+    grid.innerHTML = "";
+
+    capturedImageURLs.forEach(
+        (url,index)=>{
+
+            const tile =
+                document.createElement("div");
+
+            tile.className =
+                "photo-tile";
+
+            tile.innerHTML = `
+
+                <img
+                    src="${url}"
+                    alt="Plant photo ${index + 1}">
+
+                <button
+                    type="button"
+                    class="remove-photo"
+                    aria-label="Remove photo">
+                    ✕
+                </button>
+
+            `;
+
+            tile
+                .querySelector(".remove-photo")
+                .addEventListener(
+                    "click",
+                    ()=>{
+                        removePhoto(index);
+                    }
+                );
+
+            grid.appendChild(tile);
+
+        }
+    );
+
+    count.textContent =
+        capturedPhotos.length +
+        (
+            capturedPhotos.length === 1
+            ? " photo selected"
+            : " photos selected"
+        );
+
+    preview.classList.toggle(
+        "show",
+        capturedPhotos.length > 0
+    );
+}
+
+function removePhoto(index){
+
+    if(
+        capturedImageURLs[index]
+    ){
 
         URL.revokeObjectURL(
-            capturedImageURL
+            capturedImageURLs[index]
         );
 
     }
 
-    capturedImageURL =
-        URL.createObjectURL(file);
-
-    const preview =
-        document.getElementById(
-            "previewImage"
-        );
-
-    preview.src =
-        capturedImageURL;
-
-    document
-        .getElementById("photoPreview")
-        .classList.add("show");
-
-    document
-        .getElementById("result")
-        .classList.remove("show");
-
-    setStatus(
-        "Photo ready — tap Identify Plant."
+    capturedPhotos.splice(
+        index,
+        1
     );
 
-    document
-        .getElementById("photoPreview")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
+    capturedImageURLs.splice(
+        index,
+        1
+    );
+
+    renderPhotoPreview();
+
+    if(!capturedPhotos.length){
+
+        setStatus(
+            "Ready to scan a plant."
+        );
+
+    }else{
+
+        setStatus(
+            capturedPhotos.length +
+            (
+                capturedPhotos.length === 1
+                ? " photo ready."
+                : " photos ready."
+            )
+        );
+
+    }
 }
 
-
-/* Camera */
+/* CAMERA */
 
 document
     .getElementById("cameraInput")
     .addEventListener("change",function(){
 
         const file =
-            this.files && this.files[0];
+            this.files &&
+            this.files[0];
 
         handlePhoto(file);
 
@@ -1611,15 +2027,15 @@ document
 
     });
 
-
-/* Gallery */
+/* GALLERY */
 
 document
     .getElementById("galleryInput")
     .addEventListener("change",function(){
 
         const file =
-            this.files && this.files[0];
+            this.files &&
+            this.files[0];
 
         handlePhoto(file);
 
@@ -1627,23 +2043,35 @@ document
 
     });
 
-
-/* New photo */
+/* ADD PHOTO */
 
 document
     .getElementById("retakeButton")
-    .addEventListener("click",function(){
+    .addEventListener(
+        "click",
+        function(){
 
-        document
-            .getElementById("cameraInput")
-            .click();
+            if(
+                capturedPhotos.length >= MAX_PHOTOS
+            ){
 
-    });
+                setStatus(
+                    "Maximum of 5 photos reached."
+                );
 
+                return;
+            }
 
-/* ==========================================
+            document
+                .getElementById("cameraInput")
+                .click();
+
+        }
+    );
+
+/* ============================================================
    IDENTIFICATION
-========================================== */
+============================================================ */
 
 document
     .getElementById("identifyButton")
@@ -1652,10 +2080,9 @@ document
         identifyPlant
     );
 
-
 async function identifyPlant(){
 
-    if(!capturedBlob){
+    if(!capturedPhotos.length){
 
         setStatus(
             "Take a plant photo first."
@@ -1666,30 +2093,14 @@ async function identifyPlant(){
         return;
     }
 
-    /*
-     * API KEY IS NOW EMBEDDED.
-     * No user input is required.
-     */
-
-    const apiKey =
-        PLANTNET_API_KEY;
-
-    if(!apiKey){
-
-        setStatus(
-            "Pl@ntNet is not configured."
-        );
-
-        return;
-    }
-
-    setStatus(
-        "🌿 Identifying your plant..."
-    );
-
     const identifyButton =
         document.getElementById(
             "identifyButton"
+        );
+
+    const progress =
+        document.getElementById(
+            "progressNote"
         );
 
     identifyButton.disabled = true;
@@ -1697,31 +2108,62 @@ async function identifyPlant(){
     identifyButton.textContent =
         "🌿 Identifying...";
 
+    progress.classList.add("show");
+
+    setStatus(
+        capturedPhotos.length === 1
+            ? "🌿 Identifying your plant..."
+            : "🌿 Comparing " +
+              capturedPhotos.length +
+              " photos of your plant..."
+    );
+
     try{
 
         const formData =
             new FormData();
 
-        formData.append(
-            "images",
-            capturedBlob,
-            "plant.jpg"
-        );
-
         /*
-         * Leaf identification is appropriate
-         * for normal plant photographs.
+         * IMPORTANT:
+         *
+         * We deliberately use "auto".
+         *
+         * Pl@ntNet can determine whether each image
+         * is a flower, leaf, fruit, bark, etc.
+         *
+         * This is much better than the previous version,
+         * which always submitted "leaf".
          */
 
-        formData.append(
-            "organs",
-            "leaf"
+        capturedPhotos.forEach(
+            (photo)=>{
+
+                formData.append(
+                    "images",
+                    photo,
+                    "plant.jpg"
+                );
+
+                formData.append(
+                    "organs",
+                    "auto"
+                );
+
+            }
         );
 
         const url =
-            "https://my-api.plantnet.org/v2/identify/all?api-key="
+            "https://my-api.plantnet.org/v2/identify/all"
             +
-            encodeURIComponent(apiKey);
+            "?api-key="
+            +
+            encodeURIComponent(API_KEY)
+            +
+            "&nb-results=5"
+            +
+            "&detailed=true"
+            +
+            "&lang=en";
 
         const response =
             await fetch(
@@ -1754,26 +2196,20 @@ async function identifyPlant(){
 
             }
 
-            if(response.status === 429){
+            if(
+                response.status === 429
+            ){
 
                 throw new Error(
-                    "Pl@ntNet rate limit reached. Try again later."
+                    "Pl@ntNet's request limit was reached. Try again later."
                 );
 
             }
 
             throw new Error(
-                "Pl@ntNet returned HTTP "
-                +
-                response.status
-                +
+                "Pl@ntNet returned HTTP " +
+                response.status +
                 "."
-                +
-                (
-                    errorText
-                    ? " " + errorText
-                    : ""
-                )
             );
 
         }
@@ -1781,13 +2217,18 @@ async function identifyPlant(){
         const data =
             await response.json();
 
+        console.log(
+            "Taynz Plantz Pl@ntNet result:",
+            data
+        );
+
         if(
             !data.results ||
             !data.results.length
         ){
 
             throw new Error(
-                "No plant identification was returned."
+                "Pl@ntNet could not identify this plant."
             );
 
         }
@@ -1797,7 +2238,7 @@ async function identifyPlant(){
 
         displayIdentification(
             best,
-            capturedImageURL
+            data
         );
 
     }catch(error){
@@ -1819,24 +2260,24 @@ async function identifyPlant(){
         identifyButton.textContent =
             "🔍 Identify Plant";
 
-    }
+        progress.classList.remove(
+            "show"
+        );
 
+    }
 }
 
-
-/* ==========================================
+/* ============================================================
    DISPLAY IDENTIFICATION
-========================================== */
+============================================================ */
 
 function displayIdentification(
     result,
-    imageURL
+    fullData
 ){
 
     const resultSection =
-        document.getElementById(
-            "result"
-        );
+        document.getElementById("result");
 
     const scientific =
         result.species?.scientificNameWithoutAuthor
@@ -1864,15 +2305,18 @@ function displayIdentification(
 
     document
         .getElementById("resultImage")
-        .src = imageURL;
+        .src =
+            capturedImageURLs[0];
 
     document
         .getElementById("resultName")
-        .textContent = common;
+        .textContent =
+            common;
 
     document
         .getElementById("resultScientific")
-        .textContent = scientific;
+        .textContent =
+            scientific;
 
     document
         .getElementById("resultConfidence")
@@ -1881,9 +2325,54 @@ function displayIdentification(
             ? score + "% match"
             : "Plant identified";
 
+    /*
+     * Show the organ the AI detected.
+     */
+    let detectedOrgan =
+        "🌿 Plant";
+
+    if(
+        fullData &&
+        Array.isArray(
+            fullData.predictedOrgans
+        ) &&
+        fullData.predictedOrgans.length
+    ){
+
+        const organs =
+            fullData.predictedOrgans
+                .map(item =>
+                    item.organ
+                )
+                .filter(Boolean);
+
+        if(organs.length){
+
+            const unique =
+                [...new Set(organs)];
+
+            detectedOrgan =
+                "🌿 " +
+                unique
+                    .map(
+                        formatOrgan
+                    )
+                    .join(" • ");
+
+        }
+
+    }
+
+    document
+        .getElementById("resultOrgan")
+        .textContent =
+            detectedOrgan;
+
     document
         .getElementById("resultFamily")
         .textContent =
+            result.species?.family?.scientificNameWithoutAuthor
+            ||
             result.species?.family?.scientificName
             ||
             "Not provided";
@@ -1930,14 +2419,46 @@ function displayIdentification(
 
     }
 
-    resultSection.classList.add("show");
+    /*
+     * Confidence warning.
+     *
+     * This doesn't pretend the AI is perfect.
+     */
+    const warning =
+        document.getElementById(
+            "resultWarning"
+        );
+
+    if(
+        score !== null &&
+        score < 70
+    ){
+
+        warning.classList.add("show");
+
+    }else{
+
+        warning.classList.remove("show");
+
+    }
+
+    /*
+     * Alternative results.
+     */
+    renderAlternatives(
+        fullData.results
+    );
+
+    resultSection.classList.add(
+        "show"
+    );
 
     saveHistory({
 
         name:common,
         scientific:scientific,
         score:score,
-        image:imageURL,
+        image:capturedImageURLs[0],
         date:new Date().toISOString()
 
     });
@@ -1950,13 +2471,106 @@ function displayIdentification(
         behavior:"smooth",
         block:"start"
     });
-
 }
 
+/* ============================================================
+   ALTERNATIVE RESULTS
+============================================================ */
 
-/* ==========================================
+function renderAlternatives(results){
+
+    const container =
+        document.getElementById(
+            "alternatives"
+        );
+
+    container.innerHTML = "";
+
+    if(
+        !Array.isArray(results) ||
+        results.length < 2
+    ){
+
+        return;
+    }
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "alternatives-title";
+
+    title.textContent =
+        "Other possible matches";
+
+    container.appendChild(title);
+
+    results
+        .slice(1,5)
+        .forEach(result => {
+
+            const scientific =
+                result.species?.scientificNameWithoutAuthor
+                ||
+                result.species?.scientificName
+                ||
+                "Unknown";
+
+            const names =
+                result.species?.commonNames
+                ||
+                [];
+
+            const name =
+                names.length
+                ? names[0]
+                : scientific;
+
+            const score =
+                typeof result.score === "number"
+                ? Math.round(
+                    result.score * 100
+                )
+                : null;
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "alt-item";
+
+            item.innerHTML = `
+
+                <div class="alt-name">
+                    ${escapeHTML(name)}
+                    <br>
+                    <span style="
+                        font-weight:500;
+                        font-style:italic;
+                        color:#777566;
+                    ">
+                        ${escapeHTML(scientific)}
+                    </span>
+                </div>
+
+                <div class="alt-score">
+                    ${
+                        score !== null
+                        ? score + "%"
+                        : "—"
+                    }
+                </div>
+
+            `;
+
+            container.appendChild(item);
+
+        });
+}
+
+/* ============================================================
    LOCAL PLANT MATCH
-========================================== */
+============================================================ */
 
 function findLocalPlant(
     common,
@@ -1971,25 +2585,25 @@ function findLocalPlant(
         String(scientific)
             .toLowerCase();
 
-    return plants.find(plant =>
+    return plants.find(
+        plant =>
 
-        c.includes(
-            plant.name.toLowerCase()
-        )
+            c.includes(
+                plant.name.toLowerCase()
+            )
 
-        ||
+            ||
 
-        s.includes(
-            plant.scientific.toLowerCase()
-        )
+            s.includes(
+                plant.scientific.toLowerCase()
+            )
 
     );
 }
 
-
-/* ==========================================
+/* ============================================================
    HISTORY
-========================================== */
+============================================================ */
 
 function saveHistory(item){
 
@@ -2022,7 +2636,6 @@ function saveHistory(item){
 
     renderHistory();
 }
-
 
 function renderHistory(){
 
@@ -2087,7 +2700,6 @@ function renderHistory(){
                 </div>
 
                 <div class="history-date">
-
                     ${formatDate(item.date)}
 
                     ${
@@ -2108,13 +2720,55 @@ function renderHistory(){
         container.appendChild(row);
 
     });
+}
+
+/* ============================================================
+   SETTINGS
+============================================================ */
+
+function loadApiKey(){
+
+    const input =
+        document.getElementById(
+            "apiKey"
+        );
+
+    input.value =
+        API_KEY;
 
 }
 
+document
+    .getElementById("toggleKey")
+    .addEventListener(
+        "click",
+        function(){
 
-/* ==========================================
+            const input =
+                document.getElementById(
+                    "apiKey"
+                );
+
+            if(
+                input.type === "password"
+            ){
+
+                input.type = "text";
+                this.textContent = "🙈";
+
+            }else{
+
+                input.type = "password";
+                this.textContent = "👁";
+
+            }
+
+        }
+    );
+
+/* ============================================================
    NAVIGATION
-========================================== */
+============================================================ */
 
 function goTo(id){
 
@@ -2132,10 +2786,9 @@ function goTo(id){
 
 }
 
-
-/* ==========================================
+/* ============================================================
    MODAL
-========================================== */
+============================================================ */
 
 function openPlant(index){
 
@@ -2197,9 +2850,7 @@ function openPlant(index){
     document
         .getElementById("plantModal")
         .classList.add("show");
-
 }
-
 
 function closeModal(){
 
@@ -2209,16 +2860,15 @@ function closeModal(){
 
 }
 
-
-/* Close modal by tapping outside */
-
 document
     .getElementById("plantModal")
     .addEventListener(
         "click",
         function(event){
 
-            if(event.target === this){
+            if(
+                event.target === this
+            ){
 
                 closeModal();
 
@@ -2227,10 +2877,9 @@ document
         }
     );
 
-
-/* ==========================================
+/* ============================================================
    HELPERS
-========================================== */
+============================================================ */
 
 function setStatus(message){
 
@@ -2238,10 +2887,10 @@ function setStatus(message){
         .getElementById(
             "scannerStatus"
         )
-        .textContent = message;
+        .textContent =
+            message;
 
 }
-
 
 function formatDate(date){
 
@@ -2269,24 +2918,63 @@ function formatDate(date){
 
 }
 
+function formatOrgan(organ){
+
+    const names = {
+
+        flower:"🌸 Flower",
+
+        leaf:"🍃 Leaf",
+
+        fruit:"🍎 Fruit",
+
+        bark:"🌳 Bark",
+
+        auto:"🌿 Plant"
+
+    };
+
+    return (
+        names[organ]
+        ||
+        "🌿 Plant"
+    );
+
+}
 
 function escapeHTML(value){
 
     return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
-
-/* ==========================================
+/* ============================================================
    SERVICE WORKER
-========================================== */
+============================================================ */
 
-if("serviceWorker" in navigator){
+if(
+    "serviceWorker" in navigator
+){
 
     window.addEventListener(
         "load",
@@ -2296,30 +2984,33 @@ if("serviceWorker" in navigator){
                 .register(
                     "./service-worker.js"
                 )
-                .catch(function(error){
+                .catch(
+                    function(error){
 
-                    console.error(
-                        "Service worker registration failed:",
-                        error
-                    );
+                        console.error(
+                            "Taynz Plantz service worker error:",
+                            error
+                        );
 
-                });
+                    }
+                );
 
         }
     );
 
 }
 
-
-/* ==========================================
+/* ============================================================
    INITIALIZE
-========================================== */
+============================================================ */
 
 renderPlants();
 
 renderEncyclopedia();
 
 renderHistory();
+
+loadApiKey();
 
 </script>
 
