@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>TaynPlantz Icon Generator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5efe1;
+  color: #30402a;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    system-ui,
+    sans-serif;
+  padding: 24px 18px 40px;
+}
+
+.container {
+  max-width: 520px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #31472a;
+  margin: 10px 0 6px;
+  font-size: 30px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777566;
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.preview img {
+  width: 180px;
+  height: 180px;
+  border-radius: 36px;
+  box-shadow: 0 12px 30px rgba(57,68,43,.18);
+}
+
+.card {
+  background: #fffaf0;
+  border: 1px solid #ddd4c1;
+  border-radius: 22px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  margin: 0 0 7px;
+  color: #31472a;
+  font-size: 20px;
+}
+
+.card p {
+  margin: 0 0 16px;
+  color: #777566;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 15px;
+  padding: 15px;
+  background: #526b3f;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+button:active {
+  transform: scale(.98);
+}
+
+.success {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #e4eedc;
+  color: #31472a;
+  font-size: 13px;
+  text-align: center;
+}
+
+.instructions {
+  background: #edf3e8;
+  border-radius: 18px;
+  padding: 18px;
+  margin-top: 20px;
+}
+
+.instructions strong {
+  color: #31472a;
+}
+
+.instructions ol {
+  margin: 10px 0 0;
+  padding-left: 22px;
+  color: #5f6657;
+  font-size: 14px;
+  line-height: 1.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>🌿 TaynPlantz</h1>
+
+  <p class="subtitle">
+    TaynPlantz icon generator
+  </p>
+
+  <div class="preview">
+    <img id="preview" alt="TaynPlantz icon preview">
+  </div>
+
+  <div class="card">
+
+    <h2>192 × 192 Icon</h2>
+
+    <p>
+      This is the icon used for the PWA and iPhone Home Screen.
+    </p>
+
+    <button onclick="downloadIcon(192)">
+      Create 192×192 PNG
+    </button>
+
+    <div id="success192" class="success">
+      ✓ 192×192 PNG created
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h2>512 × 512 Icon</h2>
+
+    <p>
+      This is the larger PWA icon used by supported devices and browsers.
+    </p>
+
+    <button onclick="downloadIcon(512)">
+      Create 512×512 PNG
+    </button>
+
+    <div id="success512" class="success">
+      ✓ 512×512 PNG created
+    </div>
+
+  </div>
+
+  <div class="instructions">
+
+    <strong>After creating both files:</strong>
+
+    <ol>
+      <li>Open your iPhone's Files app.</li>
+      <li>Find <strong>icon-192.png</strong> and <strong>icon-512.png</strong>.</li>
+      <li>Open your GitHub TaynPlantz repository.</li>
+      <li>Go to the <strong>main</strong> branch.</li>
+      <li>Delete the existing broken PNG files.</li>
+      <li>Upload the two new PNG files.</li>
+      <li>Make sure their names are exactly:
+        <strong>icon-192.png</strong> and
+        <strong>icon-512.png</strong>.
+      </li>
+    </ol>
+
+  </div>
+
+</div>
+
+<canvas id="canvas" style="display:none"></canvas>
+
+<script>
+
+function drawIcon(size) {
+
+  const canvas =
+    document.getElementById("canvas");
+
+  canvas.width = size;
+  canvas.height = size;
+
+  const ctx =
+    canvas.getContext("2d");
+
+  const s = size;
+
+  /*
+   * Background
+   */
+
+  ctx.fillStyle = "#0d3324";
+
+  roundRect(
+    ctx,
+    0,
+    0,
+    s,
+    s,
+    s * .18
+  );
+
+  ctx.fill();
+
+  /*
+   * Inner botanical circle
+   */
+
+  ctx.beginPath();
+
+  ctx.arc(
+    s / 2,
+    s / 2,
+    s * .35,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fillStyle = "#24351f";
+
+  ctx.fill();
+
+  /*
+   * Stem
+   */
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    s * .48,
+    s * .34,
+    s * .04,
+    s * .36,
+    s * .02
+  );
+
+  ctx.fillStyle = "#879b70";
+
+  ctx.fill();
+
+  /*
+   * Left leaf
+   */
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    s * .50,
+    s * .44
+  );
+
+  ctx.bezierCurveTo(
+    s * .37,
+    s * .41,
+    s * .25,
+    s * .32,
+    s * .22,
+    s * .20
+  );
+
+  ctx.bezierCurveTo(
+    s * .36,
+    s * .20,
+    s * .48,
+    s * .29,
+    s * .50,
+    s * .44
+  );
+
+  ctx.fillStyle = "#dfe7d4";
+
+  ctx.fill();
+
+  /*
+   * Right leaf
+   */
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    s * .51,
+    s * .40
+  );
+
+  ctx.bezierCurveTo(
+    s * .59,
+    s * .26,
+    s * .70,
+    s * .20,
+    s * .82,
+    s * .23
+  );
+
+  ctx.bezierCurveTo(
+    s * .78,
+    s * .37,
+    s * .65,
+    s * .45,
+    s * .51,
+    s * .40
+  );
+
+  ctx.fillStyle = "#879b70";
+
+  ctx.fill();
+
+  /*
+   * Top leaf
+   */
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    s * .50,
+    s * .35
+  );
+
+  ctx.bezierCurveTo(
+    s * .43,
+    s * .24,
+    s * .46,
+    s * .12,
+    s * .56,
+    s * .09
+  );
+
+  ctx.bezierCurveTo(
+    s * .63,
+    s * .20,
+    s * .60,
+    s * .30,
+    s * .50,
+    s * .35
+  );
+
+  ctx.fillStyle = "#dfe7d4";
+
+  ctx.fill();
+
+  /*
+   * Pot
+   */
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    s * .32,
+    s * .64
+  );
+
+  ctx.lineTo(
+    s * .68,
+    s * .64
+  );
+
+  ctx.lineTo(
+    s * .64,
+    s * .82
+  );
+
+  ctx.quadraticCurveTo(
+    s * .63,
+    s * .86,
+    s * .59,
+    s * .86
+  );
+
+  ctx.lineTo(
+    s * .41,
+    s * .86
+  );
+
+  ctx.quadraticCurveTo(
+    s * .37,
+    s * .86,
+    s * .36,
+    s * .82
+  );
+
+  ctx.closePath();
+
+  ctx.fillStyle = "#c98957";
+
+  ctx.fill();
+
+  /*
+   * Pot rim
+   */
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    s * .30,
+    s * .61,
+    s * .40,
+    s * .07,
+    s * .025
+  );
+
+  ctx.fillStyle = "#a96d43";
+
+  ctx.fill();
+
+  /*
+   * T logo
+   */
+
+  ctx.fillStyle = "#0d3324";
+
+  ctx.font =
+    "900 " +
+    Math.round(s * .31) +
+    "px Arial, Helvetica, sans-serif";
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText(
+    "T",
+    s / 2,
+    s * .54
+  );
+
+  return canvas;
+}
+
+
+function roundRect(
+  ctx,
+  x,
+  y,
+  width,
+  height,
+  radius
+) {
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x + radius,
+    y
+  );
+
+  ctx.arcTo(
+    x + width,
+    y,
+    x + width,
+    y + height,
+    radius
+  );
+
+  ctx.arcTo(
+    x + width,
+    y + height,
+    x,
+    y + height,
+    radius
+  );
+
+  ctx.arcTo(
+    x,
+    y + height,
+    x,
+    y,
+    radius
+  );
+
+  ctx.arcTo(
+    x,
+    y,
+    x + width,
+    y,
+    radius
+  );
+
+  ctx.closePath();
+}
+
+
+function downloadIcon(size) {
+
+  const canvas =
+    drawIcon(size);
+
+  const filename =
+    size === 192
+      ? "icon-192.png"
+      : "icon-512.png";
+
+  canvas.toBlob(
+    function(blob) {
+
+      if(!blob) {
+
+        alert(
+          "Unable to create PNG."
+        );
+
+        return;
+      }
+
+      const url =
+        URL.createObjectURL(blob);
+
+      const link =
+        document.createElement("a");
+
+      link.href = url;
+      link.download = filename;
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      link.remove();
+
+      setTimeout(
+        function() {
+          URL.revokeObjectURL(url);
+        },
+        1000
+      );
+
+      const success =
+        document.getElementById(
+          size === 192
+            ? "success192"
+            : "success512"
+        );
+
+      success.style.display =
+        "block";
+
+    },
+    "image/png"
+  );
+}
+
+
+/*
+ * Generate preview.
+ */
+
+const preview =
+  document.getElementById("preview");
+
+const previewCanvas =
+  drawIcon(512);
+
+preview.src =
+  previewCanvas.toDataURL(
+    "image/png"
+  );
+
+</script>
+
+</body>
+</html>
