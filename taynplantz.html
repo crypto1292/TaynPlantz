@@ -8,26 +8,21 @@
 
 <title>TaynPlantz</title>
 
-<!-- =========================
-     PWA
-========================= -->
-
+<!-- PWA -->
 <link rel="manifest" href="./manifest.json">
 
-<meta name="theme-color" content="#0d3324">
+<!-- Standard favicon -->
+<link rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./icon-192.png">
+
+<link rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="./icon-512.png">
 
 <!-- iPhone / iPad Home Screen -->
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style"
-      content="default">
-
-<meta name="apple-mobile-web-app-title"
-      content="TaynPlantz">
-
-<!-- Apple Home Screen icons -->
-
 <link rel="apple-touch-icon"
       sizes="192x192"
       href="./icon-192.png">
@@ -36,11 +31,23 @@
       sizes="512x512"
       href="./icon-512.png">
 
+<!-- iOS PWA -->
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
+
+<meta name="apple-mobile-web-app-title"
+      content="TaynPlantz">
+
+<meta name="theme-color"
+      content="#0d3324">
+
 <meta name="format-detection"
       content="telephone=no">
 
 <style>
-
 :root{
     --green:#526b3f;
     --dark-green:#31472a;
@@ -98,11 +105,6 @@ button{
     cursor:pointer;
 }
 
-button:disabled{
-    opacity:.65;
-    cursor:default;
-}
-
 .app{
     width:100%;
     max-width:520px;
@@ -111,9 +113,7 @@ button:disabled{
     padding-bottom:105px;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
     padding:
@@ -254,9 +254,7 @@ button:disabled{
     border-radius:99px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
     margin:8px 16px 18px;
@@ -302,9 +300,7 @@ button:disabled{
     border:1px solid rgba(255,255,255,.28);
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .card{
     margin:14px 16px;
@@ -334,9 +330,7 @@ button:disabled{
     line-height:1.5;
 }
 
-/* =========================
-   SCANNER
-========================= */
+/* SCANNER */
 
 .scanner-card{
     padding-bottom:18px;
@@ -346,12 +340,11 @@ button:disabled{
     margin:8px 16px 0;
     padding:24px 18px 20px;
     border-radius:24px;
-    background:
-        linear-gradient(
-            145deg,
-            #e8efdf,
-            #f5efe1
-        );
+    background:linear-gradient(
+        145deg,
+        #e8efdf,
+        #f5efe1
+    );
     border:1px solid #d5dec9;
     text-align:center;
 }
@@ -499,9 +492,7 @@ button:disabled{
     line-height:1.4;
 }
 
-/* =========================
-   RESULT
-========================= */
+/* RESULT */
 
 .result{
     display:none;
@@ -566,9 +557,7 @@ button:disabled{
     color:var(--dark-green);
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 .search-box{
     position:relative;
@@ -598,9 +587,7 @@ button:disabled{
     font-size:18px;
 }
 
-/* =========================
-   PLANT GUIDE
-========================= */
+/* GUIDE */
 
 .plant-grid{
     display:grid;
@@ -642,9 +629,7 @@ button:disabled{
     line-height:1.4;
 }
 
-/* =========================
-   ENCYCLOPEDIA
-========================= */
+/* ENCYCLOPEDIA */
 
 .encyclopedia{
     padding-bottom:18px;
@@ -669,9 +654,7 @@ button:disabled{
     line-height:1.5;
 }
 
-/* =========================
-   HISTORY
-========================= */
+/* HISTORY */
 
 .history-list{
     padding:0 16px 18px;
@@ -718,9 +701,7 @@ button:disabled{
     font-size:13px;
 }
 
-/* =========================
-   SETTINGS
-========================= */
+/* SETTINGS */
 
 .settings{
     padding-bottom:20px;
@@ -804,9 +785,7 @@ button:disabled{
     line-height:1.5;
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
+/* NAV */
 
 .bottom-nav{
     position:fixed;
@@ -845,9 +824,7 @@ button:disabled{
     color:var(--green);
 }
 
-/* =========================
-   MODAL
-========================= */
+/* MODAL */
 
 .modal{
     position:fixed;
@@ -901,9 +878,7 @@ button:disabled{
     line-height:1.55;
 }
 
-/* =========================
-   SMALL SCREENS
-========================= */
+/* SMALL SCREENS */
 
 @media(max-width:370px){
 
@@ -923,9 +898,7 @@ button:disabled{
     .hero h1{
         font-size:25px;
     }
-
 }
-
 </style>
 </head>
 
@@ -937,7 +910,7 @@ button:disabled{
 
     <div class="brand">
 
-        <div class="logo" aria-label="TaynPlantz">
+        <div class="logo" aria-label="Taynz Plantz">
 
             <div class="logo-decoration left">
                 <div class="logo-stem"></div>
@@ -996,8 +969,7 @@ button:disabled{
 
 </section>
 
-<section class="card scanner-card"
-         id="scanner">
+<section class="card scanner-card" id="scanner">
 
     <div class="card-header">
 
@@ -1022,27 +994,16 @@ button:disabled{
         </h3>
 
         <p>
-            TaynPlantz will open your iPhone's camera.
+            Taynz Plantz will open your iPhone's camera.
             Take a photo of the plant and return here to identify it.
         </p>
 
         <div class="camera-tips">
 
-            <div class="camera-tip">
-                🌿 Show the leaves
-            </div>
-
-            <div class="camera-tip">
-                ☀️ Use good lighting
-            </div>
-
-            <div class="camera-tip">
-                🔎 Fill the frame
-            </div>
-
-            <div class="camera-tip">
-                📸 Keep it sharp
-            </div>
+            <div class="camera-tip">🌿 Show the leaves</div>
+            <div class="camera-tip">☀️ Use good lighting</div>
+            <div class="camera-tip">🔎 Fill the frame</div>
+            <div class="camera-tip">📸 Keep it sharp</div>
 
         </div>
 
@@ -1073,8 +1034,7 @@ button:disabled{
 
     </div>
 
-    <div class="photo-preview"
-         id="photoPreview">
+    <div class="photo-preview" id="photoPreview">
 
         <img id="previewImage"
              alt="Selected plant photo">
@@ -1106,24 +1066,19 @@ button:disabled{
 
 </section>
 
-<section class="result"
-         id="result">
+<section class="result" id="result">
 
     <img id="resultImage"
          class="result-image"
          alt="Identified plant">
 
-    <div class="result-name"
-         id="resultName">
-    </div>
+    <div class="result-name" id="resultName"></div>
 
     <div class="result-scientific"
-         id="resultScientific">
-    </div>
+         id="resultScientific"></div>
 
     <div class="confidence"
-         id="resultConfidence">
-    </div>
+         id="resultConfidence"></div>
 
     <div class="result-info">
 
@@ -1157,8 +1112,7 @@ button:disabled{
 
 </section>
 
-<section class="card"
-         id="guide">
+<section class="card" id="guide">
 
     <div class="card-header">
 
@@ -1174,9 +1128,7 @@ button:disabled{
 
     <div class="search-box">
 
-        <span class="search-icon">
-            🔎
-        </span>
+        <span class="search-icon">🔎</span>
 
         <input
             id="plantSearch"
@@ -1211,8 +1163,7 @@ button:disabled{
 
 </section>
 
-<section class="card"
-         id="history">
+<section class="card" id="history">
 
     <div class="card-header">
 
@@ -1242,7 +1193,7 @@ button:disabled{
         </h2>
 
         <p class="card-subtitle">
-            Connect TaynPlantz to Pl@ntNet.
+            Connect Taynz Plantz to Pl@ntNet.
         </p>
 
     </div>
@@ -1288,8 +1239,6 @@ button:disabled{
 
         <div class="security-note">
             🔒 Your API key is stored only in this browser's local storage.
-            Do not place a personal API key directly into the HTML file
-            before publishing it publicly.
         </div>
 
     </div>
@@ -1356,1197 +1305,894 @@ button:disabled{
 
 <script>
 
-/* ==========================================
-   PWA SERVICE WORKER
-========================================== */
-
-if("serviceWorker" in navigator){
-
-    window.addEventListener("load",()=>{
-
-        navigator.serviceWorker
-            .register("./sw.js")
-            .then(registration=>{
-
-                console.log(
-                    "TaynPlantz service worker registered:",
-                    registration.scope
-                );
-
-            })
-            .catch(error=>{
-
-                console.error(
-                    "TaynPlantz service worker registration failed:",
-                    error
-                );
-
-            });
-
-    });
-
-}
-
-/* ==========================================
-   TAYNPLANTZ
-========================================== */
-
-const API_KEY_STORAGE =
-    "taynz_plantz_api_key";
-
-const HISTORY_STORAGE =
-    "taynz_plantz_history";
+const API_KEY_STORAGE = "taynz_plantz_api_key";
+const HISTORY_STORAGE = "taynz_plantz_history";
 
 let capturedBlob = null;
 let capturedImageURL = null;
 
-/* ==========================================
-   PLANT DATABASE
-========================================== */
-
 const plants = [
 
 {
-    name:"Monstera",
-    scientific:"Monstera deliciosa",
-    emoji:"🌿",
-    light:"Bright, indirect light",
-    water:"Water when the top 2–5 cm of soil is dry.",
-    care:"Likes humidity and well-draining soil.",
-    description:"A tropical plant known for its large leaves and natural splits."
+name:"Monstera",
+scientific:"Monstera deliciosa",
+emoji:"🌿",
+light:"Bright, indirect light",
+water:"Water when the top 2–5 cm of soil is dry.",
+care:"Likes humidity and well-draining soil.",
+description:"A tropical plant known for its large leaves and natural splits."
 },
 
 {
-    name:"Snake Plant",
-    scientific:"Dracaena trifasciata",
-    emoji:"🪴",
-    light:"Low to bright indirect light",
-    water:"Allow soil to dry between watering.",
-    care:"Very tolerant of missed waterings.",
-    description:"One of the easiest houseplants for beginners."
+name:"Snake Plant",
+scientific:"Dracaena trifasciata",
+emoji:"🪴",
+light:"Low to bright indirect light",
+water:"Allow soil to dry between watering.",
+care:"Very tolerant of missed waterings.",
+description:"One of the easiest houseplants for beginners."
 },
 
 {
-    name:"Pothos",
-    scientific:"Epipremnum aureum",
-    emoji:"🌱",
-    light:"Low to bright indirect light",
-    water:"Water when the upper soil dries.",
-    care:"Excellent trailing plant for beginners.",
-    description:"A fast-growing tropical vine with heart-shaped leaves."
+name:"Pothos",
+scientific:"Epipremnum aureum",
+emoji:"🌱",
+light:"Low to bright indirect light",
+water:"Water when the upper soil dries.",
+care:"Excellent trailing plant for beginners.",
+description:"A fast-growing tropical vine with heart-shaped leaves."
 },
 
 {
-    name:"Peace Lily",
-    scientific:"Spathiphyllum",
-    emoji:"🌼",
-    light:"Medium to bright indirect light",
-    water:"Keep soil lightly moist.",
-    care:"Enjoys humidity and consistent moisture.",
-    description:"Known for its dark green foliage and white flowers."
+name:"Peace Lily",
+scientific:"Spathiphyllum",
+emoji:"🌼",
+light:"Medium to bright indirect light",
+water:"Keep soil lightly moist.",
+care:"Enjoys humidity and consistent moisture.",
+description:"Known for its dark green foliage and white flowers."
 },
 
 {
-    name:"Spider Plant",
-    scientific:"Chlorophytum comosum",
-    emoji:"🌱",
-    light:"Bright indirect light",
-    water:"Water when the top layer dries.",
-    care:"Easy-growing plant that produces baby plants.",
-    description:"A classic houseplant with long arching leaves."
+name:"Spider Plant",
+scientific:"Chlorophytum comosum",
+emoji:"🌱",
+light:"Bright indirect light",
+water:"Water when the top layer dries.",
+care:"Easy-growing plant that produces baby plants.",
+description:"A classic houseplant with long arching leaves."
 },
 
 {
-    name:"Rubber Plant",
-    scientific:"Ficus elastica",
-    emoji:"🌳",
-    light:"Bright indirect light",
-    water:"Allow upper soil to dry.",
-    care:"Keep away from sudden temperature changes.",
-    description:"A popular indoor tree with thick glossy leaves."
+name:"Rubber Plant",
+scientific:"Ficus elastica",
+emoji:"🌳",
+light:"Bright indirect light",
+water:"Allow upper soil to dry.",
+care:"Keep away from sudden temperature changes.",
+description:"A popular indoor tree with thick glossy leaves."
 },
 
 {
-    name:"Aloe Vera",
-    scientific:"Aloe barbadensis",
-    emoji:"🌵",
-    light:"Bright light",
-    water:"Allow soil to completely dry between watering.",
-    care:"Use cactus or succulent soil.",
-    description:"A succulent that stores water in its thick leaves."
+name:"Aloe Vera",
+scientific:"Aloe barbadensis",
+emoji:"🌵",
+light:"Bright light",
+water:"Allow soil to completely dry between watering.",
+care:"Use cactus or succulent soil.",
+description:"A succulent that stores water in its thick leaves."
 },
 
 {
-    name:"ZZ Plant",
-    scientific:"Zamioculcas zamiifolia",
-    emoji:"🌿",
-    light:"Low to bright indirect light",
-    water:"Water sparingly.",
-    care:"Highly tolerant of dry conditions.",
-    description:"A resilient houseplant with thick glossy foliage."
+name:"ZZ Plant",
+scientific:"Zamioculcas zamiifolia",
+emoji:"🌿",
+light:"Low to bright indirect light",
+water:"Water sparingly.",
+care:"Highly tolerant of dry conditions.",
+description:"A resilient houseplant with thick glossy foliage."
 },
 
 {
-    name:"Fiddle Leaf Fig",
-    scientific:"Ficus lyrata",
-    emoji:"🌳",
-    light:"Bright indirect light",
-    water:"Water when upper soil dries.",
-    care:"Avoid moving it frequently.",
-    description:"A dramatic indoor tree with large fiddle-shaped leaves."
+name:"Fiddle Leaf Fig",
+scientific:"Ficus lyrata",
+emoji:"🌳",
+light:"Bright indirect light",
+water:"Water when upper soil dries.",
+care:"Avoid moving it frequently.",
+description:"A dramatic indoor tree with large fiddle-shaped leaves."
 },
 
 {
-    name:"Calathea",
-    scientific:"Calathea",
-    emoji:"🍃",
-    light:"Medium indirect light",
-    water:"Keep soil evenly moist.",
-    care:"Prefers humidity and filtered water.",
-    description:"Tropical plants known for decorative patterned leaves."
+name:"Calathea",
+scientific:"Calathea",
+emoji:"🍃",
+light:"Medium indirect light",
+water:"Keep soil evenly moist.",
+care:"Prefers humidity and filtered water.",
+description:"Tropical plants known for decorative patterned leaves."
 },
 
 {
-    name:"Boston Fern",
-    scientific:"Nephrolepis exaltata",
-    emoji:"🌿",
-    light:"Bright indirect light",
-    water:"Keep soil consistently lightly moist.",
-    care:"Enjoys higher humidity.",
-    description:"A lush fern with long arching fronds."
+name:"Boston Fern",
+scientific:"Nephrolepis exaltata",
+emoji:"🌿",
+light:"Bright indirect light",
+water:"Keep soil consistently lightly moist.",
+care:"Enjoys higher humidity.",
+description:"A lush fern with long arching fronds."
 },
 
 {
-    name:"Jade Plant",
-    scientific:"Crassula ovata",
-    emoji:"🌱",
-    light:"Bright light",
-    water:"Let soil dry between watering.",
-    care:"Use a well-draining succulent mix.",
-    description:"A popular succulent with thick rounded leaves."
+name:"Jade Plant",
+scientific:"Crassula ovata",
+emoji:"🌱",
+light:"Bright light",
+water:"Let soil dry between watering.",
+care:"Use a well-draining succulent mix.",
+description:"A popular succulent with thick rounded leaves."
 }
 
 ];
 
-/* ==========================================
-   RESOURCE GUIDE
-========================================== */
-
 function renderPlants(list=plants){
 
-    const grid =
-        document.getElementById("plantGrid");
+const grid=document.getElementById("plantGrid");
 
-    grid.innerHTML="";
+grid.innerHTML="";
 
-    if(!list.length){
+if(!list.length){
 
-        grid.innerHTML=`
-            <div class="empty"
-                 style="grid-column:1/-1">
-                No plants found.
-            </div>
-        `;
+grid.innerHTML=`
+<div class="empty" style="grid-column:1/-1">
+No plants found.
+</div>`;
 
-        return;
-    }
-
-    list.forEach(plant=>{
-
-        const originalIndex =
-            plants.indexOf(plant);
-
-        const card =
-            document.createElement("button");
-
-        card.type="button";
-        card.className="plant-card";
-
-        card.innerHTML=`
-
-            <div class="plant-emoji">
-                ${plant.emoji}
-            </div>
-
-            <h3>
-                ${escapeHTML(plant.name)}
-            </h3>
-
-            <p>
-                ${escapeHTML(plant.scientific)}
-            </p>
-
-        `;
-
-        card.addEventListener(
-            "click",
-            ()=>{
-                openPlant(originalIndex);
-            }
-        );
-
-        grid.appendChild(card);
-
-    });
-
+return;
 }
 
-/* ==========================================
-   ENCYCLOPEDIA
-========================================== */
+list.forEach(plant=>{
+
+const originalIndex=plants.indexOf(plant);
+
+const card=document.createElement("button");
+
+card.type="button";
+card.className="plant-card";
+
+card.innerHTML=`
+
+<div class="plant-emoji">
+${plant.emoji}
+</div>
+
+<h3>
+${escapeHTML(plant.name)}
+</h3>
+
+<p>
+${escapeHTML(plant.scientific)}
+</p>
+
+`;
+
+card.addEventListener("click",()=>{
+openPlant(originalIndex);
+});
+
+grid.appendChild(card);
+
+});
+
+}
 
 function renderEncyclopedia(){
 
-    const container =
-        document.getElementById(
-            "encyclopediaList"
-        );
+const container=document.getElementById("encyclopediaList");
 
-    container.innerHTML="";
+container.innerHTML="";
 
-    plants.forEach(plant=>{
+plants.forEach(plant=>{
 
-        const item =
-            document.createElement("div");
+const item=document.createElement("div");
 
-        item.className="ency-item";
+item.className="ency-item";
 
-        item.innerHTML=`
+item.innerHTML=`
 
-            <h3>
-                ${plant.emoji}
-                ${escapeHTML(plant.name)}
-            </h3>
+<h3>
+${plant.emoji}
+${escapeHTML(plant.name)}
+</h3>
 
-            <p>
-                <strong>
-                    ${escapeHTML(plant.scientific)}
-                </strong>
-            </p>
+<p>
+<strong>${escapeHTML(plant.scientific)}</strong>
+</p>
 
-            <p style="margin-top:6px">
-                ${escapeHTML(plant.description)}
-            </p>
+<p style="margin-top:6px">
+${escapeHTML(plant.description)}
+</p>
 
-            <p style="margin-top:8px">
-                ☀️ <strong>Light:</strong>
-                ${escapeHTML(plant.light)}
-                <br>
+<p style="margin-top:8px">
 
-                💧 <strong>Water:</strong>
-                ${escapeHTML(plant.water)}
-                <br>
+☀️ <strong>Light:</strong>
+${escapeHTML(plant.light)}
 
-                🪴 <strong>Care:</strong>
-                ${escapeHTML(plant.care)}
-            </p>
+<br>
 
-        `;
+💧 <strong>Water:</strong>
+${escapeHTML(plant.water)}
 
-        container.appendChild(item);
+<br>
 
-    });
+🪴 <strong>Care:</strong>
+${escapeHTML(plant.care)}
+
+</p>
+
+`;
+
+container.appendChild(item);
+
+});
 
 }
 
-/* ==========================================
-   SEARCH
-========================================== */
-
 document
-    .getElementById("plantSearch")
-    .addEventListener(
-        "input",
-        function(){
+.getElementById("plantSearch")
+.addEventListener("input",function(){
 
-            const query =
-                this.value
-                    .toLowerCase()
-                    .trim();
+const query=this.value.toLowerCase().trim();
 
-            const filtered =
-                plants.filter(plant=>
+const filtered=plants.filter(plant=>
 
-                    plant.name
-                        .toLowerCase()
-                        .includes(query)
+plant.name.toLowerCase().includes(query)
+||
+plant.scientific.toLowerCase().includes(query)
 
-                    ||
+);
 
-                    plant.scientific
-                        .toLowerCase()
-                        .includes(query)
+renderPlants(filtered);
 
-                );
-
-            renderPlants(filtered);
-
-        }
-    );
-
-/* ==========================================
-   PHOTO HANDLING
-========================================== */
+});
 
 function handlePhoto(file){
 
-    if(!file){
-        return;
-    }
+if(!file)return;
 
-    if(!file.type.startsWith("image/")){
+if(!file.type.startsWith("image/")){
 
-        setStatus(
-            "Please choose an image."
-        );
+setStatus("Please choose an image.");
 
-        return;
-    }
-
-    capturedBlob=file;
-
-    if(capturedImageURL){
-
-        URL.revokeObjectURL(
-            capturedImageURL
-        );
-
-    }
-
-    capturedImageURL =
-        URL.createObjectURL(file);
-
-    const preview =
-        document.getElementById(
-            "previewImage"
-        );
-
-    preview.src =
-        capturedImageURL;
-
-    document
-        .getElementById("photoPreview")
-        .classList.add("show");
-
-    document
-        .getElementById("result")
-        .classList.remove("show");
-
-    setStatus(
-        "Photo ready — tap Identify Plant."
-    );
-
-    document
-        .getElementById("photoPreview")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
+return;
 
 }
 
-/* Camera */
+capturedBlob=file;
+
+if(capturedImageURL){
+
+URL.revokeObjectURL(capturedImageURL);
+
+}
+
+capturedImageURL=URL.createObjectURL(file);
+
+document.getElementById("previewImage").src=capturedImageURL;
 
 document
-    .getElementById("cameraInput")
-    .addEventListener(
-        "change",
-        function(){
-
-            const file =
-                this.files &&
-                this.files[0];
-
-            handlePhoto(file);
-
-            this.value="";
-
-        }
-    );
-
-/* Gallery */
+.getElementById("photoPreview")
+.classList.add("show");
 
 document
-    .getElementById("galleryInput")
-    .addEventListener(
-        "change",
-        function(){
+.getElementById("result")
+.classList.remove("show");
 
-            const file =
-                this.files &&
-                this.files[0];
-
-            handlePhoto(file);
-
-            this.value="";
-
-        }
-    );
-
-/* New photo */
+setStatus("Photo ready — tap Identify Plant.");
 
 document
-    .getElementById("retakeButton")
-    .addEventListener(
-        "click",
-        function(){
+.getElementById("photoPreview")
+.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
 
-            document
-                .getElementById("cameraInput")
-                .click();
-
-        }
-    );
-
-/* ==========================================
-   IDENTIFICATION
-========================================== */
+}
 
 document
-    .getElementById("identifyButton")
-    .addEventListener(
-        "click",
-        identifyPlant
-    );
+.getElementById("cameraInput")
+.addEventListener("change",function(){
+
+handlePhoto(this.files && this.files[0]);
+
+this.value="";
+
+});
+
+document
+.getElementById("galleryInput")
+.addEventListener("change",function(){
+
+handlePhoto(this.files && this.files[0]);
+
+this.value="";
+
+});
+
+document
+.getElementById("retakeButton")
+.addEventListener("click",function(){
+
+document
+.getElementById("cameraInput")
+.click();
+
+});
+
+document
+.getElementById("identifyButton")
+.addEventListener("click",identifyPlant);
 
 async function identifyPlant(){
 
-    if(!capturedBlob){
+if(!capturedBlob){
 
-        setStatus(
-            "Take a plant photo first."
-        );
+setStatus("Take a plant photo first.");
 
-        goTo("scanner");
+goTo("scanner");
 
-        return;
-    }
-
-    const apiKey =
-        localStorage.getItem(
-            API_KEY_STORAGE
-        );
-
-    if(!apiKey){
-
-        setStatus(
-            "Add your Pl@ntNet API key in Settings first."
-        );
-
-        goTo("settings");
-
-        setTimeout(()=>{
-
-            document
-                .getElementById("apiKey")
-                .focus();
-
-        },500);
-
-        return;
-    }
-
-    setStatus(
-        "🌿 Identifying your plant..."
-    );
-
-    const identifyButton =
-        document.getElementById(
-            "identifyButton"
-        );
-
-    identifyButton.disabled=true;
-
-    identifyButton.textContent=
-        "🌿 Identifying...";
-
-    try{
-
-        const formData =
-            new FormData();
-
-        formData.append(
-            "images",
-            capturedBlob,
-            "plant.jpg"
-        );
-
-        formData.append(
-            "organs",
-            "leaf"
-        );
-
-        const url =
-            "https://my-api.plantnet.org/v2/identify/all?api-key="
-            +
-            encodeURIComponent(apiKey);
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method:"POST",
-                    body:formData
-                }
-            );
-
-        if(!response.ok){
-
-            let errorText="";
-
-            try{
-                errorText =
-                    await response.text();
-            }catch(e){}
-
-            if(
-                response.status===401 ||
-                response.status===403
-            ){
-
-                throw new Error(
-                    "Your Pl@ntNet API key was rejected."
-                );
-
-            }
-
-            if(response.status===429){
-
-                throw new Error(
-                    "Pl@ntNet rate limit reached. Try again later."
-                );
-
-            }
-
-            throw new Error(
-                "Pl@ntNet returned HTTP "
-                +
-                response.status
-                +
-                ". "
-                +
-                errorText
-            );
-
-        }
-
-        const data =
-            await response.json();
-
-        if(
-            !data.results ||
-            !data.results.length
-        ){
-
-            throw new Error(
-                "No plant identification was returned."
-            );
-
-        }
-
-        const best =
-            data.results[0];
-
-        displayIdentification(
-            best,
-            capturedImageURL
-        );
-
-    }catch(error){
-
-        console.error(
-            "TaynPlantz identification error:",
-            error
-        );
-
-        setStatus(
-            error.message ||
-            "Unable to identify this photo."
-        );
-
-    }finally{
-
-        identifyButton.disabled=false;
-
-        identifyButton.textContent=
-            "🔍 Identify Plant";
-
-    }
+return;
 
 }
 
-/* ==========================================
-   DISPLAY IDENTIFICATION
-========================================== */
+const apiKey=localStorage.getItem(API_KEY_STORAGE);
 
-function displayIdentification(
-    result,
-    imageURL
-){
+if(!apiKey){
 
-    const resultSection =
-        document.getElementById("result");
+setStatus(
+"Add your Pl@ntNet API key in Settings first."
+);
 
-    const scientific =
-        result.species?.scientificNameWithoutAuthor
-        ||
-        result.species?.scientificName
-        ||
-        "Unknown species";
+goTo("settings");
 
-    const commonNames =
-        result.species?.commonNames
-        ||
-        [];
+setTimeout(()=>{
+document.getElementById("apiKey").focus();
+},500);
 
-    const common =
-        commonNames.length
-        ? commonNames[0]
-        : scientific;
-
-    const score =
-        typeof result.score==="number"
-        ?
-        Math.round(
-            result.score*100
-        )
-        :
-        null;
-
-    document
-        .getElementById("resultImage")
-        .src=imageURL;
-
-    document
-        .getElementById("resultName")
-        .textContent=common;
-
-    document
-        .getElementById("resultScientific")
-        .textContent=scientific;
-
-    document
-        .getElementById("resultConfidence")
-        .textContent=
-            score!==null
-            ?
-            score+"% match"
-            :
-            "Plant identified";
-
-    document
-        .getElementById("resultFamily")
-        .textContent=
-            result.species?.family?.scientificName
-            ||
-            "Not provided";
-
-    const local =
-        findLocalPlant(
-            common,
-            scientific
-        );
-
-    if(local){
-
-        document
-            .getElementById("resultWater")
-            .textContent=local.water;
-
-        document
-            .getElementById("resultLight")
-            .textContent=local.light;
-
-        document
-            .getElementById("resultCare")
-            .textContent=local.care;
-
-    }else{
-
-        document
-            .getElementById("resultWater")
-            .textContent=
-                "Check species-specific requirements.";
-
-        document
-            .getElementById("resultLight")
-            .textContent=
-                "Check species-specific requirements.";
-
-        document
-            .getElementById("resultCare")
-            .textContent=
-                "Research the identified species before watering.";
-
-    }
-
-    resultSection.classList.add("show");
-
-    saveHistory({
-
-        name:common,
-        scientific:scientific,
-        score:score,
-        image:imageURL,
-        date:new Date().toISOString()
-
-    });
-
-    setStatus(
-        "🌿 Plant identified successfully."
-    );
-
-    resultSection.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
+return;
 
 }
 
-/* ==========================================
-   LOCAL MATCH
-========================================== */
+setStatus("🌿 Identifying your plant...");
 
-function findLocalPlant(
-    common,
-    scientific
-){
+const button=document.getElementById("identifyButton");
 
-    const c =
-        String(common)
-            .toLowerCase();
+button.disabled=true;
+button.textContent="🌿 Identifying...";
 
-    const s =
-        String(scientific)
-            .toLowerCase();
+try{
 
-    return plants.find(plant=>
+const formData=new FormData();
 
-        c.includes(
-            plant.name.toLowerCase()
-        )
+formData.append(
+"images",
+capturedBlob,
+"plant.jpg"
+);
 
-        ||
+formData.append(
+"organs",
+"leaf"
+);
 
-        s.includes(
-            plant.scientific.toLowerCase()
-        )
+const url=
+"https://my-api.plantnet.org/v2/identify/all?api-key="
++
+encodeURIComponent(apiKey);
 
-    );
+const response=await fetch(
+url,
+{
+method:"POST",
+body:formData
+}
+);
+
+if(!response.ok){
+
+let errorText="";
+
+try{
+errorText=await response.text();
+}catch(e){}
+
+if(response.status===401 ||
+response.status===403){
+
+throw new Error(
+"Your Pl@ntNet API key was rejected."
+);
 
 }
 
-/* ==========================================
-   HISTORY
-========================================== */
+if(response.status===429){
+
+throw new Error(
+"Pl@ntNet rate limit reached. Try again later."
+);
+
+}
+
+throw new Error(
+"Pl@ntNet returned HTTP "
++
+response.status
++
+". "
++
+errorText
+);
+
+}
+
+const data=await response.json();
+
+if(!data.results ||
+!data.results.length){
+
+throw new Error(
+"No plant identification was returned."
+);
+
+}
+
+displayIdentification(
+data.results[0],
+capturedImageURL
+);
+
+}catch(error){
+
+console.error(
+"Taynz Plantz identification error:",
+error
+);
+
+setStatus(
+error.message ||
+"Unable to identify this photo."
+);
+
+}finally{
+
+button.disabled=false;
+button.textContent="🔍 Identify Plant";
+
+}
+
+}
+
+function displayIdentification(result,imageURL){
+
+const resultSection=document.getElementById("result");
+
+const scientific=
+result.species?.scientificNameWithoutAuthor
+||
+result.species?.scientificName
+||
+"Unknown species";
+
+const commonNames=
+result.species?.commonNames
+||
+[];
+
+const common=
+commonNames.length
+?commonNames[0]
+:scientific;
+
+const score=
+typeof result.score==="number"
+?Math.round(result.score*100)
+:null;
+
+document.getElementById("resultImage").src=imageURL;
+
+document.getElementById("resultName").textContent=common;
+
+document.getElementById("resultScientific").textContent=scientific;
+
+document.getElementById("resultConfidence").textContent=
+score!==null
+?score+"% match"
+:"Plant identified";
+
+document.getElementById("resultFamily").textContent=
+result.species?.family?.scientificName
+||
+"Not provided";
+
+const local=findLocalPlant(
+common,
+scientific
+);
+
+if(local){
+
+document.getElementById("resultWater").textContent=local.water;
+
+document.getElementById("resultLight").textContent=local.light;
+
+document.getElementById("resultCare").textContent=local.care;
+
+}else{
+
+document.getElementById("resultWater").textContent=
+"Check species-specific requirements.";
+
+document.getElementById("resultLight").textContent=
+"Check species-specific requirements.";
+
+document.getElementById("resultCare").textContent=
+"Research the identified species before watering.";
+
+}
+
+resultSection.classList.add("show");
+
+saveHistory({
+
+name:common,
+scientific:scientific,
+score:score,
+image:imageURL,
+date:new Date().toISOString()
+
+});
+
+setStatus("🌿 Plant identified successfully.");
+
+resultSection.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+function findLocalPlant(common,scientific){
+
+const c=String(common).toLowerCase();
+
+const s=String(scientific).toLowerCase();
+
+return plants.find(plant=>
+
+c.includes(plant.name.toLowerCase())
+||
+s.includes(plant.scientific.toLowerCase())
+
+);
+
+}
 
 function saveHistory(item){
 
-    let history=[];
+let history=[];
 
-    try{
+try{
 
-        history =
-            JSON.parse(
-                localStorage.getItem(
-                    HISTORY_STORAGE
-                ) ||
-                "[]"
-            );
+history=JSON.parse(
+localStorage.getItem(HISTORY_STORAGE)||"[]"
+);
 
-    }catch(error){
+}catch(e){
 
-        history=[];
+history=[];
 
-    }
+}
 
-    history.unshift(item);
+history.unshift(item);
 
-    history =
-        history.slice(0,50);
+history=history.slice(0,50);
 
-    localStorage.setItem(
-        HISTORY_STORAGE,
-        JSON.stringify(history)
-    );
+localStorage.setItem(
+HISTORY_STORAGE,
+JSON.stringify(history)
+);
 
-    renderHistory();
+renderHistory();
 
 }
 
 function renderHistory(){
 
-    const container =
-        document.getElementById(
-            "historyList"
-        );
+const container=document.getElementById("historyList");
 
-    let history=[];
+let history=[];
 
-    try{
+try{
 
-        history =
-            JSON.parse(
-                localStorage.getItem(
-                    HISTORY_STORAGE
-                ) ||
-                "[]"
-            );
+history=JSON.parse(
+localStorage.getItem(HISTORY_STORAGE)||"[]"
+);
 
-    }catch(error){
+}catch(e){
 
-        history=[];
-
-    }
-
-    if(!history.length){
-
-        container.innerHTML=`
-
-            <div class="empty">
-                🌱 Your identified plants will appear here.
-            </div>
-
-        `;
-
-        return;
-    }
-
-    container.innerHTML="";
-
-    history.forEach(item=>{
-
-        const row =
-            document.createElement("div");
-
-        row.className="history-item";
-
-        row.innerHTML=`
-
-            <img
-                class="history-thumb"
-                src="${escapeHTML(item.image)}"
-                alt="${escapeHTML(item.name)}">
-
-            <div>
-
-                <div class="history-name">
-                    ${escapeHTML(item.name)}
-                </div>
-
-                <div class="history-scientific">
-                    ${escapeHTML(item.scientific)}
-                </div>
-
-                <div class="history-date">
-
-                    ${formatDate(item.date)}
-
-                    ${
-                        item.score!==null &&
-                        item.score!==undefined
-                        ?
-                        " • "+
-                        item.score+
-                        "% match"
-                        :
-                        ""
-                    }
-
-                </div>
-
-            </div>
-
-        `;
-
-        container.appendChild(row);
-
-    });
+history=[];
 
 }
 
-/* ==========================================
-   API KEY
-========================================== */
+if(!history.length){
+
+container.innerHTML=`
+<div class="empty">
+🌱 Your identified plants will appear here.
+</div>`;
+
+return;
+
+}
+
+container.innerHTML="";
+
+history.forEach(item=>{
+
+const row=document.createElement("div");
+
+row.className="history-item";
+
+row.innerHTML=`
+
+<img
+class="history-thumb"
+src="${escapeHTML(item.image)}"
+alt="${escapeHTML(item.name)}">
+
+<div>
+
+<div class="history-name">
+${escapeHTML(item.name)}
+</div>
+
+<div class="history-scientific">
+${escapeHTML(item.scientific)}
+</div>
+
+<div class="history-date">
+
+${formatDate(item.date)}
+
+${
+item.score!==null &&
+item.score!==undefined
+?" • "+item.score+"% match"
+:""
+}
+
+</div>
+
+</div>
+
+`;
+
+container.appendChild(row);
+
+});
+
+}
 
 function loadApiKey(){
 
-    const key =
-        localStorage.getItem(
-            API_KEY_STORAGE
-        );
+const key=localStorage.getItem(API_KEY_STORAGE);
 
-    const input =
-        document.getElementById(
-            "apiKey"
-        );
+const input=document.getElementById("apiKey");
 
-    if(key){
+if(key){
 
-        input.value=key;
+input.value=key;
 
-        document
-            .getElementById("keyStatus")
-            .textContent=
-                "✓ API key is saved on this device.";
+document.getElementById("keyStatus").textContent=
+"✓ API key is saved on this device.";
 
-    }else{
+}else{
 
-        input.value="";
+input.value="";
 
-        document
-            .getElementById("keyStatus")
-            .textContent=
-                "No API key saved.";
+document.getElementById("keyStatus").textContent=
+"No API key saved.";
 
-    }
+}
 
 }
 
 document
-    .getElementById("saveKey")
-    .addEventListener(
-        "click",
-        function(){
+.getElementById("saveKey")
+.addEventListener("click",function(){
 
-            const input =
-                document.getElementById(
-                    "apiKey"
-                );
+const input=document.getElementById("apiKey");
 
-            const key =
-                input.value.trim();
+const key=input.value.trim();
 
-            if(!key){
+if(!key){
 
-                document
-                    .getElementById(
-                        "keyStatus"
-                    )
-                    .textContent=
-                        "Please enter your Pl@ntNet API key.";
+document.getElementById("keyStatus").textContent=
+"Please enter your Pl@ntNet API key.";
 
-                input.focus();
+input.focus();
 
-                return;
+return;
 
-            }
+}
 
-            localStorage.setItem(
-                API_KEY_STORAGE,
-                key
-            );
+localStorage.setItem(
+API_KEY_STORAGE,
+key
+);
 
-            document
-                .getElementById(
-                    "keyStatus"
-                )
-                .textContent=
-                    "✓ API key saved on this device.";
+document.getElementById("keyStatus").textContent=
+"✓ API key saved on this device.";
 
-            setStatus(
-                "✓ Pl@ntNet API key saved."
-            );
+setStatus("✓ Pl@ntNet API key saved.");
 
-        }
-    );
-
-/* ==========================================
-   SHOW / HIDE KEY
-========================================== */
+});
 
 document
-    .getElementById("toggleKey")
-    .addEventListener(
-        "click",
-        function(){
+.getElementById("toggleKey")
+.addEventListener("click",function(){
 
-            const input =
-                document.getElementById(
-                    "apiKey"
-                );
+const input=document.getElementById("apiKey");
 
-            if(input.type==="password"){
+if(input.type==="password"){
 
-                input.type="text";
+input.type="text";
+this.textContent="🙈";
 
-                this.textContent="🙈";
+}else{
 
-            }else{
+input.type="password";
+this.textContent="👁";
 
-                input.type="password";
+}
 
-                this.textContent="👁";
-
-            }
-
-        }
-    );
-
-/* ==========================================
-   NAVIGATION
-========================================== */
+});
 
 function goTo(id){
 
-    const element =
-        document.getElementById(id);
+const element=document.getElementById(id);
 
-    if(!element){
-        return;
-    }
+if(!element)return;
 
-    element.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
+element.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
-/* ==========================================
-   MODAL
-========================================== */
-
 function openPlant(index){
 
-    const plant =
-        plants[index];
+const plant=plants[index];
 
-    if(!plant){
-        return;
-    }
+if(!plant)return;
 
-    document
-        .getElementById("modalTitle")
-        .textContent=
-            plant.emoji+
-            " "+
-            plant.name;
+document.getElementById("modalTitle").textContent=
+plant.emoji+" "+plant.name;
 
-    document
-        .getElementById("modalContent")
-        .innerHTML=`
+document.getElementById("modalContent").innerHTML=`
 
-            <p>
-                <strong>
-                    ${escapeHTML(
-                        plant.scientific
-                    )}
-                </strong>
-            </p>
+<p>
+<strong>
+${escapeHTML(plant.scientific)}
+</strong>
+</p>
 
-            <p>
-                ${escapeHTML(
-                    plant.description
-                )}
-            </p>
+<p>
+${escapeHTML(plant.description)}
+</p>
 
-            <p>
-                ☀️ <strong>Light</strong><br>
-                ${escapeHTML(
-                    plant.light
-                )}
-            </p>
+<p>
+☀️ <strong>Light</strong><br>
+${escapeHTML(plant.light)}
+</p>
 
-            <p>
-                💧 <strong>Water</strong><br>
-                ${escapeHTML(
-                    plant.water
-                )}
-            </p>
+<p>
+💧 <strong>Water</strong><br>
+${escapeHTML(plant.water)}
+</p>
 
-            <p>
-                🪴 <strong>Care</strong><br>
-                ${escapeHTML(
-                    plant.care
-                )}
-            </p>
+<p>
+🪴 <strong>Care</strong><br>
+${escapeHTML(plant.care)}
+</p>
 
-        `;
+`;
 
-    document
-        .getElementById("plantModal")
-        .classList.add("show");
+document
+.getElementById("plantModal")
+.classList.add("show");
 
 }
 
 function closeModal(){
 
-    document
-        .getElementById("plantModal")
-        .classList.remove("show");
+document
+.getElementById("plantModal")
+.classList.remove("show");
 
 }
 
 document
-    .getElementById("plantModal")
-    .addEventListener(
-        "click",
-        function(event){
+.getElementById("plantModal")
+.addEventListener("click",function(event){
 
-            if(event.target===this){
+if(event.target===this){
 
-                closeModal();
+closeModal();
 
-            }
+}
 
-        }
-    );
-
-/* ==========================================
-   HELPERS
-========================================== */
+});
 
 function setStatus(message){
 
-    document
-        .getElementById(
-            "scannerStatus"
-        )
-        .textContent=message;
+document
+.getElementById("scannerStatus")
+.textContent=message;
 
 }
 
 function formatDate(date){
 
-    const parsed =
-        new Date(date);
+const parsed=new Date(date);
 
-    if(
-        Number.isNaN(
-            parsed.getTime()
-        )
-    ){
+if(Number.isNaN(parsed.getTime())){
 
-        return "";
+return "";
 
-    }
+}
 
-    return parsed.toLocaleDateString(
-        undefined,
-        {
-            month:"short",
-            day:"numeric",
-            year:"numeric"
-        }
-    );
+return parsed.toLocaleDateString(
+undefined,
+{
+month:"short",
+day:"numeric",
+year:"numeric"
+}
+);
 
 }
 
 function escapeHTML(value){
 
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
-/* ==========================================
-   INITIALIZE
-========================================== */
+/* REGISTER SERVICE WORKER */
+
+if("serviceWorker" in navigator){
+
+window.addEventListener("load",()=>{
+
+navigator.serviceWorker
+.register("./service-worker.js")
+.catch(error=>{
+console.warn(
+"TaynPlantz service worker:",
+error
+);
+});
+
+});
+
+}
 
 renderPlants();
 
