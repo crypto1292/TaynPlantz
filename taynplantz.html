@@ -1,52 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<meta
-    name="theme-color"
-    content="#526b3f"
->
+<title>TaynPlantz</title>
 
-<meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
->
+<!-- =========================
+     PWA
+========================= -->
 
-<meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="default"
->
+<link rel="manifest" href="./manifest.json">
 
-<meta
-    name="apple-mobile-web-app-title"
-    content="TaynPlantz"
->
+<meta name="theme-color" content="#0d3324">
 
-<meta
-    name="format-detection"
-    content="telephone=no"
->
+<!-- iPhone / iPad Home Screen -->
 
-<link
-    rel="manifest"
-    href="./manifest.json"
->
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-<link
-    rel="apple-touch-icon"
-    href="./icon-192.png"
->
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
 
-<title>Taynz Plantz</title>
+<meta name="apple-mobile-web-app-title"
+      content="TaynPlantz">
+
+<!-- Apple Home Screen icons -->
+
+<link rel="apple-touch-icon"
+      sizes="192x192"
+      href="./icon-192.png">
+
+<link rel="apple-touch-icon"
+      sizes="512x512"
+      href="./icon-512.png">
+
+<meta name="format-detection"
+      content="telephone=no">
 
 <style>
+
 :root{
     --green:#526b3f;
     --dark-green:#31472a;
@@ -78,7 +72,12 @@ body{
     margin:0;
     min-height:100vh;
     background:
-        radial-gradient(circle at top left,#fbf6eb 0,#f5efe1 44%,#e7dec9 100%);
+        radial-gradient(
+            circle at top left,
+            #fbf6eb 0,
+            #f5efe1 44%,
+            #e7dec9 100%
+        );
     color:var(--text);
     font-family:
         -apple-system,
@@ -97,6 +96,11 @@ input{
 
 button{
     cursor:pointer;
+}
+
+button:disabled{
+    opacity:.65;
+    cursor:default;
 }
 
 .app{
@@ -331,7 +335,7 @@ button{
 }
 
 /* =========================
-   NATIVE CAMERA SCANNER
+   SCANNER
 ========================= */
 
 .scanner-card{
@@ -484,11 +488,6 @@ button{
 .action-btn.primary{
     background:var(--green);
     color:white;
-}
-
-.action-btn:disabled{
-    opacity:.6;
-    cursor:wait;
 }
 
 .status{
@@ -924,75 +923,50 @@ button{
     .hero h1{
         font-size:25px;
     }
-}
-</style>
 
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="header">
 
     <div class="brand">
 
-        <div class="logo" aria-label="Taynz Plantz">
+        <div class="logo" aria-label="TaynPlantz">
 
             <div class="logo-decoration left">
-
                 <div class="logo-stem"></div>
-
                 <div class="logo-leaf a"></div>
-
                 <div class="logo-leaf b"></div>
-
                 <div class="logo-leaf c"></div>
-
             </div>
 
             <div class="logo-text">
-
                 Tayn<span class="green">z</span> Plantz
-
             </div>
 
             <div class="logo-decoration right">
-
                 <div class="logo-stem"></div>
-
                 <div class="logo-leaf a"></div>
-
                 <div class="logo-leaf b"></div>
-
                 <div class="logo-leaf c"></div>
-
             </div>
 
         </div>
 
         <div class="tagline">
-
             <span>Planting with Tayn</span>
-
-            <span
-                class="pot"
-                aria-hidden="true">
-            </span>
-
+            <span class="pot" aria-hidden="true"></span>
         </div>
 
     </div>
 
 </header>
-
-<!-- =========================
-     HERO
-========================= -->
 
 <section class="hero">
 
@@ -1008,33 +982,22 @@ button{
 
     <div class="hero-buttons">
 
-        <button
-            class="hero-btn"
-            onclick="goTo('scanner')">
-
+        <button class="hero-btn"
+                onclick="goTo('scanner')">
             📷 Scan a Plant
-
         </button>
 
-        <button
-            class="hero-btn secondary"
-            onclick="goTo('guide')">
-
+        <button class="hero-btn secondary"
+                onclick="goTo('guide')">
             🌿 Explore Plants
-
         </button>
 
     </div>
 
 </section>
 
-<!-- =========================
-     SCANNER
-========================= -->
-
-<section
-    class="card scanner-card"
-    id="scanner">
+<section class="card scanner-card"
+         id="scanner">
 
     <div class="card-header">
 
@@ -1059,7 +1022,7 @@ button{
         </h3>
 
         <p>
-            Taynz Plantz will open your iPhone's camera.
+            TaynPlantz will open your iPhone's camera.
             Take a photo of the plant and return here to identify it.
         </p>
 
@@ -1092,8 +1055,7 @@ button{
                 class="native-input"
                 type="file"
                 accept="image/*"
-                capture="environment"
-            >
+                capture="environment">
 
         </label>
 
@@ -1105,21 +1067,17 @@ button{
                 id="galleryInput"
                 class="native-input"
                 type="file"
-                accept="image/*"
-            >
+                accept="image/*">
 
         </label>
 
     </div>
 
-    <div
-        class="photo-preview"
-        id="photoPreview">
+    <div class="photo-preview"
+         id="photoPreview">
 
-        <img
-            id="previewImage"
-            alt="Selected plant photo"
-        >
+        <img id="previewImage"
+             alt="Selected plant photo">
 
         <div class="preview-badge">
             🌿 Photo ready
@@ -1129,116 +1087,78 @@ button{
 
     <div class="scanner-actions">
 
-        <button
-            class="action-btn"
-            id="retakeButton">
-
+        <button class="action-btn"
+                id="retakeButton">
             📷 New Photo
-
         </button>
 
-        <button
-            class="action-btn primary"
-            id="identifyButton">
-
+        <button class="action-btn primary"
+                id="identifyButton">
             🔍 Identify Plant
-
         </button>
 
     </div>
 
-    <div
-        class="status"
-        id="scannerStatus">
-
+    <div class="status"
+         id="scannerStatus">
         Ready to scan a plant.
-
     </div>
 
 </section>
 
-<!-- =========================
-     RESULT
-========================= -->
+<section class="result"
+         id="result">
 
-<section
-    class="result"
-    id="result">
+    <img id="resultImage"
+         class="result-image"
+         alt="Identified plant">
 
-    <img
-        id="resultImage"
-        class="result-image"
-        alt="Identified plant"
-    >
-
-    <div
-        class="result-name"
-        id="resultName">
+    <div class="result-name"
+         id="resultName">
     </div>
 
-    <div
-        class="result-scientific"
-        id="resultScientific">
+    <div class="result-scientific"
+         id="resultScientific">
     </div>
 
-    <div
-        class="confidence"
-        id="resultConfidence">
+    <div class="confidence"
+         id="resultConfidence">
     </div>
 
     <div class="result-info">
 
         <div class="info-row">
-
             <strong>🌱 Family:</strong>
-
-            <span id="resultFamily">
-                —
-            </span>
-
+            <span id="resultFamily">—</span>
         </div>
 
         <div class="info-row">
-
             <strong>💧 Water:</strong>
-
             <span id="resultWater">
                 See plant guide
             </span>
-
         </div>
 
         <div class="info-row">
-
             <strong>☀️ Light:</strong>
-
             <span id="resultLight">
                 See plant guide
             </span>
-
         </div>
 
         <div class="info-row">
-
             <strong>🪴 Care:</strong>
-
             <span id="resultCare">
                 See encyclopedia
             </span>
-
         </div>
 
     </div>
 
 </section>
 
-<!-- =========================
-     RESOURCE GUIDE
-========================= -->
-
-<section
-    class="card"
-    id="guide">
+<section class="card"
+         id="guide">
 
     <div class="card-header">
 
@@ -1262,25 +1182,18 @@ button{
             id="plantSearch"
             type="search"
             autocomplete="off"
-            placeholder="Search plants..."
-        >
+            placeholder="Search plants...">
 
     </div>
 
-    <div
-        class="plant-grid"
-        id="plantGrid">
+    <div class="plant-grid"
+         id="plantGrid">
     </div>
 
 </section>
 
-<!-- =========================
-     ENCYCLOPEDIA
-========================= -->
-
-<section
-    class="card encyclopedia"
-    id="encyclopedia">
+<section class="card encyclopedia"
+         id="encyclopedia">
 
     <div class="card-header">
 
@@ -1298,13 +1211,8 @@ button{
 
 </section>
 
-<!-- =========================
-     HISTORY
-========================= -->
-
-<section
-    class="card"
-    id="history">
+<section class="card"
+         id="history">
 
     <div class="card-header">
 
@@ -1318,20 +1226,14 @@ button{
 
     </div>
 
-    <div
-        class="history-list"
-        id="historyList">
+    <div class="history-list"
+         id="historyList">
     </div>
 
 </section>
 
-<!-- =========================
-     SETTINGS
-========================= -->
-
-<section
-    class="card settings"
-    id="settings">
+<section class="card settings"
+         id="settings">
 
     <div class="card-header">
 
@@ -1340,7 +1242,7 @@ button{
         </h2>
 
         <p class="card-subtitle">
-            Connect Taynz Plantz to Pl@ntNet.
+            Connect TaynPlantz to Pl@ntNet.
         </p>
 
     </div>
@@ -1361,17 +1263,14 @@ button{
                 autocorrect="off"
                 autocapitalize="none"
                 spellcheck="false"
-                placeholder="Enter your Pl@ntNet API key"
-            >
+                placeholder="Enter your Pl@ntNet API key">
 
             <button
                 type="button"
                 class="toggle-key"
                 id="toggleKey"
                 aria-label="Show or hide API key">
-
                 👁
-
             </button>
 
         </div>
@@ -1380,22 +1279,17 @@ button{
             type="button"
             class="save-key"
             id="saveKey">
-
             Save API Key
-
         </button>
 
-        <div
-            class="key-status"
-            id="keyStatus">
+        <div class="key-status"
+             id="keyStatus">
         </div>
 
         <div class="security-note">
-
             🔒 Your API key is stored only in this browser's local storage.
             Do not place a personal API key directly into the HTML file
             before publishing it publicly.
-
         </div>
 
     </div>
@@ -1404,61 +1298,36 @@ button{
 
 </div>
 
-<!-- =========================
-     BOTTOM NAV
-========================= -->
-
 <nav class="bottom-nav">
 
-    <button
-        class="nav-btn active"
-        onclick="goTo('scanner')">
-
+    <button class="nav-btn active"
+            onclick="goTo('scanner')">
         <span>📷</span>
-
         Scan
-
     </button>
 
-    <button
-        class="nav-btn"
-        onclick="goTo('guide')">
-
+    <button class="nav-btn"
+            onclick="goTo('guide')">
         <span>🌿</span>
-
         Plants
-
     </button>
 
-    <button
-        class="nav-btn"
-        onclick="goTo('encyclopedia')">
-
+    <button class="nav-btn"
+            onclick="goTo('encyclopedia')">
         <span>📚</span>
-
         Learn
-
     </button>
 
-    <button
-        class="nav-btn"
-        onclick="goTo('history')">
-
+    <button class="nav-btn"
+            onclick="goTo('history')">
         <span>🕘</span>
-
         History
-
     </button>
 
 </nav>
 
-<!-- =========================
-     PLANT MODAL
-========================= -->
-
-<div
-    class="modal"
-    id="plantModal">
+<div class="modal"
+     id="plantModal">
 
     <div class="modal-box">
 
@@ -1472,16 +1341,13 @@ button{
                 class="close"
                 type="button"
                 onclick="closeModal()">
-
                 ✕
-
             </button>
 
         </div>
 
-        <div
-            class="modal-content"
-            id="modalContent">
+        <div class="modal-content"
+             id="modalContent">
         </div>
 
     </div>
@@ -1491,7 +1357,38 @@ button{
 <script>
 
 /* ==========================================
-   TAYNZ PLANTZ
+   PWA SERVICE WORKER
+========================================== */
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener("load",()=>{
+
+        navigator.serviceWorker
+            .register("./sw.js")
+            .then(registration=>{
+
+                console.log(
+                    "TaynPlantz service worker registered:",
+                    registration.scope
+                );
+
+            })
+            .catch(error=>{
+
+                console.error(
+                    "TaynPlantz service worker registration failed:",
+                    error
+                );
+
+            });
+
+    });
+
+}
+
+/* ==========================================
+   TAYNPLANTZ
 ========================================== */
 
 const API_KEY_STORAGE =
@@ -1501,7 +1398,6 @@ const HISTORY_STORAGE =
     "taynz_plantz_history";
 
 let capturedBlob = null;
-
 let capturedImageURL = null;
 
 /* ==========================================
@@ -1510,157 +1406,152 @@ let capturedImageURL = null;
 
 const plants = [
 
-    {
-        name:"Monstera",
-        scientific:"Monstera deliciosa",
-        emoji:"🌿",
-        light:"Bright, indirect light",
-        water:"Water when the top 2–5 cm of soil is dry.",
-        care:"Likes humidity and well-draining soil.",
-        description:"A tropical plant known for its large leaves and natural splits."
-    },
+{
+    name:"Monstera",
+    scientific:"Monstera deliciosa",
+    emoji:"🌿",
+    light:"Bright, indirect light",
+    water:"Water when the top 2–5 cm of soil is dry.",
+    care:"Likes humidity and well-draining soil.",
+    description:"A tropical plant known for its large leaves and natural splits."
+},
 
-    {
-        name:"Snake Plant",
-        scientific:"Dracaena trifasciata",
-        emoji:"🪴",
-        light:"Low to bright indirect light",
-        water:"Allow soil to dry between watering.",
-        care:"Very tolerant of missed waterings.",
-        description:"One of the easiest houseplants for beginners."
-    },
+{
+    name:"Snake Plant",
+    scientific:"Dracaena trifasciata",
+    emoji:"🪴",
+    light:"Low to bright indirect light",
+    water:"Allow soil to dry between watering.",
+    care:"Very tolerant of missed waterings.",
+    description:"One of the easiest houseplants for beginners."
+},
 
-    {
-        name:"Pothos",
-        scientific:"Epipremnum aureum",
-        emoji:"🌱",
-        light:"Low to bright indirect light",
-        water:"Water when the upper soil dries.",
-        care:"Excellent trailing plant for beginners.",
-        description:"A fast-growing tropical vine with heart-shaped leaves."
-    },
+{
+    name:"Pothos",
+    scientific:"Epipremnum aureum",
+    emoji:"🌱",
+    light:"Low to bright indirect light",
+    water:"Water when the upper soil dries.",
+    care:"Excellent trailing plant for beginners.",
+    description:"A fast-growing tropical vine with heart-shaped leaves."
+},
 
-    {
-        name:"Peace Lily",
-        scientific:"Spathiphyllum",
-        emoji:"🌼",
-        light:"Medium to bright indirect light",
-        water:"Keep soil lightly moist.",
-        care:"Enjoys humidity and consistent moisture.",
-        description:"Known for its dark green foliage and white flowers."
-    },
+{
+    name:"Peace Lily",
+    scientific:"Spathiphyllum",
+    emoji:"🌼",
+    light:"Medium to bright indirect light",
+    water:"Keep soil lightly moist.",
+    care:"Enjoys humidity and consistent moisture.",
+    description:"Known for its dark green foliage and white flowers."
+},
 
-    {
-        name:"Spider Plant",
-        scientific:"Chlorophytum comosum",
-        emoji:"🌱",
-        light:"Bright indirect light",
-        water:"Water when the top layer dries.",
-        care:"Easy-growing plant that produces baby plants.",
-        description:"A classic houseplant with long arching leaves."
-    },
+{
+    name:"Spider Plant",
+    scientific:"Chlorophytum comosum",
+    emoji:"🌱",
+    light:"Bright indirect light",
+    water:"Water when the top layer dries.",
+    care:"Easy-growing plant that produces baby plants.",
+    description:"A classic houseplant with long arching leaves."
+},
 
-    {
-        name:"Rubber Plant",
-        scientific:"Ficus elastica",
-        emoji:"🌳",
-        light:"Bright indirect light",
-        water:"Allow upper soil to dry.",
-        care:"Keep away from sudden temperature changes.",
-        description:"A popular indoor tree with thick glossy leaves."
-    },
+{
+    name:"Rubber Plant",
+    scientific:"Ficus elastica",
+    emoji:"🌳",
+    light:"Bright indirect light",
+    water:"Allow upper soil to dry.",
+    care:"Keep away from sudden temperature changes.",
+    description:"A popular indoor tree with thick glossy leaves."
+},
 
-    {
-        name:"Aloe Vera",
-        scientific:"Aloe barbadensis",
-        emoji:"🌵",
-        light:"Bright light",
-        water:"Allow soil to completely dry between watering.",
-        care:"Use cactus or succulent soil.",
-        description:"A succulent that stores water in its thick leaves."
-    },
+{
+    name:"Aloe Vera",
+    scientific:"Aloe barbadensis",
+    emoji:"🌵",
+    light:"Bright light",
+    water:"Allow soil to completely dry between watering.",
+    care:"Use cactus or succulent soil.",
+    description:"A succulent that stores water in its thick leaves."
+},
 
-    {
-        name:"ZZ Plant",
-        scientific:"Zamioculcas zamiifolia",
-        emoji:"🌿",
-        light:"Low to bright indirect light",
-        water:"Water sparingly.",
-        care:"Highly tolerant of dry conditions.",
-        description:"A resilient houseplant with thick glossy foliage."
-    },
+{
+    name:"ZZ Plant",
+    scientific:"Zamioculcas zamiifolia",
+    emoji:"🌿",
+    light:"Low to bright indirect light",
+    water:"Water sparingly.",
+    care:"Highly tolerant of dry conditions.",
+    description:"A resilient houseplant with thick glossy foliage."
+},
 
-    {
-        name:"Fiddle Leaf Fig",
-        scientific:"Ficus lyrata",
-        emoji:"🌳",
-        light:"Bright indirect light",
-        water:"Water when upper soil dries.",
-        care:"Avoid moving it frequently.",
-        description:"A dramatic indoor tree with large fiddle-shaped leaves."
-    },
+{
+    name:"Fiddle Leaf Fig",
+    scientific:"Ficus lyrata",
+    emoji:"🌳",
+    light:"Bright indirect light",
+    water:"Water when upper soil dries.",
+    care:"Avoid moving it frequently.",
+    description:"A dramatic indoor tree with large fiddle-shaped leaves."
+},
 
-    {
-        name:"Calathea",
-        scientific:"Calathea",
-        emoji:"🍃",
-        light:"Medium indirect light",
-        water:"Keep soil evenly moist.",
-        care:"Prefers humidity and filtered water.",
-        description:"Tropical plants known for decorative patterned leaves."
-    },
+{
+    name:"Calathea",
+    scientific:"Calathea",
+    emoji:"🍃",
+    light:"Medium indirect light",
+    water:"Keep soil evenly moist.",
+    care:"Prefers humidity and filtered water.",
+    description:"Tropical plants known for decorative patterned leaves."
+},
 
-    {
-        name:"Boston Fern",
-        scientific:"Nephrolepis exaltata",
-        emoji:"🌿",
-        light:"Bright indirect light",
-        water:"Keep soil consistently lightly moist.",
-        care:"Enjoys higher humidity.",
-        description:"A lush fern with long arching fronds."
-    },
+{
+    name:"Boston Fern",
+    scientific:"Nephrolepis exaltata",
+    emoji:"🌿",
+    light:"Bright indirect light",
+    water:"Keep soil consistently lightly moist.",
+    care:"Enjoys higher humidity.",
+    description:"A lush fern with long arching fronds."
+},
 
-    {
-        name:"Jade Plant",
-        scientific:"Crassula ovata",
-        emoji:"🌱",
-        light:"Bright light",
-        water:"Let soil dry between watering.",
-        care:"Use a well-draining succulent mix.",
-        description:"A popular succulent with thick rounded leaves."
-    }
+{
+    name:"Jade Plant",
+    scientific:"Crassula ovata",
+    emoji:"🌱",
+    light:"Bright light",
+    water:"Let soil dry between watering.",
+    care:"Use a well-draining succulent mix.",
+    description:"A popular succulent with thick rounded leaves."
+}
 
 ];
 
 /* ==========================================
-   RENDER RESOURCE GUIDE
+   RESOURCE GUIDE
 ========================================== */
 
-function renderPlants(list = plants){
+function renderPlants(list=plants){
 
     const grid =
-        document.getElementById(
-            "plantGrid"
-        );
+        document.getElementById("plantGrid");
 
-    grid.innerHTML = "";
+    grid.innerHTML="";
 
     if(!list.length){
 
-        grid.innerHTML = `
-            <div
-                class="empty"
-                style="grid-column:1/-1">
-
+        grid.innerHTML=`
+            <div class="empty"
+                 style="grid-column:1/-1">
                 No plants found.
-
             </div>
         `;
 
         return;
     }
 
-    list.forEach((plant)=>{
+    list.forEach(plant=>{
 
         const originalIndex =
             plants.indexOf(plant);
@@ -1668,12 +1559,10 @@ function renderPlants(list = plants){
         const card =
             document.createElement("button");
 
-        card.type = "button";
+        card.type="button";
+        card.className="plant-card";
 
-        card.className =
-            "plant-card";
-
-        card.innerHTML = `
+        card.innerHTML=`
 
             <div class="plant-emoji">
                 ${plant.emoji}
@@ -1699,6 +1588,7 @@ function renderPlants(list = plants){
         grid.appendChild(card);
 
     });
+
 }
 
 /* ==========================================
@@ -1712,17 +1602,16 @@ function renderEncyclopedia(){
             "encyclopediaList"
         );
 
-    container.innerHTML = "";
+    container.innerHTML="";
 
-    plants.forEach((plant)=>{
+    plants.forEach(plant=>{
 
         const item =
             document.createElement("div");
 
-        item.className =
-            "ency-item";
+        item.className="ency-item";
 
-        item.innerHTML = `
+        item.innerHTML=`
 
             <h3>
                 ${plant.emoji}
@@ -1740,20 +1629,16 @@ function renderEncyclopedia(){
             </p>
 
             <p style="margin-top:8px">
-
                 ☀️ <strong>Light:</strong>
                 ${escapeHTML(plant.light)}
-
                 <br>
 
                 💧 <strong>Water:</strong>
                 ${escapeHTML(plant.water)}
-
                 <br>
 
                 🪴 <strong>Care:</strong>
                 ${escapeHTML(plant.care)}
-
             </p>
 
         `;
@@ -1761,6 +1646,7 @@ function renderEncyclopedia(){
         container.appendChild(item);
 
     });
+
 }
 
 /* ==========================================
@@ -1779,7 +1665,7 @@ document
                     .trim();
 
             const filtered =
-                plants.filter(plant =>
+                plants.filter(plant=>
 
                     plant.name
                         .toLowerCase()
@@ -1799,15 +1685,13 @@ document
     );
 
 /* ==========================================
-   NATIVE CAMERA / PHOTO PICKER
+   PHOTO HANDLING
 ========================================== */
 
 function handlePhoto(file){
 
     if(!file){
-
         return;
-
     }
 
     if(!file.type.startsWith("image/")){
@@ -1817,10 +1701,9 @@ function handlePhoto(file){
         );
 
         return;
-
     }
 
-    capturedBlob = file;
+    capturedBlob=file;
 
     if(capturedImageURL){
 
@@ -1842,15 +1725,11 @@ function handlePhoto(file){
         capturedImageURL;
 
     document
-        .getElementById(
-            "photoPreview"
-        )
+        .getElementById("photoPreview")
         .classList.add("show");
 
     document
-        .getElementById(
-            "result"
-        )
+        .getElementById("result")
         .classList.remove("show");
 
     setStatus(
@@ -1858,9 +1737,7 @@ function handlePhoto(file){
     );
 
     document
-        .getElementById(
-            "photoPreview"
-        )
+        .getElementById("photoPreview")
         .scrollIntoView({
             behavior:"smooth",
             block:"center"
@@ -1868,14 +1745,10 @@ function handlePhoto(file){
 
 }
 
-/* ==========================================
-   CAMERA
-========================================== */
+/* Camera */
 
 document
-    .getElementById(
-        "cameraInput"
-    )
+    .getElementById("cameraInput")
     .addEventListener(
         "change",
         function(){
@@ -1886,19 +1759,15 @@ document
 
             handlePhoto(file);
 
-            this.value = "";
+            this.value="";
 
         }
     );
 
-/* ==========================================
-   GALLERY
-========================================== */
+/* Gallery */
 
 document
-    .getElementById(
-        "galleryInput"
-    )
+    .getElementById("galleryInput")
     .addEventListener(
         "change",
         function(){
@@ -1909,27 +1778,21 @@ document
 
             handlePhoto(file);
 
-            this.value = "";
+            this.value="";
 
         }
     );
 
-/* ==========================================
-   NEW PHOTO
-========================================== */
+/* New photo */
 
 document
-    .getElementById(
-        "retakeButton"
-    )
+    .getElementById("retakeButton")
     .addEventListener(
         "click",
         function(){
 
             document
-                .getElementById(
-                    "cameraInput"
-                )
+                .getElementById("cameraInput")
                 .click();
 
         }
@@ -1940,9 +1803,7 @@ document
 ========================================== */
 
 document
-    .getElementById(
-        "identifyButton"
-    )
+    .getElementById("identifyButton")
     .addEventListener(
         "click",
         identifyPlant
@@ -1959,7 +1820,6 @@ async function identifyPlant(){
         goTo("scanner");
 
         return;
-
     }
 
     const apiKey =
@@ -1978,15 +1838,12 @@ async function identifyPlant(){
         setTimeout(()=>{
 
             document
-                .getElementById(
-                    "apiKey"
-                )
+                .getElementById("apiKey")
                 .focus();
 
         },500);
 
         return;
-
     }
 
     setStatus(
@@ -1998,9 +1855,9 @@ async function identifyPlant(){
             "identifyButton"
         );
 
-    identifyButton.disabled = true;
+    identifyButton.disabled=true;
 
-    identifyButton.textContent =
+    identifyButton.textContent=
         "🌿 Identifying...";
 
     try{
@@ -2035,18 +1892,16 @@ async function identifyPlant(){
 
         if(!response.ok){
 
-            let errorText = "";
+            let errorText="";
 
             try{
-
                 errorText =
                     await response.text();
-
             }catch(e){}
 
             if(
-                response.status === 401 ||
-                response.status === 403
+                response.status===401 ||
+                response.status===403
             ){
 
                 throw new Error(
@@ -2055,9 +1910,7 @@ async function identifyPlant(){
 
             }
 
-            if(
-                response.status === 429
-            ){
+            if(response.status===429){
 
                 throw new Error(
                     "Pl@ntNet rate limit reached. Try again later."
@@ -2102,7 +1955,7 @@ async function identifyPlant(){
     }catch(error){
 
         console.error(
-            "Taynz Plantz identification error:",
+            "TaynPlantz identification error:",
             error
         );
 
@@ -2113,9 +1966,9 @@ async function identifyPlant(){
 
     }finally{
 
-        identifyButton.disabled = false;
+        identifyButton.disabled=false;
 
-        identifyButton.textContent =
+        identifyButton.textContent=
             "🔍 Identify Plant";
 
     }
@@ -2132,9 +1985,7 @@ function displayIdentification(
 ){
 
     const resultSection =
-        document.getElementById(
-            "result"
-        );
+        document.getElementById("result");
 
     const scientific =
         result.species?.scientificNameWithoutAuthor
@@ -2154,48 +2005,38 @@ function displayIdentification(
         : scientific;
 
     const score =
-        typeof result.score === "number"
+        typeof result.score==="number"
         ?
-            Math.round(
-                result.score * 100
-            )
+        Math.round(
+            result.score*100
+        )
         :
-            null;
+        null;
 
     document
-        .getElementById(
-            "resultImage"
-        )
-        .src = imageURL;
+        .getElementById("resultImage")
+        .src=imageURL;
 
     document
-        .getElementById(
-            "resultName"
-        )
-        .textContent = common;
+        .getElementById("resultName")
+        .textContent=common;
 
     document
-        .getElementById(
-            "resultScientific"
-        )
-        .textContent = scientific;
+        .getElementById("resultScientific")
+        .textContent=scientific;
 
     document
-        .getElementById(
-            "resultConfidence"
-        )
-        .textContent =
-            score !== null
+        .getElementById("resultConfidence")
+        .textContent=
+            score!==null
             ?
-                score + "% match"
+            score+"% match"
             :
-                "Plant identified";
+            "Plant identified";
 
     document
-        .getElementById(
-            "resultFamily"
-        )
-        .textContent =
+        .getElementById("resultFamily")
+        .textContent=
             result.species?.family?.scientificName
             ||
             "Not provided";
@@ -2209,47 +2050,32 @@ function displayIdentification(
     if(local){
 
         document
-            .getElementById(
-                "resultWater"
-            )
-            .textContent =
-                local.water;
+            .getElementById("resultWater")
+            .textContent=local.water;
 
         document
-            .getElementById(
-                "resultLight"
-            )
-            .textContent =
-                local.light;
+            .getElementById("resultLight")
+            .textContent=local.light;
 
         document
-            .getElementById(
-                "resultCare"
-            )
-            .textContent =
-                local.care;
+            .getElementById("resultCare")
+            .textContent=local.care;
 
     }else{
 
         document
-            .getElementById(
-                "resultWater"
-            )
-            .textContent =
+            .getElementById("resultWater")
+            .textContent=
                 "Check species-specific requirements.";
 
         document
-            .getElementById(
-                "resultLight"
-            )
-            .textContent =
+            .getElementById("resultLight")
+            .textContent=
                 "Check species-specific requirements.";
 
         document
-            .getElementById(
-                "resultCare"
-            )
-            .textContent =
+            .getElementById("resultCare")
+            .textContent=
                 "Research the identified species before watering.";
 
     }
@@ -2259,13 +2085,9 @@ function displayIdentification(
     saveHistory({
 
         name:common,
-
         scientific:scientific,
-
         score:score,
-
         image:imageURL,
-
         date:new Date().toISOString()
 
     });
@@ -2282,7 +2104,7 @@ function displayIdentification(
 }
 
 /* ==========================================
-   LOCAL PLANT MATCH
+   LOCAL MATCH
 ========================================== */
 
 function findLocalPlant(
@@ -2298,7 +2120,7 @@ function findLocalPlant(
         String(scientific)
             .toLowerCase();
 
-    return plants.find(plant =>
+    return plants.find(plant=>
 
         c.includes(
             plant.name.toLowerCase()
@@ -2320,7 +2142,7 @@ function findLocalPlant(
 
 function saveHistory(item){
 
-    let history = [];
+    let history=[];
 
     try{
 
@@ -2328,12 +2150,13 @@ function saveHistory(item){
             JSON.parse(
                 localStorage.getItem(
                     HISTORY_STORAGE
-                ) || "[]"
+                ) ||
+                "[]"
             );
 
     }catch(error){
 
-        history = [];
+        history=[];
 
     }
 
@@ -2358,7 +2181,7 @@ function renderHistory(){
             "historyList"
         );
 
-    let history = [];
+    let history=[];
 
     try{
 
@@ -2366,46 +2189,44 @@ function renderHistory(){
             JSON.parse(
                 localStorage.getItem(
                     HISTORY_STORAGE
-                ) || "[]"
+                ) ||
+                "[]"
             );
 
     }catch(error){
 
-        history = [];
+        history=[];
 
     }
 
     if(!history.length){
 
-        container.innerHTML = `
+        container.innerHTML=`
+
             <div class="empty">
                 🌱 Your identified plants will appear here.
             </div>
+
         `;
 
         return;
-
     }
 
-    container.innerHTML = "";
+    container.innerHTML="";
 
-    history.forEach(item => {
+    history.forEach(item=>{
 
         const row =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
-        row.className =
-            "history-item";
+        row.className="history-item";
 
-        row.innerHTML = `
+        row.innerHTML=`
 
             <img
                 class="history-thumb"
                 src="${escapeHTML(item.image)}"
-                alt="${escapeHTML(item.name)}"
-            >
+                alt="${escapeHTML(item.name)}">
 
             <div>
 
@@ -2422,14 +2243,14 @@ function renderHistory(){
                     ${formatDate(item.date)}
 
                     ${
-                        item.score !== null &&
-                        item.score !== undefined
+                        item.score!==null &&
+                        item.score!==undefined
                         ?
-                            " • " +
-                            item.score +
-                            "% match"
+                        " • "+
+                        item.score+
+                        "% match"
                         :
-                            ""
+                        ""
                     }
 
                 </div>
@@ -2462,24 +2283,20 @@ function loadApiKey(){
 
     if(key){
 
-        input.value = key;
+        input.value=key;
 
         document
-            .getElementById(
-                "keyStatus"
-            )
-            .textContent =
+            .getElementById("keyStatus")
+            .textContent=
                 "✓ API key is saved on this device.";
 
     }else{
 
-        input.value = "";
+        input.value="";
 
         document
-            .getElementById(
-                "keyStatus"
-            )
-            .textContent =
+            .getElementById("keyStatus")
+            .textContent=
                 "No API key saved.";
 
     }
@@ -2487,9 +2304,7 @@ function loadApiKey(){
 }
 
 document
-    .getElementById(
-        "saveKey"
-    )
+    .getElementById("saveKey")
     .addEventListener(
         "click",
         function(){
@@ -2508,7 +2323,7 @@ document
                     .getElementById(
                         "keyStatus"
                     )
-                    .textContent =
+                    .textContent=
                         "Please enter your Pl@ntNet API key.";
 
                 input.focus();
@@ -2526,7 +2341,7 @@ document
                 .getElementById(
                     "keyStatus"
                 )
-                .textContent =
+                .textContent=
                     "✓ API key saved on this device.";
 
             setStatus(
@@ -2537,13 +2352,11 @@ document
     );
 
 /* ==========================================
-   SHOW / HIDE API KEY
+   SHOW / HIDE KEY
 ========================================== */
 
 document
-    .getElementById(
-        "toggleKey"
-    )
+    .getElementById("toggleKey")
     .addEventListener(
         "click",
         function(){
@@ -2553,21 +2366,17 @@ document
                     "apiKey"
                 );
 
-            if(
-                input.type === "password"
-            ){
+            if(input.type==="password"){
 
-                input.type = "text";
+                input.type="text";
 
-                this.textContent =
-                    "🙈";
+                this.textContent="🙈";
 
             }else{
 
-                input.type = "password";
+                input.type="password";
 
-                this.textContent =
-                    "👁";
+                this.textContent="👁";
 
             }
 
@@ -2584,17 +2393,12 @@ function goTo(id){
         document.getElementById(id);
 
     if(!element){
-
         return;
-
     }
 
     element.scrollIntoView({
-
         behavior:"smooth",
-
         block:"start"
-
     });
 
 }
@@ -2609,34 +2413,26 @@ function openPlant(index){
         plants[index];
 
     if(!plant){
-
         return;
-
     }
 
     document
-        .getElementById(
-            "modalTitle"
-        )
-        .textContent =
-            plant.emoji +
-            " " +
+        .getElementById("modalTitle")
+        .textContent=
+            plant.emoji+
+            " "+
             plant.name;
 
     document
-        .getElementById(
-            "modalContent"
-        )
-        .innerHTML = `
+        .getElementById("modalContent")
+        .innerHTML=`
 
             <p>
-
                 <strong>
                     ${escapeHTML(
                         plant.scientific
                     )}
                 </strong>
-
             </p>
 
             <p>
@@ -2646,41 +2442,30 @@ function openPlant(index){
             </p>
 
             <p>
-
                 ☀️ <strong>Light</strong><br>
-
                 ${escapeHTML(
                     plant.light
                 )}
-
             </p>
 
             <p>
-
                 💧 <strong>Water</strong><br>
-
                 ${escapeHTML(
                     plant.water
                 )}
-
             </p>
 
             <p>
-
                 🪴 <strong>Care</strong><br>
-
                 ${escapeHTML(
                     plant.care
                 )}
-
             </p>
 
         `;
 
     document
-        .getElementById(
-            "plantModal"
-        )
+        .getElementById("plantModal")
         .classList.add("show");
 
 }
@@ -2688,26 +2473,18 @@ function openPlant(index){
 function closeModal(){
 
     document
-        .getElementById(
-            "plantModal"
-        )
+        .getElementById("plantModal")
         .classList.remove("show");
 
 }
 
-/* ==========================================
-   CLOSE MODAL OUTSIDE
-========================================== */
-
 document
-    .getElementById(
-        "plantModal"
-    )
+    .getElementById("plantModal")
     .addEventListener(
         "click",
         function(event){
 
-            if(event.target === this){
+            if(event.target===this){
 
                 closeModal();
 
@@ -2726,8 +2503,7 @@ function setStatus(message){
         .getElementById(
             "scannerStatus"
         )
-        .textContent =
-            message;
+        .textContent=message;
 
 }
 
@@ -2760,69 +2536,11 @@ function formatDate(date){
 function escapeHTML(value){
 
     return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-/* ==========================================
-   PWA SERVICE WORKER
-========================================== */
-
-if(
-    "serviceWorker" in navigator
-){
-
-    window.addEventListener(
-        "load",
-        function(){
-
-            navigator.serviceWorker
-                .register(
-                    "./service-worker.js"
-                )
-
-                .then(
-                    function(){
-
-                        console.log(
-                            "TaynPlantz service worker registered."
-                        );
-
-                    }
-                )
-
-                .catch(
-                    function(error){
-
-                        console.error(
-                            "TaynPlantz service worker registration failed:",
-                            error
-                        );
-
-                    }
-                );
-
-        }
-    );
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
