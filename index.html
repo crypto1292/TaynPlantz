@@ -2,36 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0d3324">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#0d3324"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="TaynPlantz"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="./icon-192.png"
+  >
+
+  <link
+    rel="manifest"
+    href="./manifest.json"
+  >
+
   <title>TaynPlantz</title>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #0d3324;
+    }
+
+    body {
+      color: white;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        system-ui,
+        sans-serif;
+    }
+
+    .loading {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding:
+        env(safe-area-inset-top)
+        20px
+        env(safe-area-inset-bottom);
+      box-sizing: border-box;
+    }
+
+    .loading-icon {
+      font-size: 60px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.8px;
+    }
+
+    p {
+      margin: 10px 0 0;
+      opacity: .8;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
-<body style="
-  margin:0;
-  background:#0d3324;
-  color:white;
-  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-">
+<body>
 
-<div style="
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-">
+  <div class="loading">
+    <div>
+      <div class="loading-icon">🌿</div>
 
-  <div>
-    <div style="font-size:60px">🌿</div>
-    <h1>TaynPlantz</h1>
-    <p>Loading your plant intelligence...</p>
+      <h1>TaynPlantz</h1>
+
+      <p>
+        Loading your plant intelligence...
+      </p>
+    </div>
   </div>
 
-</div>
+  <script>
+    /*
+     * Register the service worker from the site root.
+     * This allows the PWA to cache the application.
+     */
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(function () {
+            console.log(
+              "TaynPlantz service worker registered."
+            );
+          })
+          .catch(function (error) {
+            console.error(
+              "TaynPlantz service worker registration failed:",
+              error
+            );
+          });
+      });
+    }
 
-<script>
-  window.location.href = "./TaynPlantz.html";
-</script>
+    /*
+     * Launch the actual application.
+     */
+    window.location.replace("./taynplantz.html");
+  </script>
 
 </body>
 </html>
