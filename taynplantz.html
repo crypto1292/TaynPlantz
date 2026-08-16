@@ -1581,6 +1581,15 @@ let capturedImageURLs = [];
 const RESOURCE_RESULTS_PER_PAGE = 20;
 const RESOURCE_VISIBLE_RESULTS = 3;
 
+/*
+ * Pl@ntNet's taxonomy routes (/species and /species/align) are
+ * scoped to a "project" (aka flora/referential). k-world-flora is
+ * the broadest project Pl@ntNet documents (union of all KT
+ * projects), so it's the best default for a general resource
+ * search across any plant, herb, flower, tree, etc.
+ */
+const PLANTNET_PROJECT = "k-world-flora";
+
 let resourceSearchTimer = null;
 let resourceSearchController = null;
 
@@ -1970,6 +1979,115 @@ const plants = [
         water:"Water when the surface begins to dry.",
         care:"Prefers well-draining soil.",
         description:"A popular flowering garden plant with bright yellow, orange or red flowers."
+    },
+
+    /*
+     * Common culinary herbs.
+     *
+     * These get a curated, simple card just like the
+     * houseplants and flowers above, instead of falling
+     * straight through to raw Pl@ntNet taxonomy data with
+     * no care info.
+     */
+
+    {
+        name:"Dill",
+        scientific:"Anethum graveolens",
+        emoji:"🌿",
+        light:"Full sun",
+        water:"Keep soil evenly moist; avoid letting it dry out completely.",
+        care:"Fast-growing annual herb — sow directly, it dislikes transplanting.",
+        description:"A feathery annual herb used for pickling and fish dishes."
+    },
+
+    {
+        name:"Chives",
+        scientific:"Allium schoenoprasum",
+        emoji:"🌿",
+        light:"Full sun to partial shade",
+        water:"Keep soil consistently moist.",
+        care:"Cut back to a few inches to encourage regrowth; divide clumps every few years.",
+        description:"A hardy perennial allium with mild onion-flavored hollow leaves."
+    },
+
+    {
+        name:"Basil",
+        scientific:"Ocimum basilicum",
+        emoji:"🌿",
+        light:"Full sun",
+        water:"Keep soil moist; water at the base to keep leaves dry.",
+        care:"Pinch flower buds to keep leaves productive; sensitive to cold.",
+        description:"A warm-season culinary herb central to Italian and Southeast Asian cooking."
+    },
+
+    {
+        name:"Mint",
+        scientific:"Mentha",
+        emoji:"🌿",
+        light:"Partial shade to full sun",
+        water:"Keep soil consistently moist.",
+        care:"Very vigorous — best grown in a container to stop it spreading.",
+        description:"A fast-spreading aromatic herb used in drinks, teas, and cooking."
+    },
+
+    {
+        name:"Parsley",
+        scientific:"Petroselinum crispum",
+        emoji:"🌿",
+        light:"Full sun to partial shade",
+        water:"Keep soil evenly moist.",
+        care:"Biennial usually grown as an annual; soak seeds before sowing to speed germination.",
+        description:"A widely used culinary herb available in curly and flat-leaf forms."
+    },
+
+    {
+        name:"Rosemary",
+        scientific:"Salvia rosmarinus",
+        emoji:"🌿",
+        light:"Full sun",
+        water:"Allow soil to dry between watering.",
+        care:"Needs excellent drainage; prone to root rot in soggy soil.",
+        description:"A woody, fragrant Mediterranean herb used fresh or dried."
+    },
+
+    {
+        name:"Thyme",
+        scientific:"Thymus vulgaris",
+        emoji:"🌿",
+        light:"Full sun",
+        water:"Allow soil to dry between watering.",
+        care:"Prefers lean, well-draining soil; trim after flowering.",
+        description:"A low-growing, drought-tolerant Mediterranean culinary herb."
+    },
+
+    {
+        name:"Sage",
+        scientific:"Salvia officinalis",
+        emoji:"🌿",
+        light:"Full sun",
+        water:"Allow soil to dry between watering.",
+        care:"Prune in spring to keep growth compact.",
+        description:"A savory, gray-green leafed herb often paired with poultry and stuffing."
+    },
+
+    {
+        name:"Oregano",
+        scientific:"Origanum vulgare",
+        emoji:"🌿",
+        light:"Full sun",
+        water:"Allow soil to dry between watering.",
+        care:"Tolerates poor soil; cut back after flowering for fresh growth.",
+        description:"A pungent Mediterranean herb common in Italian and Greek cooking."
+    },
+
+    {
+        name:"Cilantro",
+        scientific:"Coriandrum sativum",
+        emoji:"🌿",
+        light:"Full sun to partial shade",
+        water:"Keep soil consistently moist.",
+        care:"Bolts quickly in heat — sow in succession for a steady harvest.",
+        description:"An annual herb whose leaves (cilantro) and seeds (coriander) are both used in cooking."
     }
 
 ];
@@ -2288,6 +2406,10 @@ function resourceMatchesQuery(
  * We also try the taxonomy alignment endpoint for common names
  * such as "dill" and "chives", because the species prefix
  * search is primarily name-oriented.
+ *
+ * Alignment ONLY exists scoped to a project, ie:
+ *   /v2/projects/{project}/species/align
+ * There is no unscoped /v2/species/align route.
  */
 
 async function searchPlantNetSpecies(
@@ -2397,11 +2519,18 @@ async function searchPlantNetSpecies(
      *
      * This is especially useful for things like:
      * dill, chives, basil, etc.
+     *
+     * Must be scoped to a project (there is no unscoped
+     * /v2/species/align route on the real API).
      */
     try{
 
         const alignURL =
-            "https://my-api.plantnet.org/v2/species/align"
+            "https://my-api.plantnet.org/v2/projects/"
+            +
+            PLANTNET_PROJECT
+            +
+            "/species/align"
             +
             "?name="
             +
@@ -2790,7 +2919,12 @@ function renderResourceResults(){
                     ?
                     `
                     <span class="resource-badge">
-                        Pl@ntNet
+                        ${
+                            item.source ===
+                            "Taynz Plantz"
+                            ? "Guide"
+                            : "Pl@ntNet"
+                        }
                     </span>
                     `
                     :
