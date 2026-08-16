@@ -802,6 +802,36 @@ button:disabled{
     font-size:18px;
 }
 
+/* RESOURCE SEARCH LOADER */
+
+.resource-loading{
+    display:none;
+    margin:10px 16px 0;
+    padding:12px 11px;
+    border-radius:16px;
+    background:#edf3e8;
+    color:var(--dark-green);
+    font-size:12px;
+    text-align:center;
+    font-weight:800;
+}
+
+.resource-loading.show{
+    display:block;
+}
+
+/*
+ * Reuse the exact watering animation already used
+ * by the scanner.
+ */
+.resource-loading .watering-loader{
+    display:block;
+    margin:0 auto 4px;
+    transform:scale(.78);
+    transform-origin:center top;
+    margin-bottom:-10px;
+}
+
 /* GUIDE */
 
 .plant-grid{
@@ -844,57 +874,38 @@ button:disabled{
     line-height:1.4;
 }
 
-/* RESOURCE SEARCH LOADING */
-
-.guide-loading{
-    display:none;
-    padding:8px 16px 4px;
-    text-align:center;
-}
-
-.guide-loading.show{
-    display:block;
-}
-
-.guide-loading .watering-loader{
-    display:block;
-    margin:0 auto 0;
-}
-
-.guide-loading-text{
-    margin-top:-8px;
-    padding-bottom:12px;
+.resource-badge{
+    display:inline-block;
+    margin-top:9px;
+    padding:5px 8px;
+    border-radius:99px;
+    background:#dfe7d4;
     color:var(--dark-green);
-    font-size:12px;
-    font-weight:850;
+    font-size:9px;
+    font-weight:900;
 }
 
-.guide-more{
+.see-more-wrap{
     display:none;
-    width:calc(100% - 32px);
-    margin:0 16px 18px;
-    border:0;
+    padding:0 16px 18px;
+}
+
+.see-more-wrap.show{
+    display:block;
+}
+
+.see-more-btn{
+    width:100%;
+    border:1px solid #d3dccb;
     border-radius:15px;
-    padding:14px;
-    background:var(--light-green);
+    padding:13px;
+    background:#edf3e8;
     color:var(--dark-green);
     font-weight:900;
 }
 
-.guide-more.show{
-    display:block;
-}
-
-.guide-more:active{
+.see-more-btn:active{
     transform:scale(.98);
-}
-
-.guide-source{
-    margin:-5px 16px 15px;
-    text-align:center;
-    color:var(--muted);
-    font-size:10px;
-    line-height:1.4;
 }
 
 /* ENCYCLOPEDIA */
@@ -1367,7 +1378,7 @@ button:disabled{
         </h2>
 
         <p class="card-subtitle">
-            Search Pl@ntNet's extensive plant taxonomy by common or scientific name.
+            Search flowers, plants, herbs, trees, vegetables, shrubs, and more.
         </p>
 
     </div>
@@ -1380,15 +1391,13 @@ button:disabled{
             id="plantSearch"
             type="search"
             autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="Search any plant...">
+            placeholder="Search plants...">
 
     </div>
 
-    <!-- SAME WATERING ANIMATION USED BY THE SCANNER -->
+    <!-- SAME WATERING PLANT LOADER USED BY THE SCANNER -->
 
-    <div class="guide-loading" id="guideLoading">
+    <div class="resource-loading" id="resourceLoading">
 
         <div class="watering-loader">
 
@@ -1411,24 +1420,24 @@ button:disabled{
 
         </div>
 
-        <div class="guide-loading-text">
-            🌿 Searching the plant library...
-        </div>
+        🌿 Searching the plant database...
 
     </div>
 
     <div class="plant-grid" id="plantGrid"></div>
 
-    <button
-        type="button"
-        class="guide-more"
-        id="guideMoreButton">
+    <div class="see-more-wrap" id="seeMoreWrap">
 
-        See More Results
+        <button
+            type="button"
+            class="see-more-btn"
+            id="seeMoreButton">
 
-    </button>
+            🌿 See more results
 
-    <div class="guide-source" id="guideSource"></div>
+        </button>
+
+    </div>
 
 </section>
 
@@ -1552,6 +1561,7 @@ button:disabled{
 
 /* ============================================================
    TAYNZ PLANTZ
+   Automatic plant + flower identification
 ============================================================ */
 
 const API_KEY = "2b105OhIPTpCj2RM08UaL7rK";
@@ -1563,6 +1573,198 @@ const HISTORY_STORAGE =
 
 let capturedPhotos = [];
 let capturedImageURLs = [];
+
+/* ============================================================
+   RESOURCE GUIDE SEARCH SETTINGS
+============================================================ */
+
+const RESOURCE_RESULTS_PER_PAGE = 20;
+const RESOURCE_VISIBLE_RESULTS = 3;
+
+let resourceSearchTimer = null;
+let resourceSearchController = null;
+
+let resourceCurrentQuery = "";
+let resourceCurrentPage = 1;
+let resourceHasMore = false;
+let resourceResults = [];
+let resourceSearching = false;
+
+/*
+ * These are common plant/herb names that users are likely
+ * to type directly. They are used as a lightweight fallback
+ * when a common-name search does not produce a direct
+ * species-prefix result.
+ *
+ * The actual database search remains Pl@ntNet.
+ */
+const commonPlantAliases = {
+
+    dill:"Anethum",
+
+    chives:"Allium",
+
+    basil:"Ocimum",
+
+    mint:"Mentha",
+
+    parsley:"Petroselinum",
+
+    rosemary:"Salvia",
+
+    thyme:"Thymus",
+
+    sage:"Salvia",
+
+    oregano:"Origanum",
+
+    cilantro:"Coriandrum",
+
+    coriander:"Coriandrum",
+
+    tarragon:"Artemisia",
+
+    fennel:"Foeniculum",
+
+    marjoram:"Origanum",
+
+    lemongrass:"Cymbopogon",
+
+    lavender:"Lavandula",
+
+    chamomile:"Matricaria",
+
+    peppermint:"Mentha",
+
+    spearmint:"Mentha",
+
+    "lemon balm":"Melissa",
+
+    catnip:"Nepeta",
+
+    "bay leaf":"Laurus",
+
+    bay:"Laurus",
+
+    chervil:"Anthriscus",
+
+    arugula:"Eruca",
+
+    rocket:"Eruca",
+
+    spinach:"Spinacia",
+
+    kale:"Brassica",
+
+    cabbage:"Brassica",
+
+    broccoli:"Brassica",
+
+    cauliflower:"Brassica",
+
+    tomato:"Solanum",
+
+    potato:"Solanum",
+
+    pepper:"Capsicum",
+
+    cucumber:"Cucumis",
+
+    pumpkin:"Cucurbita",
+
+    squash:"Cucurbita",
+
+    zucchini:"Cucurbita",
+
+    strawberry:"Fragaria",
+
+    raspberry:"Rubus",
+
+    blackberry:"Rubus",
+
+    blueberry:"Vaccinium",
+
+    apple:"Malus",
+
+    pear:"Pyrus",
+
+    peach:"Prunus",
+
+    cherry:"Prunus",
+
+    plum:"Prunus",
+
+    rose:"Rosa",
+
+    tulip:"Tulipa",
+
+    daisy:"Bellis",
+
+    sunflower:"Helianthus",
+
+    marigold:"Tagetes",
+
+    hibiscus:"Hibiscus",
+
+    orchid:"Orchidaceae",
+
+    lily:"Lilium",
+
+    daffodil:"Narcissus",
+
+    "morning glory":"Ipomoea",
+
+    pansy:"Viola",
+
+    violet:"Viola",
+
+    iris:"Iris",
+
+    peony:"Paeonia",
+
+    poppy:"Papaver",
+
+    carnation:"Dianthus",
+
+    petunia:"Petunia",
+
+    geranium:"Pelargonium",
+
+    hydrangea:"Hydrangea",
+
+    azalea:"Rhododendron",
+
+    rhododendron:"Rhododendron",
+
+    cactus:"Cactaceae",
+
+    succulent:"Crassulaceae",
+
+    aloe:"Aloe",
+
+    monstera:"Monstera",
+
+    pothos:"Epipremnum",
+
+    "snake plant":"Dracaena",
+
+    "spider plant":"Chlorophytum",
+
+    "peace lily":"Spathiphyllum",
+
+    "rubber plant":"Ficus",
+
+    "fiddle leaf fig":"Ficus",
+
+    fern:"Nephrolepis",
+
+    calathea:"Calathea",
+
+    "jade plant":"Crassula",
+
+    "zz plant":"Zamioculcas"
+
+};
 
 /* ============================================================
    PLANT DATABASE
@@ -1773,7 +1975,7 @@ const plants = [
 ];
 
 /* ============================================================
-   LOCAL GUIDE
+   GUIDE
 ============================================================ */
 
 function renderPlants(list = plants){
@@ -1829,6 +2031,1343 @@ function renderPlants(list = plants){
         grid.appendChild(card);
 
     });
+}
+
+/* ============================================================
+   RESOURCE SEARCH HELPERS
+============================================================ */
+
+function setResourceLoading(
+    show,
+    message = "🌿 Searching the plant database..."
+){
+
+    const loading =
+        document.getElementById(
+            "resourceLoading"
+        );
+
+    loading.classList.toggle(
+        "show",
+        show
+    );
+
+    if(show){
+
+        /*
+         * Preserve the animation and simply update
+         * the message below it.
+         */
+        const textNodes =
+            loading.childNodes;
+
+        for(
+            let i = 0;
+            i < textNodes.length;
+            i++
+        ){
+
+            if(
+                textNodes[i].nodeType ===
+                Node.TEXT_NODE
+            ){
+
+                if(
+                    textNodes[i].textContent.trim()
+                ){
+
+                    textNodes[i].textContent =
+                        "\n        " +
+                        message +
+                        "\n\n    ";
+
+                    break;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+function normalizeResourceSpecies(
+    item,
+    source = "Pl@ntNet"
+){
+
+    if(!item){
+        return null;
+    }
+
+    const scientific =
+        item.scientificNameWithoutAuthor
+        ||
+        item.scientificName
+        ||
+        (
+            item.species &&
+            (
+                item.species
+                    .scientificNameWithoutAuthor
+                ||
+                item.species
+                    .scientificName
+            )
+        )
+        ||
+        "";
+
+    const names =
+        Array.isArray(item.commonNames)
+        ? item.commonNames
+        : (
+            item.species &&
+            Array.isArray(
+                item.species.commonNames
+            )
+            ? item.species.commonNames
+            : []
+        );
+
+    const common =
+        names.length
+        ? names[0]
+        : "";
+
+    if(!scientific && !common){
+        return null;
+    }
+
+    const family =
+        item.family
+        ||
+        (
+            item.species &&
+            item.species.family
+        )
+        ||
+        "";
+
+    const genus =
+        item.genus
+        ||
+        (
+            item.species &&
+            item.species.genus
+        )
+        ||
+        "";
+
+    return {
+
+        name:
+            common ||
+            scientific,
+
+        scientific:
+            scientific ||
+            common,
+
+        commonNames:
+            names,
+
+        family:family,
+
+        genus:genus,
+
+        source:source,
+
+        id:
+            String(
+                item.id
+                ||
+                scientific
+                ||
+                common
+            )
+
+    };
+}
+
+function resourceKey(
+    item
+){
+
+    return (
+        String(
+            item.scientific || ""
+        )
+        .toLowerCase()
+        .trim()
+    );
+
+}
+
+function dedupeResourceResults(
+    results
+){
+
+    const seen =
+        new Set();
+
+    return results.filter(
+        item => {
+
+            const key =
+                resourceKey(item);
+
+            if(!key){
+                return false;
+            }
+
+            if(seen.has(key)){
+                return false;
+            }
+
+            seen.add(key);
+
+            return true;
+
+        }
+    );
+
+}
+
+function resourceMatchesQuery(
+    item,
+    query
+){
+
+    const q =
+        query
+            .toLowerCase()
+            .trim();
+
+    if(!q){
+        return true;
+    }
+
+    const values = [
+
+        item.name,
+
+        item.scientific,
+
+        item.genus,
+
+        item.family,
+
+        ...(item.commonNames || [])
+
+    ];
+
+    return values.some(
+        value =>
+            String(value || "")
+                .toLowerCase()
+                .includes(q)
+    );
+
+}
+
+/* ============================================================
+   PL@NTNET RESOURCE SEARCH
+============================================================ */
+
+/*
+ * Search the combined Pl@ntNet species database.
+ *
+ * /v2/species supports:
+ *   prefix
+ *   page
+ *   pageSize
+ *   lang
+ *
+ * We also try the taxonomy alignment endpoint for common names
+ * such as "dill" and "chives", because the species prefix
+ * search is primarily name-oriented.
+ */
+
+async function searchPlantNetSpecies(
+    query,
+    page = 1
+){
+
+    const results = [];
+
+    const encodedQuery =
+        encodeURIComponent(
+            query
+        );
+
+    /*
+     * Primary search.
+     *
+     * Use the world flora / combined species
+     * database and request a reasonable page size.
+     */
+    const speciesURL =
+        "https://my-api.plantnet.org/v2/species"
+        +
+        "?prefix="
+        +
+        encodedQuery
+        +
+        "&page="
+        +
+        page
+        +
+        "&pageSize="
+        +
+        RESOURCE_RESULTS_PER_PAGE
+        +
+        "&lang=en"
+        +
+        "&api-key="
+        +
+        encodeURIComponent(
+            API_KEY
+        );
+
+    try{
+
+        const response =
+            await fetch(
+                speciesURL,
+                {
+                    method:"GET",
+                    signal:
+                        resourceSearchController
+                            ? resourceSearchController.signal
+                            : undefined
+                }
+            );
+
+        if(response.ok){
+
+            const data =
+                await response.json();
+
+            if(Array.isArray(data)){
+
+                data.forEach(
+                    item => {
+
+                        const normalized =
+                            normalizeResourceSpecies(
+                                item,
+                                "Pl@ntNet"
+                            );
+
+                        if(normalized){
+
+                            results.push(
+                                normalized
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+        }
+
+    }catch(error){
+
+        if(
+            error.name !==
+            "AbortError"
+        ){
+
+            console.warn(
+                "Pl@ntNet species search:",
+                error
+            );
+
+        }
+
+    }
+
+    /*
+     * Common-name / synonym lookup.
+     *
+     * This is especially useful for things like:
+     * dill, chives, basil, etc.
+     */
+    try{
+
+        const alignURL =
+            "https://my-api.plantnet.org/v2/species/align"
+            +
+            "?name="
+            +
+            encodedQuery
+            +
+            "&authorship=false"
+            +
+            "&synonyms=true"
+            +
+            "&lang=en"
+            +
+            "&api-key="
+            +
+            encodeURIComponent(
+                API_KEY
+            );
+
+        const alignResponse =
+            await fetch(
+                alignURL,
+                {
+                    method:"GET",
+                    signal:
+                        resourceSearchController
+                            ? resourceSearchController.signal
+                            : undefined
+                }
+            );
+
+        if(alignResponse.ok){
+
+            const aligned =
+                await alignResponse.json();
+
+            if(aligned){
+
+                const normalized =
+                    normalizeResourceSpecies(
+                        aligned,
+                        "Pl@ntNet"
+                    );
+
+                if(normalized){
+
+                    results.unshift(
+                        normalized
+                    );
+
+                }else if(
+                    aligned.matchingName ||
+                    aligned.acceptedName
+                ){
+
+                    results.unshift({
+
+                        name:
+                            query
+                                .replace(
+                                    /\b\w/g,
+                                    c =>
+                                        c.toUpperCase()
+                                ),
+
+                        scientific:
+                            (
+                                aligned.acceptedName
+                                ||
+                                aligned.matchingName
+                                ||
+                                query
+                            )
+                                .replace(
+                                    /\s+[A-Z]\.$/,
+                                    ""
+                                ),
+
+                        commonNames:[
+                            query
+                        ],
+
+                        family:
+                            aligned.family ||
+                            "",
+
+                        genus:
+                            aligned.genus ||
+                            "",
+
+                        source:
+                            "Pl@ntNet",
+
+                        id:
+                            aligned.acceptedName ||
+                            aligned.matchingName ||
+                            query
+
+                    });
+
+                }
+
+            }
+
+        }
+
+    }catch(error){
+
+        if(
+            error.name !==
+            "AbortError"
+        ){
+
+            console.warn(
+                "Pl@ntNet taxonomy alignment:",
+                error
+            );
+
+        }
+
+    }
+
+    /*
+     * If a common name isn't directly resolved,
+     * use a small alias-to-genus bridge.
+     *
+     * This still searches Pl@ntNet's species database;
+     * it does NOT create fake plant records.
+     */
+    const alias =
+        commonPlantAliases[
+            query
+                .toLowerCase()
+                .trim()
+        ];
+
+    if(
+        alias &&
+        alias.toLowerCase() !==
+        query.toLowerCase()
+    ){
+
+        try{
+
+            const aliasURL =
+                "https://my-api.plantnet.org/v2/species"
+                +
+                "?prefix="
+                +
+                encodeURIComponent(alias)
+                +
+                "&page="
+                +
+                page
+                +
+                "&pageSize="
+                +
+                RESOURCE_RESULTS_PER_PAGE
+                +
+                "&lang=en"
+                +
+                "&api-key="
+                +
+                encodeURIComponent(
+                    API_KEY
+                );
+
+            const aliasResponse =
+                await fetch(
+                    aliasURL,
+                    {
+                        method:"GET",
+                        signal:
+                            resourceSearchController
+                                ? resourceSearchController.signal
+                                : undefined
+                    }
+                );
+
+            if(aliasResponse.ok){
+
+                const aliasData =
+                    await aliasResponse.json();
+
+                if(
+                    Array.isArray(
+                        aliasData
+                    )
+                ){
+
+                    aliasData.forEach(
+                        item => {
+
+                            const normalized =
+                                normalizeResourceSpecies(
+                                    item,
+                                    "Pl@ntNet"
+                                );
+
+                            if(
+                                normalized &&
+                                resourceMatchesQuery(
+                                    normalized,
+                                    query
+                                )
+                            ){
+
+                                results.push(
+                                    normalized
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+            }
+
+        }catch(error){
+
+            if(
+                error.name !==
+                "AbortError"
+            ){
+
+                console.warn(
+                    "Pl@ntNet alias search:",
+                    error
+                );
+
+            }
+
+        }
+
+    }
+
+    return dedupeResourceResults(
+        results
+    );
+
+}
+
+/* ============================================================
+   RESOURCE SEARCH RENDERING
+============================================================ */
+
+function resourceEmoji(
+    item
+){
+
+    const text =
+        (
+            item.name +
+            " " +
+            item.scientific
+        )
+            .toLowerCase();
+
+    if(
+        /rose|tulip|daisy|flower|orchid|lily|hibiscus|marigold|poppy|peony|violet|iris|lavender|petunia|geranium/.test(text)
+    ){
+
+        return "🌸";
+
+    }
+
+    if(
+        /dill|chive|basil|mint|parsley|rosemary|thyme|sage|oregano|coriander|fennel|herb/.test(text)
+    ){
+
+        return "🌿";
+
+    }
+
+    if(
+        /cactus|aloe|succulent/.test(text)
+    ){
+
+        return "🌵";
+
+    }
+
+    if(
+        /tree|oak|maple|pine|fir|cedar|spruce|birch|willow|apple|pear|cherry/.test(text)
+    ){
+
+        return "🌳";
+
+    }
+
+    return "🌱";
+
+}
+
+function renderResourceResults(){
+
+    const grid =
+        document.getElementById(
+            "plantGrid"
+        );
+
+    const visible =
+        resourceResults.slice(
+            0,
+            RESOURCE_VISIBLE_RESULTS
+        );
+
+    grid.innerHTML = "";
+
+    if(!resourceCurrentQuery){
+
+        renderPlants();
+
+        document
+            .getElementById(
+                "seeMoreWrap"
+            )
+            .classList.remove(
+                "show"
+            );
+
+        return;
+
+    }
+
+    if(!visible.length){
+
+        grid.innerHTML = `
+            <div class="empty" style="grid-column:1/-1">
+                No plants found for
+                "<strong>${escapeHTML(
+                    resourceCurrentQuery
+                )}</strong>".
+                <br><br>
+                Try a common name, herb name, flower name,
+                or scientific name.
+            </div>
+        `;
+
+        document
+            .getElementById(
+                "seeMoreWrap"
+            )
+            .classList.remove(
+                "show"
+            );
+
+        return;
+
+    }
+
+    visible.forEach(
+        item => {
+
+            const card =
+                document.createElement(
+                    "button"
+                );
+
+            card.type =
+                "button";
+
+            card.className =
+                "plant-card";
+
+            card.innerHTML = `
+
+                <div class="plant-emoji">
+                    ${resourceEmoji(item)}
+                </div>
+
+                <h3>
+                    ${escapeHTML(
+                        item.name
+                    )}
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        item.scientific
+                    )}
+                </p>
+
+                ${
+                    item.source
+                    ?
+                    `
+                    <span class="resource-badge">
+                        Pl@ntNet
+                    </span>
+                    `
+                    :
+                    ""
+                }
+
+            `;
+
+            card.addEventListener(
+                "click",
+                ()=>{
+                    openResourcePlant(
+                        item
+                    );
+                }
+            );
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+    const seeMoreWrap =
+        document.getElementById(
+            "seeMoreWrap"
+        );
+
+    /*
+     * Show "See more" whenever there are
+     * more than the first 3 results.
+     */
+    if(
+        resourceResults.length >
+        RESOURCE_VISIBLE_RESULTS
+        ||
+        resourceHasMore
+    ){
+
+        seeMoreWrap.classList.add(
+            "show"
+        );
+
+    }else{
+
+        seeMoreWrap.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+/* ============================================================
+   RESOURCE SEARCH
+============================================================ */
+
+async function performResourceSearch(
+    query
+){
+
+    const trimmed =
+        query
+            .trim();
+
+    resourceCurrentQuery =
+        trimmed;
+
+    resourceCurrentPage = 1;
+    resourceHasMore = false;
+    resourceResults = [];
+
+    if(
+        resourceSearchController
+    ){
+
+        resourceSearchController.abort();
+
+    }
+
+    if(!trimmed){
+
+        setResourceLoading(
+            false
+        );
+
+        renderPlants();
+
+        document
+            .getElementById(
+                "seeMoreWrap"
+            )
+            .classList.remove(
+                "show"
+            );
+
+        return;
+
+    }
+
+    resourceSearchController =
+        new AbortController();
+
+    setResourceLoading(
+        true,
+        "🌿 Searching Pl@ntNet..."
+    );
+
+    try{
+
+        /*
+         * First preserve the very useful
+         * instant local results.
+         */
+        const localResults =
+            plants
+                .filter(
+                    plant => {
+
+                        const q =
+                            trimmed
+                                .toLowerCase();
+
+                        return (
+
+                            plant.name
+                                .toLowerCase()
+                                .includes(q)
+
+                            ||
+
+                            plant.scientific
+                                .toLowerCase()
+                                .includes(q)
+
+                        );
+
+                    }
+                )
+                .map(
+                    plant => ({
+
+                        name:
+                            plant.name,
+
+                        scientific:
+                            plant.scientific,
+
+                        commonNames:[
+                            plant.name
+                        ],
+
+                        family:"",
+                        genus:"",
+
+                        source:
+                            "Taynz Plantz",
+
+                        localPlant:
+                            plant,
+
+                        id:
+                            "local-" +
+                            plant.scientific
+
+                    })
+                );
+
+        const apiResults =
+            await searchPlantNetSpecies(
+                trimmed,
+                1
+            );
+
+        /*
+         * Put direct/common-name matches first,
+         * then combine the local guide and Pl@ntNet.
+         */
+        resourceResults =
+            dedupeResourceResults(
+                [
+                    ...localResults,
+                    ...apiResults
+                ]
+            );
+
+        /*
+         * If Pl@ntNet returned a page full of
+         * results, assume more may be available.
+         */
+        resourceHasMore =
+            apiResults.length >=
+            RESOURCE_RESULTS_PER_PAGE;
+
+        /*
+         * If a common-name alias was used and
+         * the first search produced little,
+         * the alias query may provide additional
+         * results. They are already included above.
+         */
+
+        renderResourceResults();
+
+    }catch(error){
+
+        if(
+            error.name ===
+            "AbortError"
+        ){
+
+            return;
+
+        }
+
+        console.error(
+            "Resource search error:",
+            error
+        );
+
+        /*
+         * If the API fails, the app still
+         * falls back to the original local guide.
+         */
+        const q =
+            trimmed
+                .toLowerCase();
+
+        const local =
+            plants.filter(
+                plant =>
+
+                    plant.name
+                        .toLowerCase()
+                        .includes(q)
+
+                    ||
+
+                    plant.scientific
+                        .toLowerCase()
+                        .includes(q)
+
+            );
+
+        resourceResults =
+            local.map(
+                plant => ({
+
+                    name:
+                        plant.name,
+
+                    scientific:
+                        plant.scientific,
+
+                    commonNames:[
+                        plant.name
+                    ],
+
+                    localPlant:
+                        plant,
+
+                    source:
+                        "Taynz Plantz",
+
+                    id:
+                        "local-" +
+                        plant.scientific
+
+                })
+            );
+
+        resourceHasMore = false;
+
+        renderResourceResults();
+
+    }finally{
+
+        if(
+            !resourceSearchController ||
+            !resourceSearchController.signal.aborted
+        ){
+
+            setResourceLoading(
+                false
+            );
+
+        }
+
+    }
+
+}
+
+/* ============================================================
+   SEE MORE RESULTS
+============================================================ */
+
+async function loadMoreResourceResults(){
+
+    if(
+        !resourceCurrentQuery ||
+        resourceSearching
+    ){
+
+        return;
+
+    }
+
+    resourceSearching = true;
+
+    const button =
+        document.getElementById(
+            "seeMoreButton"
+        );
+
+    button.disabled =
+        true;
+
+    button.textContent =
+        "🌿 Loading more...";
+
+    setResourceLoading(
+        true,
+        "🌿 Finding more plants..."
+    );
+
+    try{
+
+        resourceCurrentPage++;
+
+        const more =
+            await searchPlantNetSpecies(
+                resourceCurrentQuery,
+                resourceCurrentPage
+            );
+
+        if(more.length){
+
+            resourceResults =
+                dedupeResourceResults(
+                    [
+                        ...resourceResults,
+                        ...more
+                    ]
+                );
+
+        }
+
+        resourceHasMore =
+            more.length >=
+            RESOURCE_RESULTS_PER_PAGE;
+
+        renderResourceResults();
+
+    }catch(error){
+
+        if(
+            error.name !==
+            "AbortError"
+        ){
+
+            console.error(
+                "More resource results:",
+                error
+            );
+
+        }
+
+    }finally{
+
+        resourceSearching =
+            false;
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "🌿 See more results";
+
+        setResourceLoading(
+            false
+        );
+
+        /*
+         * If we have loaded more than three,
+         * the button remains available as long
+         * as additional results may exist.
+         */
+        if(
+            resourceResults.length <=
+            RESOURCE_VISIBLE_RESULTS &&
+            !resourceHasMore
+        ){
+
+            document
+                .getElementById(
+                    "seeMoreWrap"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+        }
+
+    }
+
+}
+
+/* ============================================================
+   SEARCH INPUT
+============================================================ */
+
+document
+    .getElementById("plantSearch")
+    .addEventListener(
+        "input",
+        function(){
+
+            const query =
+                this.value;
+
+            clearTimeout(
+                resourceSearchTimer
+            );
+
+            /*
+             * Short debounce keeps the search
+             * simple and prevents an API request
+             * on every individual keystroke.
+             */
+            resourceSearchTimer =
+                setTimeout(
+                    ()=>{
+                        performResourceSearch(
+                            query
+                        );
+                    },
+                    350
+                );
+
+        }
+    );
+
+document
+    .getElementById(
+        "seeMoreButton"
+    )
+    .addEventListener(
+        "click",
+        loadMoreResourceResults
+    );
+
+/* ============================================================
+   RESOURCE RESULT MODAL
+============================================================ */
+
+function openResourcePlant(
+    item
+){
+
+    if(
+        item.localPlant
+    ){
+
+        const plant =
+            item.localPlant;
+
+        openPlant(
+            plants.indexOf(
+                plant
+            )
+        );
+
+        return;
+
+    }
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+            resourceEmoji(item) +
+            " " +
+            (
+                item.name ||
+                item.scientific
+            );
+
+    const names =
+        Array.isArray(
+            item.commonNames
+        )
+        ? item.commonNames
+        : [];
+
+    const commonNameText =
+        names.length
+        ? names.join(", ")
+        : "Not listed";
+
+    document
+        .getElementById(
+            "modalContent"
+        )
+        .innerHTML = `
+
+            <p>
+                <strong>
+                    Scientific name
+                </strong><br>
+                <em>
+                    ${escapeHTML(
+                        item.scientific ||
+                        "Not provided"
+                    )}
+                </em>
+            </p>
+
+            <p>
+                <strong>
+                    Common names
+                </strong><br>
+                ${escapeHTML(
+                    commonNameText
+                )}
+            </p>
+
+            ${
+                item.family
+                ?
+                `
+                <p>
+                    🌱 <strong>Family</strong><br>
+                    ${escapeHTML(
+                        item.family
+                    )}
+                </p>
+                `
+                :
+                ""
+            }
+
+            ${
+                item.genus
+                ?
+                `
+                <p>
+                    🌿 <strong>Genus</strong><br>
+                    ${escapeHTML(
+                        item.genus
+                    )}
+                </p>
+                `
+                :
+                ""
+            }
+
+            <p>
+                🔎 <strong>Source</strong><br>
+                Pl@ntNet species database
+            </p>
+
+            <p>
+                Taynz Plantz found this species
+                in the extended plant resource database.
+            </p>
+
+        `;
+
+    document
+        .getElementById(
+            "plantModal"
+        )
+        .classList.add(
+            "show"
+        );
+
 }
 
 /* ============================================================
@@ -1893,1264 +3432,6 @@ function renderEncyclopedia(){
 }
 
 /* ============================================================
-   PLANT RESOURCE SEARCH
-   PL@NTNET TAXONOMY
-============================================================ */
-
-const GUIDE_INITIAL_RESULTS = 3;
-const GUIDE_MORE_RESULTS = 15;
-
-let guideSearchTimer = null;
-let guideSearchController = null;
-let guideSearchResults = [];
-let guideResultsExpanded = false;
-
-/*
- * Pl@ntNet taxonomy endpoint.
- *
- * /v2/species contains species from the available
- * Pl@ntNet taxonomic referentials.
- *
- * type=kt uses the current Kew/TDWG taxonomy.
- *
- * k-world-flora represents the broad world-flora
- * referential.
- */
-
-const PLANTNET_SPECIES_API =
-    "https://my-api.plantnet.org/v2/species";
-
-/*
- * Search input.
- *
- * A small debounce prevents an API request for every
- * individual keystroke.
- */
-
-document
-    .getElementById("plantSearch")
-    .addEventListener(
-        "input",
-        function(){
-
-            const query =
-                this.value
-                    .trim();
-
-            clearTimeout(
-                guideSearchTimer
-            );
-
-            if(
-                guideSearchController
-            ){
-
-                guideSearchController.abort();
-
-                guideSearchController =
-                    null;
-
-            }
-
-            guideResultsExpanded =
-                false;
-
-            if(!query){
-
-                guideSearchResults = [];
-
-                hideGuideLoading();
-
-                document
-                    .getElementById(
-                        "guideMoreButton"
-                    )
-                    .classList
-                    .remove("show");
-
-                document
-                    .getElementById(
-                        "guideSource"
-                    )
-                    .textContent = "";
-
-                renderPlants();
-
-                return;
-
-            }
-
-            guideSearchTimer =
-                setTimeout(
-                    ()=>{
-                        searchPlantNetGuide(
-                            query
-                        );
-                    },
-                    350
-                );
-
-        }
-    );
-
-/* ============================================================
-   PL@NTNET RESOURCE SEARCH
-============================================================ */
-
-async function searchPlantNetGuide(
-    query
-){
-
-    showGuideLoading();
-
-    const controller =
-        new AbortController();
-
-    guideSearchController =
-        controller;
-
-    try{
-
-        /*
-         * Search Pl@ntNet's world-flora taxonomy.
-         *
-         * The prefix search is intentionally broad.
-         * We request more than the three visible results
-         * so the app can rank and collapse them into a
-         * clean three-result interface.
-         */
-
-        const url =
-            PLANTNET_SPECIES_API +
-            "?api-key=" +
-            encodeURIComponent(
-                API_KEY
-            ) +
-            "&prefix=" +
-            encodeURIComponent(
-                query
-            ) +
-            "&page=1" +
-            "&pageSize=50" +
-            "&lang=en" +
-            "&type=kt";
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method:"GET",
-                    signal:
-                        controller.signal,
-                    headers:{
-                        "Accept":
-                            "application/json"
-                    }
-                }
-            );
-
-        if(!response.ok){
-
-            let errorText = "";
-
-            try{
-                errorText =
-                    await response.text();
-            }catch(e){}
-
-            console.error(
-                "Pl@ntNet taxonomy response:",
-                errorText
-            );
-
-            if(
-                response.status === 401 ||
-                response.status === 403
-            ){
-
-                throw new Error(
-                    "Pl@ntNet rejected the API key."
-                );
-
-            }
-
-            if(
-                response.status === 429
-            ){
-
-                throw new Error(
-                    "Pl@ntNet's request limit was reached. Try again later."
-                );
-
-            }
-
-            throw new Error(
-                "Pl@ntNet returned HTTP " +
-                response.status +
-                "."
-            );
-
-        }
-
-        const data =
-            await response.json();
-
-        console.log(
-            "Taynz Plantz Pl@ntNet taxonomy:",
-            data
-        );
-
-        /*
-         * The species endpoint returns an array.
-         */
-
-        const remoteResults =
-            Array.isArray(data)
-            ? data
-            : Array.isArray(data.results)
-                ? data.results
-                : [];
-
-        /*
-         * Also include matches from our small local
-         * care database. This preserves the detailed
-         * care information already built into Taynz Plantz.
-         */
-
-        const localResults =
-            searchLocalPlants(
-                query
-            );
-
-        guideSearchResults =
-            mergeGuideResults(
-                localResults,
-                remoteResults,
-                query
-            );
-
-        renderGuideResults();
-
-        document
-            .getElementById(
-                "guideSource"
-            )
-            .textContent =
-                guideSearchResults.length
-                ? "🌿 Plant taxonomy powered by Pl@ntNet."
-                : "";
-
-    }catch(error){
-
-        if(
-            error.name ===
-            "AbortError"
-        ){
-
-            return;
-
-        }
-
-        console.error(
-            "Plant resource search error:",
-            error
-        );
-
-        /*
-         * If Pl@ntNet is temporarily unavailable,
-         * the original built-in plant guide still works.
-         */
-
-        const localResults =
-            searchLocalPlants(
-                query
-            );
-
-        guideSearchResults =
-            localResults.map(
-                createLocalGuideResult
-            );
-
-        renderGuideResults();
-
-        document
-            .getElementById(
-                "guideSource"
-            )
-            .textContent =
-                localResults.length
-                ? "Showing matches from the built-in plant guide."
-                : "";
-
-    }finally{
-
-        if(
-            guideSearchController ===
-            controller
-        ){
-
-            guideSearchController =
-                null;
-
-        }
-
-        hideGuideLoading();
-
-    }
-}
-
-/* ============================================================
-   LOCAL SEARCH
-============================================================ */
-
-function searchLocalPlants(
-    query
-){
-
-    const q =
-        normalizePlantText(
-            query
-        );
-
-    if(!q){
-        return [];
-    }
-
-    return plants.filter(
-        plant => {
-
-            const searchable =
-                [
-                    plant.name,
-                    plant.scientific,
-                    plant.description,
-                    plant.light,
-                    plant.water,
-                    plant.care
-                ]
-                .filter(Boolean)
-                .join(" ");
-
-            return normalizePlantText(
-                searchable
-            ).includes(q);
-
-        }
-    );
-
-}
-
-/* ============================================================
-   MERGE LOCAL + PL@NTNET
-============================================================ */
-
-function mergeGuideResults(
-    localResults,
-    remoteResults,
-    query
-){
-
-    const combined = [];
-    const seen = new Set();
-
-    /*
-     * Put local matches first.
-     *
-     * This means a plant such as Rose gets the
-     * detailed Taynz Plantz care information.
-     */
-
-    localResults.forEach(
-        plant => {
-
-            const result =
-                createLocalGuideResult(
-                    plant
-                );
-
-            const key =
-                normalizePlantText(
-                    result.scientific ||
-                    result.name
-                );
-
-            if(
-                key &&
-                !seen.has(key)
-            ){
-
-                seen.add(key);
-
-                combined.push(
-                    result
-                );
-
-            }
-
-        }
-    );
-
-    /*
-     * Then add Pl@ntNet species.
-     */
-
-    remoteResults
-        .sort(
-            (a,b)=>
-                rankPlantNetResult(
-                    b,
-                    query
-                )
-                -
-                rankPlantNetResult(
-                    a,
-                    query
-                )
-        )
-        .forEach(
-            species => {
-
-                const result =
-                    createPlantNetGuideResult(
-                        species
-                    );
-
-                if(!result){
-                    return;
-                }
-
-                /*
-                 * De-duplicate by scientific name.
-                 */
-
-                const scientificKey =
-                    normalizePlantText(
-                        result.scientific
-                    );
-
-                if(
-                    scientificKey &&
-                    seen.has(
-                        scientificKey
-                    )
-                ){
-
-                    return;
-                }
-
-                if(scientificKey){
-                    seen.add(
-                        scientificKey
-                    );
-                }
-
-                /*
-                 * Also prevent duplicate names.
-                 */
-
-                const nameKey =
-                    normalizePlantText(
-                        result.name
-                    );
-
-                if(
-                    nameKey &&
-                    seen.has(
-                        "name:" +
-                        nameKey
-                    )
-                ){
-
-                    return;
-
-                }
-
-                if(nameKey){
-
-                    seen.add(
-                        "name:" +
-                        nameKey
-                    );
-
-                }
-
-                combined.push(
-                    result
-                );
-
-            }
-        );
-
-    return combined;
-
-}
-
-/* ============================================================
-   RANK PL@NTNET RESULT
-============================================================ */
-
-function rankPlantNetResult(
-    species,
-    query
-){
-
-    const q =
-        normalizePlantText(
-            query
-        );
-
-    const scientific =
-        normalizePlantText(
-            species
-                .scientificNameWithoutAuthor ||
-            species.scientificName ||
-            ""
-        );
-
-    const commonNames =
-        Array.isArray(
-            species.commonNames
-        )
-        ? species.commonNames
-        : [];
-
-    let score = 0;
-
-    /*
-     * Exact scientific-name match.
-     */
-
-    if(
-        scientific === q
-    ){
-
-        score += 1000;
-
-    }
-
-    /*
-     * Scientific-name prefix.
-     */
-
-    if(
-        scientific.startsWith(q)
-    ){
-
-        score += 500;
-
-    }
-
-    /*
-     * Common/secondary name matching.
-     *
-     * This is important because Pl@ntNet species
-     * records can contain several common names.
-     */
-
-    commonNames.forEach(
-        commonName => {
-
-            const common =
-                normalizePlantText(
-                    commonName
-                );
-
-            if(
-                common === q
-            ){
-
-                score += 900;
-
-            }
-
-            if(
-                common.startsWith(q)
-            ){
-
-                score += 450;
-
-            }
-
-            if(
-                common.includes(q)
-            ){
-
-                score += 250;
-
-            }
-
-        }
-    );
-
-    /*
-     * Genus match.
-     */
-
-    if(
-        normalizePlantText(
-            species.genus
-        ) === q
-    ){
-
-        score += 300;
-
-    }
-
-    /*
-     * Family match.
-     */
-
-    if(
-        normalizePlantText(
-            species.family
-        ) === q
-    ){
-
-        score += 200;
-
-    }
-
-    return score;
-
-}
-
-/* ============================================================
-   CREATE LOCAL RESULT
-============================================================ */
-
-function createLocalGuideResult(
-    plant
-){
-
-    return {
-
-        type:"local",
-
-        name:
-            plant.name,
-
-        scientific:
-            plant.scientific,
-
-        emoji:
-            plant.emoji,
-
-        light:
-            plant.light,
-
-        water:
-            plant.water,
-
-        care:
-            plant.care,
-
-        description:
-            plant.description,
-
-        commonNames:
-            [
-                plant.name
-            ],
-
-        genus:"",
-        family:""
-
-    };
-
-}
-
-/* ============================================================
-   CREATE PL@NTNET RESULT
-============================================================ */
-
-function createPlantNetGuideResult(
-    species
-){
-
-    if(!species){
-        return null;
-    }
-
-    const scientific =
-        species
-            .scientificNameWithoutAuthor
-        ||
-        species.scientificName
-        ||
-        "";
-
-    if(!scientific){
-        return null;
-    }
-
-    const commonNames =
-        Array.isArray(
-            species.commonNames
-        )
-        ? species.commonNames
-            .filter(Boolean)
-        : [];
-
-    const primaryName =
-        commonNames[0]
-        ||
-        scientific;
-
-    return {
-
-        type:"plantnet",
-
-        name:
-            primaryName,
-
-        scientific:
-            scientific,
-
-        emoji:
-            getPlantEmoji(
-                primaryName,
-                scientific
-            ),
-
-        commonNames:
-            commonNames,
-
-        genus:
-            typeof species.genus ===
-            "string"
-            ? species.genus
-            : "",
-
-        family:
-            typeof species.family ===
-            "string"
-            ? species.family
-            : "",
-
-        plantnetId:
-            species.id || "",
-
-        gbifId:
-            species.gbifId ||
-            (
-                species.gbif &&
-                species.gbif.id
-            )
-            ||
-            "",
-
-        light:
-            "Species-specific light requirements vary.",
-
-        water:
-            "Check the species-specific watering requirements.",
-
-        care:
-            "Research the identified species before making care decisions.",
-
-        description:
-            "Plant species from the Pl@ntNet botanical taxonomy."
-
-    };
-
-}
-
-/* ============================================================
-   RESOURCE RESULTS
-============================================================ */
-
-function renderGuideResults(){
-
-    const grid =
-        document.getElementById(
-            "plantGrid"
-        );
-
-    const moreButton =
-        document.getElementById(
-            "guideMoreButton"
-        );
-
-    grid.innerHTML = "";
-
-    if(
-        !guideSearchResults.length
-    ){
-
-        grid.innerHTML = `
-
-            <div
-                class="empty"
-                style="grid-column:1/-1">
-
-                No plants found.
-
-                <br>
-
-                <span style="
-                    display:block;
-                    margin-top:6px;
-                    font-size:11px;
-                ">
-                    Try another common or scientific name.
-                </span>
-
-            </div>
-
-        `;
-
-        moreButton
-            .classList
-            .remove("show");
-
-        return;
-
-    }
-
-    /*
-     * Initial view = maximum 3.
-     *
-     * Expanded view = maximum 15.
-     */
-
-    const maximum =
-        guideResultsExpanded
-        ? GUIDE_MORE_RESULTS
-        : GUIDE_INITIAL_RESULTS;
-
-    const visible =
-        guideSearchResults.slice(
-            0,
-            maximum
-        );
-
-    visible.forEach(
-        result => {
-
-            const card =
-                document.createElement(
-                    "button"
-                );
-
-            card.type = "button";
-
-            card.className =
-                "plant-card";
-
-            const secondary =
-                getSecondaryNames(
-                    result
-                );
-
-            card.innerHTML = `
-
-                <div class="plant-emoji">
-                    ${result.emoji || "🌿"}
-                </div>
-
-                <h3>
-                    ${escapeHTML(
-                        result.name
-                    )}
-                </h3>
-
-                <p>
-                    ${escapeHTML(
-                        result.scientific
-                    )}
-                </p>
-
-                ${
-                    secondary
-                    ? `
-                        <p style="
-                            margin-top:5px;
-                            font-size:10px;
-                            color:#8a887b;
-                        ">
-                            Also known as:
-                            ${escapeHTML(
-                                secondary
-                            )}
-                        </p>
-                    `
-                    : ""
-                }
-
-            `;
-
-            card.addEventListener(
-                "click",
-                function(){
-
-                    openGuideResult(
-                        result
-                    );
-
-                }
-            );
-
-            grid.appendChild(
-                card
-            );
-
-        }
-    );
-
-    /*
-     * Only show "See More Results"
-     * if more than three actually exist.
-     */
-
-    if(
-        guideSearchResults.length >
-        GUIDE_INITIAL_RESULTS
-    ){
-
-        moreButton
-            .classList
-            .add("show");
-
-        moreButton.textContent =
-            guideResultsExpanded
-            ? "Show Fewer Results"
-            : "See More Results";
-
-    }else{
-
-        moreButton
-            .classList
-            .remove("show");
-
-    }
-
-}
-
-/* ============================================================
-   SEE MORE
-============================================================ */
-
-document
-    .getElementById(
-        "guideMoreButton"
-    )
-    .addEventListener(
-        "click",
-        function(){
-
-            guideResultsExpanded =
-                !guideResultsExpanded;
-
-            renderGuideResults();
-
-        }
-    );
-
-/* ============================================================
-   OPEN RESOURCE RESULT
-============================================================ */
-
-function openGuideResult(
-    result
-){
-
-    document
-        .getElementById(
-            "modalTitle"
-        )
-        .textContent =
-            (
-                result.emoji ||
-                "🌿"
-            ) +
-            " " +
-            result.name;
-
-    const secondary =
-        getSecondaryNames(
-            result
-        );
-
-    document
-        .getElementById(
-            "modalContent"
-        )
-        .innerHTML = `
-
-            <p>
-
-                <strong>
-                    ${escapeHTML(
-                        result.scientific ||
-                        "Unknown species"
-                    )}
-                </strong>
-
-            </p>
-
-            ${
-                secondary
-                ? `
-                    <p>
-                        <strong>
-                            Also known as:
-                        </strong><br>
-                        ${escapeHTML(
-                            secondary
-                        )}
-                    </p>
-                `
-                : ""
-            }
-
-            ${
-                result.family
-                ? `
-                    <p>
-                        🌿 <strong>Family</strong><br>
-                        ${escapeHTML(
-                            result.family
-                        )}
-                    </p>
-                `
-                : ""
-            }
-
-            ${
-                result.genus
-                ? `
-                    <p>
-                        🌱 <strong>Genus</strong><br>
-                        ${escapeHTML(
-                            result.genus
-                        )}
-                    </p>
-                `
-                : ""
-            }
-
-            <p>
-                ${escapeHTML(
-                    result.description ||
-                    "Plant information."
-                )}
-            </p>
-
-            <p>
-                ☀️ <strong>Light</strong><br>
-                ${escapeHTML(
-                    result.light ||
-                    "Species-specific."
-                )}
-            </p>
-
-            <p>
-                💧 <strong>Water</strong><br>
-                ${escapeHTML(
-                    result.water ||
-                    "Species-specific."
-                )}
-            </p>
-
-            <p>
-                🪴 <strong>Care</strong><br>
-                ${escapeHTML(
-                    result.care ||
-                    "Species-specific."
-                )}
-            </p>
-
-            ${
-                result.type === "plantnet"
-                ? `
-                    <p style="
-                        margin-top:16px;
-                        padding-top:12px;
-                        border-top:1px solid #e3dccb;
-                        font-size:11px;
-                        color:#888678;
-                    ">
-                        🌿 Botanical taxonomy provided by Pl@ntNet.
-                    </p>
-                `
-                : ""
-            }
-
-        `;
-
-    document
-        .getElementById(
-            "plantModal"
-        )
-        .classList
-        .add("show");
-
-}
-
-/* ============================================================
-   SECONDARY / ALTERNATE NAMES
-============================================================ */
-
-function getSecondaryNames(
-    result
-){
-
-    if(
-        !Array.isArray(
-            result.commonNames
-        )
-    ){
-
-        return "";
-
-    }
-
-    const primary =
-        normalizePlantText(
-            result.name
-        );
-
-    const secondary =
-        result.commonNames
-            .filter(Boolean)
-            .filter(
-                name =>
-                    normalizePlantText(
-                        name
-                    ) !== primary
-            )
-            .slice(0,3);
-
-    return secondary.join(
-        " • "
-    );
-
-}
-
-/* ============================================================
-   EMOJI
-============================================================ */
-
-function getPlantEmoji(
-    name,
-    scientific
-){
-
-    const text =
-        (
-            String(name) +
-            " " +
-            String(scientific)
-        ).toLowerCase();
-
-    if(text.includes("rose")){
-        return "🌹";
-    }
-
-    if(text.includes("tulip")){
-        return "🌷";
-    }
-
-    if(text.includes("sunflower")){
-        return "🌻";
-    }
-
-    if(text.includes("orchid")){
-        return "🌸";
-    }
-
-    if(text.includes("lavender")){
-        return "💜";
-    }
-
-    if(text.includes("hibiscus")){
-        return "🌺";
-    }
-
-    if(text.includes("fern")){
-        return "🌿";
-    }
-
-    if(
-        text.includes("aloe") ||
-        text.includes("cactus")
-    ){
-        return "🌵";
-    }
-
-    if(
-        text.includes("mint") ||
-        text.includes("basil") ||
-        text.includes("sage") ||
-        text.includes("thyme")
-    ){
-        return "🌿";
-    }
-
-    if(text.includes("tree")){
-        return "🌳";
-    }
-
-    return "🌿";
-
-}
-
-/* ============================================================
-   NORMALIZE SEARCH TEXT
-============================================================ */
-
-function normalizePlantText(
-    value
-){
-
-    return String(
-        value || ""
-    )
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-        .replace(
-            /[^a-z0-9\s-]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
-        .trim();
-
-}
-
-/* ============================================================
-   GUIDE LOADING
-============================================================ */
-
-function showGuideLoading(){
-
-    document
-        .getElementById(
-            "guideLoading"
-        )
-        .classList
-        .add("show");
-
-}
-
-function hideGuideLoading(){
-
-    document
-        .getElementById(
-            "guideLoading"
-        )
-        .classList
-        .remove("show");
-
-}
-
-/* ============================================================
    IMAGE PROCESSING
 ============================================================ */
 
@@ -3187,129 +3468,122 @@ function prepareImage(file){
             const reader =
                 new FileReader();
 
-            reader.onload =
-                function(){
+            reader.onload = function(){
 
-                    const img =
-                        new Image();
+                const img =
+                    new Image();
 
-                    img.onload =
-                        function(){
+                img.onload = function(){
 
-                            const MAX_SIZE =
-                                1600;
+                    const MAX_SIZE =
+                        1600;
 
-                            let width =
-                                img.naturalWidth;
+                    let width =
+                        img.naturalWidth;
 
-                            let height =
-                                img.naturalHeight;
+                    let height =
+                        img.naturalHeight;
 
-                            if(
-                                width > MAX_SIZE ||
-                                height > MAX_SIZE
-                            ){
+                    if(
+                        width > MAX_SIZE ||
+                        height > MAX_SIZE
+                    ){
 
-                                const scale =
-                                    Math.min(
-                                        MAX_SIZE / width,
-                                        MAX_SIZE / height
-                                    );
+                        const scale =
+                            Math.min(
+                                MAX_SIZE / width,
+                                MAX_SIZE / height
+                            );
 
-                                width =
-                                    Math.round(
-                                        width * scale
-                                    );
+                        width =
+                            Math.round(
+                                width * scale
+                            );
 
-                                height =
-                                    Math.round(
-                                        height * scale
-                                    );
+                        height =
+                            Math.round(
+                                height * scale
+                            );
 
-                            }
+                    }
 
-                            const canvas =
-                                document.createElement(
-                                    "canvas"
-                                );
+                    const canvas =
+                        document.createElement(
+                            "canvas"
+                        );
 
-                            canvas.width =
-                                width;
+                    canvas.width = width;
+                    canvas.height = height;
 
-                            canvas.height =
-                                height;
+                    const ctx =
+                        canvas.getContext("2d");
 
-                            const ctx =
-                                canvas.getContext(
-                                    "2d"
-                                );
+                    if(!ctx){
 
-                            if(!ctx){
+                        reject(
+                            new Error(
+                                "Could not process this photo."
+                            )
+                        );
+
+                        return;
+                    }
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0,
+                        width,
+                        height
+                    );
+
+                    canvas.toBlob(
+                        function(blob){
+
+                            if(!blob){
 
                                 reject(
                                     new Error(
-                                        "Could not process this photo."
+                                        "Could not prepare the image."
                                     )
                                 );
 
                                 return;
                             }
 
-                            ctx.drawImage(
-                                img,
-                                0,
-                                0,
-                                width,
-                                height
-                            );
-
-                            canvas.toBlob(
-                                function(blob){
-
-                                    if(!blob){
-
-                                        reject(
-                                            new Error(
-                                                "Could not prepare the image."
-                                            )
-                                        );
-
-                                        return;
+                            resolve(
+                                new File(
+                                    [blob],
+                                    "taynplantz.jpg",
+                                    {
+                                        type:
+                                            "image/jpeg"
                                     }
-
-                                    resolve(
-                                        new File(
-                                            [blob],
-                                            "taynplantz.jpg",
-                                            {
-                                                type:
-                                                    "image/jpeg"
-                                            }
-                                        )
-                                    );
-
-                                },
-                                "image/jpeg",
-                                0.90
-                            );
-
-                        };
-
-                    img.onerror =
-                        function(){
-
-                            reject(
-                                new Error(
-                                    "This photo could not be read."
                                 )
                             );
 
-                        };
-
-                    img.src =
-                        reader.result;
+                        },
+                        "image/jpeg",
+                        0.90
+                    );
 
                 };
+
+                img.onerror =
+                    function(){
+
+                        reject(
+                            new Error(
+                                "This photo could not be read."
+                            )
+                        );
+
+                    };
+
+                img.src =
+                    reader.result;
+
+            };
 
             reader.onerror =
                 function(){
@@ -4063,9 +4337,7 @@ function renderAlternatives(
         !Array.isArray(results) ||
         results.length < 2
     ){
-
         return;
-
     }
 
     const title =
@@ -4162,7 +4434,6 @@ function renderAlternatives(
 
             }
         );
-
 }
 
 /* ============================================================
@@ -4195,7 +4466,6 @@ function findLocalPlant(
                 plant.scientific.toLowerCase()
             )
     );
-
 }
 
 /* ============================================================
@@ -4246,7 +4516,6 @@ function saveHistory(item){
     }
 
     renderHistory();
-
 }
 
 function renderHistory(){
@@ -4282,7 +4551,6 @@ function renderHistory(){
         `;
 
         return;
-
     }
 
     container.innerHTML = "";
@@ -4364,7 +4632,6 @@ function renderHistory(){
 
         }
     );
-
 }
 
 /* ============================================================
@@ -4386,7 +4653,6 @@ function goTo(id){
         behavior:"smooth",
         block:"start"
     });
-
 }
 
 /* ============================================================
@@ -4461,7 +4727,6 @@ function openPlant(index){
         .classList.add(
             "show"
         );
-
 }
 
 function closeModal(){
@@ -4473,7 +4738,6 @@ function closeModal(){
         .classList.remove(
             "show"
         );
-
 }
 
 document
@@ -4509,7 +4773,6 @@ function setStatus(
         )
         .textContent =
             message;
-
 }
 
 function formatDate(
@@ -4537,7 +4800,6 @@ function formatDate(
             year:"numeric"
         }
     );
-
 }
 
 function formatOrgan(
@@ -4563,7 +4825,6 @@ function formatOrgan(
         ||
         "🌿 Plant"
     );
-
 }
 
 function escapeHTML(
@@ -4593,7 +4854,6 @@ function escapeHTML(
             /'/g,
             "&#039;"
         );
-
 }
 
 /* ============================================================
@@ -4634,7 +4894,6 @@ if(
 
         }
     );
-
 }
 
 /* ============================================================
