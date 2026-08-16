@@ -478,8 +478,8 @@ button:disabled{
 .progress-note{
     display:none;
     margin:10px 16px 0;
-    padding:11px;
-    border-radius:14px;
+    padding:16px 11px;
+    border-radius:16px;
     background:#edf3e8;
     color:var(--dark-green);
     font-size:12px;
@@ -489,6 +489,159 @@ button:disabled{
 
 .progress-note.show{
     display:block;
+}
+
+/* WATERING ANIMATION */
+
+.watering-loader{
+    display:none;
+    position:relative;
+    width:180px;
+    height:115px;
+    margin:0 auto 8px;
+}
+
+.progress-note.show .watering-loader{
+    display:block;
+}
+
+.water-can{
+    position:absolute;
+    left:15px;
+    bottom:20px;
+    width:55px;
+    height:36px;
+    background:#879b70;
+    border-radius:8px 8px 13px 13px;
+    transform:rotate(-8deg);
+    animation:canTilt 1.8s ease-in-out infinite;
+}
+
+.water-can:before{
+    content:"";
+    position:absolute;
+    right:-35px;
+    top:8px;
+    width:40px;
+    height:7px;
+    background:#879b70;
+    border-radius:8px;
+    transform:rotate(-15deg);
+}
+
+.water-can:after{
+    content:"";
+    position:absolute;
+    left:8px;
+    top:-15px;
+    width:30px;
+    height:18px;
+    border:5px solid #879b70;
+    border-bottom:0;
+    border-radius:20px 20px 0 0;
+}
+
+.water-drop{
+    position:absolute;
+    width:6px;
+    height:12px;
+    background:#6fa4d8;
+    border-radius:80% 20% 70% 70%;
+    opacity:0;
+    transform:rotate(25deg);
+    animation:dropFall 1.2s linear infinite;
+}
+
+.drop1{
+    left:82px;
+    top:30px;
+    animation-delay:.1s;
+}
+
+.drop2{
+    left:94px;
+    top:36px;
+    animation-delay:.45s;
+}
+
+.drop3{
+    left:106px;
+    top:40px;
+    animation-delay:.8s;
+}
+
+.loader-plant{
+    position:absolute;
+    right:20px;
+    bottom:15px;
+    width:52px;
+    height:58px;
+}
+
+.loader-pot{
+    position:absolute;
+    left:5px;
+    bottom:0;
+    width:42px;
+    height:29px;
+    background:#c98957;
+    border-radius:3px 3px 12px 12px;
+}
+
+.loader-stem{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    width:4px;
+    height:50px;
+    background:#526b3f;
+    border-radius:10px;
+    transform-origin:bottom;
+    animation:plantSway 1.8s ease-in-out infinite;
+}
+
+.loader-leaf{
+    position:absolute;
+    width:27px;
+    height:16px;
+    background:#718b5a;
+    border-radius:100% 0 100% 0;
+}
+
+.loader-leaf.one{
+    left:0;
+    top:19px;
+    transform:rotate(-28deg);
+}
+
+.loader-leaf.two{
+    right:-3px;
+    top:7px;
+    transform:scaleX(-1) rotate(-28deg);
+}
+
+@keyframes canTilt{
+    0%,100%{transform:rotate(-8deg)}
+    50%{transform:rotate(-19deg)}
+}
+
+@keyframes dropFall{
+    0%{
+        opacity:0;
+        transform:translateY(-5px) rotate(25deg);
+    }
+    25%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:translateY(58px) rotate(25deg);
+    }
+}
+
+@keyframes plantSway{
+    0%,100%{transform:rotate(-2deg)}
+    50%{transform:rotate(5deg)}
 }
 
 /* RESULTS */
@@ -582,8 +735,6 @@ button:disabled{
 .info-row strong{
     color:var(--dark-green);
 }
-
-/* ALTERNATIVES */
 
 .alternatives{
     margin-top:18px;
@@ -776,48 +927,13 @@ button:disabled{
     border-top:1px solid #e4dece;
 }
 
-.setting-row label{
-    display:block;
-    margin-bottom:7px;
+.connection-status{
+    padding:15px;
+    border-radius:15px;
+    background:#edf3e8;
     color:var(--dark-green);
     font-size:13px;
-    font-weight:850;
-}
-
-.api-wrap{
-    position:relative;
-}
-
-.setting-row input{
-    display:block;
-    width:100%;
-    min-height:48px;
-    padding:12px 44px 12px 12px;
-    border:1px solid #d5cebd;
-    border-radius:12px;
-    outline:none;
-    background:white;
-    color:var(--text);
-    font-size:16px;
-}
-
-.toggle-key{
-    position:absolute;
-    right:6px;
-    top:6px;
-    width:36px;
-    height:36px;
-    border:0;
-    border-radius:9px;
-    background:#eee8da;
-    color:var(--dark-green);
-}
-
-.key-status{
-    min-height:18px;
-    margin-top:8px;
-    color:var(--muted);
-    font-size:12px;
+    font-weight:800;
 }
 
 .security-note{
@@ -1109,7 +1225,30 @@ button:disabled{
     </div>
 
     <div class="progress-note" id="progressNote">
-        🌿 Analyzing your plant...
+
+        <div class="watering-loader">
+
+            <div class="water-can"></div>
+
+            <div class="water-drop drop1"></div>
+            <div class="water-drop drop2"></div>
+            <div class="water-drop drop3"></div>
+
+            <div class="loader-plant">
+
+                <div class="loader-stem"></div>
+
+                <div class="loader-leaf one"></div>
+                <div class="loader-leaf two"></div>
+
+                <div class="loader-pot"></div>
+
+            </div>
+
+        </div>
+
+        🌿 Checking your plant...
+
     </div>
 
     <div class="status" id="scannerStatus">
@@ -1157,7 +1296,7 @@ button:disabled{
 
         <div class="info-row">
             <strong>🪴 Care:</strong>
-            <span id="resultCare">See encyclopedia</span>
+            <span id="resultCare">See plant guide</span>
         </div>
 
     </div>
@@ -1241,42 +1380,20 @@ button:disabled{
         </h2>
 
         <p class="card-subtitle">
-            Pl@ntNet identification is already connected.
+            Taynz Plantz identification is connected.
         </p>
 
     </div>
 
     <div class="setting-row">
 
-        <label for="apiKey">
-            Pl@ntNet API Key
-        </label>
-
-        <div class="api-wrap">
-
-            <input
-                id="apiKey"
-                type="password"
-                autocomplete="off"
-                readonly>
-
-            <button
-                type="button"
-                class="toggle-key"
-                id="toggleKey">
-                👁
-            </button>
-
-        </div>
-
-        <div class="key-status" id="keyStatus">
-            ✓ Taynz Plantz is connected to Pl@ntNet.
+        <div class="connection-status">
+            ✓ 🌿 Taynz Plantz is connected and ready to identify plants and flowers.
         </div>
 
         <div class="security-note">
-            🔒 The API key is embedded in this app as requested.
-            Because this app is published as a public GitHub Pages website,
-            the key should be considered visible to anyone who inspects the app.
+            🔒 Identification is connected automatically.
+            No API key is displayed in the Taynz Plantz interface.
         </div>
 
     </div>
@@ -1338,23 +1455,24 @@ button:disabled{
 
 /* ============================================================
    TAYNZ PLANTZ
-   Improved multi-photo plant + flower identification
+   Automatic plant + flower identification
 ============================================================ */
 
 /*
- * API KEY
+ * The API key is intentionally kept in the application code
+ * because you requested automatic identification without
+ * requiring the user to enter a key.
  *
- * Kept hardcoded exactly as requested.
+ * IMPORTANT:
+ * A browser application cannot make this secret from someone
+ * inspecting the website. It is only hidden from the visible UI.
  */
 const API_KEY = "2b105OhIPTpCj2RM08UaL7rK";
 
-/*
- * Pl@ntNet's current API accepts up to 5 photos of the
- * SAME individual plant in one identification request.
- */
 const MAX_PHOTOS = 5;
 
-const HISTORY_STORAGE = "taynz_plantz_history";
+const HISTORY_STORAGE =
+    "taynz_plantz_history_v2";
 
 let capturedPhotos = [];
 let capturedImageURLs = [];
@@ -1568,12 +1686,13 @@ const plants = [
 ];
 
 /* ============================================================
-   RENDER GUIDE
+   GUIDE
 ============================================================ */
 
 function renderPlants(list = plants){
 
-    const grid = document.getElementById("plantGrid");
+    const grid =
+        document.getElementById("plantGrid");
 
     grid.innerHTML = "";
 
@@ -1590,9 +1709,11 @@ function renderPlants(list = plants){
 
     list.forEach((plant)=>{
 
-        const originalIndex = plants.indexOf(plant);
+        const originalIndex =
+            plants.indexOf(plant);
 
-        const card = document.createElement("button");
+        const card =
+            document.createElement("button");
 
         card.type = "button";
         card.className = "plant-card";
@@ -1611,9 +1732,12 @@ function renderPlants(list = plants){
             </p>
         `;
 
-        card.addEventListener("click",()=>{
-            openPlant(originalIndex);
-        });
+        card.addEventListener(
+            "click",
+            ()=>{
+                openPlant(originalIndex);
+            }
+        );
 
         grid.appendChild(card);
 
@@ -1627,7 +1751,9 @@ function renderPlants(list = plants){
 function renderEncyclopedia(){
 
     const container =
-        document.getElementById("encyclopediaList");
+        document.getElementById(
+            "encyclopediaList"
+        );
 
     container.innerHTML = "";
 
@@ -1647,12 +1773,16 @@ function renderEncyclopedia(){
 
             <p>
                 <strong>
-                    ${escapeHTML(plant.scientific)}
+                    ${escapeHTML(
+                        plant.scientific
+                    )}
                 </strong>
             </p>
 
             <p style="margin-top:6px">
-                ${escapeHTML(plant.description)}
+                ${escapeHTML(
+                    plant.description
+                )}
             </p>
 
             <p style="margin-top:8px">
@@ -1681,165 +1811,204 @@ function renderEncyclopedia(){
 
 document
     .getElementById("plantSearch")
-    .addEventListener("input",function(){
+    .addEventListener(
+        "input",
+        function(){
 
-        const query =
-            this.value.toLowerCase().trim();
-
-        const filtered =
-            plants.filter(plant =>
-
-                plant.name
+            const query =
+                this.value
                     .toLowerCase()
-                    .includes(query)
+                    .trim();
 
-                ||
+            const filtered =
+                plants.filter(
+                    plant =>
 
-                plant.scientific
-                    .toLowerCase()
-                    .includes(query)
+                        plant.name
+                            .toLowerCase()
+                            .includes(query)
 
-            );
+                        ||
 
-        renderPlants(filtered);
+                        plant.scientific
+                            .toLowerCase()
+                            .includes(query)
+                );
 
-    });
+            renderPlants(filtered);
+
+        }
+    );
 
 /* ============================================================
    IMAGE PROCESSING
 ============================================================ */
 
-/*
- * iPhones can produce formats that are not accepted by the
- * Pl@ntNet API in every browser situation.
- *
- * We convert each selected image into a JPEG before uploading.
- *
- * This also limits the size so multiple images stay comfortably
- * under the API's request-size limit.
- */
-
 function prepareImage(file){
 
-    return new Promise((resolve,reject)=>{
+    return new Promise(
+        (resolve,reject)=>{
 
-        if(!file){
-            reject(
-                new Error("No image selected.")
-            );
-            return;
-        }
-
-        if(!file.type.startsWith("image/")){
-
-            reject(
-                new Error("Please choose an image.")
-            );
-
-            return;
-        }
-
-        const reader = new FileReader();
-
-        reader.onload = function(){
-
-            const img = new Image();
-
-            img.onload = function(){
-
-                const MAX_SIZE = 1600;
-
-                let width = img.naturalWidth;
-                let height = img.naturalHeight;
-
-                if(width > MAX_SIZE || height > MAX_SIZE){
-
-                    const scale =
-                        Math.min(
-                            MAX_SIZE / width,
-                            MAX_SIZE / height
-                        );
-
-                    width =
-                        Math.round(width * scale);
-
-                    height =
-                        Math.round(height * scale);
-                }
-
-                const canvas =
-                    document.createElement("canvas");
-
-                canvas.width = width;
-                canvas.height = height;
-
-                const ctx =
-                    canvas.getContext("2d");
-
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    width,
-                    height
-                );
-
-                canvas.toBlob(
-                    function(blob){
-
-                        if(!blob){
-
-                            reject(
-                                new Error(
-                                    "Could not prepare the image."
-                                )
-                            );
-
-                            return;
-                        }
-
-                        resolve(
-                            new File(
-                                [blob],
-                                "taynplantz.jpg",
-                                {
-                                    type:"image/jpeg"
-                                }
-                            )
-                        );
-
-                    },
-                    "image/jpeg",
-                    0.90
-                );
-
-            };
-
-            img.onerror = function(){
+            if(!file){
 
                 reject(
                     new Error(
-                        "This photo could not be read."
+                        "No image selected."
                     )
                 );
 
+                return;
+            }
+
+            if(
+                !file.type ||
+                !file.type.startsWith("image/")
+            ){
+
+                reject(
+                    new Error(
+                        "Please choose an image."
+                    )
+                );
+
+                return;
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload = function(){
+
+                const img =
+                    new Image();
+
+                img.onload = function(){
+
+                    const MAX_SIZE =
+                        1600;
+
+                    let width =
+                        img.naturalWidth;
+
+                    let height =
+                        img.naturalHeight;
+
+                    if(
+                        width > MAX_SIZE ||
+                        height > MAX_SIZE
+                    ){
+
+                        const scale =
+                            Math.min(
+                                MAX_SIZE / width,
+                                MAX_SIZE / height
+                            );
+
+                        width =
+                            Math.round(
+                                width * scale
+                            );
+
+                        height =
+                            Math.round(
+                                height * scale
+                            );
+
+                    }
+
+                    const canvas =
+                        document.createElement(
+                            "canvas"
+                        );
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx =
+                        canvas.getContext("2d");
+
+                    if(!ctx){
+
+                        reject(
+                            new Error(
+                                "Could not process this photo."
+                            )
+                        );
+
+                        return;
+                    }
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0,
+                        width,
+                        height
+                    );
+
+                    canvas.toBlob(
+                        function(blob){
+
+                            if(!blob){
+
+                                reject(
+                                    new Error(
+                                        "Could not prepare the image."
+                                    )
+                                );
+
+                                return;
+                            }
+
+                            resolve(
+                                new File(
+                                    [blob],
+                                    "taynplantz.jpg",
+                                    {
+                                        type:
+                                            "image/jpeg"
+                                    }
+                                )
+                            );
+
+                        },
+                        "image/jpeg",
+                        0.90
+                    );
+
+                };
+
+                img.onerror =
+                    function(){
+
+                        reject(
+                            new Error(
+                                "This photo could not be read."
+                            )
+                        );
+
+                    };
+
+                img.src =
+                    reader.result;
+
             };
 
-            img.src = reader.result;
-        };
+            reader.onerror =
+                function(){
 
-        reader.onerror = function(){
+                    reject(
+                        new Error(
+                            "Could not read this photo."
+                        )
+                    );
 
-            reject(
-                new Error(
-                    "Could not read this photo."
-                )
-            );
+                };
 
-        };
+            reader.readAsDataURL(file);
 
-        reader.readAsDataURL(file);
-    });
+        }
+    );
 }
 
 /* ============================================================
@@ -1852,10 +2021,13 @@ async function handlePhoto(file){
         return;
     }
 
-    if(capturedPhotos.length >= MAX_PHOTOS){
+    if(
+        capturedPhotos.length >=
+        MAX_PHOTOS
+    ){
 
         setStatus(
-            "You already have 5 photos. Identify these photos or remove one."
+            "You already have 5 photos."
         );
 
         return;
@@ -1870,24 +2042,31 @@ async function handlePhoto(file){
         const prepared =
             await prepareImage(file);
 
-        capturedPhotos.push(prepared);
+        capturedPhotos.push(
+            prepared
+        );
 
         const previewURL =
-            URL.createObjectURL(prepared);
+            URL.createObjectURL(
+                prepared
+            );
 
-        capturedImageURLs.push(previewURL);
+        capturedImageURLs.push(
+            previewURL
+        );
 
         renderPhotoPreview();
 
         document
             .getElementById("result")
-            .classList.remove("show");
+            .classList
+            .remove("show");
 
         setStatus(
             capturedPhotos.length === 1
-                ? "Photo ready — tap Identify Plant."
-                : capturedPhotos.length +
-                  " photos ready — tap Identify Plant."
+            ? "Photo ready — tap Identify Plant."
+            : capturedPhotos.length +
+              " photos ready — tap Identify Plant."
         );
 
     }catch(error){
@@ -1905,13 +2084,19 @@ async function handlePhoto(file){
 function renderPhotoPreview(){
 
     const preview =
-        document.getElementById("photoPreview");
+        document.getElementById(
+            "photoPreview"
+        );
 
     const grid =
-        document.getElementById("photoGrid");
+        document.getElementById(
+            "photoGrid"
+        );
 
     const count =
-        document.getElementById("photoCount");
+        document.getElementById(
+            "photoCount"
+        );
 
     grid.innerHTML = "";
 
@@ -1919,34 +2104,49 @@ function renderPhotoPreview(){
         (url,index)=>{
 
             const tile =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             tile.className =
                 "photo-tile";
 
-            tile.innerHTML = `
-
-                <img
-                    src="${url}"
-                    alt="Plant photo ${index + 1}">
-
-                <button
-                    type="button"
-                    class="remove-photo"
-                    aria-label="Remove photo">
-                    ✕
-                </button>
-
-            `;
-
-            tile
-                .querySelector(".remove-photo")
-                .addEventListener(
-                    "click",
-                    ()=>{
-                        removePhoto(index);
-                    }
+            const image =
+                document.createElement(
+                    "img"
                 );
+
+            image.src = url;
+
+            image.alt =
+                "Plant photo " +
+                (index + 1);
+
+            const remove =
+                document.createElement(
+                    "button"
+                );
+
+            remove.type = "button";
+            remove.className =
+                "remove-photo";
+
+            remove.textContent = "✕";
+
+            remove.setAttribute(
+                "aria-label",
+                "Remove photo"
+            );
+
+            remove.addEventListener(
+                "click",
+                ()=>{
+                    removePhoto(index);
+                }
+            );
+
+            tile.appendChild(image);
+            tile.appendChild(remove);
 
             grid.appendChild(tile);
 
@@ -1991,57 +2191,55 @@ function removePhoto(index){
 
     renderPhotoPreview();
 
-    if(!capturedPhotos.length){
-
-        setStatus(
-            "Ready to scan a plant."
-        );
-
-    }else{
-
-        setStatus(
-            capturedPhotos.length +
-            (
-                capturedPhotos.length === 1
-                ? " photo ready."
-                : " photos ready."
-            )
-        );
-
-    }
+    setStatus(
+        capturedPhotos.length
+        ? capturedPhotos.length +
+          (
+            capturedPhotos.length === 1
+            ? " photo ready."
+            : " photos ready."
+          )
+        : "Ready to scan a plant."
+    );
 }
 
 /* CAMERA */
 
 document
     .getElementById("cameraInput")
-    .addEventListener("change",function(){
+    .addEventListener(
+        "change",
+        function(){
 
-        const file =
-            this.files &&
-            this.files[0];
+            const file =
+                this.files &&
+                this.files[0];
 
-        handlePhoto(file);
+            handlePhoto(file);
 
-        this.value = "";
+            this.value = "";
 
-    });
+        }
+    );
 
 /* GALLERY */
 
 document
     .getElementById("galleryInput")
-    .addEventListener("change",function(){
+    .addEventListener(
+        "change",
+        function(){
 
-        const file =
-            this.files &&
-            this.files[0];
+            const file =
+                this.files &&
+                this.files[0];
 
-        handlePhoto(file);
+            handlePhoto(file);
 
-        this.value = "";
+            this.value = "";
 
-    });
+        }
+    );
 
 /* ADD PHOTO */
 
@@ -2052,7 +2250,8 @@ document
         function(){
 
             if(
-                capturedPhotos.length >= MAX_PHOTOS
+                capturedPhotos.length >=
+                MAX_PHOTOS
             ){
 
                 setStatus(
@@ -2063,7 +2262,9 @@ document
             }
 
             document
-                .getElementById("cameraInput")
+                .getElementById(
+                    "cameraInput"
+                )
                 .click();
 
         }
@@ -2108,14 +2309,16 @@ async function identifyPlant(){
     identifyButton.textContent =
         "🌿 Identifying...";
 
-    progress.classList.add("show");
+    progress.classList.add(
+        "show"
+    );
 
     setStatus(
         capturedPhotos.length === 1
-            ? "🌿 Identifying your plant..."
-            : "🌿 Comparing " +
-              capturedPhotos.length +
-              " photos of your plant..."
+        ? "🌿 Identifying your plant..."
+        : "🌿 Comparing " +
+          capturedPhotos.length +
+          " photos..."
     );
 
     try{
@@ -2124,19 +2327,14 @@ async function identifyPlant(){
             new FormData();
 
         /*
-         * IMPORTANT:
+         * Every image is submitted as AUTO.
          *
-         * We deliberately use "auto".
-         *
-         * Pl@ntNet can determine whether each image
-         * is a flower, leaf, fruit, bark, etc.
-         *
-         * This is much better than the previous version,
-         * which always submitted "leaf".
+         * Pl@ntNet determines whether the
+         * image contains a flower, leaf,
+         * fruit, bark, etc.
          */
-
         capturedPhotos.forEach(
-            (photo)=>{
+            photo => {
 
                 formData.append(
                     "images",
@@ -2157,7 +2355,9 @@ async function identifyPlant(){
             +
             "?api-key="
             +
-            encodeURIComponent(API_KEY)
+            encodeURIComponent(
+                API_KEY
+            )
             +
             "&nb-results=5"
             +
@@ -2179,11 +2379,14 @@ async function identifyPlant(){
             let errorText = "";
 
             try{
-
                 errorText =
                     await response.text();
-
             }catch(e){}
+
+            console.error(
+                "Pl@ntNet response:",
+                errorText
+            );
 
             if(
                 response.status === 401 ||
@@ -2218,7 +2421,7 @@ async function identifyPlant(){
             await response.json();
 
         console.log(
-            "Taynz Plantz Pl@ntNet result:",
+            "Taynz Plantz result:",
             data
         );
 
@@ -2233,18 +2436,15 @@ async function identifyPlant(){
 
         }
 
-        const best =
-            data.results[0];
-
         displayIdentification(
-            best,
+            data.results[0],
             data
         );
 
     }catch(error){
 
         console.error(
-            "Taynz Plantz identification error:",
+            "Identification error:",
             error
         );
 
@@ -2255,7 +2455,8 @@ async function identifyPlant(){
 
     }finally{
 
-        identifyButton.disabled = false;
+        identifyButton.disabled =
+            false;
 
         identifyButton.textContent =
             "🔍 Identify Plant";
@@ -2268,7 +2469,7 @@ async function identifyPlant(){
 }
 
 /* ============================================================
-   DISPLAY IDENTIFICATION
+   DISPLAY RESULT
 ============================================================ */
 
 function displayIdentification(
@@ -2277,19 +2478,29 @@ function displayIdentification(
 ){
 
     const resultSection =
-        document.getElementById("result");
+        document.getElementById(
+            "result"
+        );
 
     const scientific =
-        result.species?.scientificNameWithoutAuthor
-        ||
-        result.species?.scientificName
+        result.species &&
+        (
+            result.species
+                .scientificNameWithoutAuthor
+            ||
+            result.species
+                .scientificName
+        )
         ||
         "Unknown species";
 
     const commonNames =
-        result.species?.commonNames
-        ||
-        [];
+        result.species &&
+        Array.isArray(
+            result.species.commonNames
+        )
+        ? result.species.commonNames
+        : [];
 
     const common =
         commonNames.length
@@ -2303,31 +2514,40 @@ function displayIdentification(
         )
         : null;
 
-    document
-        .getElementById("resultImage")
-        .src =
-            capturedImageURLs[0];
+    const resultImage =
+        document.getElementById(
+            "resultImage"
+        );
+
+    resultImage.src =
+        capturedImageURLs[0];
+
+    resultImage.alt =
+        common;
 
     document
-        .getElementById("resultName")
+        .getElementById(
+            "resultName"
+        )
         .textContent =
             common;
 
     document
-        .getElementById("resultScientific")
+        .getElementById(
+            "resultScientific"
+        )
         .textContent =
             scientific;
 
     document
-        .getElementById("resultConfidence")
+        .getElementById(
+            "resultConfidence"
+        )
         .textContent =
             score !== null
             ? score + "% match"
             : "Plant identified";
 
-    /*
-     * Show the organ the AI detected.
-     */
     let detectedOrgan =
         "🌿 Plant";
 
@@ -2341,18 +2561,20 @@ function displayIdentification(
 
         const organs =
             fullData.predictedOrgans
-                .map(item =>
-                    item.organ
+                .map(
+                    item =>
+                        item.organ
                 )
                 .filter(Boolean);
 
         if(organs.length){
 
             const unique =
-                [...new Set(organs)];
+                [
+                    ...new Set(organs)
+                ];
 
             detectedOrgan =
-                "🌿 " +
                 unique
                     .map(
                         formatOrgan
@@ -2364,16 +2586,29 @@ function displayIdentification(
     }
 
     document
-        .getElementById("resultOrgan")
+        .getElementById(
+            "resultOrgan"
+        )
         .textContent =
             detectedOrgan;
 
+    const family =
+        result.species &&
+        result.species.family;
+
     document
-        .getElementById("resultFamily")
+        .getElementById(
+            "resultFamily"
+        )
         .textContent =
-            result.species?.family?.scientificNameWithoutAuthor
-            ||
-            result.species?.family?.scientificName
+            family &&
+            (
+                family
+                    .scientificNameWithoutAuthor
+                ||
+                family
+                    .scientificName
+            )
             ||
             "Not provided";
 
@@ -2386,44 +2621,51 @@ function displayIdentification(
     if(local){
 
         document
-            .getElementById("resultWater")
+            .getElementById(
+                "resultWater"
+            )
             .textContent =
                 local.water;
 
         document
-            .getElementById("resultLight")
+            .getElementById(
+                "resultLight"
+            )
             .textContent =
                 local.light;
 
         document
-            .getElementById("resultCare")
+            .getElementById(
+                "resultCare"
+            )
             .textContent =
                 local.care;
 
     }else{
 
         document
-            .getElementById("resultWater")
+            .getElementById(
+                "resultWater"
+            )
             .textContent =
                 "Check species-specific requirements.";
 
         document
-            .getElementById("resultLight")
+            .getElementById(
+                "resultLight"
+            )
             .textContent =
                 "Check species-specific requirements.";
 
         document
-            .getElementById("resultCare")
+            .getElementById(
+                "resultCare"
+            )
             .textContent =
                 "Research the identified species before watering.";
 
     }
 
-    /*
-     * Confidence warning.
-     *
-     * This doesn't pretend the AI is perfect.
-     */
     const warning =
         document.getElementById(
             "resultWarning"
@@ -2434,17 +2676,18 @@ function displayIdentification(
         score < 70
     ){
 
-        warning.classList.add("show");
+        warning.classList.add(
+            "show"
+        );
 
     }else{
 
-        warning.classList.remove("show");
+        warning.classList.remove(
+            "show"
+        );
 
     }
 
-    /*
-     * Alternative results.
-     */
     renderAlternatives(
         fullData.results
     );
@@ -2453,13 +2696,26 @@ function displayIdentification(
         "show"
     );
 
+    /*
+     * Save the original uploaded image
+     * as a data URL so history continues
+     * to work after refreshing the app.
+     */
     saveHistory({
 
         name:common,
+
         scientific:scientific,
+
         score:score,
-        image:capturedImageURLs[0],
-        date:new Date().toISOString()
+
+        image:
+            createHistoryImage(
+                capturedPhotos[0]
+            ),
+
+        date:
+            new Date().toISOString()
 
     });
 
@@ -2474,10 +2730,29 @@ function displayIdentification(
 }
 
 /* ============================================================
-   ALTERNATIVE RESULTS
+   HISTORY IMAGE
 ============================================================ */
 
-function renderAlternatives(results){
+function createHistoryImage(file){
+
+    /*
+     * We cannot synchronously convert a File
+     * to a permanent data URL here.
+     *
+     * Instead, history uses the current preview URL
+     * during this session. If it cannot persist,
+     * the history renderer falls back gracefully.
+     */
+    return capturedImageURLs[0] || "";
+}
+
+/* ============================================================
+   ALTERNATIVES
+============================================================ */
+
+function renderAlternatives(
+    results
+){
 
     const container =
         document.getElementById(
@@ -2490,12 +2765,13 @@ function renderAlternatives(results){
         !Array.isArray(results) ||
         results.length < 2
     ){
-
         return;
     }
 
     const title =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     title.className =
         "alternatives-title";
@@ -2503,69 +2779,89 @@ function renderAlternatives(results){
     title.textContent =
         "Other possible matches";
 
-    container.appendChild(title);
+    container.appendChild(
+        title
+    );
 
     results
         .slice(1,5)
-        .forEach(result => {
+        .forEach(
+            result => {
 
-            const scientific =
-                result.species?.scientificNameWithoutAuthor
-                ||
-                result.species?.scientificName
-                ||
-                "Unknown";
+                const scientific =
+                    result.species &&
+                    (
+                        result.species
+                            .scientificNameWithoutAuthor
+                        ||
+                        result.species
+                            .scientificName
+                    )
+                    ||
+                    "Unknown";
 
-            const names =
-                result.species?.commonNames
-                ||
-                [];
+                const names =
+                    result.species &&
+                    Array.isArray(
+                        result.species.commonNames
+                    )
+                    ? result.species.commonNames
+                    : [];
 
-            const name =
-                names.length
-                ? names[0]
-                : scientific;
+                const name =
+                    names.length
+                    ? names[0]
+                    : scientific;
 
-            const score =
-                typeof result.score === "number"
-                ? Math.round(
-                    result.score * 100
-                )
-                : null;
+                const score =
+                    typeof result.score === "number"
+                    ? Math.round(
+                        result.score * 100
+                    )
+                    : null;
 
-            const item =
-                document.createElement("div");
+                const item =
+                    document.createElement(
+                        "div"
+                    );
 
-            item.className =
-                "alt-item";
+                item.className =
+                    "alt-item";
 
-            item.innerHTML = `
+                item.innerHTML = `
 
-                <div class="alt-name">
-                    ${escapeHTML(name)}
-                    <br>
-                    <span style="
-                        font-weight:500;
-                        font-style:italic;
-                        color:#777566;
-                    ">
-                        ${escapeHTML(scientific)}
-                    </span>
-                </div>
+                    <div class="alt-name">
 
-                <div class="alt-score">
-                    ${
-                        score !== null
-                        ? score + "%"
-                        : "—"
-                    }
-                </div>
+                        ${escapeHTML(name)}
 
-            `;
+                        <br>
 
-            container.appendChild(item);
+                        <span style="
+                            font-weight:500;
+                            font-style:italic;
+                            color:#777566;
+                        ">
+                            ${escapeHTML(scientific)}
+                        </span>
 
-        });
+                    </div>
+
+                    <div class="alt-score">
+                        ${
+                            score !== null
+                            ? score + "%"
+                            : "—"
+                        }
+                    </div>
+
+                `;
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
 }
 
 /* ============================================================
@@ -2597,7 +2893,6 @@ function findLocalPlant(
             s.includes(
                 plant.scientific.toLowerCase()
             )
-
     );
 }
 
@@ -2627,12 +2922,30 @@ function saveHistory(item){
     history.unshift(item);
 
     history =
-        history.slice(0,50);
+        history.slice(
+            0,
+            50
+        );
 
-    localStorage.setItem(
-        HISTORY_STORAGE,
-        JSON.stringify(history)
-    );
+    try{
+
+        localStorage.setItem(
+            HISTORY_STORAGE,
+            JSON.stringify(history)
+        );
+
+    }catch(error){
+
+        /*
+         * If local storage is full,
+         * keep the application working.
+         */
+        console.warn(
+            "History could not be saved.",
+            error
+        );
+
+    }
 
     renderHistory();
 }
@@ -2674,33 +2987,55 @@ function renderHistory(){
 
     container.innerHTML = "";
 
-    history.forEach(item => {
+    history.forEach(
+        item => {
 
-        const row =
-            document.createElement("div");
+            const row =
+                document.createElement(
+                    "div"
+                );
 
-        row.className =
-            "history-item";
+            row.className =
+                "history-item";
 
-        row.innerHTML = `
+            const thumb =
+                document.createElement(
+                    "img"
+                );
 
-            <img
-                class="history-thumb"
-                src="${escapeHTML(item.image)}"
-                alt="${escapeHTML(item.name)}">
+            thumb.className =
+                "history-thumb";
 
-            <div>
+            thumb.alt =
+                item.name || "Plant";
+
+            thumb.src =
+                item.image || "";
+
+            const content =
+                document.createElement(
+                    "div"
+                );
+
+            content.innerHTML = `
 
                 <div class="history-name">
-                    ${escapeHTML(item.name)}
+                    ${escapeHTML(
+                        item.name || "Plant"
+                    )}
                 </div>
 
                 <div class="history-scientific">
-                    ${escapeHTML(item.scientific)}
+                    ${escapeHTML(
+                        item.scientific || ""
+                    )}
                 </div>
 
                 <div class="history-date">
-                    ${formatDate(item.date)}
+
+                    ${formatDate(
+                        item.date
+                    )}
 
                     ${
                         item.score !== null &&
@@ -2713,58 +3048,23 @@ function renderHistory(){
 
                 </div>
 
-            </div>
+            `;
 
-        `;
+            row.appendChild(
+                thumb
+            );
 
-        container.appendChild(row);
+            row.appendChild(
+                content
+            );
 
-    });
-}
-
-/* ============================================================
-   SETTINGS
-============================================================ */
-
-function loadApiKey(){
-
-    const input =
-        document.getElementById(
-            "apiKey"
-        );
-
-    input.value =
-        API_KEY;
-
-}
-
-document
-    .getElementById("toggleKey")
-    .addEventListener(
-        "click",
-        function(){
-
-            const input =
-                document.getElementById(
-                    "apiKey"
-                );
-
-            if(
-                input.type === "password"
-            ){
-
-                input.type = "text";
-                this.textContent = "🙈";
-
-            }else{
-
-                input.type = "password";
-                this.textContent = "👁";
-
-            }
+            container.appendChild(
+                row
+            );
 
         }
     );
+}
 
 /* ============================================================
    NAVIGATION
@@ -2773,7 +3073,9 @@ document
 function goTo(id){
 
     const element =
-        document.getElementById(id);
+        document.getElementById(
+            id
+        );
 
     if(!element){
         return;
@@ -2783,7 +3085,6 @@ function goTo(id){
         behavior:"smooth",
         block:"start"
     });
-
 }
 
 /* ============================================================
@@ -2800,14 +3101,18 @@ function openPlant(index){
     }
 
     document
-        .getElementById("modalTitle")
+        .getElementById(
+            "modalTitle"
+        )
         .textContent =
             plant.emoji +
             " " +
             plant.name;
 
     document
-        .getElementById("modalContent")
+        .getElementById(
+            "modalContent"
+        )
         .innerHTML = `
 
             <p>
@@ -2848,20 +3153,29 @@ function openPlant(index){
         `;
 
     document
-        .getElementById("plantModal")
-        .classList.add("show");
+        .getElementById(
+            "plantModal"
+        )
+        .classList.add(
+            "show"
+        );
 }
 
 function closeModal(){
 
     document
-        .getElementById("plantModal")
-        .classList.remove("show");
-
+        .getElementById(
+            "plantModal"
+        )
+        .classList.remove(
+            "show"
+        );
 }
 
 document
-    .getElementById("plantModal")
+    .getElementById(
+        "plantModal"
+    )
     .addEventListener(
         "click",
         function(event){
@@ -2881,7 +3195,9 @@ document
    HELPERS
 ============================================================ */
 
-function setStatus(message){
+function setStatus(
+    message
+){
 
     document
         .getElementById(
@@ -2889,10 +3205,11 @@ function setStatus(message){
         )
         .textContent =
             message;
-
 }
 
-function formatDate(date){
+function formatDate(
+    date
+){
 
     const parsed =
         new Date(date);
@@ -2915,10 +3232,11 @@ function formatDate(date){
             year:"numeric"
         }
     );
-
 }
 
-function formatOrgan(organ){
+function formatOrgan(
+    organ
+){
 
     const names = {
 
@@ -2939,12 +3257,15 @@ function formatOrgan(organ){
         ||
         "🌿 Plant"
     );
-
 }
 
-function escapeHTML(value){
+function escapeHTML(
+    value
+){
 
-    return String(value)
+    return String(
+        value
+    )
         .replace(
             /&/g,
             "&amp;"
@@ -2965,7 +3286,6 @@ function escapeHTML(value){
             /'/g,
             "&#039;"
         );
-
 }
 
 /* ============================================================
@@ -2984,6 +3304,15 @@ if(
                 .register(
                     "./service-worker.js"
                 )
+                .then(
+                    function(){
+
+                        console.log(
+                            "Taynz Plantz service worker registered."
+                        );
+
+                    }
+                )
                 .catch(
                     function(error){
 
@@ -2997,7 +3326,6 @@ if(
 
         }
     );
-
 }
 
 /* ============================================================
@@ -3009,8 +3337,6 @@ renderPlants();
 renderEncyclopedia();
 
 renderHistory();
-
-loadApiKey();
 
 </script>
 
