@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#526b3f">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="format-detection" content="telephone=no">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+>
+
+<meta
+    name="theme-color"
+    content="#526b3f"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="TaynPlantz"
+>
+
+<meta
+    name="format-detection"
+    content="telephone=no"
+>
+
+<link
+    rel="manifest"
+    href="./manifest.json"
+>
+
+<link
+    rel="apple-touch-icon"
+    href="./icon-192.png"
+>
 
 <title>Taynz Plantz</title>
 
@@ -450,6 +486,11 @@ button{
     color:white;
 }
 
+.action-btn:disabled{
+    opacity:.6;
+    cursor:wait;
+}
+
 .status{
     min-height:20px;
     margin:12px 18px 0;
@@ -885,6 +926,7 @@ button{
     }
 }
 </style>
+
 </head>
 
 <body>
@@ -902,28 +944,46 @@ button{
         <div class="logo" aria-label="Taynz Plantz">
 
             <div class="logo-decoration left">
+
                 <div class="logo-stem"></div>
+
                 <div class="logo-leaf a"></div>
+
                 <div class="logo-leaf b"></div>
+
                 <div class="logo-leaf c"></div>
+
             </div>
 
             <div class="logo-text">
+
                 Tayn<span class="green">z</span> Plantz
+
             </div>
 
             <div class="logo-decoration right">
+
                 <div class="logo-stem"></div>
+
                 <div class="logo-leaf a"></div>
+
                 <div class="logo-leaf b"></div>
+
                 <div class="logo-leaf c"></div>
+
             </div>
 
         </div>
 
         <div class="tagline">
+
             <span>Planting with Tayn</span>
-            <span class="pot" aria-hidden="true"></span>
+
+            <span
+                class="pot"
+                aria-hidden="true">
+            </span>
+
         </div>
 
     </div>
@@ -948,14 +1008,20 @@ button{
 
     <div class="hero-buttons">
 
-        <button class="hero-btn"
-                onclick="goTo('scanner')">
+        <button
+            class="hero-btn"
+            onclick="goTo('scanner')">
+
             📷 Scan a Plant
+
         </button>
 
-        <button class="hero-btn secondary"
-                onclick="goTo('guide')">
+        <button
+            class="hero-btn secondary"
+            onclick="goTo('guide')">
+
             🌿 Explore Plants
+
         </button>
 
     </div>
@@ -966,8 +1032,9 @@ button{
      SCANNER
 ========================= -->
 
-<section class="card scanner-card"
-         id="scanner">
+<section
+    class="card scanner-card"
+    id="scanner">
 
     <div class="card-header">
 
@@ -1025,7 +1092,8 @@ button{
                 class="native-input"
                 type="file"
                 accept="image/*"
-                capture="environment">
+                capture="environment"
+            >
 
         </label>
 
@@ -1037,17 +1105,21 @@ button{
                 id="galleryInput"
                 class="native-input"
                 type="file"
-                accept="image/*">
+                accept="image/*"
+            >
 
         </label>
 
     </div>
 
-    <div class="photo-preview"
-         id="photoPreview">
+    <div
+        class="photo-preview"
+        id="photoPreview">
 
-        <img id="previewImage"
-             alt="Selected plant photo">
+        <img
+            id="previewImage"
+            alt="Selected plant photo"
+        >
 
         <div class="preview-badge">
             🌿 Photo ready
@@ -1057,21 +1129,30 @@ button{
 
     <div class="scanner-actions">
 
-        <button class="action-btn"
-                id="retakeButton">
+        <button
+            class="action-btn"
+            id="retakeButton">
+
             📷 New Photo
+
         </button>
 
-        <button class="action-btn primary"
-                id="identifyButton">
+        <button
+            class="action-btn primary"
+            id="identifyButton">
+
             🔍 Identify Plant
+
         </button>
 
     </div>
 
-    <div class="status"
-         id="scannerStatus">
+    <div
+        class="status"
+        id="scannerStatus">
+
         Ready to scan a plant.
+
     </div>
 
 </section>
@@ -1080,51 +1161,71 @@ button{
      RESULT
 ========================= -->
 
-<section class="result"
-         id="result">
+<section
+    class="result"
+    id="result">
 
-    <img id="resultImage"
-         class="result-image"
-         alt="Identified plant">
+    <img
+        id="resultImage"
+        class="result-image"
+        alt="Identified plant"
+    >
 
-    <div class="result-name"
-         id="resultName">
+    <div
+        class="result-name"
+        id="resultName">
     </div>
 
-    <div class="result-scientific"
-         id="resultScientific">
+    <div
+        class="result-scientific"
+        id="resultScientific">
     </div>
 
-    <div class="confidence"
-         id="resultConfidence">
+    <div
+        class="confidence"
+        id="resultConfidence">
     </div>
 
     <div class="result-info">
 
         <div class="info-row">
+
             <strong>🌱 Family:</strong>
-            <span id="resultFamily">—</span>
+
+            <span id="resultFamily">
+                —
+            </span>
+
         </div>
 
         <div class="info-row">
+
             <strong>💧 Water:</strong>
+
             <span id="resultWater">
                 See plant guide
             </span>
+
         </div>
 
         <div class="info-row">
+
             <strong>☀️ Light:</strong>
+
             <span id="resultLight">
                 See plant guide
             </span>
+
         </div>
 
         <div class="info-row">
+
             <strong>🪴 Care:</strong>
+
             <span id="resultCare">
                 See encyclopedia
             </span>
+
         </div>
 
     </div>
@@ -1135,8 +1236,9 @@ button{
      RESOURCE GUIDE
 ========================= -->
 
-<section class="card"
-         id="guide">
+<section
+    class="card"
+    id="guide">
 
     <div class="card-header">
 
@@ -1160,12 +1262,14 @@ button{
             id="plantSearch"
             type="search"
             autocomplete="off"
-            placeholder="Search plants...">
+            placeholder="Search plants..."
+        >
 
     </div>
 
-    <div class="plant-grid"
-         id="plantGrid">
+    <div
+        class="plant-grid"
+        id="plantGrid">
     </div>
 
 </section>
@@ -1174,8 +1278,9 @@ button{
      ENCYCLOPEDIA
 ========================= -->
 
-<section class="card encyclopedia"
-         id="encyclopedia">
+<section
+    class="card encyclopedia"
+    id="encyclopedia">
 
     <div class="card-header">
 
@@ -1197,8 +1302,9 @@ button{
      HISTORY
 ========================= -->
 
-<section class="card"
-         id="history">
+<section
+    class="card"
+    id="history">
 
     <div class="card-header">
 
@@ -1212,8 +1318,9 @@ button{
 
     </div>
 
-    <div class="history-list"
-         id="historyList">
+    <div
+        class="history-list"
+        id="historyList">
     </div>
 
 </section>
@@ -1222,8 +1329,9 @@ button{
      SETTINGS
 ========================= -->
 
-<section class="card settings"
-         id="settings">
+<section
+    class="card settings"
+    id="settings">
 
     <div class="card-header">
 
@@ -1253,14 +1361,17 @@ button{
                 autocorrect="off"
                 autocapitalize="none"
                 spellcheck="false"
-                placeholder="Enter your Pl@ntNet API key">
+                placeholder="Enter your Pl@ntNet API key"
+            >
 
             <button
                 type="button"
                 class="toggle-key"
                 id="toggleKey"
                 aria-label="Show or hide API key">
+
                 👁
+
             </button>
 
         </div>
@@ -1269,17 +1380,22 @@ button{
             type="button"
             class="save-key"
             id="saveKey">
+
             Save API Key
+
         </button>
 
-        <div class="key-status"
-             id="keyStatus">
+        <div
+            class="key-status"
+            id="keyStatus">
         </div>
 
         <div class="security-note">
+
             🔒 Your API key is stored only in this browser's local storage.
             Do not place a personal API key directly into the HTML file
             before publishing it publicly.
+
         </div>
 
     </div>
@@ -1294,34 +1410,42 @@ button{
 
 <nav class="bottom-nav">
 
-    <button class="nav-btn active"
-            onclick="goTo('scanner')">
+    <button
+        class="nav-btn active"
+        onclick="goTo('scanner')">
 
         <span>📷</span>
+
         Scan
 
     </button>
 
-    <button class="nav-btn"
-            onclick="goTo('guide')">
+    <button
+        class="nav-btn"
+        onclick="goTo('guide')">
 
         <span>🌿</span>
+
         Plants
 
     </button>
 
-    <button class="nav-btn"
-            onclick="goTo('encyclopedia')">
+    <button
+        class="nav-btn"
+        onclick="goTo('encyclopedia')">
 
         <span>📚</span>
+
         Learn
 
     </button>
 
-    <button class="nav-btn"
-            onclick="goTo('history')">
+    <button
+        class="nav-btn"
+        onclick="goTo('history')">
 
         <span>🕘</span>
+
         History
 
     </button>
@@ -1332,8 +1456,9 @@ button{
      PLANT MODAL
 ========================= -->
 
-<div class="modal"
-     id="plantModal">
+<div
+    class="modal"
+    id="plantModal">
 
     <div class="modal-box">
 
@@ -1347,13 +1472,16 @@ button{
                 class="close"
                 type="button"
                 onclick="closeModal()">
+
                 ✕
+
             </button>
 
         </div>
 
-        <div class="modal-content"
-             id="modalContent">
+        <div
+            class="modal-content"
+            id="modalContent">
         </div>
 
     </div>
@@ -1366,10 +1494,14 @@ button{
    TAYNZ PLANTZ
 ========================================== */
 
-const API_KEY_STORAGE = "taynz_plantz_api_key";
-const HISTORY_STORAGE = "taynz_plantz_history";
+const API_KEY_STORAGE =
+    "taynz_plantz_api_key";
+
+const HISTORY_STORAGE =
+    "taynz_plantz_history";
 
 let capturedBlob = null;
+
 let capturedImageURL = null;
 
 /* ==========================================
@@ -1506,15 +1638,22 @@ const plants = [
 
 function renderPlants(list = plants){
 
-    const grid = document.getElementById("plantGrid");
+    const grid =
+        document.getElementById(
+            "plantGrid"
+        );
 
     grid.innerHTML = "";
 
     if(!list.length){
 
         grid.innerHTML = `
-            <div class="empty" style="grid-column:1/-1">
+            <div
+                class="empty"
+                style="grid-column:1/-1">
+
                 No plants found.
+
             </div>
         `;
 
@@ -1523,14 +1662,19 @@ function renderPlants(list = plants){
 
     list.forEach((plant)=>{
 
-        const originalIndex = plants.indexOf(plant);
+        const originalIndex =
+            plants.indexOf(plant);
 
-        const card = document.createElement("button");
+        const card =
+            document.createElement("button");
 
         card.type = "button";
-        card.className = "plant-card";
+
+        card.className =
+            "plant-card";
 
         card.innerHTML = `
+
             <div class="plant-emoji">
                 ${plant.emoji}
             </div>
@@ -1542,11 +1686,15 @@ function renderPlants(list = plants){
             <p>
                 ${escapeHTML(plant.scientific)}
             </p>
+
         `;
 
-        card.addEventListener("click",()=>{
-            openPlant(originalIndex);
-        });
+        card.addEventListener(
+            "click",
+            ()=>{
+                openPlant(originalIndex);
+            }
+        );
 
         grid.appendChild(card);
 
@@ -1560,7 +1708,9 @@ function renderPlants(list = plants){
 function renderEncyclopedia(){
 
     const container =
-        document.getElementById("encyclopediaList");
+        document.getElementById(
+            "encyclopediaList"
+        );
 
     container.innerHTML = "";
 
@@ -1569,7 +1719,8 @@ function renderEncyclopedia(){
         const item =
             document.createElement("div");
 
-        item.className = "ency-item";
+        item.className =
+            "ency-item";
 
         item.innerHTML = `
 
@@ -1589,16 +1740,20 @@ function renderEncyclopedia(){
             </p>
 
             <p style="margin-top:8px">
+
                 ☀️ <strong>Light:</strong>
                 ${escapeHTML(plant.light)}
+
                 <br>
 
                 💧 <strong>Water:</strong>
                 ${escapeHTML(plant.water)}
+
                 <br>
 
                 🪴 <strong>Care:</strong>
                 ${escapeHTML(plant.care)}
+
             </p>
 
         `;
@@ -1614,29 +1769,34 @@ function renderEncyclopedia(){
 
 document
     .getElementById("plantSearch")
-    .addEventListener("input",function(){
+    .addEventListener(
+        "input",
+        function(){
 
-        const query =
-            this.value.toLowerCase().trim();
-
-        const filtered =
-            plants.filter(plant =>
-
-                plant.name
+            const query =
+                this.value
                     .toLowerCase()
-                    .includes(query)
+                    .trim();
 
-                ||
+            const filtered =
+                plants.filter(plant =>
 
-                plant.scientific
-                    .toLowerCase()
-                    .includes(query)
+                    plant.name
+                        .toLowerCase()
+                        .includes(query)
 
-            );
+                    ||
 
-        renderPlants(filtered);
+                    plant.scientific
+                        .toLowerCase()
+                        .includes(query)
 
-    });
+                );
+
+            renderPlants(filtered);
+
+        }
+    );
 
 /* ==========================================
    NATIVE CAMERA / PHOTO PICKER
@@ -1645,7 +1805,9 @@ document
 function handlePhoto(file){
 
     if(!file){
+
         return;
+
     }
 
     if(!file.type.startsWith("image/")){
@@ -1655,6 +1817,7 @@ function handlePhoto(file){
         );
 
         return;
+
     }
 
     capturedBlob = file;
@@ -1671,17 +1834,23 @@ function handlePhoto(file){
         URL.createObjectURL(file);
 
     const preview =
-        document.getElementById("previewImage");
+        document.getElementById(
+            "previewImage"
+        );
 
     preview.src =
         capturedImageURL;
 
     document
-        .getElementById("photoPreview")
+        .getElementById(
+            "photoPreview"
+        )
         .classList.add("show");
 
     document
-        .getElementById("result")
+        .getElementById(
+            "result"
+        )
         .classList.remove("show");
 
     setStatus(
@@ -1689,65 +1858,91 @@ function handlePhoto(file){
     );
 
     document
-        .getElementById("photoPreview")
+        .getElementById(
+            "photoPreview"
+        )
         .scrollIntoView({
             behavior:"smooth",
             block:"center"
         });
+
 }
 
-/* Camera */
+/* ==========================================
+   CAMERA
+========================================== */
 
 document
-    .getElementById("cameraInput")
-    .addEventListener("change",function(){
+    .getElementById(
+        "cameraInput"
+    )
+    .addEventListener(
+        "change",
+        function(){
 
-        const file =
-            this.files && this.files[0];
+            const file =
+                this.files &&
+                this.files[0];
 
-        handlePhoto(file);
+            handlePhoto(file);
 
-        /*
-         * Clear the input so the same photo/camera
-         * action can be selected again later.
-         */
-        this.value = "";
+            this.value = "";
 
-    });
+        }
+    );
 
-/* Gallery */
-
-document
-    .getElementById("galleryInput")
-    .addEventListener("change",function(){
-
-        const file =
-            this.files && this.files[0];
-
-        handlePhoto(file);
-
-        this.value = "";
-
-    });
-
-/* New photo */
+/* ==========================================
+   GALLERY
+========================================== */
 
 document
-    .getElementById("retakeButton")
-    .addEventListener("click",function(){
+    .getElementById(
+        "galleryInput"
+    )
+    .addEventListener(
+        "change",
+        function(){
 
-        document
-            .getElementById("cameraInput")
-            .click();
+            const file =
+                this.files &&
+                this.files[0];
 
-    });
+            handlePhoto(file);
+
+            this.value = "";
+
+        }
+    );
+
+/* ==========================================
+   NEW PHOTO
+========================================== */
+
+document
+    .getElementById(
+        "retakeButton"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            document
+                .getElementById(
+                    "cameraInput"
+                )
+                .click();
+
+        }
+    );
 
 /* ==========================================
    IDENTIFICATION
 ========================================== */
 
 document
-    .getElementById("identifyButton")
+    .getElementById(
+        "identifyButton"
+    )
     .addEventListener(
         "click",
         identifyPlant
@@ -1764,6 +1959,7 @@ async function identifyPlant(){
         goTo("scanner");
 
         return;
+
     }
 
     const apiKey =
@@ -1782,12 +1978,15 @@ async function identifyPlant(){
         setTimeout(()=>{
 
             document
-                .getElementById("apiKey")
+                .getElementById(
+                    "apiKey"
+                )
                 .focus();
 
         },500);
 
         return;
+
     }
 
     setStatus(
@@ -1800,6 +1999,7 @@ async function identifyPlant(){
         );
 
     identifyButton.disabled = true;
+
     identifyButton.textContent =
         "🌿 Identifying...";
 
@@ -1814,10 +2014,6 @@ async function identifyPlant(){
             "plant.jpg"
         );
 
-        /*
-         * The user is photographing a plant.
-         * "leaf" works well for normal plant photos.
-         */
         formData.append(
             "organs",
             "leaf"
@@ -1842,42 +2038,57 @@ async function identifyPlant(){
             let errorText = "";
 
             try{
+
                 errorText =
                     await response.text();
+
             }catch(e){}
 
-            if(response.status === 401 ||
-               response.status === 403){
+            if(
+                response.status === 401 ||
+                response.status === 403
+            ){
 
                 throw new Error(
                     "Your Pl@ntNet API key was rejected."
                 );
+
             }
 
-            if(response.status === 429){
+            if(
+                response.status === 429
+            ){
 
                 throw new Error(
                     "Pl@ntNet rate limit reached. Try again later."
                 );
+
             }
 
             throw new Error(
                 "Pl@ntNet returned HTTP "
-                + response.status
-                + ". "
-                + errorText
+                +
+                response.status
+                +
+                ". "
+                +
+                errorText
             );
+
         }
 
         const data =
             await response.json();
 
-        if(!data.results ||
-           !data.results.length){
+        if(
+            !data.results ||
+            !data.results.length
+        ){
 
             throw new Error(
                 "No plant identification was returned."
             );
+
         }
 
         const best =
@@ -1908,6 +2119,7 @@ async function identifyPlant(){
             "🔍 Identify Plant";
 
     }
+
 }
 
 /* ==========================================
@@ -1920,7 +2132,9 @@ function displayIdentification(
 ){
 
     const resultSection =
-        document.getElementById("result");
+        document.getElementById(
+            "result"
+        );
 
     const scientific =
         result.species?.scientificNameWithoutAuthor
@@ -1941,32 +2155,46 @@ function displayIdentification(
 
     const score =
         typeof result.score === "number"
-        ? Math.round(
-            result.score * 100
-        )
-        : null;
+        ?
+            Math.round(
+                result.score * 100
+            )
+        :
+            null;
 
     document
-        .getElementById("resultImage")
+        .getElementById(
+            "resultImage"
+        )
         .src = imageURL;
 
     document
-        .getElementById("resultName")
+        .getElementById(
+            "resultName"
+        )
         .textContent = common;
 
     document
-        .getElementById("resultScientific")
+        .getElementById(
+            "resultScientific"
+        )
         .textContent = scientific;
 
     document
-        .getElementById("resultConfidence")
+        .getElementById(
+            "resultConfidence"
+        )
         .textContent =
             score !== null
-            ? score + "% match"
-            : "Plant identified";
+            ?
+                score + "% match"
+            :
+                "Plant identified";
 
     document
-        .getElementById("resultFamily")
+        .getElementById(
+            "resultFamily"
+        )
         .textContent =
             result.species?.family?.scientificName
             ||
@@ -1981,34 +2209,46 @@ function displayIdentification(
     if(local){
 
         document
-            .getElementById("resultWater")
+            .getElementById(
+                "resultWater"
+            )
             .textContent =
                 local.water;
 
         document
-            .getElementById("resultLight")
+            .getElementById(
+                "resultLight"
+            )
             .textContent =
                 local.light;
 
         document
-            .getElementById("resultCare")
+            .getElementById(
+                "resultCare"
+            )
             .textContent =
                 local.care;
 
     }else{
 
         document
-            .getElementById("resultWater")
+            .getElementById(
+                "resultWater"
+            )
             .textContent =
                 "Check species-specific requirements.";
 
         document
-            .getElementById("resultLight")
+            .getElementById(
+                "resultLight"
+            )
             .textContent =
                 "Check species-specific requirements.";
 
         document
-            .getElementById("resultCare")
+            .getElementById(
+                "resultCare"
+            )
             .textContent =
                 "Research the identified species before watering.";
 
@@ -2019,9 +2259,13 @@ function displayIdentification(
     saveHistory({
 
         name:common,
+
         scientific:scientific,
+
         score:score,
+
         image:imageURL,
+
         date:new Date().toISOString()
 
     });
@@ -2034,6 +2278,7 @@ function displayIdentification(
         behavior:"smooth",
         block:"start"
     });
+
 }
 
 /* ==========================================
@@ -2066,6 +2311,7 @@ function findLocalPlant(
         )
 
     );
+
 }
 
 /* ==========================================
@@ -2102,6 +2348,7 @@ function saveHistory(item){
     );
 
     renderHistory();
+
 }
 
 function renderHistory(){
@@ -2137,6 +2384,7 @@ function renderHistory(){
         `;
 
         return;
+
     }
 
     container.innerHTML = "";
@@ -2144,7 +2392,9 @@ function renderHistory(){
     history.forEach(item => {
 
         const row =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         row.className =
             "history-item";
@@ -2154,7 +2404,8 @@ function renderHistory(){
             <img
                 class="history-thumb"
                 src="${escapeHTML(item.image)}"
-                alt="${escapeHTML(item.name)}">
+                alt="${escapeHTML(item.name)}"
+            >
 
             <div>
 
@@ -2167,16 +2418,20 @@ function renderHistory(){
                 </div>
 
                 <div class="history-date">
+
                     ${formatDate(item.date)}
 
                     ${
                         item.score !== null &&
                         item.score !== undefined
-                        ? " • " +
-                          item.score +
-                          "% match"
-                        : ""
+                        ?
+                            " • " +
+                            item.score +
+                            "% match"
+                        :
+                            ""
                     }
+
                 </div>
 
             </div>
@@ -2186,6 +2441,7 @@ function renderHistory(){
         container.appendChild(row);
 
     });
+
 }
 
 /* ==========================================
@@ -2209,7 +2465,9 @@ function loadApiKey(){
         input.value = key;
 
         document
-            .getElementById("keyStatus")
+            .getElementById(
+                "keyStatus"
+            )
             .textContent =
                 "✓ API key is saved on this device.";
 
@@ -2218,15 +2476,20 @@ function loadApiKey(){
         input.value = "";
 
         document
-            .getElementById("keyStatus")
+            .getElementById(
+                "keyStatus"
+            )
             .textContent =
                 "No API key saved.";
 
     }
+
 }
 
 document
-    .getElementById("saveKey")
+    .getElementById(
+        "saveKey"
+    )
     .addEventListener(
         "click",
         function(){
@@ -2251,6 +2514,7 @@ document
                 input.focus();
 
                 return;
+
             }
 
             localStorage.setItem(
@@ -2272,10 +2536,14 @@ document
         }
     );
 
-/* Show/hide key */
+/* ==========================================
+   SHOW / HIDE API KEY
+========================================== */
 
 document
-    .getElementById("toggleKey")
+    .getElementById(
+        "toggleKey"
+    )
     .addEventListener(
         "click",
         function(){
@@ -2285,15 +2553,21 @@ document
                     "apiKey"
                 );
 
-            if(input.type === "password"){
+            if(
+                input.type === "password"
+            ){
 
                 input.type = "text";
-                this.textContent = "🙈";
+
+                this.textContent =
+                    "🙈";
 
             }else{
 
                 input.type = "password";
-                this.textContent = "👁";
+
+                this.textContent =
+                    "👁";
 
             }
 
@@ -2310,13 +2584,19 @@ function goTo(id){
         document.getElementById(id);
 
     if(!element){
+
         return;
+
     }
 
     element.scrollIntoView({
+
         behavior:"smooth",
+
         block:"start"
+
     });
+
 }
 
 /* ==========================================
@@ -2329,26 +2609,34 @@ function openPlant(index){
         plants[index];
 
     if(!plant){
+
         return;
+
     }
 
     document
-        .getElementById("modalTitle")
+        .getElementById(
+            "modalTitle"
+        )
         .textContent =
             plant.emoji +
             " " +
             plant.name;
 
     document
-        .getElementById("modalContent")
+        .getElementById(
+            "modalContent"
+        )
         .innerHTML = `
 
             <p>
+
                 <strong>
                     ${escapeHTML(
                         plant.scientific
                     )}
                 </strong>
+
             </p>
 
             <p>
@@ -2358,44 +2646,63 @@ function openPlant(index){
             </p>
 
             <p>
+
                 ☀️ <strong>Light</strong><br>
+
                 ${escapeHTML(
                     plant.light
                 )}
+
             </p>
 
             <p>
+
                 💧 <strong>Water</strong><br>
+
                 ${escapeHTML(
                     plant.water
                 )}
+
             </p>
 
             <p>
+
                 🪴 <strong>Care</strong><br>
+
                 ${escapeHTML(
                     plant.care
                 )}
+
             </p>
 
         `;
 
     document
-        .getElementById("plantModal")
+        .getElementById(
+            "plantModal"
+        )
         .classList.add("show");
+
 }
 
 function closeModal(){
 
     document
-        .getElementById("plantModal")
+        .getElementById(
+            "plantModal"
+        )
         .classList.remove("show");
+
 }
 
-/* Close modal by tapping outside */
+/* ==========================================
+   CLOSE MODAL OUTSIDE
+========================================== */
 
 document
-    .getElementById("plantModal")
+    .getElementById(
+        "plantModal"
+    )
     .addEventListener(
         "click",
         function(event){
@@ -2419,7 +2726,9 @@ function setStatus(message){
         .getElementById(
             "scannerStatus"
         )
-        .textContent = message;
+        .textContent =
+            message;
+
 }
 
 function formatDate(date){
@@ -2427,10 +2736,14 @@ function formatDate(date){
     const parsed =
         new Date(date);
 
-    if(Number.isNaN(
-        parsed.getTime()
-    )){
+    if(
+        Number.isNaN(
+            parsed.getTime()
+        )
+    ){
+
         return "";
+
     }
 
     return parsed.toLocaleDateString(
@@ -2441,16 +2754,76 @@ function formatDate(date){
             year:"numeric"
         }
     );
+
 }
 
 function escapeHTML(value){
 
     return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+/* ==========================================
+   PWA SERVICE WORKER
+========================================== */
+
+if(
+    "serviceWorker" in navigator
+){
+
+    window.addEventListener(
+        "load",
+        function(){
+
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+
+                .then(
+                    function(){
+
+                        console.log(
+                            "TaynPlantz service worker registered."
+                        );
+
+                    }
+                )
+
+                .catch(
+                    function(error){
+
+                        console.error(
+                            "TaynPlantz service worker registration failed:",
+                            error
+                        );
+
+                    }
+                );
+
+        }
+    );
+
 }
 
 /* ==========================================
